@@ -1,5 +1,7 @@
 # PolMC
 Polarized Monte Carlo simulation used in my doctoral dissertation (around 2008-2010)
+- Code branched from Daniel Cote http://www.crulrg.ulaval.ca/en/research/axis/researchers/researcher.php?id=16
+- Significant contribution from my labmate/colleague Kort Travis
 - C++ code simulating photonics traveling in biological tissues in custom geometry, with geometries such as objects, layers, interfaces, etc in the user defined space.
 - C++ code was parallelizable and ran with MPI on clusters at TACC (Texas Advanced Computing Center)
 - All physical objects/geometries are defined with their own photonic properties saved in .plist (XML) files
