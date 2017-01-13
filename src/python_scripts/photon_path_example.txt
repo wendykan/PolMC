@@ -1,0 +1,43 @@
+
+# examples for usage of python analysis routines for Pol-MC:
+
+# you need to set your environment PYTHONPATH variable correctly (to reference the directory where you put "photon_path.py" and "binaryIO.py"):
+#
+#   the section from my ".profile " (".profile_user" on TACC) looks like this:
+#
+#  PYTHONPATH=/usr/local/lib/python2.4/site-packages:$CVS_CHECKOUT_BASE/src:$CVS_CHECKOUT_BASE/src/check:$CVS_CHECKOUT_BASE/src/SWIG:$CVS_CHECKOUT_BASE/src/python_misc:$CVS_CHECKOUT_BASE/src/implementation_notes:$CVS_CHECKOUT_BASE/lib/python2.4/site-packages:$CVS_CHECKOUT_BASE/lib/python-MPY/site-packages:$CVS_CHECKOUT_BASE/src/polarization_MC_port
+#  export PYTHONPATH
+#
+
+import photon_path as PP
+
+test_filename = 'photons.dat'
+
+
+# =============== THE NON-ITERATING VERSION (IT READS THE *ENTIRE* FILE AT ONE TIME): ======================================
+
+photon_paths = PP.load_photon_paths(test_filename)  
+
+# now you can do stuff like (to iterate over all the "photons", and all of their events):
+for photon in photon_paths:
+  for scattering_event in photon:
+    # do something with the specific "event" information
+    
+# =============== THE ITERATING VERSION (IT WORKS INCREMENTALLY, AND USES *MUCH* LESS MEMORY): =============================
+
+photons_iter = PP.photon_paths_iter(test_filename)
+
+# now you can do stuff like (to iterate over all the "photons", and all of their events):
+for photon in photons_iter:
+  for scattering_event in photon:
+    # do something with the specific "event" information    
+
+# and if you want to do it _AGAIN_:
+photons_iter.reset()
+for photon in photons_iter:
+  for scattering_event in photon:
+    # do something with the specific "event" information    
+
+# or, for only one iteration, you could also do:
+for photon in PP.photon_paths_iter(test_filename):
+  # do something with the photon_path...

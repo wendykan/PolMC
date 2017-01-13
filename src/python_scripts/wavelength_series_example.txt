@@ -1,0 +1,134 @@
+"""
+  Examples to plot spectra from wavelength-series runs.
+  
+  Note that wavelength series run directory structure is as follows 
+    (it's assumed here that XML files and photon_path files have already been merged to "pk.dat" and ".dat" files respectively):
+    BASE_DIRECTORY ::=
+      lambda_<wavelength 1> 
+      lambda_<wavelength 2>
+      lambda_<wavelength 3>
+      ...
+        ::=
+          world_<wavelength ..>.pk.dat
+          angle_detector_photons.dat
+          flat_detector_photons.dat
+          ... other stuff, for record ...
+"""
+
+import sys, os, glob, pickle, pdb
+
+# ============ FANCY stuff for MATPLOTLIB (aka PYLAB): =====================================================
+
+svg_output = False
+
+from matplotlib import rc
+
+facecolor='(0.0,0.0,0.2)'
+labelcolor='(0.8,0.8,1.0)'
+if (not svg_output):
+  # rc("font",**{"family":"sans-serif","sans-serif":["Helvetica"]})
+  rc("text", usetex=True)
+rc("font",size=14)
+rc("font",size=14)
+rc("figure",facecolor=facecolor)
+rc("savefig",facecolor=facecolor)
+rc("axes",labelcolor=labelcolor)
+rc("text",color=labelcolor)
+rc("xtick",color=labelcolor)
+rc("ytick",color=labelcolor)
+
+from numpy import *; from pylab import *
+
+# ==========================================================================================================
+
+def wavelength_directory_leaf_to_wavelength(leaf_name):
+  """
+  Extract the actual wavelength from the leaf directory name:
+  example:  
+    wavelength = wavelength_directory_leaf_to_wavelength('lambda__0.000063')
+    print wavelength
+    # this should print: "0.000063"
+  """
+  
+  wavelength = None # return value
+  pos1 = leaf_name.find('lambda_')
+  if (pos1 != -1):
+    pos1 += len('lambda_')
+    wavelength = float(leaf_name[pos1:])
+  
+  return wavelength
+
+def Stokes_by_cosine(Stokes_list, minAcceptanceCosine):
+  #  return the entry in the list of Stokes data that has the minAcceptanceCosine closest to the requested value.
+  #  (Note: all "maxAcceptanceCosine" for these lists == 1.0)
+  
+  Stokes = None  # return value
+  
+  min_delta = finfo(double).max
+  for S in Stokes_list:
+    delta = abs(S['minAcceptanceCosine'] - minAcceptanceCosine)
+    if (delta < min_delta):
+      Stokes = S
+      
+  return Stokes
+  
+
+# ============================== SET these values to what you NEED: =======================================
+base_directory = '/usr/data1/polmc_project/run.data/27.07.2010_1'  # set this to YOUR base directory
+figure_save_directory = '/usr/data1/polmc_project/fig_tmp'
+minAcceptanceCosine = 0.0
+# =========================================================================================================
+
+wavelength = []
+angle_detector_fluence = []
+flat_detector_fluence = []
+
+for leaf_directory in glob.iglob(base_directory + '/lambda_*'):
+  pos = leaf_directory.rfind('/')
+  if (pos != -1):
+    leaf_name = leaf_directory[pos+1:]
+    wavelength.append(wavelength_directory_leaf_to_wavelength(leaf_name))
+    print 'lambda: %s' % wavelength[-1]
+    
+    # load the pickled polmc_data object:  
+    fp = open(leaf_directory + '/world.' + leaf_name + '.pk.dat')
+    world = pickle.load(fp)
+    fp.close()
+    
+    angle_detector_fluence.append(Stokes_by_cosine(world['objects']['angle_detector']['interfaces']['forward']['StokesV'], minAcceptanceCosine))
+    flat_detector_fluence.append(Stokes_by_cosine(world['objects']['flat_detector']['interfaces']['forward']['StokesV'], minAcceptanceCosine))
+
+# at this point we have a list of wavelengths and lists of the Stokes vectors, but they are in "glob" order, not necessarily in "wavelength" order:
+wavelength_order = argsort(wavelength)
+# IMPOSE the argsort:
+wavelength = array([wavelength[n] for n in wavelength_order])
+
+# *** REMINDER: *** "fluence" vectors contain Stokes parameter data; "I" is the total intensity (binned by Nx x Ny),
+#  so, here, we take the "sum" over all of the bins at the detector surface:
+angle_detector_fluence = array([angle_detector_fluence[n]['I'].sum() for n in wavelength_order])
+flat_detector_fluence = array([flat_detector_fluence[n]['I'].sum() for n in wavelength_order])
+
+nm = 1.0e-7 # cm
+
+plot(wavelength/nm, angle_detector_fluence, 'o', mfc=(1.0, 1.0, 1.0), mec=(0.0, 0.0, 0.0), mew=1.0 )  
+                                                 # 'mfc': <marker face color: RGB tuple>
+                                                 # 'mec': <marker edge color: RGB tuple> 
+                                                 # 'mew': <marker edge width>: "0" is minimum, otherwise
+                                                 #    I believe this value is in "printer's points"
+                                                 #  Together these settings request: UNFILLED CIRCLE MARKER WITH BLACK BORDER
+xlabel('nm'); ylabel('counts')
+title('angle detector fluence')
+savefig(figure_save_directory + '/angle_detector_spectra' + '.png', format='png', dpi=300); 
+if svg_output:
+  savefig(figure_save_directory + '/angle_detector_spectra' + '.svg', format='svg');
+close()     
+
+plot(wavelength/nm, flat_detector_fluence, 'o', mfc=(1.0, 1.0, 1.0), mec=(0.0, 0.0, 0.0), mew=1.0 )  
+xlabel('nm'); ylabel('counts')
+title('flat detector fluence')
+savefig(figure_save_directory + '/flat_detector_spectra' + '.png', format='png', dpi=300); 
+if svg_output:
+  savefig(figure_save_directory + '/flat_detector_spectra' + '.svg', format='svg');
+close()
+
+                                                  

@@ -1,0 +1,57 @@
+
+# examples for usage of python analysis routines for Pol-MC:
+
+# you need to set your environment PYTHONPATH variable correctly (to reference the directory where you put "photon_path.py" and "binaryIO.py"):
+#
+#   the section from my ".profile " (".profile_user" on TACC) looks like this:
+#
+#  PYTHONPATH=/usr/local/lib/python2.4/site-packages:$CVS_CHECKOUT_BASE/src:$CVS_CHECKOUT_BASE/src/check:$CVS_CHECKOUT_BASE/src/SWIG:$CVS_CHECKOUT_BASE/src/python_misc:$CVS_CHECKOUT_BASE/src/implementation_notes:$CVS_CHECKOUT_BASE/lib/python2.4/site-packages:$CVS_CHECKOUT_BASE/lib/python-MPY/site-packages:$CVS_CHECKOUT_BASE/src/polarization_MC_port
+#  export PYTHONPATH
+#
+
+import photon_path as PP
+from numpy import *
+
+test_filename = 'photons.dat'
+photon_paths = PP.load_photon_paths(test_filename)  
+
+SAFETY_DISTANCE = 1.0e-6
+
+scattered_photons = []
+for photon in photon_paths:
+  scattered_only_events = []
+  for event in photon:
+    p = event.pos
+    if (abs(p[2] - 0.025) > 2.0*SAFETY_DISTANCE):
+      scattered_only_events.append(event)
+  scattered_photons.append(scattered_only_events)
+  
+# now you can do stuff like (to iterate over all the "photons", and all of their events):
+for photon in photon_paths:
+  for scattering_event in photon:
+    # do something with the specific "event" information
+    
+# new syntax:
+paths_iterator = PP.photon_paths_iterator(test_filename)
+for photon in paths_iterator:
+  for event in photon:
+    ... do something here ...
+    
+# to iterate the paths again
+paths_iterator.reset()
+  .. next loop:  ...
+
+
+
+
+
+N_events = [0, 0, 0, 0, 0, 0]
+
+for photon in photon_paths:
+  for event in photon:
+    N_events[event.event_type] += 1
+
+print N_events
+
+
+
