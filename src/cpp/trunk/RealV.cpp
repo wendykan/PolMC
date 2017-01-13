@@ -1,0 +1,499 @@
+#include "RealV.h"
+
+
+RealV::RealV()
+{
+    x = 0.;
+    y = 0.;
+    z = 0.;
+}
+
+
+RealV::RealV(double inX, double inY, double inZ)
+{
+    x = inX;
+    y = inY;
+    z = inZ;
+}
+
+
+RealV::RealV(const RealV& inRhs)
+{
+    x = inRhs.x;
+    y = inRhs.y;
+    z = inRhs.z;
+}
+
+ RealV&
+RealV::operator=(const RealV& inRhs)
+{
+    x = inRhs.x;
+    y = inRhs.y;
+    z = inRhs.z;
+    
+    return *this;
+}
+
+ bool
+RealV::operator==(const RealV& inRhs)
+{
+    if (x != inRhs.x)
+        return false;
+    else if (y != inRhs.y)
+        return false;
+    else if (z != inRhs.z)
+        return false;
+    
+    return true;
+}
+
+ bool
+RealV::operator!=(const RealV& inRhs)
+{
+    return !(*this == inRhs);
+}
+/*
+ RealV&
+RealV::operator+=(RealV inRhs)
+{
+    x += inRhs.x;
+    y += inRhs.y;
+    z += inRhs.z;
+    
+    return *this;
+}
+
+ RealV&
+RealV::operator-=(RealV inRhs)
+{
+    x -= inRhs.x;
+    y -= inRhs.y;
+    z -= inRhs.z;
+    
+    return *this;
+}
+*/
+ RealV& 
+RealV::operator*=(double inRhs)
+{
+    x *= inRhs;
+    y *= inRhs;
+    z *= inRhs;
+    
+    return *this;
+}
+
+ RealV& 
+RealV::operator/=(double inRhs)
+{
+    x /= inRhs;
+    y /= inRhs;
+    z /= inRhs;
+    
+    return *this;
+}
+
+double
+RealV::abs()
+{
+    return std::sqrt(x*x + y*y + z*z);
+}
+
+ double
+RealV::norm()
+{
+    return x*x + y*y + z*z;
+}
+
+ void
+RealV::normalize()
+{
+    double n;
+    if ( (n = abs()) != 0) {
+        (*this) /= n;
+    }
+}
+
+double
+RealV::DotProduct(const RealV& u, const RealV& v)
+{
+    return u.x * v.x + u.y * v.y + u.z * v.z;
+}
+
+double
+RealV::NormalizedDotProduct(RealV& u, RealV& v)
+{
+    double prod = DotProduct_(u,v);
+    
+    double norm_u, norm_v;
+    if ( (norm_u = u.norm()) != 0 && (norm_v = v.norm()) != 0) {
+        prod /= sqrt(norm_u * norm_v);
+        
+        if (prod > 1.)
+            return 1.;
+        else if (prod < -1.)
+            return -1;
+    }
+    
+    return prod;
+}
+
+RealV
+RealV::CrossProduct(RealV& u, RealV& v)
+{
+    return RealV(u.y * v.z - u.z * v.y,
+                 u.z * v.x - u.x * v.z,
+                 u.x * v.y - u.y * v.x);
+}
+
+RealV
+RealV::NormalizedCrossProduct(RealV& u, RealV& v)
+{
+    RealV t = CrossProduct_(u,v);
+    
+    double norm_u, norm_v;
+    if ( (norm_u = u.norm()) != 0 && (norm_v = v.norm()) != 0) {
+        t /= sqrt(norm_u * norm_v);
+    }
+    
+    double norm_t;
+    if ( ( norm_t = t.norm()) > 1) {
+        t /= sqrt(norm_t);
+    }
+    
+    return t;
+}
+
+ double
+RealV::TripleProduct(RealV& u, RealV& v, RealV& w)
+{
+    RealV cp;
+    cp = CrossProduct_(u,v);
+    
+    return DotProduct_(cp,w);
+}
+
+ double
+RealV::OrientedAngleBetween(RealV& u, RealV& v, RealV& w)
+{
+    RealV sinPhi = RealV::NormalizedCrossProduct(u, v);
+    double sinPhiAbs = sinPhi.abs();
+    
+    double phi = asin(sinPhiAbs);
+    CheckDoubleValue_(phi);
+    
+    if ( DotProduct_(u, v) <= 0.) {
+        phi = PI-phi;
+    }
+    
+    if ( DotProduct_(sinPhi, w) <= 0.) {
+        phi *= -1.;
+    }
+    
+    return phi;
+}
+
+double 
+RealV::DistanceToPlane(const RealV& origin, const RealV& normal, const RealV& d )
+{
+	return - ( normal.x * (x - origin.x) + normal.y * (y - origin.y) + normal.z * (z - origin.z) ) \
+	/ (normal.x * d.x + normal.y * d.y + normal.z * d.z);
+}
+
+ bool
+RealV::areParallel(RealV& u, RealV& v)
+{
+	// modified by Wendy Kan 7/9/10
+    if ( areTheSame(1,DotProduct_(u,v)/u.abs()/v.abs(), 6) || areTheSame(-1,DotProduct_(u,v)/u.abs()/v.abs(), 6))
+        return true;
+    return false;
+}
+
+ bool
+RealV::arePerpendicular(RealV& u, RealV& v)
+{
+    if (isZero(DotProduct_(u,v)/u.abs()/v.abs(), 1e-6) )
+        return true;
+    return false;
+}
+
+ bool
+RealV::CheckTriad(RealV& x, RealV& y, RealV& z)
+{
+    bool err = false;
+    /* Check length of vectors (must be unity) */
+    
+    if (std::abs(x.x * x.x + x.y * x.y + x.z * x.z - 1) >= 1e-3)
+        err |= true;
+    
+    if (std::abs(y.x * y.x + y.y * y.y + y.z * y.z - 1) >= 1e-3)
+        err |= true;
+    if (std::abs(z.x * z.x + z.y * z.y + z.z * z.z - 1) >= 1e-3)
+        err |= true;
+    
+    /* Check orthogonality of vectors (dot products must be zero) */
+    
+    if (std::abs(x.x * y.x + x.y * y.y + x.z * y.z) >= 1e-3)
+        err |= true;
+    if (std::abs(x.x * z.x + x.y * z.y + x.z * z.z) >= 1e-3)
+        err |= true;
+    if (std::abs(z.x * y.x + z.y * y.y + z.z * y.z) >= 1e-3)
+        err |= true;
+    
+    /* Check triad orientation (x vector product y == z) */
+    if (std::abs(x.y * y.z - x.z * y.y) - std::abs(z.x) >= 1e-3)
+        err |= true;
+    if (std::abs(x.z * y.x -x.x * y.z) - std::abs(z.y) >= 1e-3)
+        err |= true;
+    if (std::abs(x.x * y.y -x.y * y.x) - std::abs(z.z) >= 1e-3)
+        err |= true;
+    
+	
+    return err;
+}
+
+ void
+RealV::RotateAroundX(double inPhi)
+{
+    RealV v = RealV(x,y,z);
+    RealV u;
+    
+    double c = cos(inPhi);
+    double s = sin(inPhi);
+    
+    y = c * v.y - s * v.z;
+    z = s * v.y + c * v.z;
+}
+
+ void
+RealV::RotateAroundY(double inPhi)
+{
+    RealV v = RealV(x,y,z);
+    RealV u;
+    
+    double c = cos(inPhi);
+    double s = sin(inPhi);
+    
+    x =  c * v.x + s * v.z;
+    z = -s * v.x + c * v.z;
+}
+
+ void
+RealV::RotateAroundZ(double inPhi)
+{
+    RealV v = RealV(x,y,z);
+    RealV u;
+    
+    double c = cos(inPhi);
+    double s = sin(inPhi);
+    
+    x = c * v.x - s * v.y;
+    y = s * v.x + c * v.y;
+    z = v.z;
+    
+}
+
+/*! 
+@function RotateAroundVector
+@dicussion Rotation of a vector around another arbitary vector.
+This rotation is done by rotating the arbitrary axis to the z-axis,
+rotating around the z-axis, and then rotating back.
+@result a rotated version of the vector
+@param vector vector to be rotated
+@param axis vector to rotate around
+@param inPhi angle by which rotate, positive is counter-clockwise
+@result rotated version of origional vector
+*/
+
+ 
+RealV 
+RealV::RotateAroundVector(double inPhi, RealV vector, RealV axis) {
+	
+	// Check that both vectors are non-zero length, if true return vector unchanged
+	if (vector.abs() < 1e-4  ||  axis.abs() < 1e-4) {
+		//cout << vector.abs() << " " << axis.abs() << "\n";
+		//cout << "length 0 vector" << "\n";
+		return vector;
+	}
+	
+	// Check if vector and axis are parallel, if true return vector unchanged
+	if (areParallel(vector, axis)) {
+		//cout << "parallel vectors" << "\n";
+		return vector;
+	}
+	
+	// Create temporary variables for calculations
+	double tempVx, tempVy, tempVz, tempAx, tempAy, tempAz;
+	
+	// variables for cos and sin
+	double costhetaXZ ;
+	double sinthetaXZ ;
+	double costhetaZ ;
+	double sinthetaZ ;
+	
+	// First rotate the vector and axis around y-axis until on the yz plane
+	
+	// length of axis projection on xz plane
+	double lengthXZ = sqrt(axis.x*axis.x + axis.z*axis.z);
+	
+	// if length > 0 rotate onto YZ plane
+	if (lengthXZ > 1e-4) {
+		costhetaXZ = axis.z/lengthXZ;
+		sinthetaXZ = axis.x/lengthXZ;
+		
+		// rotate axis
+		tempAx = axis.x*costhetaXZ - axis.z*sinthetaXZ;
+		tempAz = axis.x*sinthetaXZ + axis.z*costhetaXZ;
+		axis.x = tempAx;
+		axis.z = tempAz;
+		
+		// rotate vector
+		tempVx = vector.x*costhetaXZ - vector.z*sinthetaXZ;
+		tempVz = vector.x*sinthetaXZ + vector.z*costhetaXZ;
+		vector.x = tempVx;
+		vector.z = tempVz;
+	}
+	
+	//cout << vector.x << " " << vector.y << " " << vector.z << " " <<  "\n" << "\n";
+	
+	// Rotate around x-axis until on the z-axis
+	
+	// length of axis projection on z axis
+	double lengthZ = sqrt(axis.y*axis.y + axis.z*axis.z);
+	
+	// if length > 0 rotate into z-axis, this should always happen
+	if (lengthZ > 1e-4) {
+		costhetaZ = axis.z/lengthZ;
+		sinthetaZ = axis.y/lengthZ;
+		
+		// only need to rotate vector
+		tempVy = vector.y*costhetaZ - vector.z*sinthetaZ;
+		tempVz = vector.y*sinthetaZ + vector.z*costhetaZ;
+		vector.y = tempVy;
+		vector.z = tempVz;
+	}
+	
+	//cout << vector.x << " " << vector.y << " " << vector.z << " " <<  "\n" << "\n";
+	
+	// now apply the rotation by inPhi
+	tempVx = vector.x*cos(inPhi) - vector.y*sin(inPhi);
+	tempVy = vector.x*sin(inPhi) + vector.y*cos(inPhi);
+	vector.x = tempVx;
+	vector.y = tempVy;
+	
+	//cout << vector.x << " " << vector.y << " " << vector.z << " " <<  "\n" << "\n";
+	
+	// undo rotation to z axis
+	if (lengthZ > 1e-4) {
+		tempVy = vector.y*costhetaZ + vector.z*sinthetaZ;
+		tempVz = -vector.y*sinthetaZ + vector.z*costhetaZ;
+		vector.y = tempVy;
+		vector.z = tempVz;
+	}
+	
+	//cout << vector.x << " " << vector.y << " " << vector.z << " " <<  "\n" << "\n";
+	
+	// undo rotation to yz plane
+	if (lengthXZ > 1e-4) {
+		tempVx = vector.x*costhetaXZ + vector.z*sinthetaXZ;
+		tempVz = -vector.x*sinthetaXZ + vector.z*costhetaXZ ;
+		vector.x = tempVx;
+		vector.z = tempVz;
+	}
+	
+	return vector;
+} 
+
+
+ostream& operator<<(ostream&s, const RealV& v)
+{
+    return s << "(" << v.x << "," << v.y << "," << v.z << ")";
+}
+
+istream& operator>>(istream& input, RealV& v)
+{
+	// Take a look at C++ Third Edition section 21.3.5 for example
+    
+	double x=NAN,y=NAN,z=NAN;
+	char c;
+	bool error = false;
+	
+	input >> c;
+	
+	if (c == '(') {
+		// We expect the form (x,y,z)
+		input >> x >> c;
+		if (c == ',') {
+			input >> y >> c;
+			if (c == ',') {
+				input >> z >> c;
+				if (c != ')')
+					error = true;
+			} else {
+				error = true;
+			}
+		} else {
+			error = true;
+		}
+	} else {
+		// We expect the form x y z
+		input.putback(c);
+		input >> x ;
+		if (! input.good()) {
+			error = true;
+		}
+        
+		input >> y;
+		if (! input.good()) {
+			error = true;
+		}
+        
+		input >> z;
+		if ( ! input.eof()) {
+			error = true;
+		}
+	}
+    
+	v = RealV(x,y,z);
+	
+    return input;
+}
+
+/*
+ 
+RealV operator+(const RealV& inLhs, const RealV& inRhs)
+{
+    return RealV(inLhs.x+inRhs.x,inLhs.y+inRhs.y,inLhs.z+inRhs.z);
+}
+
+ 
+RealV operator-(const RealV& inLhs, const RealV& inRhs)
+{
+    return RealV(inLhs.x-inRhs.x,inLhs.y-inRhs.y,inLhs.z-inRhs.z);
+}
+
+ 
+RealV operator-(RealV inRhs)
+{
+    return (inRhs *= -1);
+}
+
+ 
+RealV operator*(RealV inVec, double inFloat)
+{
+    return (inVec *= inFloat);
+}
+
+ 
+RealV operator*(double inFloat, RealV inVec)
+{
+    return (inVec *= inFloat);
+}
+
+ 
+RealV operator/(RealV inVec, double inFloat)
+{
+    return (inVec /= inFloat);
+}
+
+*/

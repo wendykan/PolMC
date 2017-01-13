@@ -1,0 +1,106 @@
+#!/opt/local/bin/perl -w
+use strict;
+use XML::Parser;
+use XML::Parser::EasyTree;
+use Data::Dumper;
+
+my $debug = 0;
+my $filename;
+my $node;
+
+if (@ARGV != 2){
+	print "Usage: xmldump [file] [node]\n\n";
+	print "where [file] is the xml filename and [node] is given like so:\n";
+	print "/simulation/interface/betalin without attributes, or\n";
+	print "/simulation/interface(id=forward)/StokesV/I with attributes\n\n";
+	print "If more than one match exists, the program will give an error\n";
+	exit (1);
+} else {
+	$filename = $ARGV[0];
+	$node = $ARGV[1];
+}
+
+$XML::Parser::EasyTree::Noempty=1;
+my $p=new XML::Parser(Style=>'EasyTree');
+
+if (! -f $filename){
+	die "No file named $filename\n";
+}
+
+my $tree=$p->parsefile($filename);
+my @nodelist = split "/",$node;
+if (shift @nodelist){
+	print "Error:must refer to root node (i.e. must start with /";
+	exit 1;
+}
+
+my @a = TraverseXMLtree($tree, @nodelist);
+
+if (scalar @a > 1) {
+	print "Got more than one match\n";
+	print join "\nand\n",@a;
+	exit 1;
+} elsif (scalar @a == 0) {
+	print "Got no match\n";
+	exit 1;
+} else {
+	$debug && print "Here is /",join ("/",@nodelist),"\n";
+	my @lines = split '\n',$a[0];
+
+	while (@lines) {
+		my $current;
+		if ($current = shift @lines) {
+			print "$current\n";
+		}
+	}
+	exit 0;
+}
+
+sub TraverseXMLtree
+{
+        my ($tree, @list) = @_;
+
+		my $h;
+		my @values;
+		my %attrib;
+		my $attribute;
+		
+ 		my $tag = shift @list;
+		 if ($tag =~ m|(.*?)\((.*?)=(.*?)\)| ) {
+		 	$tag = $1;
+			$attrib{$2}=$3;
+		 }
+        while ($h = shift @$tree) {
+               $debug && print "Looking for $tag, list is (".join (",",@list),")\n";
+				my $nomatch = 0;
+                if ($h->{name} =~ /^$tag$/i ) {
+						if (keys %attrib) {
+							$debug && print "  Needs cartain attributes\n";
+							
+							foreach $attribute (keys %attrib){
+								if ($h->{attrib}->{$attribute} eq $attrib{$attribute}){
+									$debug && print "  Attribute $attribute matches ($attrib{$attribute})\n";
+								} else {
+									$debug && print "  Attribute $attribute does not match (wants $attrib{$attribute}, got $h->{attrib}->{$attribute})\n";
+									$nomatch = 1;
+								}
+							}
+							if ($nomatch){
+								next;
+							}
+						}
+                        $debug && print "  Currently processing : ".$h->{name}."\n";
+						if ($list[0]){
+							$debug && print "  Digging with list (", join (",",@list),")\n";
+							push @values, TraverseXMLtree($h->{content},@list);
+						} else {
+							my $data=@{$h->{content}}[0];
+							return $data->{content};
+						}
+                } 
+        }
+		$debug && print "Returning up\n";
+		
+		return @values;
+}
+

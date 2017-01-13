@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html><style type="text/css"><!--a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style><head>
+    <title>Documentation for RealV (RealV.h)</title>
+	<meta name="generator" content="HeaderDoc">
+</head>
+<body bgcolor="#edf2f6" link="#000099" vlink="#660066"
+leftmargin="0" topmargin="0" marginwidth="0"
+marginheight="0">
+<font size="-2"><a href="../../../masterTOC.html" target="_top" headerDoc="topLink">[Top]</a></font><br/>
+
+<table width="100%" cellpadding=0 cellspacing=0 border=0><tr height=51 bgcolor="#466C9B"><td>&nbsp;</td></tr></table><br><table border="0" cellpadding="0" cellspacing="2" width="148">
+<tr><td width="15">&nbsp;</td><td colspan="2"><font size="5" color="#330066"><b>Class:</b></font></td></tr>
+<tr><td width="15">&nbsp;</td><td width="15">&nbsp;</td><td><b><font size="+1">RealV</font></b></td></tr>
+<tr><td></td><td colspan="2">
+<h4><br><nobr><a href="CompositePage.html" target="doc">Introduction</a></nobr></h4>
+<h4><a href="CompositePage.html#HeaderDoc_functions" target="doc">Member Functions</a></h4>
+
+<nobr>&nbsp;&nbsp;<a href="CompositePage.html#//apple_ref/cpp/instm/RealV/RealV" target="doc">RealV</a></nobr><br>
+<nobr>&nbsp;&nbsp;<a href="CompositePage.html#//apple_ref/cpp/instm/RealV/RealV/constRealV%38" target="doc">RealV(const RealV &)</a></nobr><br>
+<nobr>&nbsp;&nbsp;<a href="CompositePage.html#//apple_ref/cpp/instm/RealV/RealV/doubledoubledouble" target="doc">RealV(double, double, double)</a></nobr><br>
+<h5>Public</h5>
+<nobr>&nbsp;&nbsp;<a href="CompositePage.html#//apple_ref/cpp/clm/RealV/CheckTriad/RealV%38RealV%38RealV%38" target="doc">CheckTriad</a></nobr><br>
+<nobr>&nbsp;&nbsp;<a href="CompositePage.html#//apple_ref/cpp/clm/RealV/CrossProduct/RealV%38RealV%38" target="doc">CrossProduct</a></nobr><br>
+<nobr>&nbsp;&nbsp;<a href="CompositePage.html#//apple_ref/cpp/clm/RealV/DotProduct/constRealV%38constRealV%38" target="doc">DotProduct</a></nobr><br>
+<nobr>&nbsp;&nbsp;<a href="CompositePage.html#//apple_ref/cpp/clm/RealV/NormalizedCrossProduct/RealV%38RealV%38" target="doc">NormalizedCrossProduct</a></nobr><br>
+<nobr>&nbsp;&nbsp;<a href="CompositePage.html#//apple_ref/cpp/clm/RealV/NormalizedDotProduct/RealV%38RealV%38" target="doc">NormalizedDotProduct</a></nobr><br>
+<nobr>&nbsp;&nbsp;<a href="CompositePage.html#//apple_ref/cpp/clm/RealV/OrientedAngleBetween/RealV%38RealV%38RealV%38" target="doc">OrientedAngleBetween</a></nobr><br>
+<nobr>&nbsp;&nbsp;<a href="CompositePage.html#//apple_ref/cpp/instm/RealV/RotateAroundZ/double" target="doc">RotateAroundZ</a></nobr><br>
+<nobr>&nbsp;&nbsp;<a href="CompositePage.html#//apple_ref/cpp/clm/RealV/TripleProduct/RealV%38RealV%38RealV%38" target="doc">TripleProduct</a></nobr><br>
+<nobr>&nbsp;&nbsp;<a href="CompositePage.html#//apple_ref/cpp/instm/RealV/abs" target="doc">abs</a></nobr><br>
+<nobr>&nbsp;&nbsp;<a href="CompositePage.html#//apple_ref/cpp/clm/RealV/areParallel/RealV%38RealV%38" target="doc">areParallel</a></nobr><br>
+<nobr>&nbsp;&nbsp;<a href="CompositePage.html#//apple_ref/cpp/clm/RealV/arePerpendicular/RealV%38RealV%38" target="doc">arePerpendicular</a></nobr><br>
+<nobr>&nbsp;&nbsp;<a href="CompositePage.html#//apple_ref/cpp/instm/RealV/norm" target="doc">norm</a></nobr><br>
+<nobr>&nbsp;&nbsp;<a href="CompositePage.html#//apple_ref/cpp/instm/RealV/normalize" target="doc">normalize</a></nobr><br>
+<nobr>&nbsp;&nbsp;<a href="CompositePage.html#//apple_ref/cpp/instm/RealV/operator%32*/double" target="doc">operator *</a></nobr><br>
+<nobr>&nbsp;&nbsp;<a href="CompositePage.html#//apple_ref/cpp/instm/RealV/operator%32+/RealV" target="doc">operator +</a></nobr><br>
+<nobr>&nbsp;&nbsp;<a href="CompositePage.html#//apple_ref/cpp/instm/RealV/operator%32-/RealV" target="doc">operator -</a></nobr><br>
+<nobr>&nbsp;&nbsp;<a href="CompositePage.html#//apple_ref/cpp/instm/RealV/operator%32//double" target="doc">operator /</a></nobr><br>
+<nobr>&nbsp;&nbsp;<a href="CompositePage.html#//apple_ref/cpp/instm/RealV/operator!%61/constRealV%38" target="doc">operator!=</a></nobr><br>
+<nobr>&nbsp;&nbsp;<a href="CompositePage.html#//apple_ref/cpp/instm/RealV/operator*%61/double" target="doc">operator*=</a></nobr><br>
+<nobr>&nbsp;&nbsp;<a href="CompositePage.html#//apple_ref/cpp/instm/RealV/operator+%61/RealV" target="doc">operator+=</a></nobr><br>
+<nobr>&nbsp;&nbsp;<a href="CompositePage.html#//apple_ref/cpp/instm/RealV/operator-%61/RealV" target="doc">operator-=</a></nobr><br>
+<nobr>&nbsp;&nbsp;<a href="CompositePage.html#//apple_ref/cpp/instm/RealV/operator%47%61/double" target="doc">operator/=</a></nobr><br>
+<nobr>&nbsp;&nbsp;<a href="CompositePage.html#//apple_ref/cpp/instm/RealV/operator%61/constRealV%38" target="doc">operator=</a></nobr><br>
+<nobr>&nbsp;&nbsp;<a href="CompositePage.html#//apple_ref/cpp/instm/RealV/operator%61%61/constRealV%38" target="doc">operator==</a></nobr><br>
+<h4><a href="CompositePage.html" target="doc">Member Data</a></h4>
+<h5>Public</h5>
+<nobr>&nbsp;&nbsp;<a href="CompositePage.html#//apple_ref/cpp/data/RealV/x" target="doc">x</a></nobr><br>
+<nobr>&nbsp;&nbsp;<a href="CompositePage.html#//apple_ref/cpp/data/RealV/y" target="doc">y</a></nobr><br>
+<nobr>&nbsp;&nbsp;<a href="CompositePage.html#//apple_ref/cpp/data/RealV/z" target="doc">z</a></nobr><br>
+<br><h4>Other Reference</h4><hr>
+<nobr>&nbsp;&nbsp;<a href="../../index.html" target="_top">Header</a></nobr><br>
+</td></tr>
+</table><p>&nbsp;<p>
+</body></html>

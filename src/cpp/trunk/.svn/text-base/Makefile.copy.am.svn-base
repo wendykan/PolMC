@@ -1,0 +1,50 @@
+if XML_SUPPORT
+lib_LIBRARIES = libpolmc.a
+bin_PROGRAMS = polmc xpath
+else
+bin_PROGRAMS = polmc
+lib_LIBRARIES = libpolmc.a
+endif
+
+dist_data_DATA = param.dat
+EXTRA_DIST = doc/MuellerM doc/RealV doc/mc__lfl.html doc/mc__rf.html doc/randomscatter \
+             doc/MasterTOC.html  doc/Photon doc/StokesV doc/mc.html doc/mc__lfu.html \
+             doc/mydebug doc/MCObject
+
+dist-hook:
+	rm -rf `find $(distdir)/doc -name CVS`
+
+libpolmc_a_SOURCES = UTimer.cpp MCUtils.cpp MCWorld.cpp MCObject.cpp \
+   MCBox.cpp MCInfiniteLayers.cpp fastinterpolate.cpp \
+   configfiles.cpp RealV.cpp StokesV.cpp randomscatter.cpp cubicspline.cpp mydebug.cpp \
+   rand.cpp mtRand.cpp Photon.cpp MCEllipsoid.cpp \
+   MCCylinder.cpp MCSource.cpp MCDetector.cpp
+
+libpolmc_a_CXXFLAGS = -O2 -I$(includedir)
+
+#libpolmc_la_INCLUDES = UTimer.h MCUtils.h MCWorld.h MCObject.h \
+#    MCBox.h   MCInfiniteLayers.h  \
+#    mtRand.h MuellerM.h Photon.h RealV.h StokesV.h rand.h configfiles.h \
+#    constants.h cubicspline.h mydebug.h randomscatter.h fastinterpolate.h MCElllibipsoid.h \
+#    MCCylinder.h MCSource.h MCDetector.h
+
+
+polmc_SOURCES = main.cpp 
+polmc_CXXFLAGS = -O2 -I$(includedir)
+polmc_LDADD = libpolmc.a
+
+#polmc_SOURCES = main.cpp UTimer.cpp UTimer.h MCUtils.cpp MCUtils.h MCWorld.cpp MCWorld.h MCObject.cpp MCObject.h \
+#    MCBox.cpp MCBox.h  MCInfiniteLayers.cpp MCInfiniteLayers.h fastinterpolate.cpp \
+#    configfiles.cpp RealV.cpp StokesV.cpp randomscatter.cpp cubicspline.cpp mydebug.cpp \
+#    rand.cpp mtRand.cpp mtRand.h MuellerM.h Photon.cpp Photon.h RealV.h StokesV.h rand.h configfiles.h \
+#    constants.h cubicspline.h mydebug.h randomscatter.h fastinterpolate.h MCEllipsoid.cpp MCEllipsoid.h \
+#    MCCylinder.cpp MCCylinder.h MCSource.cpp MCSource.h MCDetector.cpp MCDetector.h
+
+#include_HEADERS = UTimer.h MCUtils.h MCWorld.h MCObject.h \
+#    MCBox.h   MCInfiniteLayers.h  \
+#    mtRand.h MuellerM.h Photon.h RealV.h StokesV.h rand.h configfiles.h \
+#    constants.h cubicspline.h mydebug.h randomscatter.h fastinterpolate.h MCEllipsoid.h \
+#    MCCylinder.h MCSource.h MCDetector.h
+
+xpath_SOURCES = xpath.cpp
+xpath_CXXFLAGS = -O2 -I$(includedir)

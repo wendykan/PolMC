@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html><style type="text/css"><!--a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style><head>
+    <title>Data Members</title>
+	 <meta name="generator" content="HeaderDoc">
+</head><body bgcolor="#ffffff">
+<h1><font face="Geneva,Arial,Helvtica">Data Members</font></h1><br>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/RealV/x; name=RealV::x -->
+<a name="//apple_ref/cpp/data/RealV/x"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="x">x</a></h2>
+</td></tr></table><blockquote><tt>public:</tt> double x;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p> x Cartesian coordinate of vector</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/RealV/y; name=RealV::y -->
+<a name="//apple_ref/cpp/data/RealV/y"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="y">y</a></h2>
+</td></tr></table><blockquote><tt>public:</tt> double y;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p> y Cartesian coordinate of vector</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/RealV/z; name=RealV::z -->
+<a name="//apple_ref/cpp/data/RealV/z"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="z">z</a></h2>
+</td></tr></table><blockquote><tt>public:</tt> double z;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p> z Cartesian coordinate of vector</p>
+<hr>
+<p>(Last Updated 2/23/2005)
+</p></body></html>

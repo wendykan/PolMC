@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html><head>
+    <title>Functions</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="generator" content="HeaderDoc" />
+<style type="text/css"><!--.keyword {background:#ffffff; color:#761550;}.template {background:#ffffff; color:#761550;}.number {background: #ffffff; color:#0000ff;}.function {background:#ffffff; color:#000000;}.string {background: #ffffff; color:#891315;}.preprocessor {background:#ffffff; color:#236e25}.comment {background:#ffffff; color:#236e25}.char {background: #ffffff; color:#0000ff;}.var {background:#ffffff; color:#000000;}.type {background:#ffffff; color:#761550;}.param {background:#ffffff; color:#000000;}a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style></head><body bgcolor="#ffffff">
+<a name="top"></a>
+<a name="HeaderDoc_functions"></a>
+<dl>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/operator%60%60" target="doc">operator<< </a></tt></dt>
+<dd></dd>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/operator%60%60;  name=operator<< -->
+<a name="//apple_ref/c/func/operator%60%60"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="operator%60%60">operator<< </a></h3>
+</td></tr></table><hr><p></p><pre><!-- a logicalPath="//apple_ref/cpp/cl/ostream //apple_ref/cpp/tdef/ostream //apple_ref/cpp/tag/ostream //apple_ref/cpp/econst/ostream //apple_ref/cpp/struct/ostream //apple_ref/cpp/clconst/ostream //apple_ref/cpp/intf/ostream" --><span class="type">ostream</span><!-- /a -->&amp; <!-- a logicalPath="//apple_ref/cpp/cl/operator //apple_ref/cpp/tdef/operator //apple_ref/cpp/tag/operator //apple_ref/cpp/econst/operator //apple_ref/cpp/struct/operator //apple_ref/cpp/clconst/operator //apple_ref/cpp/intf/operator" --><span class="type">operator</span><!-- /a -->&lt;&lt;(
+    <!-- a logicalPath="//apple_ref/cpp/cl/ostream //apple_ref/cpp/tdef/ostream //apple_ref/cpp/tag/ostream //apple_ref/cpp/econst/ostream //apple_ref/cpp/struct/ostream //apple_ref/cpp/clconst/ostream //apple_ref/cpp/intf/ostream" --><span class="type">ostream</span><!-- /a -->&amp; <span class="param">os</span>,
+    <span class="keyword">const</span> <!-- a logicalPath="//apple_ref/cpp/cl/StokesV //apple_ref/cpp/tdef/StokesV //apple_ref/cpp/tag/StokesV //apple_ref/cpp/econst/StokesV //apple_ref/cpp/struct/StokesV //apple_ref/cpp/clconst/StokesV //apple_ref/cpp/intf/StokesV" --><span class="type">StokesV</span><!-- /a -->&amp; <span class="param">s</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>os </code></dt><dd>This is an implicit parameter corresponding to the stream</dd>
+<dt><code>s </code></dt><dd>This is an implicit parameter corresponding to the StokesV</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion -->Outputs the Stokes vector to a stream (standard out or a file for instance).
+<br><br>
+<!-- end discussion --></p>
+<p></p><p>Last Updated: Tuesday, June 30, 2009
+</p></body></html>

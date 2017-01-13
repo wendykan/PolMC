@@ -1,0 +1,48 @@
+#include "MCDetector.h"
+#include "Photon.h"
+#include "MCUtils.h"
+
+MCDetector::MCDetector(double inWidth, long inN, long inDetectionType, long inAcceptanceCosineElements)
+:MCBox(inWidth, inWidth, 0.01, inN, inN, 1, 1, 1, 0, inDetectionType, inAcceptanceCosineElements, false)
+{
+    mObjectName="detector";
+    mBallisticPhotons = false;
+	
+	for (long i = 0; i < mNumOfInterfaces; i++) {
+		mSurfaceElements[i]->TMin = 0e-12;
+		mSurfaceElements[i]->TMax = 1000e-12;
+		mSurfaceElements[i]->Nt = 100;
+		mSurfaceElements[i]->mTimedIntensity = 0;
+		mSurfaceElements[i]->init();
+	} 
+}
+
+
+IntersectElement
+MCDetector::PropagateInObject(Photon *ioPhoton, double inDist)
+{
+	RealV pos;
+	
+	ioPhoton->SetWeight(0);
+
+	IntersectElement ie;
+	return ie;
+}
+/*
+
+void
+MCDetector::ScoreOnSurface(Photon *ioPhoton, IntersectElement& inIntersectElement)
+{
+	if ( ioPhoton->GetNumberOfScatteringEvents() == 0 && ! mBallisticPhotons ) {
+		return;
+	}
+	
+	inIntersectElement.surfaceElement->ScoreOnSurface(ioPhoton, inIntersectElement);
+}
+*/
+
+bool
+MCDetector::IsTransmitted(Photon *ioPhoton, IntersectElement& inIntersectElement)
+{
+	return true;
+}

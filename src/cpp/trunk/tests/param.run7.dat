@@ -1,0 +1,115 @@
+# This is the parameter file for the polarization-sensitive 
+# Monte Carlo implementation of D. Cote et al. (a.k.a polmc)
+# Parameter file for polmc (polarization sensitive Monte Carlo)
+# The order of parameters is irrelevant, but they tend to be grouped together
+
+#
+# Object geometry
+#
+# The object type.  Currently, we support: box and layers
+# If the object is a box, one must define:
+# xwidth, yheight and zdepth, Nx, Ny and Nz.
+# If the object is a (single) layer, one defines:
+# thickness, Nx, Ny and imagingWidth, imagingHeight
+
+objectType=box
+
+# Imaging area
+Nx=41
+Ny=41
+Nz=41
+xwidth=2
+yheight=2
+zdepth=0.1
+originx=0
+originy=0
+originz=0
+
+# Input Beam type: by default, the beam is a pencil beam
+# at (0,0,0).  The supported beam types are pencil and disk.
+# For disk, inputBeamDiameter must be defined.
+inputBeamType=pencil
+#inputBeamDiameter=0.04
+
+#
+#
+# Input Stokes vector
+# If allStokesVector is defined, then all Stokes vector (1,0,0,0), (1,1,0,0) (1,0,1,0) and (1,0,0,1) 
+# are calculated. If undefined, you need to define Io, Qo, Uo, and Vo with outputFilename
+#allStokesVector=true
+Io=1
+Qo=1
+Uo=0
+Vo=0
+outputFilename=OutS1100.run7.dat
+
+# Detection formalism: Please refer to source code. 
+# Various authors have published different methods for accumulating the macroscopic Stokes
+# values.
+# Current options are: Jaillon, Cote, Bartel
+
+formalism=Cote
+
+# Random angle sampling:  various algorithms have been presented by different authors 
+# for sampling the scattering angle theta and the azimuthal angle phi:
+# 
+# Bartel et al. "Monte Carlo simulations of the diffuse backscattering Mueller matrix 
+# for highly scattering media", Applied Optics,  39, No 10, p. 1580, (2000)
+#
+# Jaillon et al. "Description and time reduction of a Monte Carlo code to simulate 
+# propagation of polarized light through scattering media", Applied Optics,  42, No 
+# 16, p. 3290, (2003)
+#
+# Kaplan et al. "Mueller matrix of dense polystyrene latex sphere suspensions: 
+# measurements and Monte Carlo simulation", Applied Optics,  40, No 16, p. 2769, 
+# (2001)
+#
+# L. Wang et al. "Monte Carlo Modeling of Light Transport in multi-layered Tissues in 
+# Standard C", http://ece.ogi.edu/mcml/ (1998)
+# they correspond to options: Bartel, Jaillon, Kaplan, and HenyeyGreenstein (or HG for short)
+# Jaillon and Kaplan have been tested to provide identical results.
+
+randomSampling=Kaplan
+
+# Number of photons used in calculations
+N_photon=1000000
+
+# Optical properties of sample
+minimumWeight=1e-99
+mu_s=50
+mu_a=0
+index_outside=1.54
+
+# Mie scattering properties
+# These parameters are used for Mie scattering calculations
+index_med=1.33
+index_scat=1.59
+radius_scat=0.41e-4
+wavelength=0.633e-4
+# This is the number of points that will be tabulated for quick lookups
+N_scatterpts=10000
+
+# The rotation due to optical activity 
+# This is given in radians/cm, not degree/cm
+# If undefined, medium is not optically active.
+#rotationPerCmInClearSpace=0.0128
+
+# Detection geometry/scheme
+# This is the acceptance angle, given by its cosine
+# It is obsolete, since we now output everything
+# to disk (see acceptanceCosElements below)
+#acceptanceCos=0
+# Number of bins for storing the Stokes vectors
+# Photons are binned in "acceptanceCosElements" bins
+# of width (1 - 0)/acceptanceCosElements
+acceptanceCosElements=10
+
+# Single scattering test
+#singleScatteringTest=true
+# Isotropic scattering test
+#isotropicScatteringTest=true
+
+# Define to keep all photon stats (paths, directions, etc ...)
+# It is very very slow, but useful for debugging
+# Comment out to not use it.
+# keepPhotonStats=1

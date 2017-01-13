@@ -1,0 +1,30 @@
+<object>
+	<scatteringproperties>
+		<mus>20</mus>
+		<mua></mua>
+		<scatterer>
+			<shape></shape>
+			<radius></radius>
+			<index></index>
+		</scatterer>
+	</scatteringproperties>
+	
+	<opticalproperties>
+		<opticalactivity></opticalactivity>
+		<index></index>
+	</opticalproperties>
+
+	<shape>
+		<surfaceelement>
+			<id></id>
+			<type></type>
+			<normal></normal>
+			<a></a>
+			<b></b>
+			<indexin></indexin>
+			<indexout></indexout>
+			<incontact></incontact>
+		</surfaceelement>		
+	</shape>
+	<position></position>
+</object>

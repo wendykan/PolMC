@@ -1,0 +1,482 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html><style type="text/css"><!--a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style><head>
+    <title>RealV</title>
+	 <meta name="generator" content="HeaderDoc">
+</head><body bgcolor="#ffffff">
+<h1><font face="Geneva,Arial,Helvtica">RealV</font></h1><br>
+<a name="//apple_ref/doc/class/RealV" title="RealV"></a>
+<h2>Discussion</h2>
+Provides encapsulation for a real three-dimensional vector.<hr><br><h2>Member Functions</h2>
+<a name="HeaderDoc_functions"></a>
+<dl>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/RealV/RealV" target="_top">RealV</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/RealV/RealV/doubledoubledouble" target="_top">RealV(double, double, double)</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/RealV/RealV/constRealV%38" target="_top">RealV(const RealV &)</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/RealV/operator%61/constRealV%38" target="_top">operator=</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/RealV/operator%61%61/constRealV%38" target="_top">operator==</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/RealV/operator!%61/constRealV%38" target="_top">operator!=</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/RealV/operator+%61/RealV" target="_top">operator+=</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/RealV/operator%32+/RealV" target="_top">operator +</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/RealV/operator-%61/RealV" target="_top">operator-=</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/RealV/operator%32-/RealV" target="_top">operator -</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/RealV/operator*%61/double" target="_top">operator*=</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/RealV/operator%32*/double" target="_top">operator *</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/RealV/operator%47%61/double" target="_top">operator/=</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/RealV/operator%32//double" target="_top">operator /</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/RealV/abs" target="_top">abs</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/RealV/norm" target="_top">norm</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/RealV/normalize" target="_top">normalize</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/clm/RealV/DotProduct/constRealV%38constRealV%38" target="_top">DotProduct</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/clm/RealV/NormalizedDotProduct/RealV%38RealV%38" target="_top">NormalizedDotProduct</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/clm/RealV/CrossProduct/RealV%38RealV%38" target="_top">CrossProduct</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/clm/RealV/NormalizedCrossProduct/RealV%38RealV%38" target="_top">NormalizedCrossProduct</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/clm/RealV/TripleProduct/RealV%38RealV%38RealV%38" target="_top">TripleProduct</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/clm/RealV/OrientedAngleBetween/RealV%38RealV%38RealV%38" target="_top">OrientedAngleBetween</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/clm/RealV/areParallel/RealV%38RealV%38" target="_top">areParallel</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/clm/RealV/arePerpendicular/RealV%38RealV%38" target="_top">arePerpendicular</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/clm/RealV/CheckTriad/RealV%38RealV%38RealV%38" target="_top">CheckTriad</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/RealV/RotateAroundZ/double" target="_top">RotateAroundZ</a></tt></dt>
+<dd></dd>
+</dl>
+<hr><!-- headerDoc=clm; uid=//apple_ref/cpp/clm/RealV/CheckTriad/RealV%38RealV%38RealV%38; name=RealV::CheckTriad -->
+<a name="//apple_ref/cpp/clm/RealV/CheckTriad/RealV%38RealV%38RealV%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="CheckTriad">CheckTriad</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>static bool CheckTriad(
+    RealV & x,
+    RealV & y,
+    RealV & z ) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Given three vectors x, y, z, checks whether or not
+they form an orthonormal set
+</p>
+<dl><dt><i>function result</i></dt><dd>Non zero if triad is not orthonormal.
+     </dd></dl>
+<hr><!-- headerDoc=clm; uid=//apple_ref/cpp/clm/RealV/CrossProduct/RealV%38RealV%38; name=RealV::CrossProduct -->
+<a name="//apple_ref/cpp/clm/RealV/CrossProduct/RealV%38RealV%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="CrossProduct">CrossProduct</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>static RealV CrossProduct(
+    RealV & u,
+    RealV & v );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Computes the cross product of two real vectors
+</p>
+<dl><dt><i>function result</i></dt><dd>The cross product of the two vectors
+     </dd></dl>
+<hr><!-- headerDoc=clm; uid=//apple_ref/cpp/clm/RealV/DotProduct/constRealV%38constRealV%38; name=RealV::DotProduct -->
+<a name="//apple_ref/cpp/clm/RealV/DotProduct/constRealV%38constRealV%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="DotProduct">DotProduct</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>static double DotProduct(
+    const RealV & u,
+    const RealV & v ) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Computes the dot product of two real vectors
+</p>
+<dl><dt><i>function result</i></dt><dd>The dot product of the two vectors
+     </dd></dl>
+<hr><!-- headerDoc=clm; uid=//apple_ref/cpp/clm/RealV/NormalizedCrossProduct/RealV%38RealV%38; name=RealV::NormalizedCrossProduct -->
+<a name="//apple_ref/cpp/clm/RealV/NormalizedCrossProduct/RealV%38RealV%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="NormalizedCrossProduct">NormalizedCrossProduct</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>static RealV NormalizedCrossProduct(
+    RealV & u,
+    RealV & v ) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Computes the cross product of two real vectors and normalizes the results.  Will ensure
+the magnitude of the resulting vector is always less than one.  This means the results can safely be used
+in acos() and asin().  Without this test, the resulting vector may be above one in rare situations (1 in 10^8).
+</p>
+<dl><dt><i>function result</i></dt><dd>The cross product of the two vectors.  The amplitude is the sine of the angle between the two.
+     </dd></dl>
+<hr><!-- headerDoc=clm; uid=//apple_ref/cpp/clm/RealV/NormalizedDotProduct/RealV%38RealV%38; name=RealV::NormalizedDotProduct -->
+<a name="//apple_ref/cpp/clm/RealV/NormalizedDotProduct/RealV%38RealV%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="NormalizedDotProduct">NormalizedDotProduct</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>static double NormalizedDotProduct(
+    RealV & u,
+    RealV & v ) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Computes the dot product of two real vectors, normalized. Will ensure
+the resulting number is always less than one.  This means the results can safely be used
+in acos() and asin().  Without this test, the resulting number may be above one in rare situations (1 in 10^8).
+<br><br>
+</p>
+<dl><dt><i>function result</i></dt><dd>The cosine of the angle between the two vectors.
+     </dd></dl>
+<hr><!-- headerDoc=clm; uid=//apple_ref/cpp/clm/RealV/OrientedAngleBetween/RealV%38RealV%38RealV%38; name=RealV::OrientedAngleBetween -->
+<a name="//apple_ref/cpp/clm/RealV/OrientedAngleBetween/RealV%38RealV%38RealV%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="OrientedAngleBetween">OrientedAngleBetween</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>static double OrientedAngleBetween(
+    RealV & u,
+    RealV & v,
+    RealV & w ) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Computes the angle between two vectors u and v by which vector u needs to be
+rotated by around a third vector w to give the second vector v.
+</p>
+<dl><dt><i>function result</i></dt><dd>The angle.  The sign is important.
+     </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/RealV/RealV; name=RealV::RealV -->
+<a name="//apple_ref/cpp/instm/RealV/RealV"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="RealV">RealV</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>RealV(
+);
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Default constructor.  Vector set to (0,0,0).
+     </p>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/RealV/RealV/constRealV%38; name=RealV::RealV -->
+<a name="//apple_ref/cpp/instm/RealV/RealV/constRealV%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="RealV(const%32RealV%32%38)">RealV(const RealV &)</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>RealV(
+    const RealV & inRhs );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Constructor from other RealV .
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inRhs</em></tt></dt><dd>implicit argument corresponding to right hand side</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/RealV/RealV/doubledoubledouble; name=RealV::RealV -->
+<a name="//apple_ref/cpp/instm/RealV/RealV/doubledoubledouble"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="RealV(double%44%32double%44%32double)">RealV(double, double, double)</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>RealV(
+    double inX,
+    double inY,
+    double inZ );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Constructor with x,y,z arguments.  Vector set to (inX, inY, inZ).
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inX</em></tt></dt><dd>x cartesian coordinate (or projection)</dd>
+<dt><tt><em>inY</em></tt></dt><dd>y cartesian coordinate (or projection)</dd>
+<dt><tt><em>inZ</em></tt></dt><dd>z cartesian coordinate (or projection)</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/RealV/RotateAroundZ/double; name=RealV::RotateAroundZ -->
+<a name="//apple_ref/cpp/instm/RealV/RotateAroundZ/double"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="RotateAroundZ">RotateAroundZ</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>void RotateAroundZ(
+    double inPhi );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Rotation around the z axis of the lab frame.
+<br><br>
+/  Cos phi -Sin phi 0 \
+Rz(phi)  = |  Sin phi Cos phi 0 |
+\     0       0    1 /
+        </p>
+<hr><!-- headerDoc=clm; uid=//apple_ref/cpp/clm/RealV/TripleProduct/RealV%38RealV%38RealV%38; name=RealV::TripleProduct -->
+<a name="//apple_ref/cpp/clm/RealV/TripleProduct/RealV%38RealV%38RealV%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="TripleProduct">TripleProduct</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>static double TripleProduct(
+    RealV & u,
+    RealV & v,
+    RealV & w );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Computes the triple product of three real vectors (a x b) . c
+</p>
+<dl><dt><i>function result</i></dt><dd>The triple product of the two vectors
+     </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/RealV/abs; name=RealV::abs -->
+<a name="//apple_ref/cpp/instm/RealV/abs"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="abs">abs</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>double abs(
+) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Returns the magnitude of the vector
+</p>
+<dl><dt><i>function result</i></dt><dd>The magnitude sqrt(x*x + y*y + z*z)
+     </dd></dl>
+<hr><!-- headerDoc=clm; uid=//apple_ref/cpp/clm/RealV/areParallel/RealV%38RealV%38; name=RealV::areParallel -->
+<a name="//apple_ref/cpp/clm/RealV/areParallel/RealV%38RealV%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="areParallel">areParallel</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>static bool areParallel(
+    RealV & u,
+    RealV & v ) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Returns whether or not two vectors are parallel
+</p>
+<dl><dt><i>function result</i></dt><dd>True if vectors are parallel
+     </dd></dl>
+<hr><!-- headerDoc=clm; uid=//apple_ref/cpp/clm/RealV/arePerpendicular/RealV%38RealV%38; name=RealV::arePerpendicular -->
+<a name="//apple_ref/cpp/clm/RealV/arePerpendicular/RealV%38RealV%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="arePerpendicular">arePerpendicular</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>static bool arePerpendicular(
+    RealV & u,
+    RealV & v );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Returns whether or not two vectors are perpendicular
+</p>
+<dl><dt><i>function result</i></dt><dd>True if vectors are perpendicular
+     </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/RealV/norm; name=RealV::norm -->
+<a name="//apple_ref/cpp/instm/RealV/norm"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="norm">norm</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>double norm(
+) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Returns the norm of the vector (the square of the magnitude)
+</p>
+<dl><dt><i>function result</i></dt><dd>The x*x + y*y + z*z
+     </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/RealV/normalize; name=RealV::normalize -->
+<a name="//apple_ref/cpp/instm/RealV/normalize"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="normalize">normalize</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>void normalize(
+);
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Normalizes the vector
+     </p>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/RealV/operator%32*/double; name=RealV::operator* -->
+<a name="//apple_ref/cpp/instm/RealV/operator%32*/double"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="operator%32*">operator *</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>RealV & operator *= (
+    double inRhs ) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Multiplication operator to multiply a vector by a real constant
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inRhs</em></tt></dt><dd>implicit argument corresponding to the constant</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>The current vector, which has been multiplied by the constant
+     </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/RealV/operator%32+/RealV; name=RealV::operator+ -->
+<a name="//apple_ref/cpp/instm/RealV/operator%32+/RealV"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="operator%32+">operator +</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>inline RealV & operator += (
+    RealV inRhs )
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Addition operator to add two vectors together
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inRhs</em></tt></dt><dd>implicit argument corresponding to right hand side</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>The current vector, to which the the other vector has been added
+     </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/RealV/operator%32-/RealV; name=RealV::operator- -->
+<a name="//apple_ref/cpp/instm/RealV/operator%32-/RealV"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="operator%32-">operator -</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>inline RealV & operator -= (
+    RealV inRhs )
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Subtraction operator to subtract two vectors together
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inRhs</em></tt></dt><dd>implicit argument corresponding to right hand side</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>The current vector, to which the the other vector has been subtracted
+     </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/RealV/operator%32//double; name=RealV::operator/ -->
+<a name="//apple_ref/cpp/instm/RealV/operator%32//double"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="operator%32/">operator /</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>RealV & operator /= (
+    double inRhs ) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Division operator to divide a vector by a real constant
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inRhs</em></tt></dt><dd>implicit argument corresponding to the constant</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>The current vector, which has been divided by the constant
+     </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/RealV/operator!%61/constRealV%38; name=RealV::operator!= -->
+<a name="//apple_ref/cpp/instm/RealV/operator!%61/constRealV%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="operator!%61">operator!=</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>bool operator != (
+    const RealV & inRhs );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Comparison operator to compare a vector to another
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inRhs</em></tt></dt><dd>implicit argument corresponding to right hand side</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>true is vectors are different
+     </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/RealV/operator*%61/double; name=RealV::operator*= -->
+<a name="//apple_ref/cpp/instm/RealV/operator*%61/double"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="operator*%61">operator*=</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>RealV & operator *= (
+    double inRhs ) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Multiplication operator to multiply a vector by a real constant
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inRhs</em></tt></dt><dd>implicit argument corresponding to the constant</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>The current vector, which has been multiplied by the constant
+     </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/RealV/operator+%61/RealV; name=RealV::operator+= -->
+<a name="//apple_ref/cpp/instm/RealV/operator+%61/RealV"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="operator+%61">operator+=</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>inline RealV & operator += (
+    RealV inRhs )
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Addition operator to add two vectors together
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inRhs</em></tt></dt><dd>implicit argument corresponding to right hand side</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>The current vector, to which the the other vector has been added
+     </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/RealV/operator-%61/RealV; name=RealV::operator-= -->
+<a name="//apple_ref/cpp/instm/RealV/operator-%61/RealV"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="operator-%61">operator-=</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>inline RealV & operator -= (
+    RealV inRhs )
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Subtraction operator to subtract two vectors together
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inRhs</em></tt></dt><dd>implicit argument corresponding to right hand side</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>The current vector, to which the the other vector has been subtracted
+     </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/RealV/operator%47%61/double; name=RealV::operator/= -->
+<a name="//apple_ref/cpp/instm/RealV/operator%47%61/double"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="operator%47%61">operator/=</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>RealV & operator /= (
+    double inRhs ) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Division operator to divide a vector by a real constant
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inRhs</em></tt></dt><dd>implicit argument corresponding to the constant</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>The current vector, which has been divided by the constant
+     </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/RealV/operator%61/constRealV%38; name=RealV::operator= -->
+<a name="//apple_ref/cpp/instm/RealV/operator%61/constRealV%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="operator%61">operator=</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>RealV & operator = (
+    const RealV & inRhs ) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Copy operator to assign vector to another
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inRhs</em></tt></dt><dd>implicit argument corresponding to right hand side</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>The current vector, to which the the other vector has been added
+     </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/RealV/operator%61%61/constRealV%38; name=RealV::operator== -->
+<a name="//apple_ref/cpp/instm/RealV/operator%61%61/constRealV%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="operator%61%61">operator==</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>bool operator == (
+    const RealV & inRhs );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Comparison operator to compare a vector to another
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inRhs</em></tt></dt><dd>implicit argument corresponding to right hand side</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>true is vectors are identical
+     </dd></dl>
+<hr>
+<h2>Member Data</h2>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/RealV/x; name=RealV::x -->
+<a name="//apple_ref/cpp/data/RealV/x"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="x">x</a></h2>
+</td></tr></table><blockquote><tt>public:</tt> double x;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p> x Cartesian coordinate of vector</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/RealV/y; name=RealV::y -->
+<a name="//apple_ref/cpp/data/RealV/y"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="y">y</a></h2>
+</td></tr></table><blockquote><tt>public:</tt> double y;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p> y Cartesian coordinate of vector</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/RealV/z; name=RealV::z -->
+<a name="//apple_ref/cpp/data/RealV/z"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="z">z</a></h2>
+</td></tr></table><blockquote><tt>public:</tt> double z;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p> z Cartesian coordinate of vector</p>
+<hr>
+<p>(Last Updated 2/23/2005)
+</p></body></html>

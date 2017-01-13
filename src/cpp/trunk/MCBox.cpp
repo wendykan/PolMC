@@ -1,0 +1,212 @@
+#include "MCBox.h"
+
+#include "configfiles.h"
+#include "MCObject.h"
+#include "Photon.h"
+#include "StokesV.h"
+#include "MuellerM.h"
+#include "MCRandomScatterer.h"
+#include "MCUtils.h"
+
+MCBox::MCBox(double inWidth,
+             double inHeight,
+             double inDepth,
+             long inPtsWidth,
+             long inPtsHeight,
+             long inPtsDepth,
+             double inIndexMedium,
+             double inIndexOutside,
+             double inRotationPerCmInClearSpace,
+			 long inDetectionType,
+			 long inAcceptanceCosineElements,
+             bool inUseNextEventEstimator)
+             :MCObject(inIndexMedium, inIndexOutside, inRotationPerCmInClearSpace, inUseNextEventEstimator)
+{
+    init(inWidth, inHeight, inDepth, inPtsWidth, inPtsHeight, inPtsDepth, inDetectionType, inAcceptanceCosineElements);
+}
+
+MCBox::MCBox(map<string,string>& inDict):MCObject(inDict)
+{
+    init(inDict);
+}
+
+void
+MCBox::init(double inWidth,
+            double inHeight,
+            double inDepth,
+            long inPtsWidth,
+            long inPtsHeight,
+            long inPtsDepth,
+			long inDetectionType,
+			long inAcceptanceCosineElements
+)
+{
+    mObjectName="box";
+    mWidth = inWidth;
+    mHeight = inHeight;
+    mDepth = inDepth;
+
+    mNumOfInterfaces = 6;
+
+    for (long i = 0; i < mNumOfInterfaces; i++) {
+        // We have to allocate individually because
+        // new[] must be deleted with delete[], and we can't do that
+        // because we give ownership to MCWorld (later on)
+        SurfaceElement* se = new SurfaceElement;
+        mSurfaceElements.push_back(se);
+    }
+
+    double hw = inWidth/2.;
+    double hh = inHeight/2.;
+	double hd = inDepth/2.;
+
+    mSurfaceElements[kForwardZPlane]->name = "forward";
+    mSurfaceElements[kForwardZPlane]->origin = RealV(-hw,-hh,hd);
+    mSurfaceElements[kForwardZPlane]->a = RealV(1,0,0);
+    mSurfaceElements[kForwardZPlane]->b = RealV(0,1,0);
+    mSurfaceElements[kForwardZPlane]->a *= inWidth;
+    mSurfaceElements[kForwardZPlane]->b *= inHeight;
+    mSurfaceElements[kForwardZPlane]->Na = inPtsWidth;
+    mSurfaceElements[kForwardZPlane]->Nb = inPtsHeight;
+    mSurfaceElements[kForwardZPlane]->el = RealV(1,0,0);
+    mSurfaceElements[kForwardZPlane]->er = RealV(0,1,0);
+    mSurfaceElements[kForwardZPlane]->normal = RealV(0,0,1);
+    mSurfaceElements[kForwardZPlane]->surfaceShape = kParallelogram;
+    mSurfaceElements[kForwardZPlane]->mDetection = inDetectionType;
+	mSurfaceElements[kForwardZPlane]->mCosineElements = inAcceptanceCosineElements;
+	mSurfaceElements[kForwardZPlane]->init();
+
+    mSurfaceElements[kBackwardZPlane]->name = "backward";
+    mSurfaceElements[kBackwardZPlane]->origin = RealV(hw,-hh,-hd);
+    mSurfaceElements[kBackwardZPlane]->a = RealV(-1,0,0);
+    mSurfaceElements[kBackwardZPlane]->b = RealV(0,1,0);
+    mSurfaceElements[kBackwardZPlane]->a *= inWidth;
+    mSurfaceElements[kBackwardZPlane]->b *= inHeight;
+    mSurfaceElements[kBackwardZPlane]->Na = inPtsWidth;
+    mSurfaceElements[kBackwardZPlane]->Nb = inPtsHeight;
+    mSurfaceElements[kBackwardZPlane]->el = RealV(-1,0,0);
+    mSurfaceElements[kBackwardZPlane]->er = RealV(0,1,0);
+    mSurfaceElements[kBackwardZPlane]->normal = RealV(0,0,-1);
+    mSurfaceElements[kBackwardZPlane]->surfaceShape = kParallelogram;
+    mSurfaceElements[kBackwardZPlane]->mDetection = inDetectionType;
+	mSurfaceElements[kBackwardZPlane]->mCosineElements = inAcceptanceCosineElements;
+	mSurfaceElements[kBackwardZPlane]->init();
+
+    mSurfaceElements[kPositiveXPlane]->name = "positiveX";
+    mSurfaceElements[kPositiveXPlane]->origin = RealV(hw,-hh, hd);
+    mSurfaceElements[kPositiveXPlane]->a = RealV(0,0,-1);
+    mSurfaceElements[kPositiveXPlane]->b = RealV(0,1,0);
+    mSurfaceElements[kPositiveXPlane]->a *= inDepth;
+    mSurfaceElements[kPositiveXPlane]->b *= inHeight;
+    mSurfaceElements[kPositiveXPlane]->Na = inPtsDepth;
+    mSurfaceElements[kPositiveXPlane]->Nb = inPtsHeight;
+    mSurfaceElements[kPositiveXPlane]->el = RealV(0,0,-1);
+    mSurfaceElements[kPositiveXPlane]->er = RealV(0,1,0);
+    mSurfaceElements[kPositiveXPlane]->normal = RealV(1,0,0);
+    mSurfaceElements[kPositiveXPlane]->surfaceShape = kParallelogram;
+    mSurfaceElements[kPositiveXPlane]->mDetection = inDetectionType;
+	mSurfaceElements[kPositiveXPlane]->mCosineElements = inAcceptanceCosineElements;
+	mSurfaceElements[kPositiveXPlane]->init();
+
+    mSurfaceElements[kNegativeXPlane]->name = "negativeX";
+    mSurfaceElements[kNegativeXPlane]->origin = RealV(-hw,-hh,-hd);
+    mSurfaceElements[kNegativeXPlane]->a = RealV(0,0,1);
+    mSurfaceElements[kNegativeXPlane]->b = RealV(0,1,0);
+    mSurfaceElements[kNegativeXPlane]->a *= inDepth;
+    mSurfaceElements[kNegativeXPlane]->b *= inHeight;
+    mSurfaceElements[kNegativeXPlane]->Na = inPtsDepth;
+    mSurfaceElements[kNegativeXPlane]->Nb = inPtsHeight;
+    mSurfaceElements[kNegativeXPlane]->el = RealV(0,0,1);
+    mSurfaceElements[kNegativeXPlane]->er = RealV(0,1,0);
+    mSurfaceElements[kNegativeXPlane]->normal = RealV(-1,0,0);
+    mSurfaceElements[kNegativeXPlane]->surfaceShape = kParallelogram;
+    mSurfaceElements[kNegativeXPlane]->mDetection = inDetectionType;
+	mSurfaceElements[kNegativeXPlane]->mCosineElements = inAcceptanceCosineElements;
+	mSurfaceElements[kNegativeXPlane]->init();
+
+    mSurfaceElements[kPositiveYPlane]->name = "positiveY";
+    mSurfaceElements[kPositiveYPlane]->origin = RealV(-hw,hh, -hd);
+    mSurfaceElements[kPositiveYPlane]->a = RealV(0,0,1);
+    mSurfaceElements[kPositiveYPlane]->b = RealV(1,0,0);
+    mSurfaceElements[kPositiveYPlane]->a *= inDepth;
+    mSurfaceElements[kPositiveYPlane]->b *= inWidth;
+    mSurfaceElements[kPositiveYPlane]->Na = inPtsDepth;
+    mSurfaceElements[kPositiveYPlane]->Nb = inPtsWidth;
+    mSurfaceElements[kPositiveYPlane]->el = RealV(0,0,1);
+    mSurfaceElements[kPositiveYPlane]->er = RealV(1,0,0);
+    mSurfaceElements[kPositiveYPlane]->normal = RealV(0,1,0);
+    mSurfaceElements[kPositiveYPlane]->surfaceShape = kParallelogram;
+    mSurfaceElements[kPositiveYPlane]->mDetection = inDetectionType;
+	mSurfaceElements[kPositiveYPlane]->mCosineElements = inAcceptanceCosineElements;
+	mSurfaceElements[kPositiveYPlane]->init();
+
+    mSurfaceElements[kNegativeYPlane]->name = "negativeY";
+    mSurfaceElements[kNegativeYPlane]->origin = RealV(hw,-hh, -hd);
+    mSurfaceElements[kNegativeYPlane]->a = RealV(0,0,1);
+    mSurfaceElements[kNegativeYPlane]->b = RealV(-1,0,0);
+    mSurfaceElements[kNegativeYPlane]->a *= inDepth;
+    mSurfaceElements[kNegativeYPlane]->b *= inWidth;
+    mSurfaceElements[kNegativeYPlane]->Na = inPtsDepth;
+    mSurfaceElements[kNegativeYPlane]->Nb = inPtsWidth;
+    mSurfaceElements[kNegativeYPlane]->el = RealV(0,0,1);
+    mSurfaceElements[kNegativeYPlane]->er = RealV(-1,0,0);
+    mSurfaceElements[kNegativeYPlane]->normal = RealV(0,-1,0);
+    mSurfaceElements[kNegativeYPlane]->surfaceShape = kParallelogram;
+    mSurfaceElements[kNegativeYPlane]->mDetection = inDetectionType;
+	mSurfaceElements[kNegativeYPlane]->mCosineElements = inAcceptanceCosineElements;
+	mSurfaceElements[kNegativeYPlane]->init();
+            
+    FinishCreate();
+
+}
+
+void
+MCBox::init(map<string,string>& inDict)
+{
+    dict = inDict;
+
+    long Nx, Ny, Nz;
+    double xwidth, yheight, zdepth;
+    long acceptanceCosElements;
+	
+    InitVariable(dict, "Nx",Nx);
+    InitVariable(dict, "Ny",Ny);
+    InitVariable(dict, "Nz",Nz);
+    InitVariable(dict, "zdepth",zdepth);
+    InitVariable(dict, "xwidth",xwidth);
+    InitVariable(dict, "yheight",yheight);
+    InitVariable(dict, "acceptanceCosElements",acceptanceCosElements);
+
+    init(xwidth, yheight, zdepth, Nx, Ny, Nz, kFromInside, acceptanceCosElements);
+}
+
+
+bool
+MCBox::IsOutsideObject(RealV& inLocalPosition)
+{
+	// We are now defining an actual boundary region - surface element is not in the interior of the object
+	// added Wendy 7/15/10
+    if (inLocalPosition.z <= mDepth + OBJECT_SAFETY_DISTANCE && inLocalPosition.z >= (0.0 - OBJECT_SAFETY_DISTANCE) 
+	  && inLocalPosition.x <= (mWidth/2.0 + OBJECT_SAFETY_DISTANCE) && inLocalPosition.x >= (-mWidth/2.0 - OBJECT_SAFETY_DISTANCE) 
+	  && inLocalPosition.y <= (mHeight/2.0 + OBJECT_SAFETY_DISTANCE) && inLocalPosition.y >= (-mHeight/2.0 - OBJECT_SAFETY_DISTANCE) ) {
+        return false;
+    } else {
+        return true;
+    }
+
+}
+
+
+bool
+MCBox::IsInsideObject(RealV& inLocalPosition)
+{
+	// We are now defining an actual boundary region - surface element is not in the interior of the object
+	// added Wendy 7/15/10
+    if (inLocalPosition.z <= mDepth - OBJECT_SAFETY_DISTANCE && inLocalPosition.z >= (0.0 + OBJECT_SAFETY_DISTANCE) 
+	  && inLocalPosition.x <= (mWidth/2.0 - OBJECT_SAFETY_DISTANCE) && inLocalPosition.x >= (-mWidth/2.0 + OBJECT_SAFETY_DISTANCE) 
+	  && inLocalPosition.y <= (mHeight/2.0 - OBJECT_SAFETY_DISTANCE) && inLocalPosition.y >= (-mHeight/2.0 + OBJECT_SAFETY_DISTANCE) ) {
+        return true;
+    } else {
+        return false;
+    }
+}

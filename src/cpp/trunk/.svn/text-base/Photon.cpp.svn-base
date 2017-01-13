@@ -1,0 +1,1250 @@
+#include "Photon.h"
+#include <list>
+#include "mydebug.h"
+#include "StokesV.h"
+#include "RealV.h"
+#include "MuellerM.h"
+#include "MCObject.h"
+#include "MCWorld.h"
+
+Photon::Photon()
+{
+    init();
+}
+
+Photon::Photon(double inI, RealV inEprop)
+{
+    mS = StokesV(inI, inEprop);
+    init();
+}
+
+Photon::Photon(double inI, double inQ, double inU, double inV, RealV inEpara , RealV inEprop)
+:mS(inI,   inQ,  inU,  inV, inEpara, inEprop), mLocalPos(0,0,0)
+{
+    init();
+}
+
+
+Photon::Photon(StokesV& inStokesVector )
+:mS(inStokesVector), mLocalPos(0,0,0) 
+{ 
+    init();
+};
+
+void
+Photon::ClearAll() 
+{ 
+    
+}
+
+Photon::~Photon()
+{
+}
+
+void
+Photon::init() 
+{ 
+    mWavelength = 0;
+    mDistanceTraveled = 0;
+	mOpticalPathTraveled = 0;
+	mWeight = 1;
+    mKeepStats  = false;
+    mNumEvent = 0;
+    mStatsMove = 0;
+    mWarningStatsGiven = false;
+    mGlobalOrigin = RealV(0,0,0);
+    mCurrentlyInObject = 0;
+}
+
+
+
+bool 
+Photon::IsDead() 
+{ 
+    return mWeight <= 0; 
+}
+
+
+bool
+Photon::IsNotDead() 
+{ 
+    return mWeight > 0; 
+}
+
+double
+Photon::GetWeight() 
+{ 
+    MyAssert_(mWeight >= 0);
+    return mWeight; 
+}
+
+void
+Photon::SetWeight(double inWeight) 
+{ 
+    MyAssert_(inWeight >= 0. && inWeight <= 1.);
+    
+#ifdef __MYDEBUG
+    if (inWeight < 0 || inWeight > 1) 
+    { 
+        cerr << inWeight << endl ;
+    }
+#endif
+    
+    mWeight = inWeight; 
+}
+
+bool
+Photon::MultiplyWeightBy(double inFactor) 
+{ 
+    MyAssert_(inFactor >= 0);
+    return (mWeight *= inFactor) <= 0; 
+}
+
+bool
+Photon::DecreaseWeightBy(double inDeltaWeight) 
+{ 
+    MyAssert_(inDeltaWeight >= 0);
+    return (mWeight -= inDeltaWeight) <= 0; 
+}
+
+void
+Photon::GetStokesVectorInLocalFrame(StokesV& outS) 
+{  
+	outS = mS;
+}
+
+void
+Photon::SetStokesVector(StokesV& inS) 
+{  
+	mS = inS;
+}
+
+void
+Photon::RotateReferenceFrameInFresnelPlane(RealV& inNormal)
+{
+    /* Rotate reference frame so that er and el are s and p */
+    RealV el,er,e3;
+    mS.GetReferenceFrame(er,el,e3);
+    
+    /* We always want the "s hat" vector in the same orientation
+        compared to e3, regardless of the normal (i.e the normal
+                                                  could be pointing in or out) */
+    RealV s;
+    if (RealV::DotProduct(e3, inNormal) >= 0 ) 
+        s = RealV::NormalizedCrossProduct(e3, inNormal);
+    else {
+        inNormal *= -1;
+        s = RealV::NormalizedCrossProduct(e3, inNormal);
+    }
+    
+    if (s.abs() != 0.) 
+    { 
+        s *= (1./s.abs());
+        double phi = RealV::OrientedAngleBetween(er, s, e3);
+        CheckDoubleValue_(phi);
+        mS.RotateReferenceFrameAroundPropagationDirectionBy(phi);
+    } else {
+        // Normal incidence, leave as is
+        ;
+    }
+    
+#ifdef __MYDEBUG
+    RealV ter,tel,te3;
+    mS.GetReferenceFrame(ter,tel,te3);
+    MyAssert_(RealV::arePerpendicular(er, inNormal));
+    
+#endif
+}
+
+double
+Photon::GetReflectionProbability(RealV& inNormal,
+                                 double rp, double rs, double tp, double ts) 
+{ 
+    
+    MyAssert_(areTheSame(inNormal.abs() , 1, 5));
+    
+    RotateReferenceFrameInFresnelPlane(inNormal);
+    
+    if (mS.mI != 0)
+        return (rp * rp / 2. * ( mS.mI + mS.mQ) + rs * rs / 2. * ( mS.mI - mS.mQ))/mS.mI;
+    else
+        throw runtime_error("reflection of zero intensity photon");
+    
+}
+
+
+void
+Photon::TransmitThrough(RealV& inNormal, double inIndexFrom, double inIndexTo,
+                        double rp, double rs, double tp, double ts) 
+{ 
+    
+    CheckDoubleValue_(inIndexFrom);
+    CheckDoubleValue_(inIndexTo);
+    CheckDoubleValue_(rp);
+    CheckDoubleValue_(rs);
+    CheckDoubleValue_(tp);
+    CheckDoubleValue_(ts);
+    MyAssert_(inIndexFrom >= 1);
+    MyAssert_(inIndexTo >= 1);
+    MyAssert_(tp > 0);
+    MyAssert_(ts > 0);
+    
+    RotateReferenceFrameInFresnelPlane(inNormal);
+    
+    // First we modify the Stokes vector, then we modifiy the propagation direction
+    // Need to get the reference frame the same
+    StokesV tempStokes = mS;
+    
+    tempStokes.mI = tp * tp / 2. * ( mS.mI + mS.mQ) + ts * ts / 2. * ( mS.mI - mS.mQ);
+    tempStokes.mQ = tp * tp / 2. * ( mS.mI + mS.mQ) + ts * ts / 2. * ( - mS.mI + mS.mQ);
+    tempStokes.mU = tp * ts * mS.mU ;
+    tempStokes.mV = tp * ts * mS.mV ;
+    
+    MyAssert_(tempStokes.mI >= 0);
+    
+    mS = tempStokes;
+    mS.Normalize();
+    
+    CheckDoubleValue_(mS.mI);
+    CheckDoubleValue_(mS.mQ);
+    CheckDoubleValue_(mS.mU);
+    CheckDoubleValue_(mS.mV);
+    
+    /* Compute new direction */
+    RealV el,er,e3;
+    mS.GetReferenceFrame(er,el,e3);
+    double cosThetaFrom = abs(RealV::NormalizedDotProduct(e3, inNormal));
+    double thetaFrom = acos(cosThetaFrom);
+    CheckDoubleValue_(thetaFrom);
+    double thetaTo;
+    double sinThetaTo;
+    
+    if ( ( sinThetaTo = sin(thetaFrom) / (inIndexTo/inIndexFrom)) <= 1.)
+        thetaTo = (asin(sinThetaTo));
+    
+    CheckDoubleValue_(thetaTo);
+    mS.ChangePropagationDirectionAroundEPerpBy(thetaFrom - thetaTo);
+    
+    MyAssert_(mS.mI != 0);
+    if (mS.mI == 0) 
+    { 
+        cout << mS << rp <<" " << rs <<" " <<tp <<" " <<ts <<" " <<endl;
+    }
+    
+}
+
+void
+Photon::ReflectAtInterface(RealV& inNormal, double inIndexFrom, double inIndexTo,
+                           double rp, double rs, double tp, double ts) 
+{ 
+    
+    CheckDoubleValue_(inIndexFrom);
+    CheckDoubleValue_(inIndexTo);
+    CheckDoubleValue_(rp);
+    CheckDoubleValue_(rs);
+    CheckDoubleValue_(tp);
+    CheckDoubleValue_(ts);
+    MyAssert_(inIndexFrom >= 1);
+    MyAssert_(inIndexTo >= 1);
+    MyAssert_(rp * rp + rs * rs != 0);
+    
+    RotateReferenceFrameInFresnelPlane(inNormal);
+    mS.ReflectAtInterface(inNormal, rp, rs, tp, ts);
+	
+	return;
+	/*
+    // First we modify the Stokes vector, then we modifiy the propagation direction
+    // Need to get the reference frame the same
+    StokesV tempStokes = mS;
+    
+    tempStokes.mI = rp * rp / 2. * ( mS.mI + mS.mQ) + rs * rs / 2. * ( mS.mI - mS.mQ);
+    tempStokes.mQ = rp * rp / 2. * ( mS.mI + mS.mQ) + rs * rs / 2. * ( - mS.mI + mS.mQ);
+    tempStokes.mU = rp * rs * mS.mU ;
+    tempStokes.mV = rp * rs * mS.mV ;
+    
+    MyAssert_(tempStokes.mI >= 0);
+    
+    mS = tempStokes;
+    mS.Normalize();
+    
+    CheckDoubleValue_(mS.mI);
+    CheckDoubleValue_(mS.mQ);
+    CheckDoubleValue_(mS.mU);
+    CheckDoubleValue_(mS.mV);
+    
+    // Compute angles 
+    RealV el,er,e3;
+    mS.GetReferenceFrame(er,el,e3);
+    PrintMessageIfLevel_("Reflection: Normal is " << inNormal << " Er (and s) is " << er << " E3 is " << e3, kExtremelyVerbose);
+    // The normal can be into or out of the plane.  We want the angle of incidence (must take abs()) 
+    double thetaFrom = acos(abs(RealV::NormalizedDotProduct(e3, inNormal)));
+    CheckDoubleValue_(thetaFrom);
+    
+    mS.ChangePropagationDirectionAroundEPerpBy( - PI + 2. * thetaFrom);
+    
+    MyAssert_(mS.mI != 0);
+    */
+}
+
+void
+Photon::NormalizeStokesV() 
+{  mS.Normalize(); }
+
+void
+Photon::MultiplyStokesV(double inFactor) 
+{  mS *= inFactor; }
+
+void
+Photon::ChangePropagationDirectionAroundEPerpBy(double inTheta)
+{
+    CheckDoubleValue_(inTheta);
+    
+    mS.ChangePropagationDirectionAroundEPerpBy(inTheta);
+}
+
+void
+Photon::RotateReferenceFrameAroundPropagationDirectionBy(double inPhi) 
+{
+    CheckDoubleValue_(inPhi);
+    
+    mS.RotateReferenceFrameAroundPropagationDirectionBy(inPhi);
+}
+
+void
+Photon::RotatePolarizationStateBy(double inPhi)
+{
+    CheckDoubleValue_(inPhi);
+    
+    mS.RotatePolarizationStateBy(inPhi);
+}
+
+void
+Photon::SetCurrentObject(MCObject* inObject) 
+{
+    MyAssert_(inObject != NULL);
+    mCurrentlyInObject = inObject;
+//    SetGlobalOrigin(inObject->GetGlobalOrigin(), true);
+}
+
+MCObject*
+Photon::GetCurrentObject() 
+{
+    return mCurrentlyInObject;
+}
+
+RealV
+Photon::GetLocalPosition() 
+{  return mLocalPos;}
+
+void
+Photon::SetLocalPosition(RealV inPos ) 
+{  
+    mLocalPos = inPos;
+    if (mKeepStats) 
+    { 
+        mStatsMove++;
+        
+        mStokesStats.push_back(mS);
+        mPosStats.push_back(GetGlobalPosition());
+        mDirStats.push_back(GetPropagationDirectionInLabFrame());
+        mWeightStats.push_back(GetWeight());
+        mTimeStats.push_back(mOpticalPathTraveled/MCWorld::speedOfLight);
+    }
+    
+}
+
+
+void
+Photon::SetGlobalPosition(RealV inPos ) 
+{  
+    mLocalPos = inPos - mGlobalOrigin;
+    if (mKeepStats) 
+    { 
+        mStatsMove++;
+        
+        mStokesStats.push_back(mS);
+        mPosStats.push_back(GetGlobalPosition());
+        mDirStats.push_back(GetPropagationDirectionInLabFrame());
+        mWeightStats.push_back(GetWeight());
+        mTimeStats.push_back(mOpticalPathTraveled/MCWorld::speedOfLight);
+    }
+    
+}
+
+
+RealV
+Photon::GetGlobalOrigin() 
+{  
+    return mGlobalOrigin;
+}
+
+
+void
+Photon::SetGlobalOrigin(RealV inNewOrigin, bool inTransformLocalCoordinates ) 
+{  
+    if (inTransformLocalCoordinates) 
+        mLocalPos = mLocalPos + mGlobalOrigin - inNewOrigin;
+    
+    mGlobalOrigin = inNewOrigin;
+}
+
+RealV
+Photon::GetGlobalPosition() 
+{  
+    return mLocalPos + mGlobalOrigin;
+}
+
+double
+Photon::GetTravelTime() 
+{
+    return mOpticalPathTraveled/MCWorld::speedOfLight;
+}
+
+double
+Photon::GetDistanceTraveled() 
+{
+    return mDistanceTraveled;
+}
+
+void
+Photon::ResetDistanceTraveled() 
+{
+    mDistanceTraveled = 0;
+}
+
+long
+Photon::GetNumberOfScatteringEvents() 
+{
+    return mNumEvent;
+}
+
+RealV
+Photon::GetPropagationDirectionInLabFrame() 
+{
+    return mS.GetPropagationDirection();
+}
+
+void
+Photon::SetPropagationDirectionInLabFrame(RealV& inDirection)
+{
+    mS.SetPropagationDirectionInLabFrame(inDirection);
+}
+
+double 
+Photon::GetWavelength()
+{
+    MyAssert_(mWavelength != 0);
+    return mWavelength;
+}
+
+void
+Photon::SetWavelength(double inWavelength)
+{
+    mWavelength = inWavelength;
+}
+
+void
+Photon::IntensityThroughLinearPolarizer(StokesV& inS, RealV& inEparaLab, RealV& inEperpLab, RealV& inNormalLab, double& outIpara, double& outIperp) 
+{ 
+    
+    RealV el,er,e3;
+    inS.GetReferenceFrame(er,el,e3);
+    
+    RealV vectorInParaNormalplane;
+    RealV vectorInPerpNormalplane;
+    
+    vectorInParaNormalplane = RealV::NormalizedCrossProduct(e3, inEperpLab);
+    vectorInPerpNormalplane = RealV::NormalizedCrossProduct(inEparaLab, e3);
+    
+    double phi_para = RealV::OrientedAngleBetween(el, vectorInParaNormalplane, e3);
+    double phi_perp = RealV::OrientedAngleBetween(el, vectorInPerpNormalplane, e3);
+    
+    StokesV s = StokesV(inS);
+    s.RotateReferenceFrameAroundPropagationDirectionBy(phi_para);
+    
+    outIpara = (s.mI+s.mQ)/2.;
+    
+    s = StokesV(inS);
+    s.RotateReferenceFrameAroundPropagationDirectionBy(phi_perp);
+    
+    outIperp = (s.mI+s.mQ)/2.;
+}
+
+
+
+void
+Photon::IntensityThroughCircularPolarizer(StokesV& inS, RealV& inEparaLab, RealV& inEperpLab, RealV& inNormalLab, double& outIRightCirc, double& outILeftCirc) 
+{ 
+    
+    RealV el,er,e3;
+    inS.GetReferenceFrame(er,el,e3);
+    
+    RealV vectorInParaNormalplane;
+    RealV vectorInPerpNormalplane;
+    
+    RealV EPlus45 = (inEperpLab+inEparaLab)/sqrt(2.);
+    RealV EMinus45 = (inEperpLab-inEparaLab)/sqrt(2.);
+    
+    vectorInParaNormalplane = RealV::NormalizedCrossProduct(e3, inEperpLab);
+    vectorInPerpNormalplane = RealV::NormalizedCrossProduct(inEparaLab, e3);
+    
+    double phi_para = RealV::OrientedAngleBetween(el, vectorInParaNormalplane, e3);
+    double dummy;
+    
+    // In para-perp reference frame, apply right quarter waveplate
+    StokesV s = StokesV(inS);
+    s.RotateReferenceFrameAroundPropagationDirectionBy(phi_para);
+    
+    s.mU = inS.mV;
+    s.mV = -inS.mU;
+    
+    s.RotateReferenceFrameAroundPropagationDirectionBy(-phi_para);
+    
+    IntensityThroughLinearPolarizer(s, EPlus45, EMinus45, inNormalLab, outIRightCirc, dummy);
+    
+    // In para-perp reference frame, apply left quarter waveplate
+    s = StokesV(inS);
+    s.RotateReferenceFrameAroundPropagationDirectionBy(phi_para);
+    
+    s.mU = -inS.mV;
+    s.mV = inS.mU;
+    
+    s.RotateReferenceFrameAroundPropagationDirectionBy(-phi_para);
+    
+    IntensityThroughLinearPolarizer(s, EPlus45, EMinus45, inNormalLab, outILeftCirc, dummy);
+    
+}
+
+
+void
+Photon::ElectricFieldInLabFrame(StokesV& inS, Complex& outFieldPara, Complex& outFieldPerp , RealV& inEparaLab, RealV& inEperpLab, RealV& inNormalLab)
+{
+	RealV el,er,e3;
+    inS.GetReferenceFrame(er,el,e3);
+    
+	if ( abs(RealV::DotProduct(inNormalLab, e3)) < 0.99 ) {
+		clog << "Waning: Normal and direction of popagation not parallel.";
+	}
+	
+	RealV vectorInParaNormalplane;
+    RealV vectorInPerpNormalplane;
+    
+    vectorInParaNormalplane = RealV::NormalizedCrossProduct(e3, inEperpLab);
+    vectorInPerpNormalplane = RealV::NormalizedCrossProduct(inEparaLab, e3);
+    
+    double phi_para = RealV::OrientedAngleBetween(el, vectorInParaNormalplane, e3);
+    double phi_perp = RealV::OrientedAngleBetween(el, vectorInPerpNormalplane, e3);
+    
+    StokesV s = StokesV(inS);
+    s.RotateReferenceFrameAroundPropagationDirectionBy(phi_para);
+    
+    s.GetLocalComplexFields(outFieldPara, outFieldPerp);
+    
+}
+/*
+void
+Photon::ElectricFieldInLabFrameWithFullPhase(StokesV& inS, Complex& outFieldPara, Complex& outFieldPerp , RealV& inEparaLab, RealV& inEperpLab, RealV& inNormalLab)
+{
+	ElectricFieldInLabFrameArbitraryPhase(inS, outFieldPara, outFieldPerp , inEparaLab, inEperpLab, inNormalLab);
+	
+	outFieldPara *= exp(-I*mTotalPropagationPhase);
+	outFieldPerp *= exp(-I*mTotalPropagationPhase);
+}
+*/
+
+void 
+Photon::IncreasePhaseDueToPopagation(double inPhi)
+{
+	
+}
+
+void
+Photon::MoveBy(double inDz, double index)  {
+    CheckDoubleValue_(inDz);
+    
+    RealV e3(mS.GetPropagationDirection());
+    
+    mLocalPos.x += e3.x * inDz;
+    mLocalPos.y += e3.y * inDz;
+    mLocalPos.z += e3.z * inDz;
+
+    mDistanceTraveled += inDz;
+	
+	if (index >= 1)
+		mOpticalPathTraveled += inDz * index;
+	else
+		PrintMessage_("Index smaller than one");
+	
+	mS.IncreasePhaseDueToPopagation(2. * PI * index / mWavelength * inDz);
+    
+    if (mKeepStats) { 
+		StoreStats();
+    }
+    
+}
+
+void 
+Photon::StoreStats()
+{
+	mStatsMove++;
+	
+	mStokesStats.push_back(mS);
+	mPosStats.push_back(GetGlobalPosition());
+	mDirStats.push_back(mS.GetPropagationDirection());
+	mWeightStats.push_back(GetWeight());
+	double time = mOpticalPathTraveled / MCWorld::speedOfLight;
+	mTimeStats.push_back(time);
+}
+
+void 
+Photon::ScatterBy(double inTheta, double inPhi, MuellerM* inM) 
+{ 
+    CheckDoubleValue_(inTheta);
+    CheckDoubleValue_(inPhi);
+    
+    /* Increase scattering event count */
+    mNumEvent++;
+    
+    /* First rotate the reference frame to new scattering plane  */
+    mS.RotateReferenceFrameAroundPropagationDirectionBy(inPhi);
+    /* Second, change propagation direction (i.e. scatter) in Epara (hence around Eperp)  */
+    mS.ChangePropagationDirectionAroundEPerpBy(inTheta);
+    
+    /* Third obtain Mueller matrix of scatterer, defined in the
+        scattering plane.  If inM is NULL, then we are not modifying the polarization
+        (i.e. the Henyey-Greenstein distribution does not provide the scattering matrix) */
+    if (inM == 0) 
+    { 
+        return;
+    }
+    
+    double m[4][4];
+    
+#ifndef __NOOPTIMIZE
+    inM->GetMatrixForTheta(&m[0][0], inTheta);
+#else
+    inM->GetMatrixForTheta(m, inTheta);
+#endif
+    
+    /* Fourth, transform Stokes vector into new, scattered wave
+        vector */
+    double i,q,u,v;
+    
+    i = m[0][0] * mS.mI + m[0][1] * mS.mQ
+        + m[0][2] * mS.mU + m[0][3] * mS.mV ;
+    q = m[1][0] * mS.mI + m[1][1] * mS.mQ
+        + m[1][2] * mS.mU + m[1][3] * mS.mV ;
+    u = m[2][0] * mS.mI + m[2][1] * mS.mQ
+        + m[2][2] * mS.mU + m[2][3] * mS.mV ;
+    v = m[3][0] * mS.mI + m[3][1] * mS.mQ
+        + m[3][2] * mS.mU + m[3][3] * mS.mV ;
+    
+    CheckDoubleValue_(i);
+    CheckDoubleValue_(q);
+    CheckDoubleValue_(u);
+    CheckDoubleValue_(v);
+    
+    mS.mI = i;
+    mS.mQ = q;
+    mS.mU = u;
+    mS.mV = v;
+    
+    MyAssert_(mS.mI != 0);
+    mS.Normalize();
+    MyAssert_(mS.mI != 0);
+    
+}
+
+bool 
+Photon::GetStats(int interaction, RealV& outPosition, double& outWeight)
+{
+	// Interaction 1 is first, zero is last and -1 is second last
+	list<RealV>::iterator iterP;
+	list<double>::iterator iterW;
+
+	if (interaction > 0) {
+		iterP = mPosStats.begin(); // Points to first element
+		iterW = mWeightStats.begin();
+
+		while (--interaction) {
+			iterP++;
+			iterW++;
+		} 
+
+		if (iterP != mPosStats.end() ) {
+			outPosition = *iterP;
+			outWeight = *iterW;
+		} else {
+			return true;
+		}
+	} else if (interaction < 0) {
+		iterP = mPosStats.end(); // Points PAST last element
+		iterW = mWeightStats.end();
+		iterP--;
+		iterW--;
+		
+		if ( (-interaction + 1) >  mPosStats.size())
+			return true;
+		
+		do {
+			iterP--;
+			iterW--;
+		} while (++interaction);
+
+		outPosition = *iterP;
+		outWeight = *iterW;
+
+	} else {
+		outPosition = mPosStats.front();
+		outWeight = mWeightStats.front();
+	} 
+
+	return false;
+
+}
+
+void
+Photon::KeepStats() 
+{ 
+    mKeepStats = true;
+    mStatsMove = 0;
+	StoreStats();
+}
+
+void
+Photon::DontKeepStats() 
+{ 
+    mKeepStats = false;
+    mStatsMove = 0;
+}
+
+void
+Photon::DumpStats(ostream& s, long inFormat) 
+{ 
+    if ( mKeepStats) { 
+        if (inFormat == kRaw) { 
+            s << "#event\tposition\tdirection\tWeight\ttime(ps)\tStokes\ter\tel\n";
+
+			RealV p;
+            RealV dir;
+            StokesV stokes;
+            double weight, time;
+            long i = 0;
+            while ( mWeightStats.size() != 0 ) { 
+                weight = mWeightStats.front();
+                p = mPosStats.front();
+                dir = mDirStats.front();
+                stokes = mStokesStats.front();
+                time = mTimeStats.front();
+				
+                mWeightStats.pop_front();
+                mPosStats.pop_front();
+                mDirStats.pop_front();
+                mStokesStats.pop_front();
+                mTimeStats.pop_front();
+				
+                RealV er,el, dummy;
+                
+                stokes.GetReferenceFrame(er, el, dummy);
+                
+                s << i << "\t"<< p << "\t" << dir << "\t" << weight << "\t" << time * 1e12<< "\t" << stokes << "\t" << er << "\t" << el << endl;
+                ++i;
+                
+            }
+            s << "Distance traveled : " << mDistanceTraveled << endl;
+            s << "Time traveled : " << GetTravelTime() << endl;
+        } else if (inFormat == kMathematica)  { 
+            RealV p;
+            RealV dir;
+            StokesV stokes;
+            if (mPosStats.size() != 0) 
+            { 
+                s << "Line[{";
+                do {
+                    p = mPosStats.front();
+                    
+                    mPosStats.pop_front();
+                    
+                    s << "{" << p.x << "," << p.y << "," << p.z << "}";
+                    
+                    if (mPosStats.size() != 0)
+                        s << ",";
+                    
+                } while ( mPosStats.size() != 0 );
+                
+                s << "}],";
+                
+            }
+            
+        } else if ( inFormat == kBinaryFormat ) {
+            RealV p;
+            RealV dir;
+            StokesV stokes;
+			double weight;
+            if (mPosStats.size() != 0) 
+            { 
+				int32_t theSize = 1000;
+				s.write((char*)&theSize, sizeof(theSize));
+				theSize = mPosStats.size();
+				s.write((char*)&theSize, sizeof(theSize));
+                do {
+                    p = mPosStats.front();
+                    mPosStats.pop_front();
+                    weight = mWeightStats.front();
+                    mWeightStats.pop_front();
+
+					float value;
+					value = weight;
+					s.write((char*)&value, sizeof(float));
+					value = p.x;
+					s.write((char*)&value, sizeof(float));
+					value = p.y;
+					s.write((char*)&value, sizeof(float));
+					value = p.z;
+					s.write((char*)&value, sizeof(float));
+                    
+                } while ( mPosStats.size() != 0 );
+			}
+		}
+        
+    } else if (! mWarningStatsGiven) 
+    { 
+        clog << RightNow() << "DumpStats(): you must activate KeepStats() before you can view the stats." << endl;
+        mWarningStatsGiven = true;
+    }
+}
+
+
+PhotonIntensity::PhotonIntensity( )
+{ 
+    PhotonIntensity::init(); 
+    mS = StokesV(1, RealV(0,0,1));
+}
+
+
+PhotonIntensity::PhotonIntensity( double inIntensity, RealV inProp)
+:Photon(inIntensity, inProp)
+{ 
+    
+    PhotonIntensity::init(); 
+    SetPropagationDirectionInLabFrame(inProp);
+    mS = StokesV(inIntensity, inProp);
+}
+
+void
+PhotonIntensity::init() 
+{ 
+    static bool warning=true;
+    if (warning)  { 
+        clog << RightNow() << "Polarization of photon not considered: only intensity\n";
+        warning = false;
+    }
+}
+
+
+Photon*
+PhotonIntensity::MakeCopy()
+{
+    PhotonIntensity* thePhoton = new PhotonIntensity(mS.mI, mS.mEprop);
+    
+    thePhoton->mLocalPos = mLocalPos;
+    thePhoton->mDistanceTraveled = mDistanceTraveled;
+    thePhoton->mWeight = mWeight;
+    thePhoton->mKeepStats  = false;
+    thePhoton->mNumEvent = mNumEvent;
+    thePhoton->mWavelength = mWavelength;
+    
+    return thePhoton;
+}
+
+
+void
+PhotonIntensity::MeasureStokesVectorInLabFrame(StokesV& outS, RealV& inEparaLab, RealV& inEperpLab, RealV& inNormalLab) 
+{ 
+    
+    outS = mS;
+    outS.mQ = 0.;
+    outS.mU = 0.;
+    outS.mV = 0.;
+    
+}
+
+
+void
+PhotonIntensity::ScatterBy(double inTheta, double inPhi, MuellerM* inM) 
+{ 
+    CheckDoubleValue_(inTheta);
+    CheckDoubleValue_(inPhi);
+    
+    /* Increase scattering event count */
+    mNumEvent++;
+    
+    /* First rotate the reference frame to new scattering plane  */
+    mS.RotateReferenceFrameAroundPropagationDirectionBy(inPhi);
+    /* Second, change propagation direction (i.e. scatter) in Epara (hence around Eperp)  */
+    mS.ChangePropagationDirectionAroundEPerpBy(inTheta);
+    mS.Normalize();
+}
+
+void
+PhotonIntensity::RotatePolarizationStateBy(double inPhi)
+{
+}
+
+
+
+
+
+PhotonBartel::PhotonBartel()  { 
+    init(); 
+}
+
+
+PhotonBartel::PhotonBartel(double inI, double inQ, double inU, double inV, RealV inEpara , RealV inEprop)
+: Photon( inI,   inQ,  inU,  inV, inEpara, inEprop) 
+{  init(); }
+
+
+
+PhotonBartel::PhotonBartel(StokesV& inStokesVector)
+: Photon( inStokesVector) 
+{  init(); }
+
+
+void     PhotonBartel::init() 
+{ 
+    static bool warning=true;
+    if (warning) 
+    { 
+        clog << RightNow() << "Bartel formalism used\n";
+        warning = false;
+    }
+}
+
+
+Photon*     
+PhotonBartel::MakeCopy()
+{
+    PhotonBartel* thePhoton = new PhotonBartel(mS);
+    
+    thePhoton->mLocalPos = mLocalPos;
+    thePhoton->mDistanceTraveled = mDistanceTraveled;
+    thePhoton->mWeight = mWeight;
+    thePhoton->mKeepStats  = false;
+    thePhoton->mNumEvent = mNumEvent;
+    thePhoton->mWavelength = mWavelength;
+
+    
+    return thePhoton;
+}
+
+
+void
+
+PhotonBartel::MeasureStokesVectorInLabFrame(StokesV& outS, RealV& inEparaLab, RealV& inEperpLab, RealV& inNormalLab) 
+{ 
+    Complex El,Er;
+    RealV el,er,ez;
+    
+    mS.GetLocalComplexFields(El,Er);
+    mS.GetReferenceFrame(er,el,ez);
+    
+    outS = StokesV(real(El)*el.x + real(Er)*er.x, real(El)*el.y + real(Er)*er.y);
+}
+
+
+
+PhotonCote::PhotonCote()  { 
+    init(); 
+}
+
+PhotonCote::PhotonCote(double inI, double inQ, double inU, double inV, RealV inEpara , RealV inEprop)
+: Photon( inI,   inQ,  inU,  inV, inEpara, inEprop)  { }
+
+
+PhotonCote::PhotonCote(StokesV& inStokesVector)
+: Photon( inStokesVector) 
+{  init(); }
+
+void
+PhotonCote::init() 
+{ 
+    static bool warning=true;
+    if (warning) 
+    { 
+        clog << RightNow() << "Warning: Cote formalism used\n";
+        warning = false;
+    }
+}
+
+
+Photon* 
+PhotonCote::MakeCopy()
+{
+    PhotonCote* thePhoton = new PhotonCote(mS);
+    
+    thePhoton->mLocalPos = mLocalPos;
+    thePhoton->mDistanceTraveled = mDistanceTraveled;
+    thePhoton->mWeight = mWeight;
+    thePhoton->mKeepStats  = false;
+    thePhoton->mNumEvent = mNumEvent;
+    thePhoton->mWavelength = mWavelength;
+
+
+    return thePhoton;
+}
+
+
+
+void 
+PhotonCote::MeasureStokesVectorInLabFrame(StokesV& outS, RealV& inEparaLab, RealV& inEperpLab, RealV& inNormalLab) 
+{ 
+    RealV el,er,e3;
+    mS.GetReferenceFrame(er,el,e3);
+    CheckTriad_(er, el, e3);
+    
+    RealV EPlus45 = (inEperpLab+inEparaLab)/sqrt(2.);
+    RealV EMinus45 = (inEperpLab-inEparaLab)/sqrt(2.);
+    
+    double Ipara,Iperp,Iplus45,Iminus45,ICircplus45,ICircminus45;
+    
+    IntensityThroughLinearPolarizer(mS, inEparaLab, inEperpLab, inNormalLab, Ipara, Iperp);
+    IntensityThroughLinearPolarizer(mS, EPlus45, EMinus45, inNormalLab, Iplus45, Iminus45);
+    IntensityThroughCircularPolarizer(mS, inEparaLab, inEperpLab, inNormalLab, ICircplus45, ICircminus45);
+    
+    outS.mI = mS.mI;
+    outS.mQ = (Ipara - Iperp);
+    outS.mU = (Iplus45 - Iminus45);
+    outS.mV = (ICircplus45 - ICircminus45 );
+    
+}
+
+
+PhotonEvans::PhotonEvans()  { 
+    init(); 
+}
+
+PhotonEvans::PhotonEvans(double inI, double inQ, double inU, double inV, RealV inEpara , RealV inEprop)
+: Photon( inI,   inQ,  inU,  inV, inEpara, inEprop)  { }
+
+
+PhotonEvans::PhotonEvans(StokesV& inStokesVector)
+: Photon( inStokesVector) 
+{  init(); }
+
+void
+PhotonEvans::init() 
+{ 
+    static bool warning=true;
+    if (warning) 
+    { 
+        clog << RightNow() << "Warning: Evans formalism used\n";
+        warning = false;
+    }
+}
+
+
+Photon* 
+PhotonEvans::MakeCopy()
+{
+    PhotonEvans* thePhoton = new PhotonEvans(mS);
+    
+    thePhoton->mLocalPos = mLocalPos;
+    thePhoton->mDistanceTraveled = mDistanceTraveled;
+    thePhoton->mWeight = mWeight;
+    thePhoton->mKeepStats  = false;
+    thePhoton->mNumEvent = mNumEvent;
+    thePhoton->mWavelength = mWavelength;
+
+
+    return thePhoton;
+}
+
+
+
+void 
+PhotonEvans::MeasureStokesVectorInLabFrame(StokesV& outS, RealV& inEparaLab, RealV& inEperpLab, RealV& inNormalLab) 
+{ 
+    outS = mS;
+}
+
+PhotonMourant::PhotonMourant()  {
+    init();
+}
+
+PhotonMourant::PhotonMourant(double inI, double inQ, double inU, double inV, RealV inEpara , RealV inEprop)
+: Photon( inI,   inQ,  inU,  inV, inEpara, inEprop)
+{
+    init(); 
+}
+
+PhotonMourant::PhotonMourant(StokesV& inStokesVector)
+: Photon( inStokesVector) 
+{  
+    init(); 
+}
+
+void 
+PhotonMourant::init() 
+{ 
+    static bool warning=true;
+    if (warning) 
+    { 
+        clog << RightNow() << "Mourant+Bartel formalism used\n";
+        warning = false;
+    }
+}
+
+Photon* 
+PhotonMourant::MakeCopy()
+{
+    PhotonMourant* thePhoton = new PhotonMourant(mS);
+    
+    thePhoton->mLocalPos = mLocalPos;
+    thePhoton->mDistanceTraveled = mDistanceTraveled;
+    thePhoton->mWeight = mWeight;
+    thePhoton->mKeepStats  = false;
+    thePhoton->mNumEvent = mNumEvent;
+    thePhoton->mWavelength = mWavelength;
+
+
+    return thePhoton;
+}
+
+void 
+PhotonMourant::MeasureStokesVectorInLabFrame(StokesV& outS, RealV& inEparaLab, RealV& inEperpLab, RealV& inNormalLab) 
+{ 
+    
+    // Really, Mourant can only do z, because we do not want to rewrite her math
+    // If it's not z, we bail out.
+    
+    if (inNormalLab != RealV(0,0,1))
+        throw runtime_error("Mourant will do detection in xy plane only.  Use other classes or other geometries."); 
+    
+    RealV a,b,c,dummy;
+    
+    mS.GetReferenceFrame(b,a,c);
+    
+    RealV newprel;
+    newprel.x = c.z / (sqrt(c.x*c.x + c.z*c.z));
+    newprel.y = 0;
+    newprel.z = -c.x / (sqrt(c.x*c.x + c.z*c.z));
+    
+    double bx = (c.z * newprel.y - c.y * newprel.z);
+    double bz = (c.y * newprel.x - c.x * newprel.y);
+    
+    double cos_phi = (newprel.x * a.x + newprel.z * a.z);
+    double sin_phi = (newprel.x * bx + newprel.z * bz);
+    
+    double cos_2phi = cos_phi*cos_phi-sin_phi*sin_phi;
+    double sin_2phi = 2*sin_phi*cos_phi;
+    
+    outS.mI = mS.mI;
+    outS.mQ = mS.mQ * cos_2phi + mS.mU * sin_2phi;
+    outS.mU = -mS.mQ * sin_2phi + mS.mU * cos_2phi;      
+    outS.mV = mS.mV;
+    
+}
+
+
+
+PhotonJaillon::PhotonJaillon() 
+{
+    init();
+}
+
+
+PhotonJaillon::PhotonJaillon(double inI, double inQ, double inU, double inV, RealV inEpara , RealV inEprop)
+: Photon( inI,   inQ,  inU,  inV, inEpara, inEprop) 
+{
+}
+
+
+PhotonJaillon::PhotonJaillon(StokesV& inStokesVector)
+: Photon( inStokesVector) 
+{
+    init(); 
+}
+
+
+void
+PhotonJaillon::init() 
+{ 
+    static bool warning=true;
+    if (warning) 
+    { 
+        clog << RightNow() << "Jaillon+Bartel formalism used\n";
+        warning = false;
+    }
+}
+
+
+Photon* 
+PhotonJaillon::MakeCopy()
+{
+    PhotonJaillon* thePhoton = new PhotonJaillon(mS);
+    
+    thePhoton->mLocalPos = mLocalPos;
+    thePhoton->mDistanceTraveled = mDistanceTraveled;
+    thePhoton->mWeight = mWeight;
+    thePhoton->mKeepStats  = false;
+    thePhoton->mNumEvent = mNumEvent;
+    thePhoton->mWavelength = mWavelength;
+
+
+    return thePhoton;
+}
+
+void 
+PhotonJaillon::MeasureStokesVectorInLabFrame(StokesV& outS, RealV& inEparaLab, RealV& inEperpLab, RealV& inNormalLab) 
+{ 
+    
+    RealV el,er,e3;
+    mS.GetReferenceFrame(er,el,e3);
+    
+    RealV vectorInXZplane;
+    RealV vectorInYZplane;
+    RealV s;
+    double phix,cos_theta;
+    
+    cos_theta = abs(RealV::NormalizedDotProduct(e3, inNormalLab));
+    MyAssert_(cos_theta<=1.);
+    CheckDoubleValue_(acos(cos_theta));
+    IfThen_(isnan(acos(cos_theta)), cout << "acos(theta) is nan: " << el << er << e3 << inNormalLab << endl);
+    
+    
+    outS = StokesV(mS);
+    
+    /* Plane of er and el with respect to x and y */
+    s = RealV::CrossProduct(e3, inNormalLab);
+    if (s.abs() != 0.) 
+    { 
+        s *= (1./s.abs());
+        double phis = RealV::OrientedAngleBetween(er, s, e3);
+        CheckDoubleValue_(phis);
+        outS.RotateReferenceFrameAroundPropagationDirectionBy(phis);
+    } else {
+        // Normal incidence, leave as is
+        ;
+    }
+    
+    /* Now we are in s and p coordinates, er || s */
+    outS.GetReferenceFrame(er,el,e3);
+    
+    /* Incidence correction according to Jaillon */
+    
+    outS.ChangePropagationDirectionAroundEPerpBy(acos(cos_theta));
+    outS.GetReferenceFrame(er,el,e3);
+    
+    double tempI = outS.mI;
+    
+    outS.mI = outS.mI * (cos_theta * cos_theta + 1.) / 2. + outS.mQ * (cos_theta * cos_theta - 1.) / 2.;
+    outS.mQ = tempI * (cos_theta * cos_theta - 1.) / 2. + outS.mQ * (cos_theta * cos_theta + 1.) / 2.;
+    outS.mU = outS.mU * cos_theta;
+    outS.mV = outS.mV * cos_theta;
+    
+    phix = RealV::OrientedAngleBetween(el, inEparaLab, inNormalLab);
+    CheckDoubleValue_(phix);
+    
+    outS.RotateReferenceFrameAroundPropagationDirectionBy(phix);
+}

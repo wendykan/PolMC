@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html><style type="text/css"><!--a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style><head>
+    <title>PhotonIntensity</title>
+	 <meta name="generator" content="HeaderDoc">
+</head><body bgcolor="#ffffff">
+<h1><font face="Geneva,Arial,Helvtica">PhotonIntensity</font></h1><br>
+<a name="//apple_ref/doc/class/PhotonIntensity" title="PhotonIntensity"></a>
+<b>Superclass:</b> <!-- a logicalPath="//apple_ref/cpp/cl/Photon" -->Photon<!-- /a --><br>
+<h2>Discussion</h2>
+The class PhotonIntensity implements the various actions performed on a photon wavepacket
+without any consideration to polarization.
+<br><br>
+The goal of this implementation is to be fast, hence it overrides the polarization
+function of Photon to short circuit them and make everything faster.  Since the Stokes vector
+also contains the reference frame (scattering plane, direction of propagation), we still need
+to compute the changes to those variables.
+<br><br><hr><br><h2>Member Functions</h2>
+<a name="HeaderDoc_functions"></a>
+<dl>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/PhotonIntensity/PhotonIntensity" target="_top">PhotonIntensity</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/PhotonIntensity/PhotonIntensity/doubleRealV" target="_top">PhotonIntensity(double, RealV)</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/PhotonIntensity/init" target="_top">init</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/PhotonIntensity/MakeCopy" target="_top">MakeCopy</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/PhotonIntensity/MeasureStokesVectorInLabFrame/StokesV%38RealV%38RealV%38RealV%38" target="_top">MeasureStokesVectorInLabFrame</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/PhotonIntensity/ScatterBy/doubledoubleMuellerM*" target="_top">ScatterBy</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/PhotonIntensity/RotatePolarizationStateBy/double" target="_top">RotatePolarizationStateBy</a></tt></dt>
+<dd></dd>
+</dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/PhotonIntensity/MakeCopy; name=PhotonIntensity::MakeCopy -->
+<a name="//apple_ref/cpp/instm/PhotonIntensity/MakeCopy"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="MakeCopy">MakeCopy</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual Photon *MakeCopy(
+);
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Make a copy of a photon from the another Photon.
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inPhoton</em></tt></dt><dd>The other Photon</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/PhotonIntensity/MeasureStokesVectorInLabFrame/StokesV%38RealV%38RealV%38RealV%38; name=PhotonIntensity::MeasureStokesVectorInLabFrame -->
+<a name="//apple_ref/cpp/instm/PhotonIntensity/MeasureStokesVectorInLabFrame/StokesV%38RealV%38RealV%38RealV%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="MeasureStokesVectorInLabFrame">MeasureStokesVectorInLabFrame</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void MeasureStokesVectorInLabFrame(
+    StokesV & outS,
+    RealV & inEparaLab,
+    RealV & inEperpLab,
+    RealV & inNormalLab ) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>The StokesV of this photon is always fully unpolarized.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>outS</em></tt></dt><dd>The Stokes vector is returned via this parameter (fully unpolarized photon)</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/PhotonIntensity/PhotonIntensity; name=PhotonIntensity::PhotonIntensity -->
+<a name="//apple_ref/cpp/instm/PhotonIntensity/PhotonIntensity"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="PhotonIntensity">PhotonIntensity</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>PhotonIntensity(
+);
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Default constructor
+	</p>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/PhotonIntensity/PhotonIntensity/doubleRealV; name=PhotonIntensity::PhotonIntensity -->
+<a name="//apple_ref/cpp/instm/PhotonIntensity/PhotonIntensity/doubleRealV"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="PhotonIntensity(double%44%32RealV)">PhotonIntensity(double, RealV)</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>PhotonIntensity(
+    double inIntensity,
+    RealV inProp );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>The Stokes vector is set to (intensity,0,0,0) which is used for Fresnel coefficients
+(and avoids having to reimplement everything).
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inI</em></tt></dt><dd>The intensity (first Stokes parameter)</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/PhotonIntensity/RotatePolarizationStateBy/double; name=PhotonIntensity::RotatePolarizationStateBy -->
+<a name="//apple_ref/cpp/instm/PhotonIntensity/RotatePolarizationStateBy/double"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="RotatePolarizationStateBy">RotatePolarizationStateBy</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void RotatePolarizationStateBy(
+    double inPhi );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Since we only consider intensity, we short circuit this calculation (for speed).
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inPhi</em></tt></dt><dd>Angle, not used.
+<br><br></dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/PhotonIntensity/ScatterBy/doubledoubleMuellerM*; name=PhotonIntensity::ScatterBy -->
+<a name="//apple_ref/cpp/instm/PhotonIntensity/ScatterBy/doubledoubleMuellerM*"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="ScatterBy">ScatterBy</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void ScatterBy(
+    double inTheta,
+    double inPhi,
+    MuellerM *inM ) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function scatters is the core of the class.  It computes the
+scattered photon at scattering angle  and azimuthal angle.  Since we only consider intensity,
+we don't need to calculate the effect on polarization.  The Mueller matrix is not used
+(and should be set to zero).
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inTheta</em></tt></dt><dd>Scattering angle [0:pi] (not in degrees, in radians) measured in the same frame of reference as the Mueller matrix</dd>
+<dt><tt><em>inPhi</em></tt></dt><dd>Azimuthal angle [0:2 pi] (not in degrees, in radians) measured in the same frame of reference as the Mueller matrix</dd>
+<dt><tt><em>inM</em></tt></dt><dd>Mueller matrix of the scatterer, not used</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/PhotonIntensity/init; name=PhotonIntensity::init -->
+<a name="//apple_ref/cpp/instm/PhotonIntensity/init"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="init">init</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void init(
+) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Initialize anything that is left to initialize, which for now means
+spitting out a warning to stdlog to make sure the user knows what he is using.
+     </p>
+<hr>
+<h2>Member Data</h2>
+<hr>
+<p>(Last Updated 2/23/2005)
+</p></body></html>

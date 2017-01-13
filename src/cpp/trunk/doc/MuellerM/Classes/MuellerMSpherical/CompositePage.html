@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html><style type="text/css"><!--a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style><head>
+    <title>MuellerMSpherical</title>
+	 <meta name="generator" content="HeaderDoc">
+</head><body bgcolor="#ffffff">
+<h1><font face="Geneva,Arial,Helvtica">MuellerMSpherical</font></h1><br>
+<a name="//apple_ref/doc/class/MuellerMSpherical" title="MuellerMSpherical"></a>
+<b>Superclass:</b> <!-- a logicalPath="//apple_ref/cpp/cl/MuellerM" -->MuellerM<!-- /a --><br>
+<h2>Discussion</h2>
+Provides the necessary encapsulation for a spherical scatterer and calculates the scattering elements
+from four interpolating tables (provided by the user).
+<br><br><hr><br><h2>Member Functions</h2>
+<a name="HeaderDoc_functions"></a>
+<dl>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MuellerMSpherical/%126MuellerMSpherical" target="_top">~MuellerMSpherical</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MuellerMSpherical/init" target="_top">init</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MuellerMSpherical/GetMatrixForTheta/double*double" target="_top">GetMatrixForTheta</a></tt></dt>
+<dd></dd>
+</dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MuellerMSpherical/GetMatrixForTheta/double*double; name=MuellerMSpherical::GetMatrixForTheta -->
+<a name="//apple_ref/cpp/instm/MuellerMSpherical/GetMatrixForTheta/double*double"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetMatrixForTheta">GetMatrixForTheta</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void GetMatrixForTheta(
+    double *inM,
+    double inTheta );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Function to obtain the Mueller matrix of a spherical scatterer for a given scattering angle theta.  
+The matrix elements are obtained from an interpolating table provided when the class is instantiated.
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inM</em></tt></dt><dd>This parameter contains the Mueller matrix on exit.  The mueller matrix is returned through this parameter (which is a 
+double[16] array (if the code is compiled without __NOOPTIMIZE, the default) or double[4][4] array 
+(if the code is compiled with __NOOPTIMIZE). The caller must have allocated the array. A few things to know:
+matrices: m[row][col], hence using a single index one must do: [4*row+col] == [row][col]</dd>
+<dt><tt><em>inTheta</em></tt></dt><dd>Scattering angle requested (in the scattering plane).</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MuellerMSpherical/init; name=MuellerMSpherical::init -->
+<a name="//apple_ref/cpp/instm/MuellerMSpherical/init"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="init">init</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>void init(
+) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Function to pre-calculate various parameters for the matrix.
+<br><br>
+    </p>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MuellerMSpherical/%126MuellerMSpherical; name=MuellerMSpherical::~MuellerMSpherical -->
+<a name="//apple_ref/cpp/instm/MuellerMSpherical/%126MuellerMSpherical"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="%126MuellerMSpherical">~MuellerMSpherical</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual ~ MuellerMSpherical(
+);
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Empty virtual destructor.
+<br><br>
+        </p>
+<hr>
+<h2>Member Data</h2>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MuellerMSpherical/S11; name=MuellerMSpherical::S11 -->
+<a name="//apple_ref/cpp/data/MuellerMSpherical/S11"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="S11">S11</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> fastinterpolate S11;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>   	        Contains interpolating table for S11 element</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MuellerMSpherical/S12; name=MuellerMSpherical::S12 -->
+<a name="//apple_ref/cpp/data/MuellerMSpherical/S12"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="S12">S12</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> fastinterpolate S12;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>   		Contains interpolating table for S12 element</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MuellerMSpherical/S33; name=MuellerMSpherical::S33 -->
+<a name="//apple_ref/cpp/data/MuellerMSpherical/S33"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="S33">S33</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> fastinterpolate S33;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>           	Contains interpolating table for S33 element</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MuellerMSpherical/S34; name=MuellerMSpherical::S34 -->
+<a name="//apple_ref/cpp/data/MuellerMSpherical/S34"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="S34">S34</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> fastinterpolate S34;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>           	Contains interpolating table for S34 element</p>
+<hr>
+<p>(Last Updated 2/23/2005)
+</p></body></html>

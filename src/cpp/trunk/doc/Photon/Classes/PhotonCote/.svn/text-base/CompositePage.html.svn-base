@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html><style type="text/css"><!--a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style><head>
+    <title>PhotonCote</title>
+	 <meta name="generator" content="HeaderDoc">
+</head><body bgcolor="#ffffff">
+<h1><font face="Geneva,Arial,Helvtica">PhotonCote</font></h1><br>
+<a name="//apple_ref/doc/class/PhotonCote" title="PhotonCote"></a>
+<b>Superclass:</b> <!-- a logicalPath="//apple_ref/cpp/cl/Photon" -->Photon<!-- /a --><br>
+<h2>Discussion</h2>
+The class PhotonCote implements the various actions done on a photon wavepacket according to
+<br><br>
+"Monte Carlo simulations of the diffuse backscattering 
+Mueller matrix for highly scattering media", Bartel & Hielscher
+Appl. Opt. Vol 39, April 1st 2000, p. 1580.
+<br><br>
+with a few modifications in the way the Photon is detected.<hr><br><h2>Member Functions</h2>
+<a name="HeaderDoc_functions"></a>
+<dl>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/PhotonCote/PhotonCote" target="_top">PhotonCote</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/PhotonCote/PhotonCote/doubledoubledoubledoubleRealVRealV" target="_top">PhotonCote(double, double, double, double, RealV, RealV)</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/PhotonCote/PhotonCote/StokesV%38" target="_top">PhotonCote(StokesV &)</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/PhotonCote/init" target="_top">init</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/PhotonCote/MakeCopy" target="_top">MakeCopy</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/PhotonCote/MeasureStokesVectorInLabFrame/StokesV%38RealV%38RealV%38RealV%38" target="_top">MeasureStokesVectorInLabFrame</a></tt></dt>
+<dd></dd>
+</dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/PhotonCote/MakeCopy; name=PhotonCote::MakeCopy -->
+<a name="//apple_ref/cpp/instm/PhotonCote/MakeCopy"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="MakeCopy">MakeCopy</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual Photon *MakeCopy(
+);
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Make a copy of a photon from the another Photon.
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inPhoton</em></tt></dt><dd>The other Photon</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/PhotonCote/MeasureStokesVectorInLabFrame/StokesV%38RealV%38RealV%38RealV%38; name=PhotonCote::MeasureStokesVectorInLabFrame -->
+<a name="//apple_ref/cpp/instm/PhotonCote/MeasureStokesVectorInLabFrame/StokesV%38RealV%38RealV%38RealV%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="MeasureStokesVectorInLabFrame">MeasureStokesVectorInLabFrame</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void MeasureStokesVectorInLabFrame(
+    StokesV & outS,
+    RealV & inEparaLab,
+    RealV & inEperpLab,
+    RealV & inNormalLab ) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Gives the Stokes vector with respect to the lab frame, by calculating
+it from the local frame of reference of the photon.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>outS</em></tt></dt><dd>The Stokes vector is returned via this parameter</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/PhotonCote/PhotonCote; name=PhotonCote::PhotonCote -->
+<a name="//apple_ref/cpp/instm/PhotonCote/PhotonCote"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="PhotonCote">PhotonCote</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>PhotonCote(
+) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Default constructor
+<br><br>
+    </p>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/PhotonCote/PhotonCote/StokesV%38; name=PhotonCote::PhotonCote -->
+<a name="//apple_ref/cpp/instm/PhotonCote/PhotonCote/StokesV%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="PhotonCote(StokesV%32%38)">PhotonCote(StokesV &)</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>PhotonCote(
+    StokesV & inStokesVector );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This constructor makes a photon with polarization state given by 
+the Stokes vector passed as argument.  The photon is assumed to travel along the (0,0,1)
+direction and have the reference axes for the Stokes parameter to be e_parallel = (1,0,0) and
+e_perp = (0,1,0)
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inStokesVector</em></tt></dt><dd>The Stokes vector</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/PhotonCote/PhotonCote/doubledoubledoubledoubleRealVRealV; name=PhotonCote::PhotonCote -->
+<a name="//apple_ref/cpp/instm/PhotonCote/PhotonCote/doubledoubledoubledoubleRealVRealV"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="PhotonCote(double%44%32double%44%32double%44%32double%44%32RealV%44%32RealV)">PhotonCote(double, double, double, double, RealV, RealV)</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>PhotonCote(
+    double inI,
+    double inQ,
+    double inU,
+    double inV,
+    RealV inEpara ,
+    RealV inEprop );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This constructor makes a photon with polarization state given by 
+the four Stokes parameters passed as arguments.  The photon is assumed to travel along the (0,0,1)
+direction and have the reference axes for the Stokes parameter to be e_parallel = (1,0,0) and
+e_perp = (0,1,0)
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inI</em></tt></dt><dd>The intensity (first Stokes parameter)</dd>
+<dt><tt><em>inQ</em></tt></dt><dd>The Q parameter (second Stokes parameter)</dd>
+<dt><tt><em>inU</em></tt></dt><dd>The U parameter (third Stokes parameter)</dd>
+<dt><tt><em>inV</em></tt></dt><dd>The V parameter (fourth Stokes parameter)</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/PhotonCote/init; name=PhotonCote::init -->
+<a name="//apple_ref/cpp/instm/PhotonCote/init"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="init">init</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void init(
+) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Initialize anything that is left to initialize, which for now means
+spitting out a warning to stdlog to make sure the user knows what he is using.
+    </p>
+<hr>
+<h2>Member Data</h2>
+<hr>
+<p>(Last Updated 2/23/2005)
+</p></body></html>

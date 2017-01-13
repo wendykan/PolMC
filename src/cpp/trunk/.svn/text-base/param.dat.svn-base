@@ -1,0 +1,201 @@
+# This is the parameter file for the polarization-sensitive
+# Monte Carlo implementation of D. Cote et al. (a.k.a polmc)
+# The order of parameters is irrelevant, but they tend to be grouped together
+
+# Number of photons used in calculations
+N_photon=1000000
+#coherent=1
+
+# Values to remember (see MCObject.h)
+# Absorbance and transmittance:3072
+# Absorbance and transmittance+Polarized Q: 11265
+# Scattering stats: 2097152
+
+gOutputProperties=67108888
+
+# Define to keep all photon stats (paths, directions, etc ...)
+# It is very very slow, but useful for debugging
+# Comment out to not use it.
+
+keepPhotonStats=1
+#timeResolvedMeasurements=1
+
+# Interface detection
+# There is an algorithm for better (i.e. faster) interface detection with complex 3D objects
+subdivisionProximity=7
+minSurfaceElements=50
+minPhotonCount=1000
+
+# If debug is activated you may set a "level"
+# for messages. These are: Normal, Verbose, ExtremelyVerbose
+
+debugLevel=Normal
+#dumpAllPhotonStats=1
+
+#
+# Object geometry
+#
+# The object type.  Currently, we support: box, sphere, single layer
+# cylinder.
+# - If the object is a box, one must define:
+# size=(width,height,depth) and Nx,Ny, Nz for the number of bins
+# - If the object is a (single) layer, one defines:
+# size=(imagingwidth,imgaingheight,thickness) and Nx,Ny for number of bins
+# thickness, Nx, Ny and imagingWidth, imagingHeight
+# - If the object is an ellipsoid (made of 36 small triangles)
+# size=(width,height,depth) and Nx,Ny for the number of bins on each triangle (usually 1 and 1)
+# If the object is a cylinder, define
+# height,radius, Nr, Nh
+objectType=generic
+objectFile=CuvetteAndSample-tri.obj
+origin=(0,0,0)
+#objectResolution=0.5
+
+# For a box, define the following:
+size=(1,1,0.5)
+Nx=11
+Ny=11
+Nz=11
+
+# For a layer, define the following:
+#size=(1,1,1.2e-4)
+#Nx=40
+#Ny=40
+
+# For a sphere, define the following, which represent the full width axes
+# Currently, a sphere is made from 36 triangular elements
+# Each element can be subdivided in Nx * Ny elements for statistics
+#size=(1,1,1)
+#Nx=1
+#Ny=1
+#Nz=1
+
+# For a cylinder, define the following:
+#Nr=10
+#Nh=10
+#radius=1
+#height=1
+
+# Number of bins for storing the output photons
+# Photons are binned in "acceptanceCosElements" bins
+# of width (1 - 0)/acceptanceCosElements
+acceptanceCosElements=1
+
+
+#
+# World geometry
+#
+# The "world" is responsible for keeping track of energy deposition
+# in a Cartesian grid that span from Vol_XMin to Vol_XMax in the x direction,
+# Vol_YMin to Vol_YMax in the y direction, Vol_ZMin to Vol_ZMax in the z direction
+# Every axis is binned with Nx(yz) elements.
+Vol_Nx=30
+Vol_Ny=1
+Vol_Nz=30
+Vol_XMin=-0.75
+Vol_XMax=0.75
+Vol_YMin=-0.025
+Vol_YMax=0.025
+Vol_ZMin=-0.75
+Vol_ZMax=0.75
+#This is the index of refraction in "the world" (air usually, but could be water)
+index_outside=1
+
+#
+# Source
+#
+# Input Beam type: by default, the beam is a pencil beam
+# at (0,0,0).  The supported beam types are pencil and disk.
+# For disk, inputBeamDiameter must be defined.
+
+inputBeamType=pencil
+#inputBeamDiameter=0.4
+#beamCurvature=inf
+
+# Source parameters 
+source=(0,0,-2)
+#sourceInsideObjectNamed=sample
+direction=(0,0,1)
+
+
+#
+# Input Stokes vector
+#
+# If allStokesVector is defined, then all Stokes vector (1,0,0,0), (1,1,0,0) (1,0,1,0) and (1,0,0,1)
+# are calculated. If undefined, you need to define Io, Qo, Uo, and Vo with outputFilename
+#allStokesVector=true
+Io=1
+Qo=1
+Uo=0
+Vo=0
+outputFilename=out.xml
+
+
+#
+# Detector position, pixel number and position
+#
+
+detectorSize=4
+detectorPixels=25
+detectorPosition=(0,0,2)
+detectorAcceptsBallistic=1
+
+# Detection formalism:
+#
+# Please refer to source code.
+# Various authors have published different methods for accumulating the macroscopic Stokes
+# values.
+# Current options are: Jaillon, Cote, Intensity (no polarization)
+
+formalism=Intensity
+
+#
+# Optical and scattering properties of object and surrounding
+#
+# Random angle sampling:  various algorithms have been presented by different authors
+# for sampling the scattering angle theta and the azimuthal angle phi:
+#
+# Bartel et al. "Monte Carlo simulations of the diffuse backscattering Mueller matrix
+# for highly scattering media", Applied Optics,  39, No 10, p. 1580, (2000)
+#
+# Jaillon et al. "Description and time reduction of a Monte Carlo code to simulate
+# propagation of polarized light through scattering media", Applied Optics,  42, No
+# 16, p. 3290, (2003)
+#
+# Kaplan et al. "Mueller matrix of dense polystyrene latex sphere suspensions:
+# measurements and Monte Carlo simulation", Applied Optics,  40, No 16, p. 2769,
+# (2001)
+#
+# L. Wang et al. "Monte Carlo Modeling of Light Transport in multi-layered Tissues in
+# Standard C", http://ece.ogi.edu/mcml/ (1998)
+randomSampling=HG
+
+# For Kaplan, Jaillon: Mie scattering properties
+# These parameters are used for Mie scattering calculations
+#index_med=1.33
+#index_scat=1.59
+#radius_scat=1e-4
+#wavelength=0.25
+# This is the number of points that will be tabulated for quick lookups
+N_scatterpts=10000
+
+# If HG distribution is used, define the following
+g=0.9
+index_med=1.5
+wavelength=0.633e-4
+
+# Optica properties of sample
+minimumWeight=1e-99
+mu_s=30
+mu_a=0.
+
+
+# This polmc program was made initially for 
+# optical activity measurements.
+# The rotation due to optical activity 
+# is given in radians/cm, not degree/cm
+# If undefined, medium is not optically active.
+#rotationPerCmInClearSpace=0.0128
+
+
+

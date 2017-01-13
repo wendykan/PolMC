@@ -1,0 +1,1104 @@
+#if HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#include <math.h>
+#include <iostream>
+#include <fstream>
+
+#if HAVE_STDEXCEPT
+#include <stdexcept>
+#endif
+
+#include <string>
+#include <cmath>
+#include <ctime>
+#include <limits>
+#include <cstdarg>
+
+#if HAVE_LIBXML2
+#include "MCMaterials.h"
+#endif
+
+#if WITH_POLARIZATION
+#include "scatmech.h"
+#include "miescat.h"
+#include "askuser.h"
+#include "MuellerM.h"
+#endif
+
+
+#include "constants.h"
+#include "configfiles.h"
+#include "cubicspline.h"
+#include "mydebug.h"
+#include "Photon.h"
+#include "RealV.h"
+#include "StokesV.h"
+#include "MCObject.h"
+#include "MCWorld.h"
+#include "MuellerM.h"
+#include "MCRandomScatterer.h"
+#include "MCUtils.h"
+#include "MCMaterials.h"
+
+#if HAVE_UNISTD_H
+#include <unistd.h>
+#endif
+
+#ifdef USE_MTRAND
+	#include "mtRand.h"
+	mtRand gRand;
+#elif defined(USE_NUMRECIPES_RAND)
+	#include "rand.h"
+#else
+	#error "No random number generator defined: you must define USE_MTRAND or USE_NUMRECIPES_RAND"
+#endif
+
+#define SQR(x) (x)*(x)
+
+bool MCRandomScatterer::hasBeenSeeded = false;
+
+using namespace std;
+
+MCRandomScatterer::MCRandomScatterer(double inMu_s,
+                                     double inMu_a,
+                                     double inIndexMedium,
+                                     unsigned long inSeed)
+{
+    initScattererProperties(SAFETY_DISTANCE, 1, inIndexMedium, 0, 0 ); // I can't see why, but radius can't be zero or NAN
+    initScattererDistributions(inMu_s, inMu_a);
+
+    mMuellerM = 0;
+    mMuellerMSpherical = 0;
+
+	if (! hasBeenSeeded) 
+		SetSeed(inSeed);
+
+    initStats();
+    
+}
+
+
+MCRandomScatterer::MCRandomScatterer(double inScattererRadius,
+                                     double inIndexScatterer,
+                                     double inIndexMedium,
+                                     double inWavelength,
+                                     long inPointsTable,
+                                     double inMu_s,
+                                     double inMu_a,
+                                     unsigned long inSeed)
+{
+    initScattererProperties(inScattererRadius, inIndexScatterer, inIndexMedium, inWavelength, inPointsTable);
+    initScattererDistributions(inMu_s, inMu_a);
+
+	if (! hasBeenSeeded) 
+		SetSeed(inSeed);
+    
+    initStats();
+
+}
+
+
+MCRandomScatterer::MCRandomScatterer(map<string,string> inDict)
+{
+    double theScattererRadius;
+    double theIndexScatterer;
+    double theIndexMedium;
+    double theWavelength;
+    double theMu_s;
+    double theMu_a;
+    long thePointsTable = -1;
+    unsigned long theSeed = 0;
+    
+    InitVariable(inDict, "wavelength", theWavelength);
+    InitVariable(inDict, "index_med", theIndexMedium);
+    InitVariable(inDict, "index_scat", theIndexScatterer);
+    InitVariable(inDict, "radius_scat", theScattererRadius);
+    InitVariable(inDict, "mu_s",theMu_s);
+    InitVariable(inDict, "mu_a",theMu_a);
+
+    if (VariableExists(inDict, "N_scatterpts")) {
+        InitVariable(inDict, "N_scatterpts", thePointsTable);
+    } else {
+        thePointsTable = 10000;
+    }
+    
+    if (VariableExists(inDict, "seed")) {
+        InitVariable(inDict, "seed", theSeed);
+    }
+
+    initScattererProperties(theScattererRadius, theIndexScatterer, theIndexMedium, theWavelength, thePointsTable);
+    initScattererDistributions(theMu_s, theMu_a);
+
+	if (! hasBeenSeeded) 
+		SetSeed(theSeed);
+    
+    initStats();
+}
+
+MCRandomScatterer::~MCRandomScatterer()
+{
+}
+
+MCRandomScatterer&
+MCRandomScatterer::operator=(const MCRandomScatterer& inRhs)
+{
+	if (&inRhs != this) {
+		initScattererProperties(inRhs.mScattererRadius, inRhs.mIndexScatterer, inRhs.mIndexMedium, inRhs.mWavelength,inRhs.mPointsTable );
+		initScattererDistributions(inRhs.mMu_s, inRhs.mMu_a);
+
+		SetSeed(0);
+		
+		initStats();
+	}
+	
+    return *this;
+}
+
+void
+MCRandomScatterer::initScattererDistributions(double inMu_s,
+                                              double inMu_a)
+{
+	MyAssert_(inMu_s >= 0);
+	MyAssert_(inMu_a >= 0);
+    mMu_s = inMu_s;
+    mMu_a = inMu_a;
+    mMu_t = mMu_s + mMu_a;
+}
+
+MuellerM*
+MCRandomScatterer::GetMuellerMatrix() 
+{
+    return mMuellerM; 
+}
+
+MuellerMSpherical* 
+MCRandomScatterer::GetMuellerMatrixSpherical()  
+{ 
+    return mMuellerMSpherical; 
+}
+
+void
+MCRandomScatterer::initScattererProperties(double inScattererRadius,
+                        double inIndexScatterer,
+                        double inIndexMedium,
+                        double inWavelength,
+                        long inPointsTable)
+{
+	MyAssert_(inWavelength >= 0);
+	MyAssert_(inIndexMedium >= 1);
+	MyAssert_(inIndexScatterer >= 1);
+	MyAssert_(inScattererRadius >= 0);
+
+    mWavelength = inWavelength;
+    mIndexMedium = inIndexMedium;
+    mIndexScatterer = inIndexScatterer;
+    mScattererRadius = inScattererRadius;
+
+#if WITH_POLARIZATION    
+    mPointsTable = inPointsTable;
+    if (mPointsTable == -1) {
+        mPointsTable = 10000;
+    }
+	if (mPointsTable >  0) {
+		double *tempX = new double[mPointsTable];
+		double *tempS11 = new double[mPointsTable];
+		double *tempS12 = new double[mPointsTable];
+		double *tempS33 = new double[mPointsTable];
+		double *tempS34 = new double[mPointsTable];
+
+		MieScatterer scat;
+		scat.set_radius(mScattererRadius);
+		scat.set_medium(optical_constant(mIndexMedium));
+		scat.set_sphere(optical_constant(mIndexScatterer));
+
+
+		double m00= MuellerMatrix(scat.s(0.0,mWavelength))[0][0];
+		for (long i = 0; i < inPointsTable; i++) {
+			double theta = double(i) * PI / double(mPointsTable-1);
+			MuellerMatrix m=scat.s(theta,mWavelength);
+			tempX[i] = theta;
+			tempS11[i] = m[0][0] / m00;
+			tempS12[i] = m[0][1] / m00;
+			tempS33[i] = m[2][2] / m00;
+			tempS34[i] = m[2][3] / m00;
+		}
+
+		
+		mMuellerMSpherical = new MuellerMSpherical(tempX,tempS11,tempS12,tempS33,tempS34,mPointsTable);
+		mMuellerM = mMuellerMSpherical;
+
+		delete[] tempX;
+		delete[] tempS11;
+		delete[] tempS12;
+		delete[] tempS33;
+		delete[] tempS34;
+	} else {
+		mMuellerMSpherical = 0;
+		mMuellerM = 0;
+	}
+#else
+    mPointsTable = 0;
+    mMuellerMSpherical = 0;
+    mMuellerM = 0;
+#endif
+    KeepStats();
+
+}
+
+void
+MCRandomScatterer::initStats()
+{
+    mUserWarned = false;
+    mKeepStats = true;
+
+    mAvgCosine = 0;
+    mTotalCount = 0;
+    
+    for(long i = 0; i< N_Points_stats; i++) {
+        mHistTheta[i] = 0;
+        mHistPhi[i] = 0;
+
+        for (long j = 0; j < N_Points_stats; ++j) {
+            m2DHistThetaPhi[i][j] = 0;
+        }
+    }
+
+    return;
+}
+
+void 
+MCRandomScatterer::SetScatteringCoefficient(double inMu_s) 
+{
+    mMu_s = inMu_s;
+    mMu_t = mMu_s + mMu_a; 
+}
+
+void 
+MCRandomScatterer::SetAbsorptionCoefficient(double inMu_a) 
+{
+    mMu_a = inMu_a; 
+    mMu_t = mMu_s + mMu_a; 
+}
+
+double 
+MCRandomScatterer::GetIndexMedium(Photon* inPhoton) 
+{
+    return mIndexMedium;
+}
+
+double 
+MCRandomScatterer::GetScatteringCoefficient(Photon* inPhoton) 
+{ 
+    return mMu_s; 
+}
+
+double 
+MCRandomScatterer::GetAbsorptionCoefficient(Photon* inPhoton) 
+{
+    return mMu_a; 
+}
+
+double 
+MCRandomScatterer::GetTotalExtinctionCoefficient(Photon* inPhoton) 
+{ 
+    return mMu_t; 
+}
+
+
+void 
+MCRandomScatterer::GetRandomScatteringAngles(  double&    outTheta,
+                                               double&    outPhi,
+                                               Photon*   inPhoton) 
+{
+}
+
+void
+MCRandomScatterer::SetSeed(unsigned long inSeed)
+{
+    if (inSeed == 0 ) {
+        // We want to seed with a different random number everytime.
+        // This is not as easy as it sounds.  There are several options:
+        // 1) Taking the clock time() will give the same seed if you start several processes at the same time
+        // 2) Taking the process ID works ok, as long as the operating system provides it.
+    #ifdef USE_MTRAND
+        clog << RightNow() << "Using mtRand for random generator"<< endl;
+    #elif defined(USE_NUMRECIPES_RAND)
+        clog << RightNow() << "Using rand from numerical recipes for random generator"<< endl;
+    #else
+    #error "No random number generator defined: you must define USE_MTRAND or USE_NUMRECIPES_RAND"
+    #endif
+    
+    
+    #if HAVE_UNISTD_H
+        pid_t pid_seed = getpid();
+        clog << RightNow() << "Sequence of random numbers seeded with process ID"<< endl;
+        SetSeed((unsigned long)pid_seed);
+    #else
+        clog << RightNow() << "Sequence of random numbers seeded with time(). Watch out for multiple processes with same seed."<< endl;
+        mSeed = -(unsigned long)time(NULL)%(1<<15);
+    #endif
+    } else {
+        mSeed = inSeed;
+    }
+    
+    #ifdef USE_MTRAND
+    gRand.sgenrand(mSeed);
+    #elif defined(USE_NUMRECIPES_RAND)
+    RandomGen(0, mSeed, NULL);
+    #endif
+
+	hasBeenSeeded = true;
+}
+
+unsigned long
+MCRandomScatterer::GetSeed()
+{
+    return mSeed;
+}
+
+
+double
+MCRandomScatterer::RandomFloat()
+{
+	#ifdef USE_MTRAND
+		return 	gRand.gendrand();
+	#else
+	    #ifdef USE_NUMRECIPES_RAND
+    		return RandomGen(1, 0, NULL);
+        #endif
+	#endif
+}
+
+
+void
+MCRandomScatterer::Roulette(Photon* ioPhoton)
+{
+    if (ioPhoton->GetWeight() <= WeightThreshold) {
+        if(RandomFloat() < CHANCE) /* survived the roulette.*/
+            ioPhoton->MultiplyWeightBy( 1. / CHANCE );
+        else
+            ioPhoton->SetWeight(0);
+    }
+}
+
+void 
+MCRandomScatterer::KeepStats()
+{
+    mKeepStats = true; 
+}
+
+void 
+MCRandomScatterer::DontKeepStats() 
+{ 
+    mKeepStats = false;
+}
+
+double
+MCRandomScatterer::GetRandomScatteringDistance(Photon* inPhoton)
+{
+    double n;
+
+    CheckValue_(mScattererRadius);
+
+    double mu_t;
+    mu_t = GetAbsorptionCoefficient(inPhoton) + GetScatteringCoefficient(inPhoton);
+    
+    if (mu_t == 0)
+        return INFINITE_DISTANCE;
+
+    long l = 100;
+    double d = 0;
+    
+    while ( d < 2. * mScattererRadius && l != 0) {
+        l--;
+        /* If the random number generator returns zero, we must discard it */
+        while ( (n = RandomFloat()) == 0.)
+            ;
+        d = -log(n) / mu_t ;
+    }
+          
+    if (l == 0)
+        throw runtime_error("Can't get random distance in GetRandomScatteringDistance()");
+
+    return d;
+
+}
+
+void
+MCRandomScatterer::AddToHistograms(double inTheta, double inPhi)
+{
+    long t = WhichBin(inTheta, 0, PI, N_Points_stats);
+    long f = WhichBin(inPhi, 0, 2*PI, N_Points_stats);
+
+    // We don't want to wrap and break the stats
+    // If we have tabulated 2^30 so far, we have plenty
+    if (mTotalCount < (1L<<30)) {
+        if (t != -1) {
+            mHistTheta[t]++;
+
+            mTotalCount++;
+            mAvgCosine += cos(inTheta);
+        }	
+        if (f != -1)
+            mHistPhi[f]++;
+
+        if (t != -1 && f != -1 ) {
+            m2DHistThetaPhi[t][f]++;
+        }
+    }
+}
+
+double 
+MCRandomScatterer::GetSampledAnisotropy()
+{
+    return mAvgCosine/double(mTotalCount);
+}
+
+void
+MCRandomScatterer::DumpStatsToStream(ostream& out)
+{
+	
+	out << "<mu_s>" << mMu_s << "</mu_s>" << endl;
+    out << "<mu_a>" << mMu_a << "</mu_a>" << endl;
+    out << "<indexScatterer>" << mIndexScatterer << "</indexScatterer>" << endl;
+    out << "<scattererRadius>" << mScattererRadius << "</scattererRadius>" << endl;
+    out << "<sampledAnisotropy>" << mAvgCosine/double(mTotalCount) << "</sampledAnisotropy>" << endl;   
+
+    if (mKeepStats && mTotalCount != 0) {
+		if (MCWorld::GetOutputProperties() & kScattererStatistics1D) {
+			out << "<!-- Scattering statistics: This is a table for the 1D histogram of theta and phi." << endl;
+			out << "     This first column is the bin number, second is theta, third is phi. -->" << endl;
+			out << "<scatteringStats type=\"1D\">" << endl;
+			
+			for(long i = 0; i< N_Points_stats; i++) {
+				out << i << "\t" << mHistTheta[i] << "\t" << mHistPhi[i] << endl;
+			}
+			out << "</scatteringStats>" << endl;
+		}
+		
+		if (MCWorld::GetOutputProperties() & kScattererStatistics2D) {
+			out << "<!-- Scattering statistics: This is a table for the 2D histogram of theta and phi. " << endl;
+			out << "     Each value on one line corresponds to fixed theta, varying phi. " << endl;
+			out << "     Next line is a different theta. -->" << endl;
+			out << "<scatteringStats type=\"2D\">" << endl;
+
+			for(long i = 0; i< N_Points_stats; i++) {
+				long j;
+				for(j = 0; j< N_Points_stats - 1; j++) {
+					out << m2DHistThetaPhi[i][j] << "\t";
+				}
+				out << m2DHistThetaPhi[i][j] << endl;
+			}
+			out << "</scatteringStats>" << endl;
+		}
+		
+        if (mTotalCount != 0) {
+            clog << RightNow() << "calculated g from " << mTotalCount << " sampled angles = " << mAvgCosine/double(mTotalCount) << endl;
+        } else {
+            clog << RightNow() << "Can't calculate g since no angles were generated and tabulated in the stats" << endl;
+        }
+    } else {
+		clog << RightNow() << "No stats kept on random angle sampling." << endl;
+    }
+	
+
+}
+
+MCRandomScattererKaplan::MCRandomScattererKaplan(double inScattererRadius,
+                        double inIndexScatterer,
+                        double inIndexMedium,
+                        double inWavelength,
+                        long inPointsTable,
+                        double inMu_s,
+                        double inMu_a,
+                        unsigned long inSeed)
+:MCRandomScatterer(inScattererRadius, inIndexScatterer, inIndexMedium,
+ inWavelength, inPointsTable, inMu_s, inMu_a, inSeed) 
+{
+    init();
+}
+
+
+MCRandomScattererKaplan::MCRandomScattererKaplan(map<string,string> inDict) 
+: MCRandomScatterer(inDict) 
+{
+    init();
+}
+
+MCRandomScattererKaplan::~MCRandomScattererKaplan()
+{
+     MCRandomScattererKaplan::DumpStats();
+}
+
+void
+MCRandomScattererKaplan::GetRandomScatteringAngles(double&    outTheta,
+                                                   double&    outPhi,
+                                                   Photon*   inPhoton)
+{
+    double u1,u2,u3,u4;
+
+    StokesV S;
+    inPhoton->GetStokesVectorInLocalFrame(S);
+    double W = S.degreeOfLinearPolarization();
+    double phi_o = S.Orientation();
+
+	if ( mWavelength != inPhoton->GetWavelength() ) {
+		throw runtime_error("Tables for Mie Scatterer with Kaplan model were pre-computed with different wavelength from that of photon");
+	}
+
+    CheckDoubleValue_(W);
+    CheckDoubleValue_(phi_o);
+
+    long l = 1000;
+    while (--l) {
+        u1 = RandomFloat();
+        u2 = RandomFloat();
+        u3 = RandomFloat();
+        u4 = RandomFloat();
+
+        if (u1 < mT1/(mT1+mT2)) {
+            outTheta = mInvCumulProbS1_sqr_SinTheta.y(u2);
+        } else {
+            outTheta = mInvCumulProbS2_sqr_SinTheta.y(u2);
+        }
+
+        if (u3 < 1. - W) {
+            outPhi = 2. * PI * u4;
+        } else {
+            if (u1 < mT1/(mT1+mT2)) {
+                outPhi = mInvF1_phi.y(u4 - (2. * phi_o - sin(2. * phi_o))/4./PI ) + phi_o;
+            } else {
+                outPhi = mInvF2_phi.y(u4 - (2. * phi_o + sin(2. * phi_o))/4./PI ) + phi_o;
+            }
+        }
+        if ( (outTheta >= 0. && outTheta <= PI) && (outPhi >= 0. && outPhi <= 2.*PI))
+            break;
+    }
+
+    if (l == 0) {
+        clog << RightNow() << "Current :" << u1 << "\t" <<  u2 << "\t" <<  u3 << "\t" <<  u4 << "\t" <<  W << "\t" <<  phi_o << endl ;
+        throw runtime_error("Could not compute random angles in MCRandomScattererKaplan::GetRandomScatteringAngles");
+    }
+    
+    if (mKeepStats)
+        AddToHistograms(outTheta,outPhi);
+    
+}
+
+void
+MCRandomScattererKaplan::init()
+{
+    
+    // Cumulative probability distribution for S1 and S2
+    double m11, m12;
+    double s1_sqr,s2_sqr;
+    double theta = 0, dTheta;
+    long N;
+    long i;
+
+    fastinterpolate s11,s12,s33,s34;
+    
+    mMuellerMSpherical-> GetCopyOfInterpolationTables(s11,s12,s33,s34);
+
+    /* Below, we make some assumptions. Size and "x's" must be the same for all tables. */
+    if ( ! (s11.size() == s12.size() &&  s12.size() == s33.size()  && s33.size() == s34.size() ) ) {
+        clog <<  s11.size() << " " << s12.size() << " " << s33.size() << " " << s34.size() << "\n" ;
+        throw runtime_error("Could not initialize tables in MCRandomScattererKaplan: size of tables in Mueller matrix are different. You must use a different algorithm (or rewrite MCRandomScattererKaplan::init)\n");
+    }
+    N = s11.size();
+
+    for (i = 0; i < N; i++) {
+        if ( !( s11.xelement(i) == s12.xelement(i) && s12.xelement(i) == s33.xelement(i) && s33.xelement(i) == s34.xelement(i) ) ) {
+            throw runtime_error("Could not initialize tables in MCRandomScattererKaplan: abscissa of tables in Mueller matrix are different. You must use a different algorithm (or rewrite MCRandomScattererKaplan::init)");
+        }
+    }
+
+    dTheta = 0.;
+    mT1 = 0;
+    mT2 = 0;
+    
+    for (i = 0; i < N; i++) {
+        theta = s11.xelement(i);
+
+        if (i != 0)
+            dTheta = theta - s11.xelement(i-1);
+            
+        m11 = s11.yelement(i);
+        m12 = s12.yelement(i);
+
+        
+        s1_sqr = (m11 - m12);
+        s2_sqr = (m11 + m12);
+
+        mS1_sqr.insertpoint(theta, s1_sqr);
+        mS2_sqr.insertpoint(theta, s2_sqr);
+
+        mT1 += s1_sqr * sin(theta) * dTheta;
+        mT2 += s2_sqr * sin(theta) * dTheta;
+
+        mInvCumulProbS1_sqr_SinTheta.insertpoint(mT1, theta);
+        mInvCumulProbS2_sqr_SinTheta.insertpoint(mT2, theta);
+
+    }
+
+    mInvCumulProbS1_sqr_SinTheta.NormalizeX(mT1);
+    mInvCumulProbS2_sqr_SinTheta.NormalizeX(mT2);
+
+    dTheta = 8.*PI/double(N);
+
+    for (i = 0; i < N; i++) {
+        theta = double(i-N/2)*dTheta;
+        mInvF1_phi.insertpoint((2 * theta - sin(2 * theta))/4./PI, theta);
+        mInvF2_phi.insertpoint((2 * theta + sin(2 * theta))/4./PI, theta);
+    }
+
+    mInvF1_phi.RemoveDuplicates();
+    mInvF2_phi.RemoveDuplicates();
+
+}
+
+void
+MCRandomScattererKaplan::DumpStatsToStream(ostream& out)
+{
+	out << "<scattererType>Mie Scatterer (Kaplan sampling method)</scattererType>" << endl;
+	
+	MCRandomScatterer::DumpStatsToStream(out);
+}
+
+
+void
+MCRandomScattererKaplan::DumpStats()
+{
+     long N;
+    {
+        ofstream fOutput("kaplan_S1S2.dat",std::ios_base::out);
+        if (fOutput.fail() ) {
+            throw runtime_error("unable to open kaplan_S1S2.dat file");
+        }
+        fOutput.setf(ios::scientific);
+        N = mS1_sqr.size();
+        
+        for(long i = 0; i< N; i++) {
+                fOutput << mS1_sqr.xelement(i) << "\t" << mS1_sqr.yelement(i) << "\t" << mS2_sqr.yelement(i) << "\n";
+        }
+    }
+
+    {
+        ofstream fOutput("kaplan_InvF1_phi.dat",std::ios_base::out);
+        if (fOutput.fail() ) {
+            throw runtime_error("unable to open kaplan_InvF1_phi.dat file");
+        }
+        fOutput.setf(ios::scientific);
+        N = mInvF1_phi.size();
+
+        for(long i = 0; i< N; i++) {
+            fOutput << mInvF1_phi.xelement(i) << "\t" << mInvF1_phi.yelement(i)  << "\n";
+        }
+    }
+
+    {
+        ofstream fOutput("kaplan_InvF2_phi.dat",std::ios_base::out);
+        if (fOutput.fail() ) {
+            throw runtime_error("unable to open kaplan_InvF2_phi.dat file");
+        }
+        fOutput.setf(ios::scientific);
+        N = mInvF2_phi.size();
+
+        for(long i = 0; i< N; i++) {
+            fOutput << mInvF2_phi.xelement(i) << "\t" << mInvF2_phi.yelement(i)  << "\n";
+        }
+    }
+
+    {
+        ofstream fOutput("kaplan_InvProbS1.dat",std::ios_base::out);
+        if (fOutput.fail() ) {
+            throw runtime_error("unable to open kaplan_InvProbS1.dat file");
+        }
+        fOutput.setf(ios::scientific);
+        N = mInvCumulProbS1_sqr_SinTheta.size();
+
+        for(long i = 0; i< N; i++) {
+            fOutput << mInvCumulProbS1_sqr_SinTheta.xelement(i) << "\t" << mInvCumulProbS1_sqr_SinTheta.yelement(i)  << "\n";
+        }
+    }
+
+    {
+        ofstream fOutput("kaplan_InvProbS2.dat",std::ios_base::out);
+        if (fOutput.fail() ) {
+            throw runtime_error("unable to open kaplan_InvProbS2.dat file");
+        }
+        fOutput.setf(ios::scientific);
+        N = mInvCumulProbS2_sqr_SinTheta.size();
+
+        for(long i = 0; i< N; i++) {
+            fOutput << mInvCumulProbS2_sqr_SinTheta.xelement(i) << "\t" << mInvCumulProbS2_sqr_SinTheta.yelement(i)  << "\n";
+        }
+    }
+
+}
+
+MCRandomScattererHenyeyGreenstein::MCRandomScattererHenyeyGreenstein(map<string,string> inDict)
+: MCRandomScatterer(inDict) 
+{
+    init();
+}
+
+MCRandomScattererHenyeyGreenstein::MCRandomScattererHenyeyGreenstein(double inAnisotropy,
+                                  double inMu_s,
+                                  double inMu_a,
+                                  double inIndex,
+                                  unsigned long inSeed) 
+: MCRandomScatterer(inMu_s, inMu_a, inIndex, inSeed)
+{
+    init(inAnisotropy);
+}
+
+MCRandomScattererHenyeyGreenstein::~MCRandomScattererHenyeyGreenstein()
+{
+    
+}
+
+void
+MCRandomScattererHenyeyGreenstein::init(double inAnisotropy)
+{
+    mG = inAnisotropy;
+
+    if (!mUserWarned) {
+        clog << RightNow() << "Henyey-Greenstein distribution used, anisotropy set by user (g = " << mG << ")" << endl;
+        mUserWarned = true;
+    }
+}
+
+void
+MCRandomScattererHenyeyGreenstein::init()
+{
+    
+    mG = mMuellerM->GetAnisotropyCoefficient();
+
+    if (!mUserWarned) {
+        clog << RightNow() << "Henyey-Greenstein distribution used, anisotropy calculated from Mueller matrix (g = " << mG << ")" << endl;
+        mUserWarned = true;
+    }
+}
+
+void
+MCRandomScattererHenyeyGreenstein::GetRandomScatteringAngles(double&    outTheta,
+                                                             double&    outPhi,
+                                                             Photon*   inPhoton)
+{
+    // The method used is that of L. Wang (Henyey-Greenstein)
+    double g = mG;
+
+    long l = 100;
+    while(--l) {
+        if (g != 0) {
+            // We don't want to calculate RandomFloat() twice in the following expression.
+            // That's why we use a temporary variable.
+            double rand_frac =  (1. - SQR(g)) / (1. - g + 2. * RandomFloat() * g);
+
+            outTheta = acos( (1. + SQR(g) - SQR(rand_frac)) / (2.*g) );
+        } else {
+            outTheta = acos(1. - 2. * RandomFloat());
+        }
+        
+        outPhi = 2.*PI * RandomFloat();
+
+        if ( (outTheta >= 0 && outTheta <= PI) && (outPhi >= 0 && outPhi <= 2.*PI))
+            break;
+
+    }
+
+    if (l == 0) {
+        throw runtime_error("Could not compute random angles in MCRandomScattererHenyeyGreenstein::GetRandomScatteringAngles");
+    }
+    
+    if (mKeepStats)
+        AddToHistograms(outTheta,outPhi);
+    
+}
+
+
+void
+MCRandomScattererHenyeyGreenstein::DumpStatsToStream(ostream& out)
+{
+	out << "<scattererType>HenyeyGreenstein</scattererType>" << endl;
+    out << "<anisotropy>" << mG << "</anisotropy>" << endl;
+	
+	MCRandomScatterer::DumpStatsToStream(out);
+}
+
+MCRandomScattererJaillon::MCRandomScattererJaillon(double inScattererRadius,
+                                                   double inIndexScatterer,
+                                                   double inIndexMedium,
+                                                   double inWavelength,
+                                                   long inPointsTable,
+                                                   double inMu_s,
+                                                   double inMu_a,
+                                                   unsigned long inSeed)
+:MCRandomScatterer(inScattererRadius, inIndexScatterer, inIndexMedium,
+                   inWavelength, inPointsTable, inMu_s, inMu_a, inSeed) 
+{
+    init();
+}
+
+
+MCRandomScattererJaillon::MCRandomScattererJaillon(map<string,string> inDict) 
+: MCRandomScatterer(inDict) 
+{
+    init();
+}
+
+void
+MCRandomScattererJaillon::init()
+{
+    if (!mUserWarned) {
+        clog << RightNow() << "Jaillon method used for angles.\n";
+        mUserWarned = true;
+    }
+
+    // Cumulative probability distribution for S1 and S2
+    double m11, m12;
+    double theta = 0;
+    double cumulComp = 0;
+    long N ;
+    long i;
+
+    double dTheta;
+
+    fastinterpolate s11,s12,s33,s34;
+    mMuellerMSpherical-> GetCopyOfInterpolationTables(s11,s12,s33,s34);
+
+    /* Below, we make some assumptions. Size and "x's" must be the same for all tables. */
+    if ( ! (s11.size() == s12.size() &&  s12.size() == s33.size()  && s33.size() == s34.size() ) ) {
+        clog <<  s11.size() << " " << s12.size() << " " << s33.size() << " " << s34.size() << "\n" ;
+        throw runtime_error("Could not initialize tables in MCRandomScattererJaillon: size of tables in Mueller matrix are different. You must use a different algorithm (or rewrite MCRandomScattererJaillon::init)\n");
+    }
+    N = s11.size();
+
+    for (i = 0; i < N; i++) {
+        if ( !( s11.xelement(i) == s12.xelement(i) && s12.xelement(i) == s33.xelement(i) && s33.xelement(i) == s34.xelement(i) ) ) {
+            throw runtime_error("Could not initialize tables in MCRandomScattererJaillon: abscissa of tables in Mueller matrix are different. You must use a different algorithm (or rewrite MCRandomScattererJaillon::init)");
+        }
+    }
+
+    dTheta = 0;
+    for (i = 0; i < N; i++) {
+        theta = s11.xelement(i);
+
+        if (i != 0)
+            dTheta = theta - s11.xelement(i-1);
+
+        m11 = s11.yelement(i);
+        m12 = s12.yelement(i);
+
+        cumulComp += (m11 + abs(m12)) * sin(theta) * dTheta;
+        mInvCumulComparison.insertpoint(cumulComp, theta);
+    }
+
+    mInvCumulComparison.NormalizeX(cumulComp);
+
+    mInvCumulComparison.RemoveDuplicates();
+
+
+}
+
+void
+MCRandomScattererJaillon::GetRandomScatteringAngles(double&    outTheta,
+                                                    double&    outPhi,
+                                                    Photon*   inPhoton)
+{
+    static bool warning=true;
+
+    StokesV S;
+    inPhoton->GetStokesVectorInLocalFrame(S);
+
+    double S0, Srand;
+    double m11,m12;
+
+    // The rejection method used is that of Jaillon,  Appl. Opt. 42, 16 p. 3293
+
+    S.Normalize();
+
+    double the2Phi;
+    const double FourPI = 4. * PI;
+    long l = 100;
+    while (--l) {
+        do {
+            outTheta = mInvCumulComparison.y(RandomFloat());
+            the2Phi = FourPI * RandomFloat();
+
+            mMuellerMSpherical->GetMatrixTopTwoElementsForTheta(m11,m12, outTheta);
+
+            S0 =    (m11 + m12 * ( cos (the2Phi) * S.mQ  + sin(the2Phi) * S.mU ));
+
+            Srand = RandomFloat() * (m11 + abs(m12) );
+
+        } while (Srand > S0);
+
+        outPhi = the2Phi/2.;
+        if ( (outTheta >= 0 && outTheta <= PI) && (outPhi >= 0 && outPhi <= 2.*PI))
+            break;
+    } 
+
+    if (l == 0) {
+        throw runtime_error("Could not compute random angles in MCRandomScattererJaillon::GetRandomScatteringAngles");
+    }
+    
+    if (mKeepStats)
+        AddToHistograms(outTheta,outPhi);
+    
+}
+
+void
+MCRandomScattererJaillon::DumpStatsToStream(ostream& out)
+{
+	out << "<scattererType>Mie Scatterer (Jaillon sampling method)</scattererType>" << endl;
+	
+	MCRandomScatterer::DumpStatsToStream(out);
+}
+
+MCRandomScattererMaterial::MCRandomScattererMaterial(MCMaterial& inMaterial)
+:MCRandomScattererHenyeyGreenstein(0,0,0,0)
+{
+    mMaterial = inMaterial;
+    
+    cWavelength = 0;
+    cBackgroundIndex = 0;
+    cScatteringCoefficient = 0;
+    cAbsorptionCoefficient = 0;
+    cAnisotropyCoefficient = 0;
+    cExtinctionCoefficient = 0;
+    cCacheScat = false;
+    cCacheAbs = false;
+    cCacheAnis = false;
+    cCacheIndex = false;
+    cCacheExt = false;
+}
+
+MCRandomScattererMaterial::~MCRandomScattererMaterial()
+{
+    
+}
+
+void
+MCRandomScattererMaterial::SetRelativeConcentration(double inConcentration)
+{
+    mMaterial.SetRelativeConcentration(inConcentration);
+}
+
+double
+MCRandomScattererMaterial::GetIndexMedium(Photon* inPhoton)
+{
+	double wavelength;
+    if (inPhoton != NULL)
+        wavelength = 1e7 * inPhoton->GetWavelength();
+    else
+        throw runtime_error("Index is dependent on wavelength, but wavelength is unknown because inPhoton is NULL");
+
+    if ( ! cCacheIndex || mWavelength != wavelength) {
+        mWavelength = wavelength;
+        cCacheIndex = true;
+        cBackgroundIndex = mMaterial.GetBackgroundIndex(wavelength);
+    }
+
+    return cBackgroundIndex;
+    
+}
+
+double 
+MCRandomScattererMaterial::GetScatteringCoefficient(Photon* inPhoton)
+{
+    double wavelength;
+    if (inPhoton != NULL)
+        wavelength = 1e7 * inPhoton->GetWavelength();
+    else
+        throw runtime_error("Scattering coefficient is dependent on wavelength, but wavelength is unknown because inPhoton is NULL");
+    
+    if ( ! cCacheScat || mWavelength != wavelength) {
+        mWavelength = wavelength;
+        cCacheScat = true;
+        cScatteringCoefficient = mMaterial.GetScatteringCoefficient(wavelength);
+    }
+
+    return cScatteringCoefficient;
+}
+
+double 
+MCRandomScattererMaterial::GetAbsorptionCoefficient(Photon* inPhoton)
+{
+    double wavelength;
+    if (inPhoton != NULL)
+        wavelength = 1e7 * inPhoton->GetWavelength();
+    else
+        throw runtime_error("Absorption coefficient is dependent on wavelength, but wavelength is unknown because inPhoton is NULL");
+    
+    if ( ! cCacheAbs || mWavelength != wavelength) {
+        mWavelength = wavelength;
+        cCacheAbs = true;
+        cAbsorptionCoefficient = mMaterial.GetAbsorptionCoefficient(wavelength);
+    }
+    
+    return cAbsorptionCoefficient;
+}
+
+double 
+MCRandomScattererMaterial::GetAnisotropyCoefficient(Photon* inPhoton)
+{
+    double wavelength;
+    if (inPhoton != NULL)
+        wavelength = 1e7 * inPhoton->GetWavelength();
+    else
+        throw runtime_error("Anisotropy coefficient is dependent on wavelength, but wavelength is unknown because inPhoton is NULL");
+    
+    if ( ! cCacheAnis || mWavelength != wavelength) {
+        mWavelength = wavelength;
+        cCacheAnis = true;
+        cAnisotropyCoefficient = mMaterial.GetAnisotropyCoefficient(wavelength);
+    }
+    
+    return cAnisotropyCoefficient;
+}
+
+double 
+MCRandomScattererMaterial::GetTotalExtinctionCoefficient(Photon* inPhoton)
+{
+    double wavelength;
+    if (inPhoton != NULL)
+        wavelength = 1e7 * inPhoton->GetWavelength();
+    else
+        throw runtime_error("Total extinction coefficient is dependent on wavelength, but wavelength is unknown because inPhoton is NULL");
+    
+    if ( ! cCacheExt || mWavelength != wavelength) {
+        mWavelength = wavelength;
+        cCacheExt = true;
+        cExtinctionCoefficient = mMaterial.GetAbsorptionCoefficient(wavelength) + mMaterial.GetScatteringCoefficient(wavelength);
+    }
+
+    return cExtinctionCoefficient;
+}
+
+void 
+MCRandomScattererMaterial::GetRandomScatteringAngles(  double&    outTheta,
+                                 double&    outPhi,
+                                 Photon*   inPhoton)
+{
+    MyAssert_(inPhoton);
+
+    mG = GetAnisotropyCoefficient(inPhoton);
+    
+    MCRandomScattererHenyeyGreenstein::GetRandomScatteringAngles(outTheta, outPhi, inPhoton);
+    
+}
+
+void
+MCRandomScattererMaterial::DumpStatsToStream(ostream& out)
+{
+	out << "<scattererType>Material look-up table</scattererType>" << endl;
+	out << "<material property=\"name\">" << mMaterial.GetName() << "</material>" << endl;
+	out << "<material property=\"key\">" << mMaterial.GetKey() << "</material>" << endl;
+	
+	MCRandomScatterer::DumpStatsToStream(out);
+}
+

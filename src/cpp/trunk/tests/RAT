@@ -1,0 +1,4 @@
+echo -n "R = "
+xpath $1 "/simulation/interface[@id='backward']/StokesV[@acceptanceCosineIndex=0]/attribute::transmittance"
+echo -n "T = " 
+xpath $1 "/simulation/interface[@id='forward']/StokesV[@acceptanceCosineIndex=0]/attribute::transmittance"

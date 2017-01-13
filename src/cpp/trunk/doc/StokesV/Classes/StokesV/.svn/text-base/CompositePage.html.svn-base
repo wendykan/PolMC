@@ -1,0 +1,854 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html><style type="text/css"><!--a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style><head>
+    <title>StokesV</title>
+	 <meta name="generator" content="HeaderDoc">
+</head><body bgcolor="#ffffff">
+<h1><font face="Geneva,Arial,Helvtica">StokesV</font></h1><br>
+<a name="//apple_ref/doc/class/StokesV" title="StokesV"></a>
+<h2>Discussion</h2>
+The class StokesV provides the necessary encapsulation and manipulation for 
+keeping track of the four Stokes parameters for a photon as well as some
+functions for manipulating reference frames.  The reference frames must be 
+handled separately.
+<br><br>
+For a reference on the definition of the parameters, see Bohren and Huffman p. 52, eq. 2.84.   We use:
+<br><br>
+The I parameter (first Stokes parameter) is E_parallel*conjugate(E_parallel) + E_perp*conjugate(E_perp)
+The Q parameter (second Stokes parameter) is E_parallel*conjugate(E_parallel) - E_perp*conjugate(E_perp)
+The U parameter (third Stokes parameter) is E_perp*conjugate(E_parallel) + E_parallel*conjugate(E_perp)
+The V parameter (fourth Stokes parameter) is sqrt(-1) * (E_perp*conjugate(E_parallel) - E_parallel*conjugate(E_perp))
+<br><br>
+The triad E_perpendicular, E_parallel, E_propagation is right handed 
+(i.e. (E_perpendicular cross E_parallel ) dot E_propagation == 1). Since most books take E_parallel
+to be horizontal, we need to have either E_parallel = (-1,0,0) or E_perpendicular (0,-1,0).
+I chose E_parallel = (-1,0,0) to match figure 2.14 and 2.15 in Bohren and Huffman,
+<br><br><hr><br><h2>Member Functions</h2>
+<a name="HeaderDoc_functions"></a>
+<dl>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/StokesV/StokesV" target="_top">StokesV</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/StokesV/StokesV/doubledoubledoubledoubleRealVRealV" target="_top">StokesV(double, double, double, double, RealV, RealV)</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/StokesV/StokesV/doubleRealV" target="_top">StokesV(double, RealV)</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/StokesV/StokesV/ComplexComplex" target="_top">StokesV(Complex, Complex)</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/StokesV/StokesV/constStokesV%38" target="_top">StokesV(const StokesV &)</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/StokesV/Normalize" target="_top">Normalize</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/StokesV/operator%61/constStokesV%38" target="_top">operator=</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/StokesV/operator+%61/StokesV" target="_top">operator+=</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/StokesV/operator%32+/StokesV" target="_top">operator +</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/StokesV/operator*%61/double" target="_top">operator*=</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/StokesV/operator%32*/double" target="_top">operator *</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/StokesV/operator%47%61/double%38" target="_top">operator/=</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/StokesV/operator%32//double%38" target="_top">operator /</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/StokesV/operator%61%61/StokesV" target="_top">operator==</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/StokesV/operator!%61/StokesV" target="_top">operator!=</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/StokesV/GetReferenceFrame()/RealV%38RealV%38RealV%38" target="_top">GetReferenceFrame()</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/StokesV/GetReferenceFrame/RealV%38RealV%38RealV%38" target="_top">GetReferenceFrame</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/StokesV/SetReferenceFrame()/RealV%38RealV%38RealV%38" target="_top">SetReferenceFrame()</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/StokesV/SetReferenceFrame/RealV%38RealV%38RealV%38" target="_top">SetReferenceFrame</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/StokesV/GetEparaAxis()" target="_top">GetEparaAxis()</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/StokesV/GetEparaAxis" target="_top">GetEparaAxis</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/StokesV/GetEperpAxis()" target="_top">GetEperpAxis()</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/StokesV/GetEperpAxis" target="_top">GetEperpAxis</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/StokesV/GetPropagationDirection()" target="_top">GetPropagationDirection()</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/StokesV/GetPropagationDirection" target="_top">GetPropagationDirection</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/StokesV/SetPropagationDirectionInLabFrame/RealV" target="_top">SetPropagationDirectionInLabFrame</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/StokesV/RotateReferenceFrameAroundPropagationDirectionBy()/double" target="_top">RotateReferenceFrameAroundPropagationDirectionBy()</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/StokesV/RotateReferenceFrameAroundPropagationDirectionBy/double" target="_top">RotateReferenceFrameAroundPropagationDirectionBy</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/StokesV/RotatePolarizationStateBy/double" target="_top">RotatePolarizationStateBy(double)</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/StokesV/RotatePolarizationStateBy/doubledouble" target="_top">RotatePolarizationStateBy(double, double)</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/StokesV/ChangePropagationDirectionAroundEPerpBy()/double" target="_top">ChangePropagationDirectionAroundEPerpBy()</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/StokesV/ChangePropagationDirectionAroundEPerpBy/double" target="_top">ChangePropagationDirectionAroundEPerpBy</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/StokesV/GetLocalComplexFields/Complex%38Complex%38" target="_top">GetLocalComplexFields</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/StokesV/Orientation" target="_top">Orientation</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/StokesV/degreeOfLinearPolarization" target="_top">degreeOfLinearPolarization</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/StokesV/degreeOfCircularPolarization" target="_top">degreeOfCircularPolarization</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/StokesV/degreeOfPolarization" target="_top">degreeOfPolarization</a></tt></dt>
+<dd></dd>
+</dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/StokesV/ChangePropagationDirectionAroundEPerpBy/double; name=StokesV::ChangePropagationDirectionAroundEPerpBy -->
+<a name="//apple_ref/cpp/instm/StokesV/ChangePropagationDirectionAroundEPerpBy/double"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="ChangePropagationDirectionAroundEPerpBy">ChangePropagationDirectionAroundEPerpBy</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>void ChangePropagationDirectionAroundEPerpBy(
+    double inTheta );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function changes the direction of propagation while keeping the polarization
+unchanged in the local frame.
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inTheta</em></tt></dt><dd>Angle by which the Stokes vector is rotated.  Can be positivie or negative.
+Positive is counterclockwise.
+<br><br>
+The transformation follows this reasoning:
+<br><br>
+In a frame of reference {er,el,ez}, those vectors are (1,0,0), (0,1,0) and (0,0,1) respectively.
+A rotation around er is therefore simple and is given by the following matrix:
+<br><br>
+/  1        0            0    \
+Rx(phi)  = |   0    Cos theta  -Sin theta  |
+\   0    Sin theta   Cos theta /
+<br><br>
+The matrix for changing basis from {e} to {xyz} is
+made of {el,er,ez} in column, that is:
+<br><br>
+/ er.x el.x ez.x \
+ChgBasisFrom_e_to_xyz = | er.y el.y ez.y |
+\ er.z el.z ez.z /
+<br><br>
+this gives the transformed vector in xyz coordinates. For instance,
+<br><br>
+er = unchanged
+el = ChgBasisFrom_e_to_xyz . Rx(theta) . (0,1,0)
+ez = ChgBasisFrom_e_to_xyz . Rx(theta) . (0,0,1)
+<br><br></dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/StokesV/ChangePropagationDirectionAroundEPerpBy()/double; name=StokesV::ChangePropagationDirectionAroundEPerpBy() -->
+<a name="//apple_ref/cpp/instm/StokesV/ChangePropagationDirectionAroundEPerpBy()/double"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="ChangePropagationDirectionAroundEPerpBy()">ChangePropagationDirectionAroundEPerpBy()</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>void ChangePropagationDirectionAroundEPerpBy(
+    double inTheta );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function changes the direction of propagation while keeping the polarization
+unchanged in the local frame.
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inTheta</em></tt></dt><dd>Angle by which the Stokes vector is rotated.  Can be positivie or negative.
+Positive is counterclockwise.
+<br><br>
+The transformation follows this reasoning:
+<br><br>
+In a frame of reference {er,el,ez}, those vectors are (1,0,0), (0,1,0) and (0,0,1) respectively.
+A rotation around er is therefore simple and is given by the following matrix:
+<br><br>
+/  1        0            0    \
+Rx(phi)  = |   0    Cos theta  -Sin theta  |
+\   0    Sin theta   Cos theta /
+<br><br>
+The matrix for changing basis from {e} to {xyz} is
+made of {el,er,ez} in column, that is:
+<br><br>
+/ er.x el.x ez.x \
+ChgBasisFrom_e_to_xyz = | er.y el.y ez.y |
+\ er.z el.z ez.z /
+<br><br>
+this gives the transformed vector in xyz coordinates. For instance,
+<br><br>
+er = unchanged
+el = ChgBasisFrom_e_to_xyz . Rx(theta) . (0,1,0)
+ez = ChgBasisFrom_e_to_xyz . Rx(theta) . (0,0,1)
+<br><br></dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/StokesV/GetEparaAxis; name=StokesV::GetEparaAxis -->
+<a name="//apple_ref/cpp/instm/StokesV/GetEparaAxis"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetEparaAxis">GetEparaAxis</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>RealV GetEparaAxis(
+) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function returns reference axis mEpara.
+<br><br>
+</p>
+<dl><dt><i>function result</i></dt><dd>The value of E_parallel is returned
+<br><br>
+     </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/StokesV/GetEparaAxis(); name=StokesV::GetEparaAxis() -->
+<a name="//apple_ref/cpp/instm/StokesV/GetEparaAxis()"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetEparaAxis()">GetEparaAxis()</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>RealV GetEparaAxis(
+) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function returns reference axis mEpara.
+<br><br>
+</p>
+<dl><dt><i>function result</i></dt><dd>The value of E_parallel is returned
+<br><br>
+     </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/StokesV/GetEperpAxis; name=StokesV::GetEperpAxis -->
+<a name="//apple_ref/cpp/instm/StokesV/GetEperpAxis"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetEperpAxis">GetEperpAxis</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>RealV GetEperpAxis(
+) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function returns reference axis mEperp.
+<br><br>
+</p>
+<dl><dt><i>function result</i></dt><dd>The value of E_perp is returned
+<br><br>
+     </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/StokesV/GetEperpAxis(); name=StokesV::GetEperpAxis() -->
+<a name="//apple_ref/cpp/instm/StokesV/GetEperpAxis()"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetEperpAxis()">GetEperpAxis()</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>RealV GetEperpAxis(
+) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function returns reference axis mEperp.
+<br><br>
+</p>
+<dl><dt><i>function result</i></dt><dd>The value of E_perp is returned
+<br><br>
+     </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/StokesV/GetLocalComplexFields/Complex%38Complex%38; name=StokesV::GetLocalComplexFields -->
+<a name="//apple_ref/cpp/instm/StokesV/GetLocalComplexFields/Complex%38Complex%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetLocalComplexFields">GetLocalComplexFields</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>void GetLocalComplexFields(
+    Complex & outEl,
+    Complex & outEr ) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>From the Stokes parameters, this function returns the complex fields
+E_parallel and E_perp. Don't forget that absolute phase is meaningless: one can multiply both electric
+fields by -1 without changing the physical meaning.
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>outEl</em></tt></dt><dd>The value of E_parallel is returned through this parameter</dd>
+<dt><tt><em>outEr</em></tt></dt><dd>The value of E_perp is returned through this parameter
+<br><br></dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/StokesV/GetPropagationDirection; name=StokesV::GetPropagationDirection -->
+<a name="//apple_ref/cpp/instm/StokesV/GetPropagationDirection"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetPropagationDirection">GetPropagationDirection</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>RealV GetPropagationDirection(
+) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function returns reference axis mEprop.
+<br><br>
+</p>
+<dl><dt><i>function result</i></dt><dd>The direction of propagation is returned
+<br><br>
+     </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/StokesV/GetPropagationDirection(); name=StokesV::GetPropagationDirection() -->
+<a name="//apple_ref/cpp/instm/StokesV/GetPropagationDirection()"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetPropagationDirection()">GetPropagationDirection()</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>RealV GetPropagationDirection(
+) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function returns reference axis mEprop.
+<br><br>
+</p>
+<dl><dt><i>function result</i></dt><dd>The direction of propagation is returned
+<br><br>
+     </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/StokesV/GetReferenceFrame/RealV%38RealV%38RealV%38; name=StokesV::GetReferenceFrame -->
+<a name="//apple_ref/cpp/instm/StokesV/GetReferenceFrame/RealV%38RealV%38RealV%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetReferenceFrame">GetReferenceFrame</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>void GetReferenceFrame(
+    RealV & outEperp,
+    RealV & outEpara,
+    RealV & outEprop ) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function returns reference frame mEpara and mEperp.
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>outEperp</em></tt></dt><dd>The value of E_perp is returned through this parameter</dd>
+<dt><tt><em>outEpara</em></tt></dt><dd>The value of E_parallel is returned through this parameter</dd>
+<dt><tt><em>outEperp</em></tt></dt><dd>The value of E_prop is returned through this parameter
+<br><br></dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/StokesV/GetReferenceFrame()/RealV%38RealV%38RealV%38; name=StokesV::GetReferenceFrame() -->
+<a name="//apple_ref/cpp/instm/StokesV/GetReferenceFrame()/RealV%38RealV%38RealV%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetReferenceFrame()">GetReferenceFrame()</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>void GetReferenceFrame(
+    RealV & outEperp,
+    RealV & outEpara,
+    RealV & outEprop ) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function returns reference frame mEpara and mEperp.
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>outEperp</em></tt></dt><dd>The value of E_perp is returned through this parameter</dd>
+<dt><tt><em>outEpara</em></tt></dt><dd>The value of E_parallel is returned through this parameter</dd>
+<dt><tt><em>outEperp</em></tt></dt><dd>The value of E_prop is returned through this parameter
+<br><br></dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/StokesV/Normalize; name=StokesV::Normalize -->
+<a name="//apple_ref/cpp/instm/StokesV/Normalize"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="Normalize">Normalize</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>void Normalize(
+) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function normalizes the intensity of the Stokes vector to 1.
+(i.e. it divides all the Stokes parameters by the current intensity)
+If the intensity is zero, it throws an error.
+<br><br>
+        </p>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/StokesV/Orientation; name=StokesV::Orientation -->
+<a name="//apple_ref/cpp/instm/StokesV/Orientation"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="Orientation">Orientation</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>double Orientation(
+);
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Calculates the orientation of the polarized component.
+</p>
+<dl><dt><i>function result</i></dt><dd>A double representing the angle (in radians) of polarization with the E parallel direction.
+     </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/StokesV/RotatePolarizationStateBy/double; name=StokesV::RotatePolarizationStateBy -->
+<a name="//apple_ref/cpp/instm/StokesV/RotatePolarizationStateBy/double"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="RotatePolarizationStateBy(double)">RotatePolarizationStateBy(double)</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>void RotatePolarizationStateBy(
+    double inPhi ) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Rotates the Stokes vector by an angle phi.  This function calls another
+overloaded function that does the actual work.
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inPhi</em></tt></dt><dd>Angle by which the polarization vector is rotated.  Can be positivie or negative.
+<br><br></dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/StokesV/RotatePolarizationStateBy/doubledouble; name=StokesV::RotatePolarizationStateBy -->
+<a name="//apple_ref/cpp/instm/StokesV/RotatePolarizationStateBy/doubledouble"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="RotatePolarizationStateBy(double%44%32double)">RotatePolarizationStateBy(double, double)</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>void RotatePolarizationStateBy(
+    double inCos_2phi,
+    double inSin_2phi );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Rotates the polarization state by an angle phi around the direction of propagation.
+This applies the rotation matrix to the Stokes vector:
+<br><br>
+First row of the matrix  : (1 ,  0,          0,           0)
+Second row of the matrix : (0 ,  inCos_2phi, -inSin_2phi , 0)
+Third row of the matrix  : (0 ,  inSin_2phi, inCos_2phi , 0)
+Fourth row of the matrix : (0 ,  0,          0,           1)
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inCos_2phi</em></tt></dt><dd>Cosine of the angle by which the Stokes vector is rotated.  Can be positive or negative.</dd>
+<dt><tt><em>inSin_2phi</em></tt></dt><dd>Sine of the angle by which the Stokes vector is rotated.  Can be positive or negative.
+<br><br></dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/StokesV/RotateReferenceFrameAroundPropagationDirectionBy/double; name=StokesV::RotateReferenceFrameAroundPropagationDirectionBy -->
+<a name="//apple_ref/cpp/instm/StokesV/RotateReferenceFrameAroundPropagationDirectionBy/double"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="RotateReferenceFrameAroundPropagationDirectionBy">RotateReferenceFrameAroundPropagationDirectionBy</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>void RotateReferenceFrameAroundPropagationDirectionBy(
+    double inPhi );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function rotates the reference frame mEpara and mEperp by an angle
+phi around mEprop.  This does not change the polarization state of the StokesV: it only
+changes the reference frame.
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inPhi</em></tt></dt><dd>Angle by which the frame of reference is rotated.  Can be positivie or negative.
+Positive is counterclockwise.
+<br><br>
+The transformation follows this reasoning:
+<br><br>
+In a frame of reference {er, el, ez}, those vectors are (1,0,0), (0,1,0) and (0,0,1) respectively.
+A rotation around ez is therefore simple and is given by the following matrix:
+<br><br>
+/  Cos phi -Sin phi 0 \
+Rz(phi)  = |  Sin phi Cos phi 0 |
+\     0       0    1 /
+<br><br>
+The matrix for changing basis from {e} to {xyz} is
+made of {el,er,ez} in column, that is:
+<br><br>
+/ er.x el.x ez.x \
+ChgBasisFrom_e_to_xyz = | er.y el.y ez.y |
+\ er.z el.z ez.z /
+<br><br>
+this gives the transformed vector in xyz coordinates. For instance, 
+<br><br>
+er = ChgBasisFrom_e_to_xyz . Rz(phi) . (1,0,0)
+el = ChgBasisFrom_e_to_xyz . Rz(phi) . (0,1,0)
+ez = unchanged
+<br><br></dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/StokesV/RotateReferenceFrameAroundPropagationDirectionBy()/double; name=StokesV::RotateReferenceFrameAroundPropagationDirectionBy() -->
+<a name="//apple_ref/cpp/instm/StokesV/RotateReferenceFrameAroundPropagationDirectionBy()/double"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="RotateReferenceFrameAroundPropagationDirectionBy()">RotateReferenceFrameAroundPropagationDirectionBy()</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>void RotateReferenceFrameAroundPropagationDirectionBy(
+    double inPhi );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function rotates the reference frame mEpara and mEperp by an angle
+phi around mEprop.  This does not change the polarization state of the StokesV: it only
+changes the reference frame.
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inPhi</em></tt></dt><dd>Angle by which the frame of reference is rotated.  Can be positivie or negative.
+Positive is counterclockwise.
+<br><br>
+The transformation follows this reasoning:
+<br><br>
+In a frame of reference {er, el, ez}, those vectors are (1,0,0), (0,1,0) and (0,0,1) respectively.
+A rotation around ez is therefore simple and is given by the following matrix:
+<br><br>
+/  Cos phi -Sin phi 0 \
+Rz(phi)  = |  Sin phi Cos phi 0 |
+\     0       0    1 /
+<br><br>
+The matrix for changing basis from {e} to {xyz} is
+made of {el,er,ez} in column, that is:
+<br><br>
+/ er.x el.x ez.x \
+ChgBasisFrom_e_to_xyz = | er.y el.y ez.y |
+\ er.z el.z ez.z /
+<br><br>
+this gives the transformed vector in xyz coordinates. For instance, 
+<br><br>
+er = ChgBasisFrom_e_to_xyz . Rz(phi) . (1,0,0)
+el = ChgBasisFrom_e_to_xyz . Rz(phi) . (0,1,0)
+ez = unchanged
+<br><br></dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/StokesV/SetPropagationDirectionInLabFrame/RealV; name=StokesV::SetPropagationDirectionInLabFrame -->
+<a name="//apple_ref/cpp/instm/StokesV/SetPropagationDirectionInLabFrame/RealV"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="SetPropagationDirectionInLabFrame">SetPropagationDirectionInLabFrame</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void SetPropagationDirectionInLabFrame(
+    RealV inDirection );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Sets the propagation direction of the photon.  
+mEperp and mEpara are valid, but arbitrary after the function call.  The Stokes vector
+coefficient are not adjusted.
+	 </p>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/StokesV/SetReferenceFrame/RealV%38RealV%38RealV%38; name=StokesV::SetReferenceFrame -->
+<a name="//apple_ref/cpp/instm/StokesV/SetReferenceFrame/RealV%38RealV%38RealV%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="SetReferenceFrame">SetReferenceFrame</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>void SetReferenceFrame(
+    RealV & inEperp,
+    RealV & inEpara,
+    RealV & inEprop ) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function sets the reference frame mEpara and mEperp.
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inEperp</em></tt></dt><dd>The new value of E_perp</dd>
+<dt><tt><em>inEpara</em></tt></dt><dd>The new value of E_parallel</dd>
+<dt><tt><em>inEperp</em></tt></dt><dd>The new value of E_prop
+<br><br></dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/StokesV/SetReferenceFrame()/RealV%38RealV%38RealV%38; name=StokesV::SetReferenceFrame() -->
+<a name="//apple_ref/cpp/instm/StokesV/SetReferenceFrame()/RealV%38RealV%38RealV%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="SetReferenceFrame()">SetReferenceFrame()</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>void SetReferenceFrame(
+    RealV & inEperp,
+    RealV & inEpara,
+    RealV & inEprop ) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function sets the reference frame mEpara and mEperp.
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inEperp</em></tt></dt><dd>The new value of E_perp</dd>
+<dt><tt><em>inEpara</em></tt></dt><dd>The new value of E_parallel</dd>
+<dt><tt><em>inEperp</em></tt></dt><dd>The new value of E_prop
+<br><br></dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/StokesV/StokesV; name=StokesV::StokesV -->
+<a name="//apple_ref/cpp/instm/StokesV/StokesV"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="StokesV">StokesV</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>StokesV(
+) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Default constructor (no arguments) is made such that the intensity is 0 so no confusion possible.
+     </p>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/StokesV/StokesV/ComplexComplex; name=StokesV::StokesV -->
+<a name="//apple_ref/cpp/instm/StokesV/StokesV/ComplexComplex"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="StokesV(Complex%44%32Complex)">StokesV(Complex, Complex)</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>StokesV(
+    Complex inEl,
+    Complex inEr );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Constructor that uses two arguments (the two electric fields)
+which are both complex numbers.
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inEl</em></tt></dt><dd>The parallel electric field E_parallel</dd>
+<dt><tt><em>inEr</em></tt></dt><dd>The perpendicular electric field E_perp</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/StokesV/StokesV/constStokesV%38; name=StokesV::StokesV -->
+<a name="//apple_ref/cpp/instm/StokesV/StokesV/constStokesV%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="StokesV(const%32StokesV%32%38)">StokesV(const StokesV &)</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>StokesV(
+    const StokesV & inS );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Constructor that uses another StokesV as an argument
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inS</em></tt></dt><dd>The Stokes parameter</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/StokesV/StokesV/doubleRealV; name=StokesV::StokesV -->
+<a name="//apple_ref/cpp/instm/StokesV/StokesV/doubleRealV"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="StokesV(double%44%32RealV)">StokesV(double, RealV)</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>StokesV(
+    double inI,
+    RealV inEprop );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Constructor that uses four arguments (the four Stokes parameters)
+which are all real numbers.  
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inI</em></tt></dt><dd>The intensity (first Stokes parameter)</dd>
+<dt><tt><em>inEprop</em></tt></dt><dd>Direction of propagation</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/StokesV/StokesV/doubledoubledoubledoubleRealVRealV; name=StokesV::StokesV -->
+<a name="//apple_ref/cpp/instm/StokesV/StokesV/doubledoubledoubledoubleRealVRealV"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="StokesV(double%44%32double%44%32double%44%32double%44%32RealV%44%32RealV)">StokesV(double, double, double, double, RealV, RealV)</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>StokesV(
+    double inI,
+    double inQ,
+    double inU,
+    double inV,
+    RealV inEpara ,
+    RealV inEprop );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Constructor that uses four arguments (the four Stokes parameters)
+which are all real numbers.  
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inI</em></tt></dt><dd>The intensity (first Stokes parameter)</dd>
+<dt><tt><em>inQ</em></tt></dt><dd>The Q parameter (second Stokes parameter)</dd>
+<dt><tt><em>inU</em></tt></dt><dd>The U parameter (third Stokes parameter)</dd>
+<dt><tt><em>inV</em></tt></dt><dd>The V parameter (fourth Stokes parameter)</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/StokesV/degreeOfCircularPolarization; name=StokesV::degreeOfCircularPolarization -->
+<a name="//apple_ref/cpp/instm/StokesV/degreeOfCircularPolarization"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="degreeOfCircularPolarization">degreeOfCircularPolarization</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>double degreeOfCircularPolarization(
+) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Calculates the degree of circular polarization of the Stokes vector.
+</p>
+<dl><dt><i>function result</i></dt><dd>A double containing the degree of circular polarization. If intensity is zero, returns 0.
+        </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/StokesV/degreeOfLinearPolarization; name=StokesV::degreeOfLinearPolarization -->
+<a name="//apple_ref/cpp/instm/StokesV/degreeOfLinearPolarization"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="degreeOfLinearPolarization">degreeOfLinearPolarization</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>double degreeOfLinearPolarization(
+) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Calculates the degree of linear polarization of the Stokes vector.
+</p>
+<dl><dt><i>function result</i></dt><dd>A double containing the degree of linear polarization. If intensity is zero, returns 0.
+     </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/StokesV/degreeOfPolarization; name=StokesV::degreeOfPolarization -->
+<a name="//apple_ref/cpp/instm/StokesV/degreeOfPolarization"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="degreeOfPolarization">degreeOfPolarization</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>double degreeOfPolarization(
+) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Calculates the degree of total polarization of the Stokes vector.
+</p>
+<dl><dt><i>function result</i></dt><dd>A double containing the degree of total polarization. If intensity is zero, returns 0.
+        </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/StokesV/operator%32*/double; name=StokesV::operator* -->
+<a name="//apple_ref/cpp/instm/StokesV/operator%32*/double"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="operator%32*">operator *</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>StokesV & operator *= (
+    double inRhs );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function multiplies a StokesV by a real constant. 
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inRhs</em></tt></dt><dd>This is an implicit parameter corresponding to the right hand side of the
+assignment and represents the constant by which the StokesV is multiplied.</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/StokesV/operator%32+/StokesV; name=StokesV::operator+ -->
+<a name="//apple_ref/cpp/instm/StokesV/operator%32+/StokesV"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="operator%32+">operator +</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>StokesV & operator += (
+    StokesV inRhs ) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function adds a StokesV to another (cumulative) StokesV.  The purpose of
+this function is to allow easy statistics to be compiled when running Monte Carlo calculations.
+Statistics can be obtained simply by adding the current StokesV to a cumulative StokesV.
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inRhs</em></tt></dt><dd>This is an implicit parameter corresponding to the right hand side of the
+assignment.</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/StokesV/operator%32//double%38; name=StokesV::operator/ -->
+<a name="//apple_ref/cpp/instm/StokesV/operator%32//double%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="operator%32/">operator /</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>StokesV & operator /= (
+    double & inRhs );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function divides a StokesV by a real constant. 
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inRhs</em></tt></dt><dd>This is an implicit parameter corresponding to the right hand side of the
+assignment and represents the constant by which the StokesV is divided.</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/StokesV/operator!%61/StokesV; name=StokesV::operator!= -->
+<a name="//apple_ref/cpp/instm/StokesV/operator!%61/StokesV"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="operator!%61">operator!=</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>bool operator != (
+    StokesV inRhs );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function compares two StokesV objects and returns true is they are different.
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inRhs</em></tt></dt><dd>This is an implicit parameter corresponding to the right hand side of the
+comparison.</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/StokesV/operator*%61/double; name=StokesV::operator*= -->
+<a name="//apple_ref/cpp/instm/StokesV/operator*%61/double"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="operator*%61">operator*=</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>StokesV & operator *= (
+    double inRhs );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function multiplies a StokesV by a real constant. 
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inRhs</em></tt></dt><dd>This is an implicit parameter corresponding to the right hand side of the
+assignment and represents the constant by which the StokesV is multiplied.</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/StokesV/operator+%61/StokesV; name=StokesV::operator+= -->
+<a name="//apple_ref/cpp/instm/StokesV/operator+%61/StokesV"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="operator+%61">operator+=</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>StokesV & operator += (
+    StokesV inRhs ) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function adds a StokesV to another (cumulative) StokesV.  The purpose of
+this function is to allow easy statistics to be compiled when running Monte Carlo calculations.
+Statistics can be obtained simply by adding the current StokesV to a cumulative StokesV.
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inRhs</em></tt></dt><dd>This is an implicit parameter corresponding to the right hand side of the
+assignment.</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/StokesV/operator%47%61/double%38; name=StokesV::operator/= -->
+<a name="//apple_ref/cpp/instm/StokesV/operator%47%61/double%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="operator%47%61">operator/=</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>StokesV & operator /= (
+    double & inRhs );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function divides a StokesV by a real constant. 
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inRhs</em></tt></dt><dd>This is an implicit parameter corresponding to the right hand side of the
+assignment and represents the constant by which the StokesV is divided.</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/StokesV/operator%61/constStokesV%38; name=StokesV::operator= -->
+<a name="//apple_ref/cpp/instm/StokesV/operator%61/constStokesV%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="operator%61">operator=</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>StokesV & operator = (
+    const StokesV & inRhs ) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function makes a copy of a StokesV object.  This function is called
+when a StokesV is passed to or returned from a function.   
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inRhs</em></tt></dt><dd>This is an implicit parameter corresponding to the right hand side of the
+assignment.</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/StokesV/operator%61%61/StokesV; name=StokesV::operator== -->
+<a name="//apple_ref/cpp/instm/StokesV/operator%61%61/StokesV"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="operator%61%61">operator==</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>bool operator == (
+    StokesV inRhs );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function compares two StokesV objects and returns true is they are identical.
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inRhs</em></tt></dt><dd>This is an implicit parameter corresponding to the right hand side of the
+comparison.</dd>
+</dl>
+</blockquote>
+<hr>
+<h2>Member Data</h2>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/StokesV/mEpara; name=StokesV::mEpara -->
+<a name="//apple_ref/cpp/data/StokesV/mEpara"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="mEpara">mEpara</a></h2>
+</td></tr></table><blockquote><tt>public:</tt> RealV mEpara;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>       3D vector representing the E_parallel direction.   E_perp cross E_parallel = EProp</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/StokesV/mEperp; name=StokesV::mEperp -->
+<a name="//apple_ref/cpp/data/StokesV/mEperp"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="mEperp">mEperp</a></h2>
+</td></tr></table><blockquote><tt>public:</tt> RealV mEperp;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>       3D vector representing the E_perp direction.  E_perp cross E_parallel = EProp</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/StokesV/mEprop; name=StokesV::mEprop -->
+<a name="//apple_ref/cpp/data/StokesV/mEprop"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="mEprop">mEprop</a></h2>
+</td></tr></table><blockquote><tt>public:</tt> RealV mEprop;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>       3D vector representing the propagation direction.  E_perp cross E_parallel = EProp.</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/StokesV/mI; name=StokesV::mI -->
+<a name="//apple_ref/cpp/data/StokesV/mI"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="mI">mI</a></h2>
+</td></tr></table><blockquote><tt>public:</tt> double mI;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>           First Stokes parameter E_parallel*conjugate(E_parallel) + E_perp*conjugate(E_perp)</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/StokesV/mQ; name=StokesV::mQ -->
+<a name="//apple_ref/cpp/data/StokesV/mQ"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="mQ">mQ</a></h2>
+</td></tr></table><blockquote><tt>public:</tt> double mQ;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>           Second Stokes parameter E_parallel*conjugate(E_parallel) - E_perp*conjugate(E_perp)</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/StokesV/mU; name=StokesV::mU -->
+<a name="//apple_ref/cpp/data/StokesV/mU"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="mU">mU</a></h2>
+</td></tr></table><blockquote><tt>public:</tt> double mU;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>           Third Stokes parameter E_perp*conjugate(E_parallel) + E_parallel*conjugate(E_perp)</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/StokesV/mV; name=StokesV::mV -->
+<a name="//apple_ref/cpp/data/StokesV/mV"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="mV">mV</a></h2>
+</td></tr></table><blockquote><tt>public:</tt> double mV;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>           Fourth Stokes parameter sqrt(-1) * (E_perp*conjugate(E_parallel) - E_parallel*conjugate(E_perp))</p>
+<hr>
+<p>(Last Updated 2/23/2005)
+</p></body></html>

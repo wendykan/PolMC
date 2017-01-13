@@ -1,0 +1,358 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html><head>
+    <title>CFHelper </title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="generator" content="HeaderDoc" />
+<style type="text/css"><!--.keyword {background:#ffffff; color:#761550;}.template {background:#ffffff; color:#761550;}.number {background: #ffffff; color:#0000ff;}.function {background:#ffffff; color:#000000;}.string {background: #ffffff; color:#891315;}.preprocessor {background:#ffffff; color:#236e25}.comment {background:#ffffff; color:#236e25}.char {background: #ffffff; color:#0000ff;}.var {background:#ffffff; color:#000000;}.type {background:#ffffff; color:#761550;}.param {background:#ffffff; color:#000000;}a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style></head><body bgcolor="#ffffff">
+<a name="top"></a>
+<a name="//apple_ref/doc/header/CFHelper.h" title="CFHelper "></a>
+<hr><table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h1><a name="CFHelper">CFHelper </a></h1>
+</td></tr></table><hr><p><!-- begin abstract -->Helper functions to take advantage of the CoreFoundation functions to build the 3D environment for the computation
+<!-- end abstract --></p>
+<p></p><dl><b>Includes:</b> <!-- a logicalPath="//apple_ref/doc/header/CoreFoundation.h" -->&lt;CoreFoundation/CoreFoundation.h&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/MCWorld.h" -->"MCWorld.h"<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/MCObject.h" -->"MCObject.h"<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/MCBox.h" -->"MCBox.h"<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/MCEllipsoid.h" -->"MCEllipsoid.h"<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/MCCylinder.h" -->"MCCylinder.h"<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/MCDetector.h" -->"MCDetector.h"<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/MCInfiniteLayers.h" -->"MCInfiniteLayers.h"<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/MCGenericObject.h" -->"MCGenericObject.h"<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/MCSource.h" -->"MCSource.h"<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/MCRandomScatterer.h" -->"MCRandomScatterer.h"<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/MCUtils.h" -->"MCUtils.h"<!-- /a --><br>
+</dl><h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion -->The CoreFoundation library defines types (CFArray, CFDictionary, CFNumber, CFString, CFBoolean) that can be used
+safely in a program but also can be written to and read from files in a format known as PropertylList (.plist) which
+is an XML format. On OS X, this format is the basis for all configuration files in the system and their
+is a great Property List Editor.app that comes with XCode. 
+<br><br>
+The hierarchical nature of the PropertyList and its available library made it a natural choice to use for a parameter file
+for 3D objects with polarization.
+<br><br>
+The CoreFoundation library is available in OS X as part of the system, but also with CF-Lite as an open-source
+project that compiles on Unix platforms.  A Linux version exists.
+More information at: http://cafeine.crulrg.ulaval.ca/users/dccote/weblog/0514e/CoreFoundation_Lite_on_Linux.html
+<br><br>
+Possible Windows port: http://karaoke.kjams.com/wiki/CFLite
+<br><br>
+Even more information at: http://developer.apple.com/opensource/cflite.html
+ <!-- end discussion --></p>
+<p></p><hr><br><h2>Functions</h2>
+<a name="HeaderDoc_functions"></a>
+<dl>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/CFStringToRealV" target="_top">CFStringToRealV </a></tt></dt>
+<dd>Converts a CFString to a RealV
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/CreateBareWorldFromCFDictionary" target="_top">CreateBareWorldFromCFDictionary </a></tt></dt>
+<dd>This function creates a bare MCWorld object that will eventually contain the objects, the light sources, the detectors and parameters for the output file
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/CreateLightSourceFromCFDictionary" target="_top">CreateLightSourceFromCFDictionary </a></tt></dt>
+<dd>Creates a lightsource from a CFDictionaryRef of properties
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/CreateObjectFromCFDictionary" target="_top">CreateObjectFromCFDictionary </a></tt></dt>
+<dd>Creates an object to be placed in the world from a CFDictionaryRef of properties
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/CreateRandomScattererFromCFDictionary" target="_top">CreateRandomScattererFromCFDictionary </a></tt></dt>
+<dd>Creates a class that represents the scattering and optical properties of an object from a CFDictionaryRef
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/GetBooleanInDictWithDefaultFalse" target="_top">GetBooleanInDictWithDefaultFalse </a></tt></dt>
+<dd>Helper function to read a boolean value from a dictionary with a default value and error checking
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/GetDoubleFromDict" target="_top">GetDoubleFromDict </a></tt></dt>
+<dd>Helper function to read a double value storaed as a CFNumber in a dictionary with error checking
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/GetIntegerFromDict" target="_top">GetIntegerFromDict </a></tt></dt>
+<dd>Helper function to read an integer value storaed as a CFNumber in a dictionary with error checking
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/GetNumberInDictWithDefault" target="_top">GetNumberInDictWithDefault </a></tt></dt>
+<dd>Helper function to read a CFNumber value from a dictionary with a default value and error checking
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/GetStatisticsBooleanSettingsFromCFDictionary" target="_top">GetStatisticsBooleanSettingsFromCFDictionary </a></tt></dt>
+<dd>Obtains a long list of statistical parameters that may or may not be included in the output file
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/GetStringFromDict" target="_top">GetStringFromDict </a></tt></dt>
+<dd>Obtains a string from a disctionary with error checking
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/PopulateRootObjectWithObjectsFromCFDictionary" target="_top">PopulateRootObjectWithObjectsFromCFDictionary </a></tt></dt>
+<dd>This takes a CFArray of objects which are themselves CFDictionary with all the properties of objects and includes them in rootObject, which is in world.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/PopulateWorldWithLightSourcesFromCFDictionary" target="_top">PopulateWorldWithLightSourcesFromCFDictionary </a></tt></dt>
+<dd>This takes a CFArray of lightSources which are themselves CFDictionary with all the properties of light sources.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/SetGlobalCFStringEncoding" target="_top">SetGlobalCFStringEncoding </a></tt></dt>
+<dd>Sets the global string encoding for converting CFStrings to char*
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/SetStatisticsForCalculation" target="_top">SetStatisticsForCalculation </a></tt></dt>
+<dd>Sets the properties for the calculation and the many variables of MCWorld from the CFDictionaryRef 
+</dd>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/CFStringToRealV;  name=CFStringToRealV -->
+<a name="//apple_ref/doc/compositePage/c/func/CFStringToRealV"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="CFStringToRealV">CFStringToRealV </a></h3>
+</td></tr></table><hr><p><!-- begin abstract -->Converts a CFString to a RealV
+<!-- end abstract --></p>
+<p></p><pre><!-- a logicalPath="//apple_ref/c/cl/RealV //apple_ref/c/tdef/RealV //apple_ref/c/tag/RealV //apple_ref/c/econst/RealV //apple_ref/c/struct/RealV //apple_ref/c/clconst/RealV //apple_ref/c/intf/RealV" --><span class="type">RealV</span><!-- /a --> <!-- a logicalPath="//apple_ref/c/instm/CFStringToRealV //apple_ref/c/clm/CFStringToRealV //apple_ref/c/intfcm/CFStringToRealV //apple_ref/c/intfm/CFStringToRealV //apple_ref/c/func/CFStringToRealV //apple_ref/c/ftmplt/CFStringToRealV //apple_ref/c/defn/CFStringToRealV //apple_ref/c/macro/CFStringToRealV" --><span class="function">CFStringToRealV</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/c/cl/CFStringRef //apple_ref/c/tdef/CFStringRef //apple_ref/c/tag/CFStringRef //apple_ref/c/econst/CFStringRef //apple_ref/c/struct/CFStringRef //apple_ref/c/clconst/CFStringRef //apple_ref/c/intf/CFStringRef" --><span class="type">CFStringRef</span><!-- /a --> <span class="param">theString</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>theString </code></dt><dd>A CFStringRef in the format (number,number,number)</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5><p><!-- begin return value -->A RealV
+
+<!-- end return value --></p><h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion -->This is a helper function to safely convert of 3D vector from a string in CFStringRef format
+<!-- end discussion --></p>
+<p></p><hr><!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/CreateBareWorldFromCFDictionary;  name=CreateBareWorldFromCFDictionary -->
+<a name="//apple_ref/doc/compositePage/c/func/CreateBareWorldFromCFDictionary"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="CreateBareWorldFromCFDictionary">CreateBareWorldFromCFDictionary </a></h3>
+</td></tr></table><hr><p><!-- begin abstract -->This function creates a bare MCWorld object that will eventually contain the objects, the light sources, the detectors and parameters for the output file
+<!-- end abstract --></p>
+<p></p><pre><!-- a logicalPath="//apple_ref/c/cl/MCWorld //apple_ref/c/tdef/MCWorld //apple_ref/c/tag/MCWorld //apple_ref/c/econst/MCWorld //apple_ref/c/struct/MCWorld //apple_ref/c/clconst/MCWorld //apple_ref/c/intf/MCWorld" --><span class="type">MCWorld</span><!-- /a --><span class="type">*</span> <!-- a logicalPath="//apple_ref/c/instm/CreateBareWorldFromCFDictionary //apple_ref/c/clm/CreateBareWorldFromCFDictionary //apple_ref/c/intfcm/CreateBareWorldFromCFDictionary //apple_ref/c/intfm/CreateBareWorldFromCFDictionary //apple_ref/c/func/CreateBareWorldFromCFDictionary //apple_ref/c/ftmplt/CreateBareWorldFromCFDictionary //apple_ref/c/defn/CreateBareWorldFromCFDictionary //apple_ref/c/macro/CreateBareWorldFromCFDictionary" --><span class="function">CreateBareWorldFromCFDictionary</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/c/cl/CFDictionaryRef //apple_ref/c/tdef/CFDictionaryRef //apple_ref/c/tag/CFDictionaryRef //apple_ref/c/econst/CFDictionaryRef //apple_ref/c/struct/CFDictionaryRef //apple_ref/c/clconst/CFDictionaryRef //apple_ref/c/intf/CFDictionaryRef" --><span class="type">CFDictionaryRef</span><!-- /a --> <span class="param">worldProperties</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>worldProperties </code></dt><dd>The properties from a CFDictionaryRef</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5><p><!-- begin return value -->An empty MCWorld
+
+<!-- end return value --></p><h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion -->The MCWorld object contains everything about the computation: the objects and the various parameters.
+<br><br>
+Here I will describe all parameters possible. [To be done]
+<br><br>
+<!-- end discussion --></p>
+<p></p><hr><!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/CreateLightSourceFromCFDictionary;  name=CreateLightSourceFromCFDictionary -->
+<a name="//apple_ref/doc/compositePage/c/func/CreateLightSourceFromCFDictionary"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="CreateLightSourceFromCFDictionary">CreateLightSourceFromCFDictionary </a></h3>
+</td></tr></table><hr><p><!-- begin abstract -->Creates a lightsource from a CFDictionaryRef of properties
+<!-- end abstract --></p>
+<p></p><pre><!-- a logicalPath="//apple_ref/c/cl/MCSource //apple_ref/c/tdef/MCSource //apple_ref/c/tag/MCSource //apple_ref/c/econst/MCSource //apple_ref/c/struct/MCSource //apple_ref/c/clconst/MCSource //apple_ref/c/intf/MCSource" --><span class="type">MCSource</span><!-- /a --><span class="type">*</span> <!-- a logicalPath="//apple_ref/c/instm/CreateLightSourceFromCFDictionary //apple_ref/c/clm/CreateLightSourceFromCFDictionary //apple_ref/c/intfcm/CreateLightSourceFromCFDictionary //apple_ref/c/intfm/CreateLightSourceFromCFDictionary //apple_ref/c/func/CreateLightSourceFromCFDictionary //apple_ref/c/ftmplt/CreateLightSourceFromCFDictionary //apple_ref/c/defn/CreateLightSourceFromCFDictionary //apple_ref/c/macro/CreateLightSourceFromCFDictionary" --><span class="function">CreateLightSourceFromCFDictionary</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/c/cl/CFDictionaryRef //apple_ref/c/tdef/CFDictionaryRef //apple_ref/c/tag/CFDictionaryRef //apple_ref/c/econst/CFDictionaryRef //apple_ref/c/struct/CFDictionaryRef //apple_ref/c/clconst/CFDictionaryRef //apple_ref/c/intf/CFDictionaryRef" --><span class="type">CFDictionaryRef</span><!-- /a --> <span class="param">lightSourceProperties</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>lightSourceProperties </code></dt><dd>The light source properties in a CFDictionaryRef</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5><p><!-- begin return value -->The light source, of the right type
+ 
+<!-- end return value --></p><h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion -->The software can handle multiple light sources: lasers, isotropic source, diffuser, etc... They all inherit from MCSource.
+<!-- end discussion --></p>
+<p></p><hr><!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/CreateObjectFromCFDictionary;  name=CreateObjectFromCFDictionary -->
+<a name="//apple_ref/doc/compositePage/c/func/CreateObjectFromCFDictionary"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="CreateObjectFromCFDictionary">CreateObjectFromCFDictionary </a></h3>
+</td></tr></table><hr><p><!-- begin abstract -->Creates an object to be placed in the world from a CFDictionaryRef of properties
+<!-- end abstract --></p>
+<p></p><pre><!-- a logicalPath="//apple_ref/c/cl/MCObject //apple_ref/c/tdef/MCObject //apple_ref/c/tag/MCObject //apple_ref/c/econst/MCObject //apple_ref/c/struct/MCObject //apple_ref/c/clconst/MCObject //apple_ref/c/intf/MCObject" --><span class="type">MCObject</span><!-- /a --><span class="type">*</span> <!-- a logicalPath="//apple_ref/c/instm/CreateObjectFromCFDictionary //apple_ref/c/clm/CreateObjectFromCFDictionary //apple_ref/c/intfcm/CreateObjectFromCFDictionary //apple_ref/c/intfm/CreateObjectFromCFDictionary //apple_ref/c/func/CreateObjectFromCFDictionary //apple_ref/c/ftmplt/CreateObjectFromCFDictionary //apple_ref/c/defn/CreateObjectFromCFDictionary //apple_ref/c/macro/CreateObjectFromCFDictionary" --><span class="function">CreateObjectFromCFDictionary</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/c/cl/CFDictionaryRef //apple_ref/c/tdef/CFDictionaryRef //apple_ref/c/tag/CFDictionaryRef //apple_ref/c/econst/CFDictionaryRef //apple_ref/c/struct/CFDictionaryRef //apple_ref/c/clconst/CFDictionaryRef //apple_ref/c/intf/CFDictionaryRef" --><span class="type">CFDictionaryRef</span><!-- /a --> <span class="param">objectProperties</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>objectProperties </code></dt><dd>The object properties in a CFDictionaryRef</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5><p><!-- begin return value -->The object, of the right type
+ 
+<!-- end return value --></p><h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion -->The software can handle multiple object types: boxes, ellipsoids, detectors, cylinders, layers, generic objects, etc... They all inherit from MCObject.
+<!-- end discussion --></p>
+<p></p><hr><!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/CreateRandomScattererFromCFDictionary;  name=CreateRandomScattererFromCFDictionary -->
+<a name="//apple_ref/doc/compositePage/c/func/CreateRandomScattererFromCFDictionary"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="CreateRandomScattererFromCFDictionary">CreateRandomScattererFromCFDictionary </a></h3>
+</td></tr></table><hr><p><!-- begin abstract -->Creates a class that represents the scattering and optical properties of an object from a CFDictionaryRef
+<!-- end abstract --></p>
+<p></p><pre><!-- a logicalPath="//apple_ref/c/cl/MCRandomScatterer //apple_ref/c/tdef/MCRandomScatterer //apple_ref/c/tag/MCRandomScatterer //apple_ref/c/econst/MCRandomScatterer //apple_ref/c/struct/MCRandomScatterer //apple_ref/c/clconst/MCRandomScatterer //apple_ref/c/intf/MCRandomScatterer" --><span class="type">MCRandomScatterer</span><!-- /a --><span class="type">*</span> <!-- a logicalPath="//apple_ref/c/instm/CreateRandomScattererFromCFDictionary //apple_ref/c/clm/CreateRandomScattererFromCFDictionary //apple_ref/c/intfcm/CreateRandomScattererFromCFDictionary //apple_ref/c/intfm/CreateRandomScattererFromCFDictionary //apple_ref/c/func/CreateRandomScattererFromCFDictionary //apple_ref/c/ftmplt/CreateRandomScattererFromCFDictionary //apple_ref/c/defn/CreateRandomScattererFromCFDictionary //apple_ref/c/macro/CreateRandomScattererFromCFDictionary" --><span class="function">CreateRandomScattererFromCFDictionary</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/c/cl/CFDictionaryRef //apple_ref/c/tdef/CFDictionaryRef //apple_ref/c/tag/CFDictionaryRef //apple_ref/c/econst/CFDictionaryRef //apple_ref/c/struct/CFDictionaryRef //apple_ref/c/clconst/CFDictionaryRef //apple_ref/c/intf/CFDictionaryRef" --><span class="type">CFDictionaryRef</span><!-- /a --> <span class="param">materialProperties</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>materialProperties </code></dt><dd>The material properties in a CFDictionaryRef</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5><p><!-- begin return value -->The random scatterer object
+ 
+<!-- end return value --></p><h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion -->An MCObject can be scattering, absorbing, clear, etc...  All the optical and scattering properties
+of an object are managed by MCRandomScatterer.  This allows the possibility of using different computation models
+for random angle sampling (e.g., different publications), various scattering types (e.g., intensity-based or polarization)
+or evem look-up tables for the properties.
+<!-- end discussion --></p>
+<p></p><hr><!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/GetBooleanInDictWithDefaultFalse;  name=GetBooleanInDictWithDefaultFalse -->
+<a name="//apple_ref/doc/compositePage/c/func/GetBooleanInDictWithDefaultFalse"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="GetBooleanInDictWithDefaultFalse">GetBooleanInDictWithDefaultFalse </a></h3>
+</td></tr></table><hr><p><!-- begin abstract -->Helper function to read a boolean value from a dictionary with a default value and error checking
+<!-- end abstract --></p>
+<p></p><pre><!-- a logicalPath="//apple_ref/c/cl/bool //apple_ref/c/tdef/bool //apple_ref/c/tag/bool //apple_ref/c/econst/bool //apple_ref/c/struct/bool //apple_ref/c/clconst/bool //apple_ref/c/intf/bool" --><span class="type">bool</span><!-- /a --> <!-- a logicalPath="//apple_ref/c/instm/GetBooleanInDictWithDefaultFalse //apple_ref/c/clm/GetBooleanInDictWithDefaultFalse //apple_ref/c/intfcm/GetBooleanInDictWithDefaultFalse //apple_ref/c/intfm/GetBooleanInDictWithDefaultFalse //apple_ref/c/func/GetBooleanInDictWithDefaultFalse //apple_ref/c/ftmplt/GetBooleanInDictWithDefaultFalse //apple_ref/c/defn/GetBooleanInDictWithDefaultFalse //apple_ref/c/macro/GetBooleanInDictWithDefaultFalse" --><span class="function">GetBooleanInDictWithDefaultFalse</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/c/cl/CFDictionaryRef //apple_ref/c/tdef/CFDictionaryRef //apple_ref/c/tag/CFDictionaryRef //apple_ref/c/econst/CFDictionaryRef //apple_ref/c/struct/CFDictionaryRef //apple_ref/c/clconst/CFDictionaryRef //apple_ref/c/intf/CFDictionaryRef" --><span class="type">CFDictionaryRef</span><!-- /a --> <span class="param">dict</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/CFStringRef //apple_ref/c/tdef/CFStringRef //apple_ref/c/tag/CFStringRef //apple_ref/c/econst/CFStringRef //apple_ref/c/struct/CFStringRef //apple_ref/c/clconst/CFStringRef //apple_ref/c/intf/CFStringRef" --><span class="type">CFStringRef</span><!-- /a --> <span class="param">key</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>dict </code></dt><dd>The CFDictionaryRef possibly containing the key</dd>
+<dt><code>key </code></dt><dd>The value of the key as a CFStringRef</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5><p><!-- begin return value -->true or false corresponding to the value in the dictionary
+ 
+<!-- end return value --></p><h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion -->If the value is not of the right type, this code will throw an error
+<!-- end discussion --></p>
+<p></p><hr><!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/GetDoubleFromDict;  name=GetDoubleFromDict -->
+<a name="//apple_ref/doc/compositePage/c/func/GetDoubleFromDict"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="GetDoubleFromDict">GetDoubleFromDict </a></h3>
+</td></tr></table><hr><p><!-- begin abstract -->Helper function to read a double value storaed as a CFNumber in a dictionary with error checking
+<!-- end abstract --></p>
+<p></p><pre><!-- a logicalPath="//apple_ref/c/cl/double //apple_ref/c/tdef/double //apple_ref/c/tag/double //apple_ref/c/econst/double //apple_ref/c/struct/double //apple_ref/c/clconst/double //apple_ref/c/intf/double" --><span class="type">double</span><!-- /a --> <!-- a logicalPath="//apple_ref/c/instm/GetDoubleFromDict //apple_ref/c/clm/GetDoubleFromDict //apple_ref/c/intfcm/GetDoubleFromDict //apple_ref/c/intfm/GetDoubleFromDict //apple_ref/c/func/GetDoubleFromDict //apple_ref/c/ftmplt/GetDoubleFromDict //apple_ref/c/defn/GetDoubleFromDict //apple_ref/c/macro/GetDoubleFromDict" --><span class="function">GetDoubleFromDict</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/c/cl/CFDictionaryRef //apple_ref/c/tdef/CFDictionaryRef //apple_ref/c/tag/CFDictionaryRef //apple_ref/c/econst/CFDictionaryRef //apple_ref/c/struct/CFDictionaryRef //apple_ref/c/clconst/CFDictionaryRef //apple_ref/c/intf/CFDictionaryRef" --><span class="type">CFDictionaryRef</span><!-- /a --> <span class="param">dict</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/CFStringRef //apple_ref/c/tdef/CFStringRef //apple_ref/c/tag/CFStringRef //apple_ref/c/econst/CFStringRef //apple_ref/c/struct/CFStringRef //apple_ref/c/clconst/CFStringRef //apple_ref/c/intf/CFStringRef" --><span class="type">CFStringRef</span><!-- /a --> <span class="param">key</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>dict </code></dt><dd>The CFDictionaryRef possibly containing the key</dd>
+<dt><code>key </code></dt><dd>The value of the key as a CFStringRef</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5><p><!-- begin return value -->The value obtained from CFNumber as a double float value
+ 
+<!-- end return value --></p><h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion -->Helper function to make number conversion easier and simpler to read.
+<!-- end discussion --></p>
+<p></p><hr><!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/GetIntegerFromDict;  name=GetIntegerFromDict -->
+<a name="//apple_ref/doc/compositePage/c/func/GetIntegerFromDict"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="GetIntegerFromDict">GetIntegerFromDict </a></h3>
+</td></tr></table><hr><p><!-- begin abstract -->Helper function to read an integer value storaed as a CFNumber in a dictionary with error checking
+<!-- end abstract --></p>
+<p></p><pre><!-- a logicalPath="//apple_ref/c/cl/long //apple_ref/c/tdef/long //apple_ref/c/tag/long //apple_ref/c/econst/long //apple_ref/c/struct/long //apple_ref/c/clconst/long //apple_ref/c/intf/long" --><span class="type">long</span><!-- /a --> <!-- a logicalPath="//apple_ref/c/instm/GetIntegerFromDict //apple_ref/c/clm/GetIntegerFromDict //apple_ref/c/intfcm/GetIntegerFromDict //apple_ref/c/intfm/GetIntegerFromDict //apple_ref/c/func/GetIntegerFromDict //apple_ref/c/ftmplt/GetIntegerFromDict //apple_ref/c/defn/GetIntegerFromDict //apple_ref/c/macro/GetIntegerFromDict" --><span class="function">GetIntegerFromDict</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/c/cl/CFDictionaryRef //apple_ref/c/tdef/CFDictionaryRef //apple_ref/c/tag/CFDictionaryRef //apple_ref/c/econst/CFDictionaryRef //apple_ref/c/struct/CFDictionaryRef //apple_ref/c/clconst/CFDictionaryRef //apple_ref/c/intf/CFDictionaryRef" --><span class="type">CFDictionaryRef</span><!-- /a --> <span class="param">dict</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/CFStringRef //apple_ref/c/tdef/CFStringRef //apple_ref/c/tag/CFStringRef //apple_ref/c/econst/CFStringRef //apple_ref/c/struct/CFStringRef //apple_ref/c/clconst/CFStringRef //apple_ref/c/intf/CFStringRef" --><span class="type">CFStringRef</span><!-- /a --> <span class="param">key</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>dict </code></dt><dd>The CFDictionaryRef possibly containing the key</dd>
+<dt><code>key </code></dt><dd>The value of the key as a CFStringRef</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5><p><!-- begin return value -->The integer obtained from CFNumber as a 32-bit signed value
+ 
+<!-- end return value --></p><h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion -->Helper function to make number conversion easier and simpler to read.
+<!-- end discussion --></p>
+<p></p><hr><!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/GetNumberInDictWithDefault;  name=GetNumberInDictWithDefault -->
+<a name="//apple_ref/doc/compositePage/c/func/GetNumberInDictWithDefault"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="GetNumberInDictWithDefault">GetNumberInDictWithDefault </a></h3>
+</td></tr></table><hr><p><!-- begin abstract -->Helper function to read a CFNumber value from a dictionary with a default value and error checking
+<!-- end abstract --></p>
+<p></p><pre><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/c/instm/GetNumberInDictWithDefault //apple_ref/c/clm/GetNumberInDictWithDefault //apple_ref/c/intfcm/GetNumberInDictWithDefault //apple_ref/c/intfm/GetNumberInDictWithDefault //apple_ref/c/func/GetNumberInDictWithDefault //apple_ref/c/ftmplt/GetNumberInDictWithDefault //apple_ref/c/defn/GetNumberInDictWithDefault //apple_ref/c/macro/GetNumberInDictWithDefault" --><span class="function">GetNumberInDictWithDefault</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/c/cl/CFDictionaryRef //apple_ref/c/tdef/CFDictionaryRef //apple_ref/c/tag/CFDictionaryRef //apple_ref/c/econst/CFDictionaryRef //apple_ref/c/struct/CFDictionaryRef //apple_ref/c/clconst/CFDictionaryRef //apple_ref/c/intf/CFDictionaryRef" --><span class="type">CFDictionaryRef</span><!-- /a --> <span class="param">dict</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/CFStringRef //apple_ref/c/tdef/CFStringRef //apple_ref/c/tag/CFStringRef //apple_ref/c/econst/CFStringRef //apple_ref/c/struct/CFStringRef //apple_ref/c/clconst/CFStringRef //apple_ref/c/intf/CFStringRef" --><span class="type">CFStringRef</span><!-- /a --> <span class="param">key</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/CFNumberType //apple_ref/c/tdef/CFNumberType //apple_ref/c/tag/CFNumberType //apple_ref/c/econst/CFNumberType //apple_ref/c/struct/CFNumberType //apple_ref/c/clconst/CFNumberType //apple_ref/c/intf/CFNumberType" --><span class="type">CFNumberType</span><!-- /a --> <span class="param">type</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">outValue</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>dict </code></dt><dd>The CFDictionaryRef possibly containing the key</dd>
+<dt><code>key </code></dt><dd>The value of the key as a CFStringRef</dd>
+<dt><code>type </code></dt><dd>The type of integer to which CFNumber must be converted.  This must correspond to the C++ type of value</dd>
+<dt><code>value </code></dt><dd>The integer, cast to void, to which the value is copied</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion --><#(description)#>
+<!-- end discussion --></p>
+<p></p><hr><!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/GetStatisticsBooleanSettingsFromCFDictionary;  name=GetStatisticsBooleanSettingsFromCFDictionary -->
+<a name="//apple_ref/doc/compositePage/c/func/GetStatisticsBooleanSettingsFromCFDictionary"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="GetStatisticsBooleanSettingsFromCFDictionary">GetStatisticsBooleanSettingsFromCFDictionary </a></h3>
+</td></tr></table><hr><p><!-- begin abstract -->Obtains a long list of statistical parameters that may or may not be included in the output file
+<!-- end abstract --></p>
+<p></p><pre><span class="keyword">unsigned</span> <!-- a logicalPath="//apple_ref/c/cl/long //apple_ref/c/tdef/long //apple_ref/c/tag/long //apple_ref/c/econst/long //apple_ref/c/struct/long //apple_ref/c/clconst/long //apple_ref/c/intf/long" --><span class="type">long</span><!-- /a --> <!-- a logicalPath="//apple_ref/c/instm/GetStatisticsBooleanSettingsFromCFDictionary //apple_ref/c/clm/GetStatisticsBooleanSettingsFromCFDictionary //apple_ref/c/intfcm/GetStatisticsBooleanSettingsFromCFDictionary //apple_ref/c/intfm/GetStatisticsBooleanSettingsFromCFDictionary //apple_ref/c/func/GetStatisticsBooleanSettingsFromCFDictionary //apple_ref/c/ftmplt/GetStatisticsBooleanSettingsFromCFDictionary //apple_ref/c/defn/GetStatisticsBooleanSettingsFromCFDictionary //apple_ref/c/macro/GetStatisticsBooleanSettingsFromCFDictionary" --><span class="function">GetStatisticsBooleanSettingsFromCFDictionary</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/c/cl/CFDictionaryRef //apple_ref/c/tdef/CFDictionaryRef //apple_ref/c/tag/CFDictionaryRef //apple_ref/c/econst/CFDictionaryRef //apple_ref/c/struct/CFDictionaryRef //apple_ref/c/clconst/CFDictionaryRef //apple_ref/c/intf/CFDictionaryRef" --><span class="type">CFDictionaryRef</span><!-- /a --> <span class="param">statisticsDict</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>statisticsDict </code></dt><dd>The CFDictionaryRef with all CFBoolean values representing each statistics</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5><p><!-- begin return value -->An unsigned long integer where each bit represents one statistics (true or false)
+ 
+<!-- end return value --></p><h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion -->See MCWorld.h for details on the value of each key.
+<!-- end discussion --></p>
+<p></p><hr><!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/GetStringFromDict;  name=GetStringFromDict -->
+<a name="//apple_ref/doc/compositePage/c/func/GetStringFromDict"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="GetStringFromDict">GetStringFromDict </a></h3>
+</td></tr></table><hr><p><!-- begin abstract -->Obtains a string from a disctionary with error checking
+<!-- end abstract --></p>
+<p></p><pre><!-- a logicalPath="//apple_ref/c/cl/string //apple_ref/c/tdef/string //apple_ref/c/tag/string //apple_ref/c/econst/string //apple_ref/c/struct/string //apple_ref/c/clconst/string //apple_ref/c/intf/string" --><span class="type">string</span><!-- /a --> <!-- a logicalPath="//apple_ref/c/instm/GetStringFromDict //apple_ref/c/clm/GetStringFromDict //apple_ref/c/intfcm/GetStringFromDict //apple_ref/c/intfm/GetStringFromDict //apple_ref/c/func/GetStringFromDict //apple_ref/c/ftmplt/GetStringFromDict //apple_ref/c/defn/GetStringFromDict //apple_ref/c/macro/GetStringFromDict" --><span class="function">GetStringFromDict</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/c/cl/CFDictionaryRef //apple_ref/c/tdef/CFDictionaryRef //apple_ref/c/tag/CFDictionaryRef //apple_ref/c/econst/CFDictionaryRef //apple_ref/c/struct/CFDictionaryRef //apple_ref/c/clconst/CFDictionaryRef //apple_ref/c/intf/CFDictionaryRef" --><span class="type">CFDictionaryRef</span><!-- /a --> <span class="param">dict</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/CFStringRef //apple_ref/c/tdef/CFStringRef //apple_ref/c/tag/CFStringRef //apple_ref/c/econst/CFStringRef //apple_ref/c/struct/CFStringRef //apple_ref/c/clconst/CFStringRef //apple_ref/c/intf/CFStringRef" --><span class="type">CFStringRef</span><!-- /a --> <span class="param">key</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>dict </code></dt><dd>The CFDictionaryRef possibly containing the key</dd>
+<dt><code>key </code></dt><dd>The value of the key as a CFStringRef</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5><p><!-- begin return value -->A C++ string object
+
+<!-- end return value --></p><h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion --><#(description)#>
+<!-- end discussion --></p>
+<p></p><hr><!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/PopulateRootObjectWithObjectsFromCFDictionary;  name=PopulateRootObjectWithObjectsFromCFDictionary -->
+<a name="//apple_ref/doc/compositePage/c/func/PopulateRootObjectWithObjectsFromCFDictionary"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="PopulateRootObjectWithObjectsFromCFDictionary">PopulateRootObjectWithObjectsFromCFDictionary </a></h3>
+</td></tr></table><hr><p><!-- begin abstract -->This takes a CFArray of objects which are themselves CFDictionary with all the properties of objects and includes them in rootObject, which is in world.
+<!-- end abstract --></p>
+<p></p><pre><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/c/instm/PopulateRootObjectWithObjectsFromCFDictionary //apple_ref/c/clm/PopulateRootObjectWithObjectsFromCFDictionary //apple_ref/c/intfcm/PopulateRootObjectWithObjectsFromCFDictionary //apple_ref/c/intfm/PopulateRootObjectWithObjectsFromCFDictionary //apple_ref/c/func/PopulateRootObjectWithObjectsFromCFDictionary //apple_ref/c/ftmplt/PopulateRootObjectWithObjectsFromCFDictionary //apple_ref/c/defn/PopulateRootObjectWithObjectsFromCFDictionary //apple_ref/c/macro/PopulateRootObjectWithObjectsFromCFDictionary" --><span class="function">PopulateRootObjectWithObjectsFromCFDictionary</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/c/cl/MCWorld //apple_ref/c/tdef/MCWorld //apple_ref/c/tag/MCWorld //apple_ref/c/econst/MCWorld //apple_ref/c/struct/MCWorld //apple_ref/c/clconst/MCWorld //apple_ref/c/intf/MCWorld" --><span class="type">MCWorld</span><!-- /a --> *<span class="param">world</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/MCObject //apple_ref/c/tdef/MCObject //apple_ref/c/tag/MCObject //apple_ref/c/econst/MCObject //apple_ref/c/struct/MCObject //apple_ref/c/clconst/MCObject //apple_ref/c/intf/MCObject" --><span class="type">MCObject</span><!-- /a --> *<span class="param">rootObject</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/CFArrayRef //apple_ref/c/tdef/CFArrayRef //apple_ref/c/tag/CFArrayRef //apple_ref/c/econst/CFArrayRef //apple_ref/c/struct/CFArrayRef //apple_ref/c/clconst/CFArrayRef //apple_ref/c/intf/CFArrayRef" --><span class="type">CFArrayRef</span><!-- /a --> <span class="param">objects</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>world </code></dt><dd>The MCWorld that contains the objects.</dd>
+<dt><code>rootObject </code></dt><dd>The object that will contain the inserted objects</dd>
+<dt><code>objects </code></dt><dd>The CFArrayRef of CFDictionaryRef objects that will be inserted.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion -->A computation has multiple objects in it, of various shapes.  This function populates the MCWorld with them.
+MCWorld keeps track of all objects inserted, see MCWorld for details.
+<!-- end discussion --></p>
+<p></p><hr><!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/PopulateWorldWithLightSourcesFromCFDictionary;  name=PopulateWorldWithLightSourcesFromCFDictionary -->
+<a name="//apple_ref/doc/compositePage/c/func/PopulateWorldWithLightSourcesFromCFDictionary"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="PopulateWorldWithLightSourcesFromCFDictionary">PopulateWorldWithLightSourcesFromCFDictionary </a></h3>
+</td></tr></table><hr><p><!-- begin abstract -->This takes a CFArray of lightSources which are themselves CFDictionary with all the properties of light sources.
+<!-- end abstract --></p>
+<p></p><pre><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/c/instm/PopulateWorldWithLightSourcesFromCFDictionary //apple_ref/c/clm/PopulateWorldWithLightSourcesFromCFDictionary //apple_ref/c/intfcm/PopulateWorldWithLightSourcesFromCFDictionary //apple_ref/c/intfm/PopulateWorldWithLightSourcesFromCFDictionary //apple_ref/c/func/PopulateWorldWithLightSourcesFromCFDictionary //apple_ref/c/ftmplt/PopulateWorldWithLightSourcesFromCFDictionary //apple_ref/c/defn/PopulateWorldWithLightSourcesFromCFDictionary //apple_ref/c/macro/PopulateWorldWithLightSourcesFromCFDictionary" --><span class="function">PopulateWorldWithLightSourcesFromCFDictionary</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/c/cl/MCWorld //apple_ref/c/tdef/MCWorld //apple_ref/c/tag/MCWorld //apple_ref/c/econst/MCWorld //apple_ref/c/struct/MCWorld //apple_ref/c/clconst/MCWorld //apple_ref/c/intf/MCWorld" --><span class="type">MCWorld</span><!-- /a --> *<span class="param">world</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/CFArrayRef //apple_ref/c/tdef/CFArrayRef //apple_ref/c/tag/CFArrayRef //apple_ref/c/econst/CFArrayRef //apple_ref/c/struct/CFArrayRef //apple_ref/c/clconst/CFArrayRef //apple_ref/c/intf/CFArrayRef" --><span class="type">CFArrayRef</span><!-- /a --> <span class="param">sources</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>world </code></dt><dd>The MCWorld object for the computation that will contain the inlcuded light sources</dd>
+<dt><code>sources </code></dt><dd>The CFArray containing the light sources, as CFDictionaryRef</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion -->A computation can have more than one light source (laser), sometimes outside objects, sometimes inside objects (diffuser, bioluminescence).
+This function will place the lightsources in MCWorld and determine in what object they lie.
+MCWorld keeps track of all lightsources.  See MCWorld for details.
+<!-- end discussion --></p>
+<p></p><hr><!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/SetGlobalCFStringEncoding;  name=SetGlobalCFStringEncoding -->
+<a name="//apple_ref/doc/compositePage/c/func/SetGlobalCFStringEncoding"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="SetGlobalCFStringEncoding">SetGlobalCFStringEncoding </a></h3>
+</td></tr></table><hr><p><!-- begin abstract -->Sets the global string encoding for converting CFStrings to char*
+<!-- end abstract --></p>
+<p></p><pre><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/c/instm/SetGlobalCFStringEncoding //apple_ref/c/clm/SetGlobalCFStringEncoding //apple_ref/c/intfcm/SetGlobalCFStringEncoding //apple_ref/c/intfm/SetGlobalCFStringEncoding //apple_ref/c/func/SetGlobalCFStringEncoding //apple_ref/c/ftmplt/SetGlobalCFStringEncoding //apple_ref/c/defn/SetGlobalCFStringEncoding //apple_ref/c/macro/SetGlobalCFStringEncoding" --><span class="function">SetGlobalCFStringEncoding</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/c/cl/long //apple_ref/c/tdef/long //apple_ref/c/tag/long //apple_ref/c/econst/long //apple_ref/c/struct/long //apple_ref/c/clconst/long //apple_ref/c/intf/long" --><span class="type">long</span><!-- /a --> <span class="param">encoding</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>encoding </code></dt><dd>The encoding such as kCFStringEncodingISOLatin1, kCFStringEncodingWindowsLatin1, etc... as defined in CFString.h</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion -->This simplifies the code by using a global variable to set the encoding. Typically, you would use kCFStringEncodingISOLatin1
+<!-- end discussion --></p>
+<p></p><hr><!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/SetStatisticsForCalculation;  name=SetStatisticsForCalculation -->
+<a name="//apple_ref/doc/compositePage/c/func/SetStatisticsForCalculation"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="SetStatisticsForCalculation">SetStatisticsForCalculation </a></h3>
+</td></tr></table><hr><p><!-- begin abstract -->Sets the properties for the calculation and the many variables of MCWorld from the CFDictionaryRef 
+<!-- end abstract --></p>
+<p></p><pre><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/c/instm/SetStatisticsForCalculation //apple_ref/c/clm/SetStatisticsForCalculation //apple_ref/c/intfcm/SetStatisticsForCalculation //apple_ref/c/intfm/SetStatisticsForCalculation //apple_ref/c/func/SetStatisticsForCalculation //apple_ref/c/ftmplt/SetStatisticsForCalculation //apple_ref/c/defn/SetStatisticsForCalculation //apple_ref/c/macro/SetStatisticsForCalculation" --><span class="function">SetStatisticsForCalculation</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/c/cl/MCWorld //apple_ref/c/tdef/MCWorld //apple_ref/c/tag/MCWorld //apple_ref/c/econst/MCWorld //apple_ref/c/struct/MCWorld //apple_ref/c/clconst/MCWorld //apple_ref/c/intf/MCWorld" --><span class="type">MCWorld</span><!-- /a --> *<span class="param">world</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/CFDictionaryRef //apple_ref/c/tdef/CFDictionaryRef //apple_ref/c/tag/CFDictionaryRef //apple_ref/c/econst/CFDictionaryRef //apple_ref/c/struct/CFDictionaryRef //apple_ref/c/clconst/CFDictionaryRef //apple_ref/c/intf/CFDictionaryRef" --><span class="type">CFDictionaryRef</span><!-- /a --> <span class="param">calculationDict</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>world </code></dt><dd>The MCWorld for which we want to set the variables</dd>
+<dt><code>calculationDict </code></dt><dd>The CFDictionary that contains the variables:
+statistics     [ CFArray  ] : an array of Boolean 
+outputFilename [ CFString ] : The variable that will be used for filename
+keepAllPhotonStats [ CFBoolean ] : Whether or not we keep the stats for all photons
+debugOutputPhotonStats [ CFBooleab ] : Whether or not we output all the stats for all photons 
+debugLevel [ CFNumber ] : An integer from 0 (quiet) to 4 (Extremely verbose) used for debugging.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion -->This avoid the creation of multiple global variables and keeps everything neat and tidy within MCWorld
+<!-- end discussion --></p>
+<p></p><p>Last Updated: Tuesday, June 30, 2009
+</p></body></html>

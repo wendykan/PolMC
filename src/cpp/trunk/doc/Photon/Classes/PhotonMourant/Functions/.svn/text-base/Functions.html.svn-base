@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html><style type="text/css"><!--a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style><head>
+    <title>Functions</title>
+	 <meta name="generator" content="HeaderDoc">
+</head><body bgcolor="#ffffff">
+<h1><font face="Geneva,Arial,Helvtica">Functions</font></h1><br>
+<a name="HeaderDoc_functions"></a>
+<dl>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/PhotonMourant/PhotonMourant" target="doc">PhotonMourant</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/PhotonMourant/PhotonMourant/doubledoubledoubledoubleRealVRealV" target="doc">PhotonMourant(double, double, double, double, RealV, RealV)</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/PhotonMourant/PhotonMourant/StokesV%38" target="doc">PhotonMourant(StokesV &)</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/PhotonMourant/init" target="doc">init</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/PhotonMourant/MakeCopy" target="doc">MakeCopy</a></tt></dt>
+<dd></dd>
+</dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/PhotonMourant/MakeCopy; name=PhotonMourant::MakeCopy -->
+<a name="//apple_ref/cpp/instm/PhotonMourant/MakeCopy"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="MakeCopy">MakeCopy</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual Photon *MakeCopy(
+);
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Make a copy of a photon from the another Photon.
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inPhoton</em></tt></dt><dd>The other Photon</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/PhotonMourant/PhotonMourant; name=PhotonMourant::PhotonMourant -->
+<a name="//apple_ref/cpp/instm/PhotonMourant/PhotonMourant"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="PhotonMourant">PhotonMourant</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>PhotonMourant(
+) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Default constructor
+	      </p>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/PhotonMourant/PhotonMourant/StokesV%38; name=PhotonMourant::PhotonMourant -->
+<a name="//apple_ref/cpp/instm/PhotonMourant/PhotonMourant/StokesV%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="PhotonMourant(StokesV%32%38)">PhotonMourant(StokesV &)</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>PhotonMourant(
+    StokesV & inStokesVector );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This constructor makes a photon with polarization state given by
+the Stokes vector passed as argument.  The photon is assumed to travel along the (0,0,1)
+direction and have the reference axes for the Stokes parameter to be e_parallel = (1,0,0) and
+e_perp = (0,1,0)
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inStokesVector</em></tt></dt><dd>The Stokes vector</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/PhotonMourant/PhotonMourant/doubledoubledoubledoubleRealVRealV; name=PhotonMourant::PhotonMourant -->
+<a name="//apple_ref/cpp/instm/PhotonMourant/PhotonMourant/doubledoubledoubledoubleRealVRealV"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="PhotonMourant(double%44%32double%44%32double%44%32double%44%32RealV%44%32RealV)">PhotonMourant(double, double, double, double, RealV, RealV)</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>PhotonMourant(
+    double inI,
+    double inQ,
+    double inU,
+    double inV,
+    RealV inEpara ,
+    RealV inEprop );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This constructor makes a photon with polarization state given by
+the four Stokes parameters passed as arguments.  The photon is assumed to travel along the (0,0,1)
+direction and have the reference axes for the Stokes parameter to be e_parallel = (1,0,0) and
+e_perp = (0,1,0)
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inI</em></tt></dt><dd>The intensity (first Stokes parameter)</dd>
+<dt><tt><em>inQ</em></tt></dt><dd>The Q parameter (second Stokes parameter)</dd>
+<dt><tt><em>inU</em></tt></dt><dd>The U parameter (third Stokes parameter)</dd>
+<dt><tt><em>inV</em></tt></dt><dd>The V parameter (fourth Stokes parameter)</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/PhotonMourant/init; name=PhotonMourant::init -->
+<a name="//apple_ref/cpp/instm/PhotonMourant/init"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="init">init</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void init(
+) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Initialize anything that is left to initialize, which for now means
+spitting out a warning to stdlog to make sure the user knows what he is using.
+     </p>
+<hr>
+<p>(Last Updated 2/23/2005)
+</p></body></html>

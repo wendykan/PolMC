@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html><style type="text/css"><!--a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style><head>
+    <title>Functions</title>
+	 <meta name="generator" content="HeaderDoc">
+</head><body bgcolor="#ffffff">
+<h1><font face="Geneva,Arial,Helvtica">Functions</font></h1><br>
+<a name="HeaderDoc_functions"></a>
+<dl>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MuellerMRayleigh/GetMatrixForTheta/double*double" target="doc">GetMatrixForTheta</a></tt></dt>
+<dd></dd>
+</dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MuellerMRayleigh/GetMatrixForTheta/double*double; name=MuellerMRayleigh::GetMatrixForTheta -->
+<a name="//apple_ref/cpp/instm/MuellerMRayleigh/GetMatrixForTheta/double*double"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetMatrixForTheta">GetMatrixForTheta</a></h2>
+</td></tr></table><blockquote><pre><tt>protected:</tt>
+<br>virtual void GetMatrixForTheta(
+    double *inM,
+    double inTheta ) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Function to obtain the Mueller matrix of a Rayleigh scatterer for a given scattering angle theta.  
+The matrix elements are calculated analytically.
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inM</em></tt></dt><dd>This parameter contains the Mueller matrix on exit.  The mueller matrix is returned through this parameter (which is a 
+double[16] array (if the code is compiled without __NOOPTIMIZE, the default) or double[4][4] array 
+(if the code is compiled with __NOOPTIMIZE). The caller must have allocated the array. A few things to know:
+matrices: m[row][col], hence using a single index one must do: [4*row+col] == [row][col]</dd>
+<dt><tt><em>inTheta</em></tt></dt><dd>Scattering angle requested (in the scattering plane).</dd>
+<dt><tt><em>inPhi</em></tt></dt><dd>This parameter *would* allow a rotation of the preferred axis (not implemented now). Always zero.</dd>
+</dl>
+</blockquote>
+<hr>
+<p>(Last Updated 2/23/2005)
+</p></body></html>

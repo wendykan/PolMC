@@ -1,0 +1,57 @@
+FLAGS = 
+LIBRARY = -lm -lmpich -lmpe
+LDFLAGS = -L$$HOME/lib -lm
+ARCHIVE = ar 
+CXXFLAGS = -I. -I$$HOME/include/
+
+
+OBJECTS = main.o mydebug.o cubicspline.o configfiles.o rand.o
+
+SOURCES = main.cpp mydebug.cp cubicspline.cpp configfiles.cpp rand.cpp
+
+mc.prof : CXXFLAGS = -pg ${CXXFLAGS}
+
+mc.d : CXXFLAGS = -g -D__MYDEBUG ${CXXFLAGS}
+
+mc.solaris : CXXFLAGS = -O2 ${CXXFLAGS}
+
+mc.linux : CXXFLAGS = -O2 ${CXXFLAGS}
+
+
+install : all
+	cp mc.* $$HOME/bin/
+
+all : mc.d
+
+clean: 
+	rm -rf *.o
+        
+mc.solaris : ${OBJECTS}
+	${CXX} ${CXXFLAGS} ${LDFLAGS} -o mc.solaris ${OBJECTS}
+
+mc.d : ${OBJECTS}
+	${CXX} ${CXXFLAGS} ${LDFLAGS} -o mc.d ${OBJECTS}
+
+mc.linux : ${OBJECTS}
+	${CXX} ${CXXFLAGS} ${LDFLAGS} -o mc.linux ${OBJECTS}
+
+mc.prof : ${OBJECTS}
+	${CXX} ${CXXFLAGS} ${LDFLAGS} -o mc.prof ${OBJECTS}
+
+test : test.o mydebug.o cubicspline.o configfiles.o
+	${CXX} ${CXXFLAGS} ${LDFLAGS} -o test test.o mydebug.o cubicspline.o configfiles.o
+
+
+main.o : main.cpp
+	${CXX} ${CXXFLAGS} -c main.cpp
+
+test.o : test.cpp ${OBJECTS}
+	${CXX} ${CXXFLAGS} -c test.cpp
+
+mydebug.o : mydebug.h
+
+cubcispline.o : cubicspline.h
+
+configefiles.o : configfiles.h
+
+rand.o : rand.h

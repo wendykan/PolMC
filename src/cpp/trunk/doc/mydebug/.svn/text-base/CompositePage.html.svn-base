@@ -1,0 +1,293 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html><head>
+    <title>mydebug </title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="generator" content="HeaderDoc" />
+<style type="text/css"><!--.keyword {background:#ffffff; color:#761550;}.template {background:#ffffff; color:#761550;}.number {background: #ffffff; color:#0000ff;}.function {background:#ffffff; color:#000000;}.string {background: #ffffff; color:#891315;}.preprocessor {background:#ffffff; color:#236e25}.comment {background:#ffffff; color:#236e25}.char {background: #ffffff; color:#0000ff;}.var {background:#ffffff; color:#000000;}.type {background:#ffffff; color:#761550;}.param {background:#ffffff; color:#000000;}a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style></head><body bgcolor="#ffffff">
+<a name="top"></a>
+<a name="//apple_ref/doc/header/mydebug.h" title="mydebug "></a>
+<hr><table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h1><a name="mydebug">mydebug </a></h1>
+</td></tr></table><hr><p><!-- begin abstract -->Utility functions for debugging calculations
+<!-- end abstract --></p>
+<p></p><dl><b>Includes:</b> <!-- a logicalPath="//apple_ref/doc/header/iostream" -->&lt;iostream&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/complex" -->&lt;complex&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/valarray" -->&lt;valarray&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/cassert" -->&lt;cassert&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/cmath" -->&lt;cmath&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/limits" -->&lt;limits&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/stdexcept" -->&lt;stdexcept&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/string" -->&lt;string&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/config.h" -->&lt;config.h&gt;<!-- /a --><br>
+</dl><h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion -->Multiple utility functions are defined here to check the validity of numbers, complex numbers, check for difference, etc...
+<br><br>
+Utility functions are defined to help display meaningful messages to the user.
+<br><br>
+If debug is activated (MYDEBUG_H defined), the the macros ending in _() will perform their checks. If MYDEBUG_H is not defined, then
+the macros will not generate any code and will not slow down the code.
+<br><br>
+<br><br>
+<!-- end discussion --></p>
+<p></p><hr><br><h2>Functions</h2>
+<a name="HeaderDoc_functions"></a>
+<dl>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/AbsDiff" target="_top">AbsDiff </a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/ArgDiff" target="_top">ArgDiff </a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/CheckArray" target="_top">CheckArray </a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/CheckDoubleValue" target="_top">CheckDoubleValue </a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/CheckIfArrayReal" target="_top">CheckIfArrayReal </a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/CheckIfHermitian" target="_top">CheckIfHermitian </a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/CheckIfValidXForFFT" target="_top">CheckIfValidXForFFT </a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/CheckRealArray" target="_top">CheckRealArray </a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/CheckValue" target="_top">CheckValue </a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/RightNow" target="_top">RightNow </a></tt></dt>
+<dd></dd>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/AbsDiff;  name=AbsDiff -->
+<a name="//apple_ref/doc/compositePage/c/func/AbsDiff"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="AbsDiff">AbsDiff </a></h3>
+</td></tr></table><hr><p></p><pre><!-- a logicalPath="//apple_ref/c/cl/double //apple_ref/c/tdef/double //apple_ref/c/tag/double //apple_ref/c/econst/double //apple_ref/c/struct/double //apple_ref/c/clconst/double //apple_ref/c/intf/double" --><span class="type">double</span><!-- /a --> <!-- a logicalPath="//apple_ref/c/instm/AbsDiff //apple_ref/c/clm/AbsDiff //apple_ref/c/intfcm/AbsDiff //apple_ref/c/intfm/AbsDiff //apple_ref/c/func/AbsDiff //apple_ref/c/ftmplt/AbsDiff //apple_ref/c/defn/AbsDiff //apple_ref/c/macro/AbsDiff" --><span class="function">AbsDiff</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/c/cl/Complex //apple_ref/c/tdef/Complex //apple_ref/c/tag/Complex //apple_ref/c/econst/Complex //apple_ref/c/struct/Complex //apple_ref/c/clconst/Complex //apple_ref/c/intf/Complex" --><span class="type">Complex</span><!-- /a --> <span class="param">a</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/Complex //apple_ref/c/tdef/Complex //apple_ref/c/tag/Complex //apple_ref/c/econst/Complex //apple_ref/c/struct/Complex //apple_ref/c/clconst/Complex //apple_ref/c/intf/Complex" --><span class="type">Complex</span><!-- /a --> <span class="param">b</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>a </code></dt><dd>First complex number</dd>
+<dt><code>b </code></dt><dd>Second complex number</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5><p><!-- begin return value -->Difference between the absoluate values
+ 
+<!-- end return value --></p><h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion -->COmputes the difference between the modulus of two complex numbers (the angle in Euler representation).
+<!-- end discussion --></p>
+<p></p><hr><!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/ArgDiff;  name=ArgDiff -->
+<a name="//apple_ref/doc/compositePage/c/func/ArgDiff"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="ArgDiff">ArgDiff </a></h3>
+</td></tr></table><hr><p></p><pre><!-- a logicalPath="//apple_ref/c/cl/double //apple_ref/c/tdef/double //apple_ref/c/tag/double //apple_ref/c/econst/double //apple_ref/c/struct/double //apple_ref/c/clconst/double //apple_ref/c/intf/double" --><span class="type">double</span><!-- /a --> <!-- a logicalPath="//apple_ref/c/instm/ArgDiff //apple_ref/c/clm/ArgDiff //apple_ref/c/intfcm/ArgDiff //apple_ref/c/intfm/ArgDiff //apple_ref/c/func/ArgDiff //apple_ref/c/ftmplt/ArgDiff //apple_ref/c/defn/ArgDiff //apple_ref/c/macro/ArgDiff" --><span class="function">ArgDiff</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/c/cl/Complex //apple_ref/c/tdef/Complex //apple_ref/c/tag/Complex //apple_ref/c/econst/Complex //apple_ref/c/struct/Complex //apple_ref/c/clconst/Complex //apple_ref/c/intf/Complex" --><span class="type">Complex</span><!-- /a --> <span class="param">a</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/Complex //apple_ref/c/tdef/Complex //apple_ref/c/tag/Complex //apple_ref/c/econst/Complex //apple_ref/c/struct/Complex //apple_ref/c/clconst/Complex //apple_ref/c/intf/Complex" --><span class="type">Complex</span><!-- /a --> <span class="param">b</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>a </code></dt><dd>First complex number</dd>
+<dt><code>b </code></dt><dd>Second complex number</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5><p><!-- begin return value -->Difference between the angles
+
+<!-- end return value --></p><h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion -->Computes the difference between the argument of two complex numbers (the angle in Euler representation).
+<!-- end discussion --></p>
+<p></p><hr><!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/CheckArray;  name=CheckArray -->
+<a name="//apple_ref/doc/compositePage/c/func/CheckArray"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="CheckArray">CheckArray </a></h3>
+</td></tr></table><hr><p></p><pre><!-- a logicalPath="//apple_ref/c/cl/bool //apple_ref/c/tdef/bool //apple_ref/c/tag/bool //apple_ref/c/econst/bool //apple_ref/c/struct/bool //apple_ref/c/clconst/bool //apple_ref/c/intf/bool" --><span class="type">bool</span><!-- /a --> <!-- a logicalPath="//apple_ref/c/instm/CheckArray //apple_ref/c/clm/CheckArray //apple_ref/c/intfcm/CheckArray //apple_ref/c/intfm/CheckArray //apple_ref/c/func/CheckArray //apple_ref/c/ftmplt/CheckArray //apple_ref/c/defn/CheckArray //apple_ref/c/macro/CheckArray" --><span class="function">CheckArray</span><!-- /a -->(
+    <span class="keyword">const</span> <!-- a logicalPath="//apple_ref/c/cl/std //apple_ref/c/tdef/std //apple_ref/c/tag/std //apple_ref/c/econst/std //apple_ref/c/struct/std //apple_ref/c/clconst/std //apple_ref/c/intf/std" --><span class="type">std</span><!-- /a -->::<!-- a logicalPath="//apple_ref/c/cl/valarray //apple_ref/c/tdef/valarray //apple_ref/c/tag/valarray //apple_ref/c/econst/valarray //apple_ref/c/struct/valarray //apple_ref/c/clconst/valarray //apple_ref/c/intf/valarray" --><span class="type">valarray</span><!-- /a -->&lt;<span class="template">Complex</span>&gt;&amp; <span class="param">a</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/long //apple_ref/c/tdef/long //apple_ref/c/tag/long //apple_ref/c/econst/long //apple_ref/c/struct/long //apple_ref/c/clconst/long //apple_ref/c/intf/long" --><span class="type">long</span><!-- /a --> <span class="param">l</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/char //apple_ref/c/tdef/char //apple_ref/c/tag/char //apple_ref/c/econst/char //apple_ref/c/struct/char //apple_ref/c/clconst/char //apple_ref/c/intf/char" --><span class="type">char</span><!-- /a --> *<span class="param">s</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>a </code></dt><dd>A valarray of complex numbers</dd>
+<dt><code>l </code></dt><dd>Line number from which function was called</dd>
+<dt><code>s </code></dt><dd>Filename from which function was called</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5><p><!-- begin return value -->Non zero if array contains elements that are infinite or NAN.
+
+<!-- end return value --></p><h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion -->This function should not be called directly.  See the macro CheckArray_().
+Check to see if complex array contains elements that are infinite or NAN.  Will output a warning
+to stdlog if any, and will state the file and line number where the function was called.
+<!-- end discussion --></p>
+<p></p><hr><!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/CheckDoubleValue;  name=CheckDoubleValue -->
+<a name="//apple_ref/doc/compositePage/c/func/CheckDoubleValue"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="CheckDoubleValue">CheckDoubleValue </a></h3>
+</td></tr></table><hr><p></p><pre><!-- a logicalPath="//apple_ref/c/cl/bool //apple_ref/c/tdef/bool //apple_ref/c/tag/bool //apple_ref/c/econst/bool //apple_ref/c/struct/bool //apple_ref/c/clconst/bool //apple_ref/c/intf/bool" --><span class="type">bool</span><!-- /a --> <!-- a logicalPath="//apple_ref/c/instm/CheckDoubleValue //apple_ref/c/clm/CheckDoubleValue //apple_ref/c/intfcm/CheckDoubleValue //apple_ref/c/intfm/CheckDoubleValue //apple_ref/c/func/CheckDoubleValue //apple_ref/c/ftmplt/CheckDoubleValue //apple_ref/c/defn/CheckDoubleValue //apple_ref/c/macro/CheckDoubleValue" --><span class="function">CheckDoubleValue</span><!-- /a -->(
+    <span class="keyword">const</span> <!-- a logicalPath="//apple_ref/c/cl/Double //apple_ref/c/tdef/Double //apple_ref/c/tag/Double //apple_ref/c/econst/Double //apple_ref/c/struct/Double //apple_ref/c/clconst/Double //apple_ref/c/intf/Double" --><span class="type">Double</span><!-- /a -->&amp; <span class="param">a</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/long //apple_ref/c/tdef/long //apple_ref/c/tag/long //apple_ref/c/econst/long //apple_ref/c/struct/long //apple_ref/c/clconst/long //apple_ref/c/intf/long" --><span class="type">long</span><!-- /a --> <span class="param">l</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/char //apple_ref/c/tdef/char //apple_ref/c/tag/char //apple_ref/c/econst/char //apple_ref/c/struct/char //apple_ref/c/clconst/char //apple_ref/c/intf/char" --><span class="type">char</span><!-- /a --> *<span class="param">s</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>a </code></dt><dd>A real number</dd>
+<dt><code>l </code></dt><dd>Line number from which function was called</dd>
+<dt><code>s </code></dt><dd>Filename from which function was called</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5><p><!-- begin return value -->Non zero if number is infinite or NAN.
+
+<!-- end return value --></p><h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion -->This function should not be called directly.  See the macro CheckDoubleValue_().
+Check to see if real number is infinite or NAN.  Will output a warning
+to stdlog if any, and will state the file and line number where the function was called.
+<!-- end discussion --></p>
+<p></p><hr><!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/CheckIfArrayReal;  name=CheckIfArrayReal -->
+<a name="//apple_ref/doc/compositePage/c/func/CheckIfArrayReal"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="CheckIfArrayReal">CheckIfArrayReal </a></h3>
+</td></tr></table><hr><p></p><pre><!-- a logicalPath="//apple_ref/c/cl/bool //apple_ref/c/tdef/bool //apple_ref/c/tag/bool //apple_ref/c/econst/bool //apple_ref/c/struct/bool //apple_ref/c/clconst/bool //apple_ref/c/intf/bool" --><span class="type">bool</span><!-- /a --> <!-- a logicalPath="//apple_ref/c/instm/CheckIfArrayReal //apple_ref/c/clm/CheckIfArrayReal //apple_ref/c/intfcm/CheckIfArrayReal //apple_ref/c/intfm/CheckIfArrayReal //apple_ref/c/func/CheckIfArrayReal //apple_ref/c/ftmplt/CheckIfArrayReal //apple_ref/c/defn/CheckIfArrayReal //apple_ref/c/macro/CheckIfArrayReal" --><span class="function">CheckIfArrayReal</span><!-- /a -->(
+    <span class="keyword">const</span> <!-- a logicalPath="//apple_ref/c/cl/std //apple_ref/c/tdef/std //apple_ref/c/tag/std //apple_ref/c/econst/std //apple_ref/c/struct/std //apple_ref/c/clconst/std //apple_ref/c/intf/std" --><span class="type">std</span><!-- /a -->::<!-- a logicalPath="//apple_ref/c/cl/valarray //apple_ref/c/tdef/valarray //apple_ref/c/tag/valarray //apple_ref/c/econst/valarray //apple_ref/c/struct/valarray //apple_ref/c/clconst/valarray //apple_ref/c/intf/valarray" --><span class="type">valarray</span><!-- /a -->&lt;<span class="template">Complex</span>&gt;&amp; <span class="param">a</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/long //apple_ref/c/tdef/long //apple_ref/c/tag/long //apple_ref/c/econst/long //apple_ref/c/struct/long //apple_ref/c/clconst/long //apple_ref/c/intf/long" --><span class="type">long</span><!-- /a --> <span class="param">l</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/char //apple_ref/c/tdef/char //apple_ref/c/tag/char //apple_ref/c/econst/char //apple_ref/c/struct/char //apple_ref/c/clconst/char //apple_ref/c/intf/char" --><span class="type">char</span><!-- /a --> *<span class="param">s</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>a </code></dt><dd>A valarray of complex numbers</dd>
+<dt><code>l </code></dt><dd>Line number from which function was called</dd>
+<dt><code>s </code></dt><dd>Filename from which function was called</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5><p><!-- begin return value -->Non zero if array contains elements that have a non zero imaginary part.
+
+<!-- end return value --></p><h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion -->This function should not be called directly.  See the macro CheckIfArrayReal_().
+Check to see if complex array contains elements that have a non zero imaginary part.  Will output a warning
+to stdlog if any, and will state the file and line number where the function was called.
+<!-- end discussion --></p>
+<p></p><hr><!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/CheckIfHermitian;  name=CheckIfHermitian -->
+<a name="//apple_ref/doc/compositePage/c/func/CheckIfHermitian"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="CheckIfHermitian">CheckIfHermitian </a></h3>
+</td></tr></table><hr><p></p><pre><!-- a logicalPath="//apple_ref/c/cl/bool //apple_ref/c/tdef/bool //apple_ref/c/tag/bool //apple_ref/c/econst/bool //apple_ref/c/struct/bool //apple_ref/c/clconst/bool //apple_ref/c/intf/bool" --><span class="type">bool</span><!-- /a --> <!-- a logicalPath="//apple_ref/c/instm/CheckIfHermitian //apple_ref/c/clm/CheckIfHermitian //apple_ref/c/intfcm/CheckIfHermitian //apple_ref/c/intfm/CheckIfHermitian //apple_ref/c/func/CheckIfHermitian //apple_ref/c/ftmplt/CheckIfHermitian //apple_ref/c/defn/CheckIfHermitian //apple_ref/c/macro/CheckIfHermitian" --><span class="function">CheckIfHermitian</span><!-- /a -->(
+    <span class="keyword">const</span> <!-- a logicalPath="//apple_ref/c/cl/std //apple_ref/c/tdef/std //apple_ref/c/tag/std //apple_ref/c/econst/std //apple_ref/c/struct/std //apple_ref/c/clconst/std //apple_ref/c/intf/std" --><span class="type">std</span><!-- /a -->::<!-- a logicalPath="//apple_ref/c/cl/valarray //apple_ref/c/tdef/valarray //apple_ref/c/tag/valarray //apple_ref/c/econst/valarray //apple_ref/c/struct/valarray //apple_ref/c/clconst/valarray //apple_ref/c/intf/valarray" --><span class="type">valarray</span><!-- /a -->&lt;<span class="template">Double</span>&gt;&amp; <span class="param">x</span>,
+    <span class="keyword">const</span> <!-- a logicalPath="//apple_ref/c/cl/std //apple_ref/c/tdef/std //apple_ref/c/tag/std //apple_ref/c/econst/std //apple_ref/c/struct/std //apple_ref/c/clconst/std //apple_ref/c/intf/std" --><span class="type">std</span><!-- /a -->::<!-- a logicalPath="//apple_ref/c/cl/valarray //apple_ref/c/tdef/valarray //apple_ref/c/tag/valarray //apple_ref/c/econst/valarray //apple_ref/c/struct/valarray //apple_ref/c/clconst/valarray //apple_ref/c/intf/valarray" --><span class="type">valarray</span><!-- /a -->&lt;<span class="template">Complex</span>&gt;&amp; <span class="param">y</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/long //apple_ref/c/tdef/long //apple_ref/c/tag/long //apple_ref/c/econst/long //apple_ref/c/struct/long //apple_ref/c/clconst/long //apple_ref/c/intf/long" --><span class="type">long</span><!-- /a --> <span class="param">l</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/char //apple_ref/c/tdef/char //apple_ref/c/tag/char //apple_ref/c/econst/char //apple_ref/c/struct/char //apple_ref/c/clconst/char //apple_ref/c/intf/char" --><span class="type">char</span><!-- /a --> *<span class="param">s</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>x </code></dt><dd>An array of complex numbers</dd>
+<dt><code>x </code></dt><dd>A second array of complex numbers</dd>
+<dt><code>l </code></dt><dd>Line number from which function was called</dd>
+<dt><code>s </code></dt><dd>Filename from which function was called</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5><p><!-- begin return value -->Non zero if not hermitian.
+
+<!-- end return value --></p><h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion -->This function should not be called directly.  See the macro CheckIfHermitian_().
+Check to see if array of complex numbers y is hermitian, assuming pairs (x,y). 
+Will output a warning to stdlog if any, and will state the file and line number where the function was called.
+<!-- end discussion --></p>
+<p></p><hr><!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/CheckIfValidXForFFT;  name=CheckIfValidXForFFT -->
+<a name="//apple_ref/doc/compositePage/c/func/CheckIfValidXForFFT"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="CheckIfValidXForFFT">CheckIfValidXForFFT </a></h3>
+</td></tr></table><hr><p></p><pre><!-- a logicalPath="//apple_ref/c/cl/bool //apple_ref/c/tdef/bool //apple_ref/c/tag/bool //apple_ref/c/econst/bool //apple_ref/c/struct/bool //apple_ref/c/clconst/bool //apple_ref/c/intf/bool" --><span class="type">bool</span><!-- /a --> <!-- a logicalPath="//apple_ref/c/instm/CheckIfValidXForFFT //apple_ref/c/clm/CheckIfValidXForFFT //apple_ref/c/intfcm/CheckIfValidXForFFT //apple_ref/c/intfm/CheckIfValidXForFFT //apple_ref/c/func/CheckIfValidXForFFT //apple_ref/c/ftmplt/CheckIfValidXForFFT //apple_ref/c/defn/CheckIfValidXForFFT //apple_ref/c/macro/CheckIfValidXForFFT" --><span class="function">CheckIfValidXForFFT</span><!-- /a -->(
+    <span class="keyword">const</span> <!-- a logicalPath="//apple_ref/c/cl/std //apple_ref/c/tdef/std //apple_ref/c/tag/std //apple_ref/c/econst/std //apple_ref/c/struct/std //apple_ref/c/clconst/std //apple_ref/c/intf/std" --><span class="type">std</span><!-- /a -->::<!-- a logicalPath="//apple_ref/c/cl/valarray //apple_ref/c/tdef/valarray //apple_ref/c/tag/valarray //apple_ref/c/econst/valarray //apple_ref/c/struct/valarray //apple_ref/c/clconst/valarray //apple_ref/c/intf/valarray" --><span class="type">valarray</span><!-- /a -->&lt;<span class="template">Double</span>&gt;&amp; <span class="param">a</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/long //apple_ref/c/tdef/long //apple_ref/c/tag/long //apple_ref/c/econst/long //apple_ref/c/struct/long //apple_ref/c/clconst/long //apple_ref/c/intf/long" --><span class="type">long</span><!-- /a --> <span class="param">l</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/char //apple_ref/c/tdef/char //apple_ref/c/tag/char //apple_ref/c/econst/char //apple_ref/c/struct/char //apple_ref/c/clconst/char //apple_ref/c/intf/char" --><span class="type">char</span><!-- /a --> *<span class="param">s</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>a </code></dt><dd>An array of real number</dd>
+<dt><code>l </code></dt><dd>Line number from which function was called</dd>
+<dt><code>s </code></dt><dd>Filename from which function was called</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5><p><!-- begin return value -->Non zero if invalid.
+
+<!-- end return value --></p><h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion -->This function should not be called directly.  See the macro CheckIfValidXForFFT_().
+Check to see if a array of real numbers is appropriate for use with the FFT algorithm, that is, if
+the first element is zero, and if these elements are symmetric with respect to zero (i.e. a[i] == -a[a.size() - i]).
+<br><br>
+<!-- end discussion --></p>
+<p></p><hr><!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/CheckRealArray;  name=CheckRealArray -->
+<a name="//apple_ref/doc/compositePage/c/func/CheckRealArray"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="CheckRealArray">CheckRealArray </a></h3>
+</td></tr></table><hr><p></p><pre><!-- a logicalPath="//apple_ref/c/cl/bool //apple_ref/c/tdef/bool //apple_ref/c/tag/bool //apple_ref/c/econst/bool //apple_ref/c/struct/bool //apple_ref/c/clconst/bool //apple_ref/c/intf/bool" --><span class="type">bool</span><!-- /a --> <!-- a logicalPath="//apple_ref/c/instm/CheckRealArray //apple_ref/c/clm/CheckRealArray //apple_ref/c/intfcm/CheckRealArray //apple_ref/c/intfm/CheckRealArray //apple_ref/c/func/CheckRealArray //apple_ref/c/ftmplt/CheckRealArray //apple_ref/c/defn/CheckRealArray //apple_ref/c/macro/CheckRealArray" --><span class="function">CheckRealArray</span><!-- /a -->(
+    <span class="keyword">const</span> <!-- a logicalPath="//apple_ref/c/cl/std //apple_ref/c/tdef/std //apple_ref/c/tag/std //apple_ref/c/econst/std //apple_ref/c/struct/std //apple_ref/c/clconst/std //apple_ref/c/intf/std" --><span class="type">std</span><!-- /a -->::<!-- a logicalPath="//apple_ref/c/cl/valarray //apple_ref/c/tdef/valarray //apple_ref/c/tag/valarray //apple_ref/c/econst/valarray //apple_ref/c/struct/valarray //apple_ref/c/clconst/valarray //apple_ref/c/intf/valarray" --><span class="type">valarray</span><!-- /a -->&lt;<span class="template">Double</span>&gt;&amp; <span class="param">a</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/long //apple_ref/c/tdef/long //apple_ref/c/tag/long //apple_ref/c/econst/long //apple_ref/c/struct/long //apple_ref/c/clconst/long //apple_ref/c/intf/long" --><span class="type">long</span><!-- /a --> <span class="param">l</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/char //apple_ref/c/tdef/char //apple_ref/c/tag/char //apple_ref/c/econst/char //apple_ref/c/struct/char //apple_ref/c/clconst/char //apple_ref/c/intf/char" --><span class="type">char</span><!-- /a --> *<span class="param">s</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>a </code></dt><dd>A valarray of real numbers</dd>
+<dt><code>l </code></dt><dd>Line number from which function was called</dd>
+<dt><code>s </code></dt><dd>Filename from which function was called</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5><p><!-- begin return value -->Non zero if array contains elements that are infinite or NAN.
+
+<!-- end return value --></p><h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion -->This function should not be called directly.  See the macro CheckIfArrayReal_().
+Check to see if real array contains elements that are infinite or NAN.  Will output a warning
+to stdlog if any, and will state the file and line number where the function was called.
+<!-- end discussion --></p>
+<p></p><hr><!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/CheckValue;  name=CheckValue -->
+<a name="//apple_ref/doc/compositePage/c/func/CheckValue"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="CheckValue">CheckValue </a></h3>
+</td></tr></table><hr><p></p><pre><!-- a logicalPath="//apple_ref/c/cl/bool //apple_ref/c/tdef/bool //apple_ref/c/tag/bool //apple_ref/c/econst/bool //apple_ref/c/struct/bool //apple_ref/c/clconst/bool //apple_ref/c/intf/bool" --><span class="type">bool</span><!-- /a --> <!-- a logicalPath="//apple_ref/c/instm/CheckValue //apple_ref/c/clm/CheckValue //apple_ref/c/intfcm/CheckValue //apple_ref/c/intfm/CheckValue //apple_ref/c/func/CheckValue //apple_ref/c/ftmplt/CheckValue //apple_ref/c/defn/CheckValue //apple_ref/c/macro/CheckValue" --><span class="function">CheckValue</span><!-- /a -->(
+    <span class="keyword">const</span> <!-- a logicalPath="//apple_ref/c/cl/Complex //apple_ref/c/tdef/Complex //apple_ref/c/tag/Complex //apple_ref/c/econst/Complex //apple_ref/c/struct/Complex //apple_ref/c/clconst/Complex //apple_ref/c/intf/Complex" --><span class="type">Complex</span><!-- /a -->&amp; <span class="param">a</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/long //apple_ref/c/tdef/long //apple_ref/c/tag/long //apple_ref/c/econst/long //apple_ref/c/struct/long //apple_ref/c/clconst/long //apple_ref/c/intf/long" --><span class="type">long</span><!-- /a --> <span class="param">l</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/char //apple_ref/c/tdef/char //apple_ref/c/tag/char //apple_ref/c/econst/char //apple_ref/c/struct/char //apple_ref/c/clconst/char //apple_ref/c/intf/char" --><span class="type">char</span><!-- /a --> *<span class="param">s</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>a </code></dt><dd>A complex number</dd>
+<dt><code>l </code></dt><dd>Line number from which function was called</dd>
+<dt><code>s </code></dt><dd>Filename from which function was called</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5><p><!-- begin return value -->Non zero if number is infinite or NAN.
+
+<!-- end return value --></p><h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion -->This function should not be called directly.  See the macro CheckValue_().
+Check to see if complex number is infinite or NAN.  Will output a warning
+to stdlog if any, and will state the file and line number where the function was called.
+<!-- end discussion --></p>
+<p></p><hr><!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/RightNow;  name=RightNow -->
+<a name="//apple_ref/doc/compositePage/c/func/RightNow"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="RightNow">RightNow </a></h3>
+</td></tr></table><hr><p></p><pre><span class="keyword">const</span> <!-- a logicalPath="//apple_ref/c/cl/char //apple_ref/c/tdef/char //apple_ref/c/tag/char //apple_ref/c/econst/char //apple_ref/c/struct/char //apple_ref/c/clconst/char //apple_ref/c/intf/char" --><span class="type">char</span><!-- /a --><span class="type">*</span> <!-- a logicalPath="//apple_ref/c/instm/RightNow //apple_ref/c/clm/RightNow //apple_ref/c/intfcm/RightNow //apple_ref/c/intfm/RightNow //apple_ref/c/func/RightNow //apple_ref/c/ftmplt/RightNow //apple_ref/c/defn/RightNow //apple_ref/c/macro/RightNow" --><span class="function">RightNow</span><!-- /a -->();  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5><p><!-- begin return value -->Pointer to a static buffer with the time and date.
+
+<!-- end return value --></p><h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion -->Returns current time and date, for use typically to output to stderr or stdlog
+<!-- end discussion --></p>
+<p></p><h2>Typedefs</h2>
+<hr><!-- headerDoc=tdef;  uid=//apple_ref/doc/compositePage/c/tdef/Complex;  name=Complex -->
+<a name="//apple_ref/doc/compositePage/c/tdef/Complex"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="Complex">Complex </a></h3>
+</td></tr></table><hr><p></p><pre><span class="keyword">typedef</span> <!-- a logicalPath="//apple_ref/c/cl/std //apple_ref/c/tdef/std //apple_ref/c/tag/std //apple_ref/c/econst/std //apple_ref/c/struct/std //apple_ref/c/clconst/std //apple_ref/c/intf/std" --><span class="type">std</span><!-- /a -->::<!-- a logicalPath="//apple_ref/c/cl/complex //apple_ref/c/tdef/complex //apple_ref/c/tag/complex //apple_ref/c/econst/complex //apple_ref/c/struct/complex //apple_ref/c/clconst/complex //apple_ref/c/intf/complex" --><span class="type">complex</span><!-- /a -->&lt;<span class="template">Double</span>&gt; <span class="var">Complex</span>;  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion -->Complex number, double precision
+<!-- end discussion --></p>
+<p></p><hr><!-- headerDoc=tdef;  uid=//apple_ref/doc/compositePage/c/tdef/complex_double;  name=complex_double -->
+<a name="//apple_ref/doc/compositePage/c/tdef/complex_double"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="complex_double">complex_double </a></h3>
+</td></tr></table><hr><p></p><pre><span class="keyword">typedef</span> <!-- a logicalPath="//apple_ref/c/cl/std //apple_ref/c/tdef/std //apple_ref/c/tag/std //apple_ref/c/econst/std //apple_ref/c/struct/std //apple_ref/c/clconst/std //apple_ref/c/intf/std" --><span class="type">std</span><!-- /a -->::<!-- a logicalPath="//apple_ref/c/cl/complex //apple_ref/c/tdef/complex //apple_ref/c/tag/complex //apple_ref/c/econst/complex //apple_ref/c/struct/complex //apple_ref/c/clconst/complex //apple_ref/c/intf/complex" --><span class="type">complex</span><!-- /a -->&lt;<span class="template">double</span>&gt; <span class="var">complex_double</span>;  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion -->Complex number, double precision
+<!-- end discussion --></p>
+<p></p><hr><!-- headerDoc=tdef;  uid=//apple_ref/doc/compositePage/c/tdef/complex_float;  name=complex_float -->
+<a name="//apple_ref/doc/compositePage/c/tdef/complex_float"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="complex_float">complex_float </a></h3>
+</td></tr></table><hr><p></p><pre><span class="keyword">typedef</span> <!-- a logicalPath="//apple_ref/c/cl/std //apple_ref/c/tdef/std //apple_ref/c/tag/std //apple_ref/c/econst/std //apple_ref/c/struct/std //apple_ref/c/clconst/std //apple_ref/c/intf/std" --><span class="type">std</span><!-- /a -->::<!-- a logicalPath="//apple_ref/c/cl/complex //apple_ref/c/tdef/complex //apple_ref/c/tag/complex //apple_ref/c/econst/complex //apple_ref/c/struct/complex //apple_ref/c/clconst/complex //apple_ref/c/intf/complex" --><span class="type">complex</span><!-- /a -->&lt;<span class="template">float</span>&gt; <span class="var">complex_float</span>;  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion -->Complex number, single precision
+<!-- end discussion --></p>
+<p></p><hr><!-- headerDoc=tdef;  uid=//apple_ref/doc/compositePage/c/tdef/Double;  name=Double -->
+<a name="//apple_ref/doc/compositePage/c/tdef/Double"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="Double">Double </a></h3>
+</td></tr></table><hr><p></p><pre><span class="keyword">typedef</span> <!-- a logicalPath="//apple_ref/c/cl/double //apple_ref/c/tdef/double //apple_ref/c/tag/double //apple_ref/c/econst/double //apple_ref/c/struct/double //apple_ref/c/clconst/double //apple_ref/c/intf/double" --><span class="type">double</span><!-- /a --> <span class="var">Double</span>;  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion -->Type double
+<!-- end discussion --></p>
+<p></p><h2>#defines</h2>
+<hr><!-- headerDoc=macro;  uid=//apple_ref/doc/compositePage/c/macro/isfinite;  name=isfinite -->
+<a name="//apple_ref/doc/compositePage/c/macro/isfinite"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="isfinite">isfinite </a></h3>
+</td></tr></table><hr><p></p><pre><span class="">#define</span><span class="preprocessor"> </span><!-- a logicalPath="//apple_ref/c/cl/isfinite //apple_ref/c/tdef/isfinite //apple_ref/c/tag/isfinite //apple_ref/c/econst/isfinite //apple_ref/c/struct/isfinite //apple_ref/c/data/isfinite //apple_ref/c/clconst/isfinite //apple_ref/c/intf/isfinite //apple_ref/c/instm/isfinite //apple_ref/c/clm/isfinite //apple_ref/c/intfcm/isfinite //apple_ref/c/intfm/isfinite //apple_ref/c/func/isfinite //apple_ref/c/ftmplt/isfinite //apple_ref/c/defn/isfinite //apple_ref/c/macro/isfinite //apple_ref/doc/com/intfm/isfinite" --><span class="preprocessor">isfinite</span><!-- /a --><span class="preprocessor">(</span><!-- a logicalPath="//apple_ref/c/cl/x //apple_ref/c/tdef/x //apple_ref/c/tag/x //apple_ref/c/econst/x //apple_ref/c/struct/x //apple_ref/c/data/x //apple_ref/c/clconst/x //apple_ref/c/intf/x //apple_ref/c/instm/x //apple_ref/c/clm/x //apple_ref/c/intfcm/x //apple_ref/c/intfm/x //apple_ref/c/func/x //apple_ref/c/ftmplt/x //apple_ref/c/defn/x //apple_ref/c/macro/x //apple_ref/doc/com/intfm/x" --><span class="preprocessor">x</span><!-- /a --><span class="preprocessor">)</span><span class="preprocessor"> </span><span class="ignore"></span><span class="ignore"></span><span class="ignore"></span><span class="ignore"></span><span class="ignore"></span> </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion -->If isfinite(x) does not exist, fake one by comparing value to a very large value.
+     <!-- end discussion --></p>
+<p></p><hr><!-- headerDoc=macro;  uid=//apple_ref/doc/compositePage/c/macro/isnan;  name=isnan -->
+<a name="//apple_ref/doc/compositePage/c/macro/isnan"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="isnan">isnan </a></h3>
+</td></tr></table><hr><p></p><pre><span class="">#define</span><span class="preprocessor"> </span><!-- a logicalPath="//apple_ref/c/cl/isnan //apple_ref/c/tdef/isnan //apple_ref/c/tag/isnan //apple_ref/c/econst/isnan //apple_ref/c/struct/isnan //apple_ref/c/data/isnan //apple_ref/c/clconst/isnan //apple_ref/c/intf/isnan //apple_ref/c/instm/isnan //apple_ref/c/clm/isnan //apple_ref/c/intfcm/isnan //apple_ref/c/intfm/isnan //apple_ref/c/func/isnan //apple_ref/c/ftmplt/isnan //apple_ref/c/defn/isnan //apple_ref/c/macro/isnan //apple_ref/doc/com/intfm/isnan" --><span class="preprocessor">isnan</span><!-- /a --><span class="preprocessor">(</span><!-- a logicalPath="//apple_ref/c/cl/x //apple_ref/c/tdef/x //apple_ref/c/tag/x //apple_ref/c/econst/x //apple_ref/c/struct/x //apple_ref/c/data/x //apple_ref/c/clconst/x //apple_ref/c/intf/x //apple_ref/c/instm/x //apple_ref/c/clm/x //apple_ref/c/intfcm/x //apple_ref/c/intfm/x //apple_ref/c/func/x //apple_ref/c/ftmplt/x //apple_ref/c/defn/x //apple_ref/c/macro/x //apple_ref/doc/com/intfm/x" --><span class="preprocessor">x</span><!-- /a --><span class="preprocessor">)</span><span class="preprocessor"> </span><span class="preprocessor">0</span> </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion -->If isnan(x) does not exist, defines a function
+that always returns false so that we can use isnan() on platforms that have it.
+     <!-- end discussion --></p>
+<p></p><hr><!-- headerDoc=macro;  uid=//apple_ref/doc/compositePage/c/macro/NAN;  name=NAN -->
+<a name="//apple_ref/doc/compositePage/c/macro/NAN"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="NAN">NAN </a></h3>
+</td></tr></table><hr><p></p><pre><span class="">#define</span><span class="preprocessor"> </span><!-- a logicalPath="//apple_ref/c/cl/NAN //apple_ref/c/tdef/NAN //apple_ref/c/tag/NAN //apple_ref/c/econst/NAN //apple_ref/c/struct/NAN //apple_ref/c/data/NAN //apple_ref/c/clconst/NAN //apple_ref/c/intf/NAN //apple_ref/c/instm/NAN //apple_ref/c/clm/NAN //apple_ref/c/intfcm/NAN //apple_ref/c/intfm/NAN //apple_ref/c/func/NAN //apple_ref/c/ftmplt/NAN //apple_ref/c/defn/NAN //apple_ref/c/macro/NAN //apple_ref/doc/com/intfm/NAN" --><span class="preprocessor">NAN</span><!-- /a --><span class="preprocessor"> </span><!-- a logicalPath="//apple_ref/c/cl/numeric_limits //apple_ref/c/tdef/numeric_limits //apple_ref/c/tag/numeric_limits //apple_ref/c/econst/numeric_limits //apple_ref/c/struct/numeric_limits //apple_ref/c/data/numeric_limits //apple_ref/c/clconst/numeric_limits //apple_ref/c/intf/numeric_limits //apple_ref/c/instm/numeric_limits //apple_ref/c/clm/numeric_limits //apple_ref/c/intfcm/numeric_limits //apple_ref/c/intfm/numeric_limits //apple_ref/c/func/numeric_limits //apple_ref/c/ftmplt/numeric_limits //apple_ref/c/defn/numeric_limits //apple_ref/c/macro/numeric_limits //apple_ref/doc/com/intfm/numeric_limits" --><span class="preprocessor">numeric_limits</span><!-- /a --><span class="preprocessor">&lt;</span><!-- a logicalPath="//apple_ref/c/cl/double //apple_ref/c/tdef/double //apple_ref/c/tag/double //apple_ref/c/econst/double //apple_ref/c/struct/double //apple_ref/c/data/double //apple_ref/c/clconst/double //apple_ref/c/intf/double //apple_ref/c/instm/double //apple_ref/c/clm/double //apple_ref/c/intfcm/double //apple_ref/c/intfm/double //apple_ref/c/func/double //apple_ref/c/ftmplt/double //apple_ref/c/defn/double //apple_ref/c/macro/double //apple_ref/doc/com/intfm/double" --><span class="preprocessor">double</span><!-- /a --><span class="preprocessor">&gt;</span><span class="preprocessor">::</span><!-- a logicalPath="//apple_ref/c/cl/signaling_NaN //apple_ref/c/tdef/signaling_NaN //apple_ref/c/tag/signaling_NaN //apple_ref/c/econst/signaling_NaN //apple_ref/c/struct/signaling_NaN //apple_ref/c/data/signaling_NaN //apple_ref/c/clconst/signaling_NaN //apple_ref/c/intf/signaling_NaN //apple_ref/c/instm/signaling_NaN //apple_ref/c/clm/signaling_NaN //apple_ref/c/intfcm/signaling_NaN //apple_ref/c/intfm/signaling_NaN //apple_ref/c/func/signaling_NaN //apple_ref/c/ftmplt/signaling_NaN //apple_ref/c/defn/signaling_NaN //apple_ref/c/macro/signaling_NaN //apple_ref/doc/com/intfm/signaling_NaN" --><span class="preprocessor">signaling_NaN</span><!-- /a --><span class="preprocessor">(</span><span class="preprocessor">)</span> </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion -->"Not a number", can be used as a number.
+     <!-- end discussion --></p>
+<p></p><p>Last Updated: Tuesday, June 30, 2009
+</p></body></html>

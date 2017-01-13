@@ -1,0 +1,187 @@
+# This is the parameter file for the polarization-sensitive
+# Monte Carlo implementation of D. Cote et al. (a.k.a polmc)
+# The order of parameters is irrelevant, but they tend to be grouped together
+
+# Number of photons used in calculations
+N_photon=100000
+
+# Define to keep all photon stats (paths, directions, etc ...)
+# It is very very slow, but useful for debugging
+# Comment out to not use it.
+
+keepPhotonStats=1
+
+# If debug is activated you may set a "level"
+# for messages. These are: Normal, Verbose, ExtremelyVerbose
+
+debugLevel=Normal
+#dumpAllPhotonStats=1
+#dumpAllDiffuserStats=1
+#
+# Object geometry
+#
+# The object type.  Currently, we support: box, sphere, single layer
+# cylinder and generic.  Generic will read generic.xml (experimental)
+
+# - If the object is a box, one must define:
+# xwidth, yheight and zdepth, Nx, Ny and Nz.
+# - If the object is a (single) layer, one defines:
+# thickness, Nx, Ny and imagingWidth, imagingHeight
+# - If the object is a sphere
+# the radius is 2 (can't change yet.
+# If the object is a cylinder,
+# height,radius, Nr, Nh
+
+#Nx=10
+#Ny=10
+#Nz=10
+
+# For a layer, define the following:
+#thickness=0.1
+#imagingWidth=1
+#imagingHeight=1
+#Nx=40
+#Ny=40
+
+# For a sphere, define the following, which represent the full width axes
+# Currently, a sphere is made from 36 triangular elements
+# Each element can be subdivided in Nx * Ny elements for statistics
+#size=(1,1,1)
+#Nx=1
+#Ny=1
+#Nz=1
+
+# Number of bins for storing the output photons
+# Photons are binned in "acceptanceCosElements" bins
+# of width (1 - 0)/acceptanceCosElements
+#acceptanceCosElements=10
+
+
+#
+# World geometry
+#
+# The "world" is responsible for keeping track of energy deposition
+# in a Cartesian grid that span from Vol_XMin to Vol_XMax in the x direction,
+# Vol_YMin to Vol_YMax in the y direction, Vol_ZMin to Vol_ZMax in the z direction
+# Every axis is binned with Nx(yz) elements.
+Vol_Nx=20
+Vol_Ny=20
+Vol_Nz=20
+Vol_XMin=-3
+Vol_XMax=3
+Vol_YMin=-3
+Vol_YMax=3
+Vol_ZMin=-3
+Vol_ZMax=6
+
+#This is the index of refraction in "the world" (air usually, but could be water)
+index_outside=1
+
+#
+# Source
+#
+# Input Beam type: by default, the beam is a pencil beam
+# at (0,0,0).  The supported beam types are pencil and disk.
+# For disk, inputBeamDiameter must be defined.
+
+inputBeamType=disk
+inputBeamDiameter=0.5
+#sourceInsideSimpleObject=1
+# Source parameters (if input type is pencil)
+#source=(0,0,-10)
+#direction=(0,0,1)
+
+
+#
+# Input Stokes vector
+#
+# If allStokesVector is defined, then all Stokes vector (1,0,0,0), (1,1,0,0) (1,0,1,0) and (1,0,0,1)
+# are calculated. If undefined, you need to define Io, Qo, Uo, and Vo with outputFilename
+#allStokesVector=true
+Io=1
+Qo=1
+Uo=0
+Vo=0
+outputFilename=Outboxalone.dat
+
+
+#
+# Detector position, pixel number and position
+#
+
+detectorSize=1
+detectorPixels=10
+detectorPosition=(0,0,5)
+
+# Detection formalism:
+#
+# Please refer to source code.
+# Various authors have published different methods for accumulating the macroscopic Stokes
+# values.
+# Current options are: Jaillon, Cote, Intensity (no polarization)
+
+formalism=Intensity
+
+#
+# Optical and scattering properties of object and surrounding
+#
+# Random angle sampling:  various algorithms have been presented by different authors
+# for sampling the scattering angle theta and the azimuthal angle phi:
+#
+# Bartel et al. "Monte Carlo simulations of the diffuse backscattering Mueller matrix
+# for highly scattering media", Applied Optics,  39, No 10, p. 1580, (2000)
+#
+# Jaillon et al. "Description and time reduction of a Monte Carlo code to simulate
+# propagation of polarized light through scattering media", Applied Optics,  42, No
+# 16, p. 3290, (2003)
+#
+# Kaplan et al. "Mueller matrix of dense polystyrene latex sphere suspensions:
+# measurements and Monte Carlo simulation", Applied Optics,  40, No 16, p. 2769,
+# (2001)
+#
+# L. Wang et al. "Monte Carlo Modeling of Light Transport in multi-layered Tissues in
+# Standard C", http://ece.ogi.edu/mcml/ (1998)
+randomSampling=HG
+
+# For Kaplan, Jaillon: Mie scattering properties
+# These parameters are used for Mie scattering calculations
+#index_med=1.33
+#index_scat=1.59
+#radius_scat=0.54e-4
+#wavelength=0.633e-4
+# This is the number of points that will be tabulated for quick lookupsN_scatterpts=10000
+N_scatterpts=10000
+
+# If HG distribution is used, define the following
+g=0.93
+index_med=1.38
+wavelength=0.633e-4
+
+# Optical properties of sample
+minimumWeight=1e-99
+mu_s=5.8
+mu_a=2
+
+
+
+objectType=boxandcylinder
+# origin and size of the box (origin is center of box)
+origin=(0,0,0)
+size=(2,2,5)
+
+# Important: z is in local coordinates of the object that
+# contains it
+tableForZ=z.txt
+tableForTheta=theta.txt
+tableForPhi=phi.txt
+# Position in global coordinates
+diffuserPosition=(0,0,-1.4)
+diffuserDirection=(0,0,1)
+
+# For a cylinder, define the following:
+Nr=40
+Nh=10
+radius=0.5
+height=3.2
+# Position in global coordinates
+cylinderPosition=(0,0,0)

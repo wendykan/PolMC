@@ -1,0 +1,25 @@
+<materials>
+	<material>
+		<key>Intralipid10</key>
+		<properties>
+			<scattering>
+				<anisotropy>
+					<defaultKey>vanstaveren</defaultKey>
+				</anisotropy>
+				<mu_s>
+					<defaultKey>vanstaveren</defaultKey>
+				</mu_s>
+			</scattering>
+		</properties>
+	</material>
+	<material>
+		<key>Water</key>
+		<properties>
+			<scattering>
+				<mu_a>
+					<defaultKey>segelsteinpope</defaultKey>
+				</mu_a>
+			</scattering>
+		</properties>
+	</material>
+</materials>

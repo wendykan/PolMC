@@ -1,0 +1,1028 @@
+#include "MCObject.h"
+#include "MCWorld.h"
+#include "Photon.h"
+#include "MCRandomScatterer.h"
+#include "MCGenericObject.h"
+#include "MCUtils.h"
+#include "MCSource.h"
+
+unsigned long MCWorld::gOutputProperties = kDefaultOutput;
+double MCWorld::speedOfLight = 3e10;
+
+MCWorld::MCWorld()
+{
+    mObjectName="world";
+
+    Vol_Nx = 0;
+    Vol_Ny = 0;
+    Vol_Nz = 0;
+    
+    Vol_XMin = 0;
+    Vol_XMax = 0;
+    Vol_YMin = 0;
+    Vol_YMax = 0;
+    Vol_ZMin = 0;
+    Vol_ZMax = 0;
+    
+    mEnergy = 0;
+    
+	keepPhotonStats= false;
+	debugOutputPhotonStats = false;
+	outputFilename = "Output.xml";
+	
+    FinishCreate();
+    
+}
+
+MCWorld::MCWorld(double inImgXMin,
+                 double inImgXMax,
+                 double inImgYMin,
+                 double inImgYMax,
+                 double inImgZMin,
+                 double inImgZMax,
+                 long inPtsWidth,
+                 long inPtsHeight,
+                 long inPtsDepth)
+{
+    mObjectName="world";
+    
+    Vol_Nx = inPtsWidth;
+    Vol_Ny = inPtsHeight;
+    Vol_Nz = inPtsDepth;
+	long inPtsPlane = inPtsDepth;
+
+    Vol_XMin = inImgXMin;
+    Vol_XMax = inImgXMax;
+    Vol_YMin = inImgYMin;
+    Vol_YMax = inImgYMax;
+    Vol_ZMin = inImgZMin;
+    Vol_ZMax = inImgZMax;
+    
+    if (mEnergy == 0) {
+        mEnergy = new double** [inPtsWidth];
+        for (long i = 0; i < inPtsWidth; i++) {
+            mEnergy[i] = new double* [inPtsHeight];
+            for (long j = 0; j < inPtsHeight; j++) {
+                mEnergy[i][j] = new double[inPtsDepth];
+                for (long k = 0; k < inPtsDepth; k++) {
+                    mEnergy[i][j][k] = 0.;
+                }
+            }
+        }
+    }
+
+	if (mFluence == 0) {
+        mFluence = new double [inPtsWidth * inPtsHeight * inPtsDepth * inPtsPlane];
+        for (long i = 0; i < inPtsWidth * inPtsHeight * inPtsDepth * inPtsPlane; i++) {
+			mFluence[i] = 0.;
+        }
+    }
+	
+	keepPhotonStats= false;
+	debugOutputPhotonStats = false;
+	outputFilename = "Output.xml";
+
+    FinishCreate();
+
+}
+
+MCWorld::~MCWorld()
+{
+    for (size_t i = 0; i < mAllObjects.size(); i++) {
+        delete (mAllObjects[i]);
+    }
+    
+    
+    for (size_t i = 0; i < mAllSurfaceElements.size(); i++) {
+        delete(mAllSurfaceElements[i]);
+    }
+}
+
+long
+MCWorld::PathCrossesInterface(Photon *ioPhoton, double inDist, IntersectElement& outIntersectElement, long inCrossingEvents)
+{
+
+    MCObject::PathCrossesInterface(ioPhoton, inDist, outIntersectElement, inCrossingEvents);
+    
+    ioPhoton->SetGlobalOrigin(GetGlobalOrigin(), true);
+
+	if (outIntersectElement.interface == kNoInterface) {
+		outIntersectElement.interface = kInfinity;
+	}
+
+    PrintMessageIfLevel_("MCWorld crossing into object " << outIntersectElement.objectOutside << " interface " << outIntersectElement.interface, kVerbose);
+
+    return outIntersectElement.interface;
+}
+
+void
+MCWorld::PlaceLightSourceInWorld(MCSource* inSource)
+{
+	MyAssert_(inSource != 0);
+
+	MCObject* containerObject = IsInsideWhichObject(inSource->GetGlobalOrigin());
+	
+	if ( containerObject != NULL ) 
+		inSource->SetContainerObject(containerObject);
+	else 
+		ThrowRuntimeError("Unable to determine where the light source is: no container object.");
+	
+	mAllSources.push_back(inSource);
+
+}
+
+vector<MCSource*>
+MCWorld::GetSourceList()
+{
+	return mAllSources;
+}
+
+vector<MCObject*>
+MCWorld::GetObjectList()
+{
+	return mAllObjects;
+}
+/*    Wendy made this change here, commented out this function and had a new version below. 7/15/10
+MCObject*
+MCWorld::IsInsideWhichObject(RealV inPoint)
+{
+	// We ask all objects whether or not the point is inside them.
+	// We keep track of how many objects appear to include the point: if we get more than one,
+	// then we have objects inside other objects and need to be careful.  For now, we throw an error.
+	
+	int found = 0;
+	MCObject* containerObject = NULL;
+	unsigned int nObjects = (GetObjectList()).size();
+	
+	for(unsigned int i = 0; i < nObjects; i++) {
+		MCObject* theObject = (GetObjectList())[i];
+		
+		if(theObject->IsInsideObject(inPoint) == true) {
+			containerObject = theObject;
+			found++;
+			
+			
+			PrintMessageIfLevel_("Point " << inPoint << " found in object" << theObject->GetName(), kVerbose);
+		}
+	} 
+	
+	if ( found == 1 ) {
+		return containerObject;
+	} else if ( found > 1 ) {
+		throw runtime_error("Point was found in multiple objects.  PointIsInsideWhichObject() needs to be modified to treat this.");
+	}
+	
+	return this;
+	
+}
+*/
+
+
+
+
+#define GLOBAL_TO_LOCAL
+MCObject*
+MCWorld::IsInsideWhichObject(RealV inPoint)
+{
+       // We ask all objects whether or not the point is inside them.
+       // We keep track of how many objects appear to include the point: if we get more than one,
+       // then we have objects inside other objects and need to be careful.  For now, we throw an error.
+       
+       int found = 0;
+       MCObject* containerObject = NULL;
+       unsigned int nObjects = (GetObjectList()).size();
+       
+       for(unsigned int i = 0; i < nObjects; i++) {
+               MCObject* theObject = (GetObjectList())[i];
+               
+#if defined(GLOBAL_TO_LOCAL)
+			RealV localPos(inPoint - theObject->GetGlobalOrigin());
+               if(theObject->IsInsideObject(localPos) == true) {
+#else
+               if(theObject->IsInsideObject(inPoint) == true) {
+#endif
+                       containerObject = theObject;
+                       found++;
+					   
+					   PrintMessageIfLevel_("Point " << inPoint << " found in object" << theObject->GetName(), kVerbose);
+               }
+       }      
+       if ( found == 1 ) {
+               return containerObject;
+       } else if ( found > 1 ) {
+               throw runtime_error("Point was found in multiple objects.  PointIsInsideWhichObject() needs to be modified to treat this.");
+       }
+       
+       return this;
+       
+}
+
+
+
+void
+MCWorld::Place(MCObject* inObject, RealV inLocalPosition)
+{
+    MyAssert_(inObject != NULL);
+    
+    vector<SurfaceElement*> surfaceElements;
+    long howMany = inObject->GetSurfaceElements(surfaceElements); //number of SE to check
+    
+	MCObject* savedOuterObject = NULL, *savedInnerObject = NULL;
+	
+	if (howMany != 0) {        
+		for ( long i = 0; i < howMany; i++) {	//check the SE of inObject
+		
+			SurfaceElement* aSurfaceElement = surfaceElements[i];
+		
+			//the origins were initialized as local positions. So we adjust them with the origins from input file
+            aSurfaceElement->origin += inLocalPosition; 
+			
+			savedOuterObject = aSurfaceElement->objectOutside;
+			MCObject* tempObject = IsInsideWhichObject(aSurfaceElement->origin);
+			clog << RightNow() << "savedOuterObject = " << savedOuterObject->GetName() << ",inObject = " << inObject->GetName() << ",IsInsideWhichObject = " << tempObject->GetName()<< endl;
+			clog << RightNow() << "aSurfaceElement->origin = " << aSurfaceElement->origin << endl;
+			
+			if ( savedOuterObject != NULL ) {
+				// if objectOuside of that SE exists, then check the objectOutside to see if it contains SE
+				if ( savedOuterObject != inObject ) {
+					
+					/* To be coherent, then origin, origin+a, and origin+b must be inside that object, since we have not placed
+					 the current object in the world yet. */				
+					if ( savedOuterObject != IsInsideWhichObject(aSurfaceElement->origin) ||
+						savedOuterObject != IsInsideWhichObject(aSurfaceElement->origin + aSurfaceElement->a) ||
+						savedOuterObject != IsInsideWhichObject(aSurfaceElement->origin + aSurfaceElement->b) ) {
+						
+						// added Wendy Kan 7/11/10
+						// maybe there is an overlap of SEs.
+						// we check if the SEs are completely the same.
+						MCObject* insideThisObject = IsInsideWhichObject(aSurfaceElement->origin);
+						vector<SurfaceElement*> otherSurfaceElements;
+						long numSE = insideThisObject->GetSurfaceElements(otherSurfaceElements); //number of SE to check
+						
+						bool oneSameSE = false;
+						
+						for (long j = 0; j < numSE; j++){
+							SurfaceElement* otherSE = otherSurfaceElements[j];
+							clog << "line 266: otherSE->origin = " << otherSE->origin << endl; 
+							//clog << "IsInsideWhichObject(aSurfaceElement->origin)=" << IsInsideWhichObject(aSurfaceElement->origin)->GetName() <<",IsInsideWhichObject(otherSE->origin) = " << IsInsideWhichObject(otherSE->origin)->GetName() << endl;
+							if ( IsInsideWhichObject(aSurfaceElement->origin) == IsInsideWhichObject(otherSE->origin) &&
+								 IsInsideWhichObject(aSurfaceElement->a + aSurfaceElement->origin) == IsInsideWhichObject(otherSE->origin + otherSE->a) && 
+								 IsInsideWhichObject(aSurfaceElement->b + aSurfaceElement->origin) == IsInsideWhichObject(otherSE->origin + otherSE->b)){
+								 // then aSurfaceElement and otherSE are completely the same
+								oneSameSE = true;
+								clog << RightNow() << "oneSameSE = true, which means objects probably touching each other" << endl;
+							}
+						}
+						
+						if(!oneSameSE){ // none of the SEs are the same, there must be something wrong with the placement
+							ThrowRuntimeError("Object " << inObject->GetName() << " has improper exterior set. errorA");
+						}
+
+					}
+				}
+			} else {
+				/* Must set outer object */
+				MCObject* objectOrigin = IsInsideWhichObject(aSurfaceElement->origin);
+				MCObject* objectA = IsInsideWhichObject(aSurfaceElement->origin + aSurfaceElement->a);
+				MCObject* objectB = IsInsideWhichObject(aSurfaceElement->origin + aSurfaceElement->b);
+
+				if ( objectOrigin != objectA || objectOrigin != objectB || objectA != objectB ) {
+					ThrowRuntimeError("Object " << inObject->GetName() << " has improper exterior set. errorB");
+				}
+
+                aSurfaceElement->objectOutside = objectOrigin;
+			}
+
+			savedInnerObject = aSurfaceElement->objectInside;
+			
+			if ( savedInnerObject != NULL ) {
+				if ( savedInnerObject != inObject ) {
+					/* To be coherent, then origin, origin+a, and origin+b must be inside that object, since we have not placed
+					 the current object in the world yet. */				
+					if ( savedInnerObject != IsInsideWhichObject(aSurfaceElement->origin) ||
+						savedInnerObject != IsInsideWhichObject(aSurfaceElement->origin + aSurfaceElement->a) ||
+						savedInnerObject != IsInsideWhichObject(aSurfaceElement->origin + aSurfaceElement->b) ) {
+						ThrowRuntimeError("Object " << inObject->GetName() << " has improper exterior set. errorC");
+					}
+				}
+			} else {
+				/* Must set inner object */
+				MCObject* objectOrigin = IsInsideWhichObject(aSurfaceElement->origin);
+				MCObject* objectA = IsInsideWhichObject(aSurfaceElement->origin + aSurfaceElement->a);
+				MCObject* objectB = IsInsideWhichObject(aSurfaceElement->origin + aSurfaceElement->b);
+				
+				if ( objectOrigin != objectA || objectOrigin != objectB || objectA != objectB ) {
+					ThrowRuntimeError("Object " << inObject->GetName() << " has improper exterior set. errorD");
+				}
+				
+                aSurfaceElement->objectInside = objectOrigin;
+			}
+			
+            if (aSurfaceElement->objectOutside != NULL)
+                aSurfaceElement->objectOutside->AddSurfaceElement(aSurfaceElement);
+            else
+                throw logic_error("Surface element has objectOutside set to NULL");
+
+            if (aSurfaceElement->objectInside != NULL)
+                aSurfaceElement->objectInside->AddSurfaceElement(aSurfaceElement);
+            else
+                throw logic_error("Surface element has objectInside set to NULL");
+        
+            bool exists = false;
+            for (size_t j = 0; j < mAllSurfaceElements.size(); j++)
+                if (mAllSurfaceElements[j] == aSurfaceElement) {
+                    exists = true;
+                    break;
+                }
+            
+            if (! exists) 
+                mAllSurfaceElements.push_back(aSurfaceElement);
+
+            
+        }
+    } else {
+        clog << RightNow() << "Warning: object has no surface elements\n";
+    }
+    
+    mAllObjects.push_back(inObject);
+    inObject->SetWorld(this);
+    inObject->SetGlobalOrigin(inLocalPosition);
+    
+    InitConnectivityTablesFromSurfaceElements();
+}
+
+bool
+MCWorld::IsOutsideObject(RealV& inLocalPosition)
+{
+	return false;
+}
+
+IntersectElement
+MCWorld::PropagateInObject(Photon *ioPhoton, double inDist)
+{
+    double d;
+    IntersectElement se;
+    
+    PrintMessageIfLevel_("Entering propagation in object " << mObjectID << " at position " << ioPhoton->GetGlobalPosition(), kVerbose);
+	
+    N_photon++;
+    
+    se.opticalPathLeftover = INFINITE_DISTANCE;
+    se.opticalPathLeftover = 10;
+    
+    d = INFINITE_DISTANCE ;
+	d = 10;
+    while ( ioPhoton->IsNotDead() && se.interface != kInfinity) {
+
+		if (ioPhoton->GetCurrentObject() == this ) {
+            se = MCObject::PropagateInObject(ioPhoton, d);
+		} else {
+            MCObject* theObject = ioPhoton->GetCurrentObject();
+            se = theObject->PropagateInObject(ioPhoton,  0);
+        }
+        
+    }
+    
+    double weightLeft = ioPhoton->GetWeight();
+    ioPhoton->DecreaseWeightBy(weightLeft);
+    mAbsorbedPhotons += weightLeft;
+    
+    return se;
+}
+
+IntersectElement
+MCWorld::RayTraceInObject(Photon *ioPhoton, double inDist)
+{
+    double d;
+
+	RealV origin(-2,2,-10);
+	RealV lookAt(0,0,0);
+
+	RealV vertical(0,1,0);
+	double imagePlaneAtDist = 5;
+	double viewAngle = 0.1;
+
+	RealV viewingDirection = lookAt - origin;
+	viewingDirection.normalize();
+
+	RealV horizontal = RealV::CrossProduct(viewingDirection, vertical);
+	
+	double ymax = imagePlaneAtDist * sin(viewAngle);
+	double xmax = 3 / 2 * ymax;
+	
+	double delta = 2 * ymax / 400.;
+	
+	for (size_t j = 0; j < 400; j++) {
+		for (size_t i = 0; i < 600; i++) {
+			IntersectElement se;
+				
+			se.opticalPathLeftover = INFINITE_DISTANCE;
+			
+			d = INFINITE_DISTANCE ;
+			
+			double x = -xmax + i * delta;
+			double y = -ymax + j * delta;
+
+			RealV dir = imagePlaneAtDist * viewingDirection + x * vertical + y * horizontal;
+			RealV start = origin + dir;
+			dir.normalize();
+
+			PhotonIntensity photon(1, dir);
+			photon.SetGlobalPosition(start);
+			photon.SetCurrentObject(this);
+			photon.SetWavelength(633e-7);
+
+
+			if (photon.GetCurrentObject() == this ) {
+				se = MCObject::RayTraceInObject(&photon, d);
+			} else {
+				MCObject* theObject = photon.GetCurrentObject();
+				se = theObject->RayTraceInObject(&photon,  0);
+			}
+			
+			if (se.interface > kNoInterface)
+				cout << abs(se.cosine) << "\t";
+			else
+				cout << 0 << "\t";
+		}
+		cout << endl;
+	}
+	
+	return IntersectElement();
+}
+
+long 
+MCWorld::ReadWorldFromFile(string inFilename, double inObjectResolution)
+{
+    ifstream input(inFilename.c_str());
+
+    if (input.bad()) {
+        return 1;
+    }
+    
+    /* Clearing our own world LEAK */
+    vector<RealV> mAllVertices;
+    
+    mVertexList.clear();
+    mNormalList.clear();
+    mFaceList.clear();
+    string groupName;
+    
+    string s;
+    const long max_size=1000;
+    s.reserve(max_size);
+    
+    vector<string> facesStrings;
+    
+    RealV v;
+    
+    MCObject* objectInside = 0, *objectOutside = 0;
+    
+    MCMaterialsList list("properties.xml","properties.defaults.xml");
+    
+    while (! input.eof() ) {
+        input >> s;
+		
+        if (s[0] == '#') {
+            // Comment
+            getline(input, s);
+            if (! input.good()) {
+                return -1;
+            }
+        } else if (s[0] == 'g') {
+            // Group name
+			// insideObject@material[concentration]:outsideObject@material[concentration]
+			// where material and concentration are optional
+            getline(input, s);
+            if (! input.good()) {
+                return -1;
+            } else {
+                trim(s);
+                vector<string> objects;
+                split(s, objects,":");
+
+                vector<string> objectNames;
+                split(objects[0], objectNames,"@"); 
+                objectInside = FindObjectByName(objectNames[0]);
+                if (objectInside == 0) {
+                    objectInside = new MCGenericObject();
+                    objectInside->SetName(objectNames[0]);
+                    objectInside->SetWorld(this);
+
+                    if (objectNames.size() == 2) {
+                        string properties = removeBracketedProperty(objectNames[1],'[',']');
+                        istringstream input;
+                        input.str(properties);
+                        double concentration = 1;
+                        input >> concentration;
+
+                        MCMaterial* mat = list.GetMaterialByKey(objectNames[1]);
+                        if ( !mat )
+							;//throw runtime_error("Material "+objectNames[1]+" not found");
+						else {
+							MCRandomScattererMaterial* theMat = new MCRandomScattererMaterial(*mat);
+							theMat->SetRelativeConcentration(concentration);
+							objectInside->SetRandomScatterer(theMat);
+						}
+                    }
+                    
+                    mAllObjects.push_back(objectInside);
+                }
+
+                if (objects.size() == 1) {
+                    objectOutside = this;
+                } else if (objects.size() == 2) {
+                    objectNames.clear();
+                    split(objects[1], objectNames,"@"); 
+                    objectOutside = FindObjectByName(objectNames[0]);
+                    if (objectOutside == 0) {
+                        objectOutside = new MCGenericObject();
+                        objectOutside->SetName(objectNames[0]);
+                        objectOutside->SetWorld(this);
+                        if (objectNames.size() == 2) {
+                            string properties = removeBracketedProperty(objectNames[1],'[',']');
+                            istringstream input;
+                            input.str(properties);
+                            double concentration = 1;
+                            input >> concentration;
+                            
+                            MCMaterial* mat = list.GetMaterialByKey(objectNames[1]);
+							if ( !mat )
+							  ;//  throw runtime_error("Material "+objectNames[1]+" not found");
+							else {
+								MCRandomScattererMaterial* theMat = new MCRandomScattererMaterial(*mat);
+								theMat->SetRelativeConcentration(concentration);
+								objectInside->SetRandomScatterer(theMat);
+							}
+                        }
+                        mAllObjects.push_back(objectOutside);
+                    }
+                }
+                
+            }
+        } else if (s == string("vn")) {
+            // Discard (we rebuild from ordered vertices)
+            input >> v;
+        } else if (s == string("v")) {
+            input >> v;
+            mAllVertices.push_back(v);
+        } else if (s == string("f")) {
+            getline(input, s);
+            
+            vector<string> vertices;
+            split(s, vertices," ");
+            
+            Face theFace;
+            for (size_t i = 0; i < vertices.size(); i++) {
+                vector<string> indices;
+                split(vertices[i], indices,"/");
+                MyAssert_(indices.size() == 3);
+                Vertex vertex;
+				// Wavefront starts at '1' for indices but we start with C++ convention at zero.
+                vertex.vertex = atoi(indices[0].c_str())-1;
+                vertex.texture = atoi(indices[1].c_str())-1;
+                vertex.normal = atoi(indices[2].c_str())-1;
+                
+                theFace.push_back(vertex);
+            }
+            
+            // We have a face, we know the groupName, 
+
+            SurfaceElement* se = new SurfaceElement();
+
+            if (theFace.size() == 4 ) {
+                se->surfaceShape = kParallelogram;
+
+                se->origin = mAllVertices[theFace[0].vertex];
+                se->a = mAllVertices[theFace[1].vertex] - se->origin;
+                se->b = mAllVertices[theFace[3].vertex] - se->origin;
+                RealV normal = RealV::CrossProduct(se->a, se->b);
+                normal.normalize();
+                se->normal = normal;
+                
+                RealV c = mAllVertices[theFace[2].vertex] - se->origin;
+                RealV c2 = se->a + se->b;
+                
+                if ( abs (1 - RealV::DotProduct(c, c2)) > 0.001) {
+                    runtime_error("Rectangular shapes must be parallelograms.");
+                }
+            } else if (theFace.size() == 3) {
+                se->surfaceShape = kTriangle;
+                
+                se->origin = mAllVertices[theFace[0].vertex];
+                se->a = mAllVertices[theFace[1].vertex] - se->origin;
+                se->b = mAllVertices[theFace[2].vertex] - se->origin;
+                RealV normal = RealV::CrossProduct(se->a, se->b);
+                normal.normalize();
+                se->normal = normal;
+            } else {
+                throw runtime_error("Can only work with triangles and parallelograms for now.");
+            }
+
+			if (inObjectResolution == 0) {
+				se->Na = 1;
+				se->Nb = 1;
+			} else {
+				se->Na = long(se->a.abs()/inObjectResolution);
+				se->Na = se->Na < 1 ? 1: se->Na;
+				se->Nb = long(se->b.abs()/inObjectResolution);
+				se->Nb = se->Nb < 1 ? 1: se->Nb;
+			}
+			
+            se->mDetection = kIntensity | kLeaving;
+                    
+            se->mCosineElements = 1;
+            se->objectInside = objectInside;
+            se->objectOutside = objectOutside;
+            se->init();
+            objectInside->AddSurfaceElement(se);
+            objectOutside->AddSurfaceElement(se);
+            
+            bool exists = false;
+            for (size_t j = 0; j < mAllSurfaceElements.size(); j++)
+                if (mAllSurfaceElements[j] == se) {
+                    exists = true;
+                    break;
+                }
+                    
+
+			if (! exists) {
+				se->uniqueID = mAllSurfaceElements.size();
+				mAllSurfaceElements.push_back(se);
+			}
+        } else {
+            getline(input, s);
+        }
+    }
+    
+    return 0;
+}
+
+bool
+MCWorld::IsGeometryConsistent()
+{
+	bool ok = true;
+	
+    for(size_t i = 0; i < mAllObjects.size(); i++) {
+        ok &= mAllObjects[i]->IsGeometryConsistent();
+    }
+	
+	return ok;
+	
+}
+
+unsigned long
+MCWorld::GetOutputProperties()
+{
+	return gOutputProperties;
+}
+
+void
+MCWorld::SetOutputProperties(unsigned long inValue)
+{
+	gOutputProperties = inValue;
+}
+
+void 
+MCWorld::SetKeepPhotonStatistics(bool inValue)
+{
+	
+	if ( ! debugOutputPhotonStats ) {
+		keepPhotonStats = inValue;
+	} else {
+		if ( ! inValue ) {
+			clog << RightNow() << "Warning: SetDebugOutputPhotonStatistics is ON, you cannot turn off KeepPhotonStatistics\n";
+		} else {
+			keepPhotonStats = inValue;
+		}
+	}
+}
+
+bool 
+MCWorld::KeepPhotonStatistics()
+{
+	return keepPhotonStats;
+}
+
+void 
+MCWorld::SetDebugOutputPhotonStatistics(bool inValue)
+{
+	debugOutputPhotonStats = inValue;
+	
+	/* Must activate keep photon stats if we want to output */
+	if ( debugOutputPhotonStats ) {
+		
+		SetKeepPhotonStatistics(true);
+	}
+}
+
+bool 
+MCWorld::DebugOutputPhotonStatistics()
+{
+	return debugOutputPhotonStats;
+}
+
+string 
+MCWorld::OutputFilename()
+{
+	return outputFilename;
+}
+
+void
+MCWorld::SetOutputFilename(string inOutputFilename)
+{
+	outputFilename = inOutputFilename;
+}
+
+string 
+MCWorld::OutputFilenameGeometry()
+{
+	return outputFilenameGeometry;
+}
+
+void
+MCWorld::SetOutputFilenameGeometry(string inOutputFilename)
+{
+	outputFilenameGeometry = inOutputFilename;
+}
+
+long 
+MCWorld::OutputFilenameGeometryFormat()
+{
+	return outputFilenameGeometryFormat;
+}
+
+void
+MCWorld::SetOutputFilenameGeometryFormat(long inFormat)
+{
+	outputFilenameGeometryFormat = inFormat;
+}
+
+string 
+MCWorld::OutputFilenameGeometryWithIntensity()
+{
+	return outputFilenameGeometryWithIntensity;
+}
+
+void
+MCWorld::SetOutputFilenameGeometryWithIntensity(string inOutputFilename)
+{
+	outputFilenameGeometryWithIntensity = inOutputFilename;
+}
+
+
+string 
+MCWorld::OutputFilenamePhotonPaths()
+{
+	return outputFilenamePhotonPaths;
+}
+
+void
+MCWorld::SetOutputFilenamePhotonPaths(string inOutputFilename)
+{
+	outputFilenamePhotonPaths = inOutputFilename;
+}
+
+void
+MCWorld::SetOutputPhotonPathsFormat(long inOutputFileFormat)
+{
+	outputPhotonPathsFormat = inOutputFileFormat;
+}
+
+long 
+MCWorld::OutputFilenamePhotonPathsFormat()
+{
+	return outputPhotonPathsFormat;
+}
+
+void 
+MCWorld::SetmaximumDepthTargetObjectName(string inObjectName)
+{
+	maximumDepthTargetObjectName = inObjectName;
+}
+
+string  
+MCWorld::GetmaximumDepthTargetObjectName()
+{
+	return maximumDepthTargetObjectName;
+}
+
+
+void
+MCWorld::DumpToFile(string inFilename)
+{
+    /* Dump everything into one big file, with delimiters that
+    look XML-ish and allow a perl script to extract the files */
+    
+    ofstream fOutput;
+    
+    clog << RightNow() << "Writing to file " << inFilename.c_str() << endl;
+    
+    fOutput.open(inFilename.c_str(),std::ios_base::out);
+    if (fOutput.fail() ) {
+        throw runtime_error("unable to open file");
+    }
+    
+    fOutput << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+    fOutput << "<simulation>\n";
+    fOutput << "<!-- " << endl;
+    
+    fOutput << " To extract various sections of the XML document using XPath, you can use\n";
+    fOutput << " the provided xpath program (which will get compiled if you have libxml2 installed).\n";
+    fOutput << " A four-line tutorial of XPath looks like this:\n";
+    fOutput << " * All XPaths look like directories\n";
+    fOutput << " * You can request certain nodes with specific attributes using [@attr='value'].\n";
+    fOutput << " * If you want the text of a node, you end with text().\n";
+    fOutput << " * If you want an attribute, you end with attribute::theAttribute\n\n";
+    fOutput << " For instance, here are a few examples:\n";
+    fOutput << " xpath OutS1100.dat \"/simulation/energy/text()\"\n";
+    fOutput << " xpath OutS1100.dat \"/simulation/object/interface[@id='backward']/StokesV[@acceptanceCosineIndex=0]/I/text()\"\n";
+    fOutput << " xpath OutS1100.dat \"/simulation/object[@name='world']/interface[@id='0']/StokesV[@acceptanceCosineIndex=0]/attribute::transmittance\"\n";
+    fOutput << " xpath OutS1100.dat \"/simulation/object[@name='sample']/interface[@name='forward']/StokesV[@acceptanceCosineIndex=0]/attribute::transmittance\"\n";
+    fOutput << "-->" << endl;
+    fOutput << "<parameters>" << endl;
+	fOutput << "<parameter name=\"filename\">"<< inFilename << "</parameter>" << endl;
+//    WriteParametersToXMLStream(fOutput, dict, "parameter");
+    if (mRandomScatterer != NULL)
+        fOutput << "<parameter name=\"ActualSeed\">"<< mRandomScatterer->GetSeed() << "</parameter>" << endl;
+    
+    fOutput << "</parameters>" << endl;
+    
+    for(size_t i = 0; i < mAllSources.size(); i++) {
+        mAllSources[i]->DumpToStream(fOutput);
+    }
+		
+    DumpInterfacesToFile(fOutput);
+    
+    for(size_t i = 0; i < mAllObjects.size(); i++) {
+        mAllObjects[i]->DumpInterfacesToFile(fOutput);
+    }
+
+    if ( gOutputProperties & kGeometryMathematicaFormat) {
+		fOutput << "<geometry>\n";
+		fOutput << "{\n";
+		for(size_t i = 0; i < mAllObjects.size(); i++) {
+			mAllObjects[i]->DumpGeometryToStream(fOutput, true, kMathematicaPolygons);
+			if (i != mAllObjects.size() - 1)
+				fOutput << ",\n";            
+		}
+		fOutput << "}\n";
+		fOutput << "</geometry>\n";
+	}
+
+    if ( gOutputProperties & kGeometryXMLFormat) {
+		fOutput << "<geometryXML>\n";
+		fOutput << "<objects>\n";
+		for(size_t i = 0; i < mAllObjects.size(); i++) {
+			mAllObjects[i]->DumpGeometryToStream(fOutput, true, kGenericXML);
+		}
+		fOutput << "</objects>\n";
+		fOutput << "</geometryXML>\n";
+	}
+    
+    if ( gOutputProperties & kGeometryMatlabFormat) {
+		fOutput << "<geometryMatlab>\n";
+		DumpGeometryToStream(fOutput, true, kMatlabPatch);    
+		fOutput << "</geometryMatlab>\n";
+	}
+
+    if ( gOutputProperties & ( kGeometryWorldWavefrontFormat | kGeometrySeparateWavefrontFormat )) {
+		fOutput << "<geometryWaveFront>\n";
+		if ( gOutputProperties & kGeometryWorldWavefrontFormat) {
+			fOutput << "<world>\n";
+			gVertexOffset = 1;
+			gNormalOffset = 1;    
+			if (! InitConnectivityTablesFromSurfaceElements()) {
+				DumpGeometryToStream(fOutput, true, kWaveFrontObj);
+			}
+			fOutput << "</world>\n";
+		}
+		if ( gOutputProperties & kGeometrySeparateWavefrontFormat) {
+			fOutput << "<separate>\n";
+			gVertexOffset = 1;
+			gNormalOffset = 1;    
+			for(size_t i = 0; i < mAllObjects.size(); i++) {
+				if (! mAllObjects[i]->InitConnectivityTablesFromSurfaceElements()) {
+					mAllObjects[i]->DumpGeometryToStream(fOutput, true, kWaveFrontObj);
+					if (i != mAllObjects.size() - 1)
+						fOutput << "\n";            
+				}
+			}
+			fOutput << "</separate>\n";
+		}
+		fOutput << "</geometryWaveFront>\n";
+	}
+	
+    DumpEnergyDepositionToStream(fOutput);
+    DumpFluenceToStream(fOutput);
+    
+    fOutput << "</simulation>\n";
+    
+    fOutput.close();
+    
+    clog << RightNow() << "Everything dumped into file named " << inFilename << endl;
+}
+
+long
+MCWorld::AddVertex(RealV inPoint)
+{
+//    mAllVertices.push_back(inPoint);
+    throw logic_error("Function AddVertex not implemented");  
+//    return mAllVertices.size()-1;
+}
+
+RealV 
+MCWorld::GetVertex(long inWhich)
+{
+    throw logic_error("Function GetVertex not implemented");  
+//    return mAllVertices[inWhich];
+}
+
+long
+MCWorld::AddSurfaceElement(SurfaceElement* inSurfaceElement)
+{
+    mAllSurfaceElements.push_back(inSurfaceElement);
+    
+    return mAllSurfaceElements.size()-1;
+}
+
+SurfaceElement* 
+MCWorld::GetSurfaceElement(long inWhich)
+{
+    return mAllSurfaceElements[inWhich];
+}
+
+/*long 
+MCWorld::GetSurfaceElementsCloseToSegment(vector<SurfaceElement*>& outSe, RealV inStart, RealV inEnd)
+{
+    outSe = mSurfaceElements;
+    
+    return outSe.size();
+}
+*/
+
+
+MCObject* 
+MCWorld::FindObjectByName(string inName)
+{
+    MCObject* object = 0;
+    
+    for (size_t  i = 0; i < mAllObjects.size(); i++) {
+        if (mAllObjects[i]->GetName() == inName) {
+            
+			object = mAllObjects[i];
+        }
+    }
+
+    return object;
+}
+
+long
+MCWorld::LoadMaterialPropertiesTable(string inFilename)
+{
+
+    xmlDocPtr doc = NULL;
+    xmlXPathContextPtr ctx = NULL, ctx2 = NULL;
+    xmlXPathObjectPtr pobj = NULL, pobj2 = NULL;
+    xmlNodeSetPtr           nset = NULL;
+    int i;
+    
+    if ((doc = xmlParseFile(inFilename.c_str())) == NULL ) {
+        printf("parse failed\n");
+        exit(1);
+    }
+    
+    xmlXPathInit();
+    ctx = xmlXPathNewContext(doc);
+    
+    pobj = xmlXPathEvalExpression(BAD_CAST("//material"), ctx);
+        nset = pobj->nodesetval;
+        printf("material %d\n", nset->nodeNr);
+        for (i = 0; i < nset->nodeNr; i++) {
+            ctx2 = xmlXPathNewContext(doc);
+            ctx2->node = xmlXPathNodeSetItem(nset, i);
+            pobj2 = xmlXPathEvalExpression(BAD_CAST(".//name"), ctx2);
+            
+            printf("name %d\n", pobj2->nodesetval->nodeNr);
+            xmlXPathFreeObject(pobj2);
+            xmlXPathFreeContext(ctx2);
+        }
+        xmlXPathFreeObject(pobj);
+        
+        xmlFreeDoc(doc);
+		
+		return 0;
+}
+
+
+void
+MCWorld::DumpProximityListStatistics(ostream & out)
+{
+    MCObject::DumpProximityListStatistics(out);
+    
+    for (size_t i = 0; i < mAllObjects.size(); i++) {
+        mAllObjects[i]->DumpProximityListStatistics(out);
+    }
+    
+}
+

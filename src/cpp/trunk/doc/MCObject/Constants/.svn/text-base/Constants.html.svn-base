@@ -1,0 +1,19 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html><head>
+    <title>Constants</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="generator" content="HeaderDoc" />
+<style type="text/css"><!--.keyword {background:#ffffff; color:#761550;}.template {background:#ffffff; color:#761550;}.number {background: #ffffff; color:#0000ff;}.function {background:#ffffff; color:#000000;}.string {background: #ffffff; color:#891315;}.preprocessor {background:#ffffff; color:#236e25}.comment {background:#ffffff; color:#236e25}.char {background: #ffffff; color:#0000ff;}.var {background:#ffffff; color:#000000;}.type {background:#ffffff; color:#761550;}.param {background:#ffffff; color:#000000;}a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style></head><body bgcolor="#ffffff">
+<a name="top"></a>
+<hr><!-- headerDoc=data;  uid=//apple_ref/c/data/SAFETY_DISTANCE;  name=SAFETY_DISTANCE -->
+<a name="//apple_ref/c/data/SAFETY_DISTANCE"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="SAFETY_DISTANCE">SAFETY_DISTANCE </a></h3>
+</td></tr></table><hr><p></p><pre><span class="keyword">const</span> <!-- a logicalPath="//apple_ref/c/cl/double //apple_ref/c/tdef/double //apple_ref/c/tag/double //apple_ref/c/econst/double //apple_ref/c/struct/double //apple_ref/c/clconst/double //apple_ref/c/intf/double" --><span class="type">double</span><!-- /a --> <!-- a logicalPath="//apple_ref/c/cl/SAFETY_DISTANCE //apple_ref/c/tdef/SAFETY_DISTANCE //apple_ref/c/tag/SAFETY_DISTANCE //apple_ref/c/econst/SAFETY_DISTANCE //apple_ref/c/struct/SAFETY_DISTANCE //apple_ref/c/clconst/SAFETY_DISTANCE //apple_ref/c/intf/SAFETY_DISTANCE" --><span class="type">SAFETY_DISTANCE</span><!-- /a -->=<span class="type">1e</span>-<span class="number">6</span>;  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion --><br><br>
+As can be seen in PropagateInObject(), photons are always moved in two steps to avoid round off 
+errors due to moving photons to an interface and crossing it when we are not supposed to (or not crossing
+when we expect the photon to).  This should be "irrelevantly" small.  Currently, it is 10 nm.<!-- end discussion --></p>
+<p></p><p>Last Updated: Tuesday, June 30, 2009
+</p></body></html>

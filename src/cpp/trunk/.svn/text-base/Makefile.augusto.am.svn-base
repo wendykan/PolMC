@@ -1,0 +1,35 @@
+if XML_SUPPORT
+bin_PROGRAMS = polmc polmc-augusto xpath
+else
+bin_PROGRAMS = polmc polmc-augusto
+endif
+
+dist_data_DATA = param.dat
+EXTRA_DIST = doc/MuellerM doc/RealV doc/mc__lfl.html doc/mc__rf.html doc/randomscatter doc/MasterTOC.html  doc/Photon doc/StokesV doc/mc.html doc/mc__lfu.html  doc/mydebug
+
+dist-hook:
+	rm -rf `find $(distdir)/doc -name CVS`
+
+polmc_SOURCES = main-private.cpp UTimer.cpp UTimer.h MCUtils.cpp MCUtils.h MCWorld.cpp MCWorld.h MCObject.cpp MCObject.h \
+							MCCylinder.cpp MCCylinder.h \
+							MCDetector.cpp MCDetector.h MCSource.h MCSource.cpp MCGenericObject.cpp MCGenericObject.h \
+							MCBox.cpp MCBox.h  MCInfiniteLayers.cpp MCInfiniteLayers.h fastinterpolate.cpp \
+							configfiles.cpp RealV.cpp StokesV.cpp randomscatter.cpp cubicspline.cpp mydebug.cpp \
+							rand.cpp mtRand.cpp mtRand.h MuellerM.h Photon.h RealV.h StokesV.h rand.h configfiles.h \
+							constants.h cubicspline.h mydebug.h randomscatter.h fastinterpolate.h MCEllipsoid.cpp MCEllipsoid.h
+
+polmc_CXXFLAGS = -O2 -I$(includedir)
+
+polmc_augusto_SOURCES = main-augusto.cpp UTimer.cpp UTimer.h MCUtils.cpp MCUtils.h MCWorld.cpp MCWorld.h MCObject.cpp MCObject.h \
+							MCCylinder.cpp MCCylinder.h \
+							MCDetector.cpp MCDetector.h MCSource.h MCSource.cpp MCGenericObject.cpp MCGenericObject.h \
+							MCBox.cpp MCBox.h  MCInfiniteLayers.cpp MCInfiniteLayers.h fastinterpolate.cpp \
+							configfiles.cpp RealV.cpp StokesV.cpp randomscatter.cpp cubicspline.cpp mydebug.cpp \
+							rand.cpp mtRand.cpp mtRand.h MuellerM.h Photon.h RealV.h StokesV.h rand.h configfiles.h \
+							constants.h cubicspline.h mydebug.h randomscatter.h fastinterpolate.h MCEllipsoid.cpp MCEllipsoid.h
+
+polmc_augusto_CXXFLAGS = -O2 -I$(includedir)
+
+xpath_SOURCES = xpath.cpp
+xpath_CXXFLAGS = -O2 -I$(includedir)
+

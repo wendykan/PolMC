@@ -1,0 +1,329 @@
+     "Pol-MC:  Program to simulate the propagation of light (polarized or not)
+     in a three-dimensional turbid medium. "
+    
+     Copyright Daniel Cote 2004
+     Work done while at Ontario Cancer Institute, University of Toronto
+     
+     Supported by 
+     Natural Science and Engineering Research Council of Canada
+     University Health Network
+     Canadian Institute for Photonics Innovation
+    
+     Main web page where to find the latest version of this code:
+     http://www.novajo.ca/ont-canc-inst-biophotonics/
+     
+     You may use this code for your own research, with no garantee 
+     expressed or implied. It has been  tested and partly validated
+     (linear depolarization, optical rotation, reflectance, transmittance).
+     
+     If you do use this program, the appreciated citation is:
+     
+     Daniel Cote and Alex Vitkin, "Robust concentration determination 
+     of optically active molecules in turbid media with validated
+     three-dimensional polarization Monte Carlo model"
+     Optics Express, Dec 2004
+    
+    You may use it for your own research.  Although not required, we would
+    be grateful if modifications to the code were contributed back to the 
+    main code (acknowledgements will be clearly provided).
+            
+    The complete source code can be obtained from either of the authors:
+    
+    Daniel Cote (dccote@novajo.ca or dcote2@partners.org) or Alex Vitkin (vitkin@uhnres.utoronto.ca)
+    
+    or on the web at http://www.novajo.ca/ont-canc-inst-biophotonics/
+
+    See below for details on compilation, installation, usage and/or modifications.
+    
+    For complete polarization calculation, one may require the SCATMECH package,
+    available at http://physics.nist.gov/scatmech/.  Otherwise, the Mueller
+    matrices representing the scatterers must be provided in a text file.
+    
+Outline
+
+    1. Obtaining all the source code (including SCATMECH version 3)
+    2. Compiling and installing the source code
+    3. Using the program
+    4. Modifying the source code
+
+1. Obtaining all the source code (including SCATMECH version 3)
+
+    First you need to have all of the source code.  You can obtain the source code
+    for the code of the program for Polarization-sensitive Monte Carlo calculations
+    (called "polmc") from:
+    
+    http://www.novajo.ca/ont-canc-inst-biophotonics/polmc-2.0.tar.gz
+    
+    Second, you may need the SCATMECH library (version 3) from this *unofficial link*:
+    
+    http://www.novajo.ca/ont-canc-inst-biophotonics/scatmech-3.0.tar.gz
+    
+    The SCATMECH library is recommended and it will be assumed in this document that you 
+    will use it.
+    
+    Unzip and untar those files.  On Unix, this is done with:
+    
+    tar xzvf polmc-2.0.tar.gz
+    tar xzvf scatmech-3.0.tar.gz
+
+
+2. Compiling and installing the source code
+
+    To compile the scatmech library, do the following:
+    
+    cd scatmech/code/
+    ./configure --prefix=$HOME --libdir=$HOME/lib --includedir=$HOME/include
+    make
+    make install
+    
+    to set it up and install in your own environment (which is highly likely what
+    you want).  You may type ./configure --help for more options (near the
+    end)
+    
+    To compile the polmc code, do the following:
+    
+    cd polmc-2.0/
+    ./configure --prefix=$HOME --enable-scatmech --with-scatmech-includedir=$HOME/include --with-scatmech-libdir=$HOME/lib
+    make libpolmc.a
+    make polmc
+    make xpath (if you have libxml2)
+    make install
+    
+    You may type ./configure --help for more options (especially near the
+    end).  At this point there are a few:
+    
+    --enable-scatmech:			will look for the SCATMECH library and use it
+    --with-scatmech-includedir: where the SCATMECH headers are
+    --with-scatmech-libdir: where the SCATMECH library is
+    --with-random-generator=mtrand or
+    --with-random-generator=numrecipes	to pick the random number generator
+    
+    --enable-debug          enable debugging code
+    --enable-profile        enable profiling code
+    
+    If you enable debugging, a lot of warning and safety checks are performed.
+    The code will catch any "problem", but will run signficantly slower. However
+    this is by far the best option when you are modifying the code.  Once you
+    know everything is working fine, you can run without --enable-debugging.
+
+3.  Using the program.
+
+    The program is fairly simple to use.  If you followed the steps above,
+    you have created an executable (for Unix) called "polmc".  The program takes
+    one input parameter (the parameter file).  An example file (with comments, please
+    read them) is provided. Typically, you would do:
+    
+    polmc param.dat
+    or 
+    polmc -f logfile param.dat
+    
+    The program will create a log file where everything worth mentionning is provided
+    (logfile in the same directory from which polmc was called). Read it.
+    It will also provide a single output file called whatever you set outputFilename
+    to in the parameter file (OutS1100.dat is the default example).  The output file is an XML file and can be 
+    opened in any text editor (it's big, but self-explanatory).  Go to the next section to learn
+    more about the file format and how to work with it.
+    Briefly, to get what you want, you can:
+    
+    1) Open OutS1100.dat in a text editor, cut and paste
+    2) Use the provided Perl script (requires an perl XML module)
+    3) Use the small xpath program provided.
+    4) Use the provided XML transformation stylesheet (requires java and xalan, a java stylesheet transformation
+    library).
+    
+    Option 4 is the most convenient, but option 1 is the simplest. See section below.
+    
+4. Modifying the program (or creating you own custom version).
+
+    The goal of this polmc program is to be validated, modifiable and extensible.
+    It is reasonably fast, but definitely not the fastest Monte Carlo implementation one can find.
+    It makes use of C++ and object-oriented programming (object classes) so it is easy to extend.
+    The C++ classes are interchangeable and this allows one to test various
+    ideas without having to recompile the program every time.  The general idea is:
+    
+    1) Photons (Photon) know how to move around (they know their own polarization, their wavelength, etc...)
+    2) An object (MCObject) knows what to do when a photon moves inside or crosses boundaries
+    3) The scatterer (MCRandomScatterer) knows the detail of the scattering (angle sampling, etc...)
+    4) The light source (MCSource) knows where to launch photons.
+    
+    There are a few utility classes for making your life easier: RealV (real 3d vector) that allows
+    you to do vector math easily (RealV a,b,c; c=a+b; for instance, see RealV.h) and fastinterpolate 
+    (which you fill with discrete data, but later on use like a function y=f(x)).
+    There are various Photons classes (PhotonBartel, PhotonJaillon, PhotonCote, etc...)
+    which implement the various dectection schemes that these authors have discussed.
+    There are various objects of various shapes that define specific 3D boundaries.
+    MCObject knows everything about moving a photon in a turbid medium, but MCBox and MCLayers
+    know the details of their own geometries.
+    There are various ways to generate good random numbers fast.  MCRandomScatter delegate 
+    the details of the calculations to various subclasses (MCRandomScattererKaplan,
+    MCRandomScattererHenyeyGreenstein, MCRandomScattererJaillon, etc...) which, once again
+    represent implementations of various formalisms discussed by these authors.
+
+    Documentation on most functions and header files are available in the documentation
+    directory (doc/MasterTOC.html) but it is not complete.  Looking at the code itself and
+    the publication :
+    
+     Daniel Cote and I. Alex Vitkin, "Robust concentration determination 
+     of optically active molecules in turbid media with validated
+     three-dimensional polarization Monte Carlo model"
+     Optics Express, Dec 2004
+
+    is the best option.
+    
+    Documentation on the history of the changes is available in doc/index.html
+
+    There are various ways you can do your modifications or use the code:
+    
+    4.1) Simple _use_ of the code
+    4.2) Simple modifications of the core sources
+    4.3) Complex modifications of the sources
+   
+    The instructions below assume you are using Unix (Linux, Mac OS X, etc...).   
+     
+    4.1) Simple use of the code
+
+    If you have a specific geometry with a specific source in mind (say a cube with an object
+    inside and a detector 5 cm away and a source inside the object), then you have to make your
+    own main() file.  There is an example with main-simple.cpp and main.cpp.
+    You may compile them easily with:
+
+    g++ -I$HOME/include -L$HOME/lib -o main-simple main-simple.cpp -lpolmc -lscatmech
+
+    You need to indicate where libpolmc.a and libscatmech.a are installed.
+    You need -lpolmc and -lscatmech in that order because polmc refers to scatmech.
+    
+    If you have followed the instructions before, you have compiled and installed
+    libpolmc.a and its headers in $HOME/lib.  This was done with make libpolmc.a && make install.
+    
+
+    4.2) Modifications of the code    
+    For simple modifications, you don't need anything fancy:
+    
+    0) An idea
+    1) Find the right source file, and modify.
+    2) make polmc 
+    3) ./polmc to run the polmc version you just compiled
+
+
+    4.3) Complex modifications
+        
+    For more complex modifications (if you add new files for instance)
+    you will need to rebuild the configure scripts and the makefile.
+    It is actually simple, if you have the tools for this:
+    
+    0) An idea
+    1) Get autoconf and automake from http://www.gnu.org/
+        ./configure --prefix=$HOME && make && make install
+       for both
+    2) Add you source file to Makefile.am (see comments)
+    3) Run automake -ac
+    4) ./configure --prefix=$HOME --enable-scatmech --with-scatmech-includedir=$HOME/include --with-scatmech-libdir=$HOME/lib
+    5) make && make install
+    
+    
+5) The file format: XML
+
+    With a complex program like Pol-MC, you will generate a lot of information.  There are several options when it
+    comes to saving to disk:
+    
+    1) Accept options so we just save what we want a the moment the calculation is ran
+    2) Save multiple files each with different information
+    3) Save in one large file
+    
+    Option 1 is a problem, because first it makes the program much more complex and it is also much more complex
+    to the user.  In addition, if more information is needed long after the calculation is ran, then if you 
+    forgot to request that information to be saved, you have to run the calculation again.  Option 2 is a mess:
+    you have to provide a different filename for each file, and there might be quite a few.  You will end up saving 
+    object.stokesV.intensity.acceptance1.dat, etc. This becomes cumbersome very quickly, in addition to very confusing.
+    Option 3 is the only real option then.
+    
+    If the information is saved as text with "labels" then you need a special program (that you write yourself) that
+    will extract the information you need.  This can be prone to errors and any extension to the file format 
+    (for instance, one adds something to the code that allows one to save new information (e.g. photon statistics)) will    
+    break the file format fragile or at least make it "fragile". Since the information is inherently hierarchical
+    (e.g. intensity distribution of face 1 of object 2 ) a file format that deals with such information is important.
+    It also needs to be well used and understood in the scientific community. There are two such formats: Hierarchical
+    Data Format (HDF) and Extensible Markup Language (XML).  HDF is a binary format that write compact files and is 
+    very fast.  The disadvantage is that you need the HDF library functions on the computer you are using and you 
+    also need to learn HDF in order to use it.  If you don't have the HDF library installed, then you can't read the HDF
+    file easily.  XML on the other hand, is an ASCII format that can be written by any program and
+    read with any text editor in addition to being easily accessed by a simple "description language" (XPath) that
+    can uniquely identify any part of an XML document.  It is relatively easy to learn and is definitely very easy to 
+    "copy" if you have a set of examples. In addition, XML files can be batch-processed by what are called Transformation 
+    Stylesheets. Because the format is hierarchical, you can add anything at any moment without affecting the access
+    to other parts of the document.
+    
+    The format of the document is like this:
+    
+    simulation
+        parameters
+        object world
+            object 1
+                face 1, acceptance cosine between 0.9 and 1 (i.e. near normal)
+                    intensity
+                    Q
+                    U
+                    V
+                    betalin
+                    betacirc
+                    avgpath
+                face 1, acceptance cosine between 0.8 and 1
+                    intensity
+                    Q
+                    U
+                    V
+                    betalin
+                    betacirc
+                    avgpath
+                [...]
+                face 1, acceptance cosine between 0 and 1 (i.e. all)
+                    intensity
+                    Q
+                    U
+                    V
+                    betalin
+                    betacirc
+                    avgpath
+                face 2, acceptance cosine between 0.9 and 1
+                ...
+                face 3
+                ...
+                
+            object 2
+            ...
+            object 3
+            ...
+        geometry (Mathematica polygons)
+        geometryMatlab (Matlab patch)
+        energyBinNumbers (absorbed energy distribution, with discrete indices i,j,k)
+        energy (absorbed energy distribution, with actual x,y,z values)
+    
+    
+    To extract various sections of the XML document using xpath, you can use the provided xpath provided
+    (which will get compiled if you have libxml2 installed).  A four-line tutorial looks like this:
+    * All paths look like directories
+    * You can request certain nodes with specific attributes using [@attr='value'].
+    * If you want the text of a node, you end with text().
+    * If you want an attribute, you end with attribute::theAttribute:
+
+    The get the energy distribution wihtin the "World" box you defined, type:    
+    xpath OutS1100.dat "/simulation/energy/text()"
+    
+    To get the intensity (any incidence or exit angle) on the backward face of object 2:
+    xpath OutS1100.dat "/simulation/object/object[@id='2']/interface[@id='backward']/StokesV[@acceptanceCosineIndex=0]/I/text()"
+
+    To get the transmittance 
+    xpath OutS1100.dat "/simulation/object[@name='world']/object/interface[@id='backward']/StokesV[@acceptanceCosineIndex=9]/attribute::transmittance"
+
+    to save the output in a file on Unix you would write for instance:
+    xpath OutS1100.dat "/simulation/energy/text()" > file.dat
+    
+    You can also extract all "subfiles" from the big file with a stylesheet transformation (XSLT).  You can
+    find XSLT interpreters on the web, but I use xalan, available at http://xml.apache.org/xalan-j/.  I have written a small
+    shell script extractallsubfiles.sh which will call the XSLT intepreter
+
+    To extract using XSLT and Xalan:
+    java org.apache.xalan.xslt.Process -in OutS1100.dat -xsl xml2flatfiles.xslt
+
+    where OutS1100.dat is the output file that polmc generated. The stylesheet will extract all the 
+    

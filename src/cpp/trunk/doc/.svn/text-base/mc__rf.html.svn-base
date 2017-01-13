@@ -1,0 +1,3458 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<title>--- mc ---</title>
+</head>
+<body bgcolor="#AAAAAA">
+<h2 align="center">--- mc ---</h2>
+<hr>
+<a name="AUTHORS">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: AUTHORS</font></B><br></td></tr>
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/03/11 21:15:55<td>None
+<tr><td colspan=4>
+<br>
+Amazing: I got the ./configure set up going thanks to automake, autoscan, autoconf and autoheader.<br>
+I made a few modifications to StokesV.h, main.cpp and rand.cpp to allow the customization<br>
+of config.h.  Now, one should be able to get everything configured (as a developer) with:<br>
+<br>
+autoheader<br>
+automake -ac<br>
+autoconf<br>
+<br>
+./configure --prefix=$HOME --bindir=$HOME/bin/$OS<br>
+make<br>
+make install<br>
+<br>
+Important problem: gcc 3.1 on Darwin has a problem with isnan()<br>
+(see http://mail.gnu.org/archive/html/lilypond-devel/2002-08/msg00175.html)<br>
+I had to define it empty if undefined.  Bizarre and will probably break on other<br>
+machines, but it compiles for now (does not run on OS X though).<br>
+
+</table><br>
+<a name="COPYING">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: COPYING</font></B><br></td></tr>
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/03/11 21:15:55<td>None
+<tr><td colspan=4>
+<br>
+Amazing: I got the ./configure set up going thanks to automake, autoscan, autoconf and autoheader.<br>
+I made a few modifications to StokesV.h, main.cpp and rand.cpp to allow the customization<br>
+of config.h.  Now, one should be able to get everything configured (as a developer) with:<br>
+<br>
+autoheader<br>
+automake -ac<br>
+autoconf<br>
+<br>
+./configure --prefix=$HOME --bindir=$HOME/bin/$OS<br>
+make<br>
+make install<br>
+<br>
+Important problem: gcc 3.1 on Darwin has a problem with isnan()<br>
+(see http://mail.gnu.org/archive/html/lilypond-devel/2002-08/msg00175.html)<br>
+I had to define it empty if undefined.  Bizarre and will probably break on other<br>
+machines, but it compiles for now (does not run on OS X though).<br>
+
+</table><br>
+<a name="INSTALL">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: INSTALL</font></B><br></td></tr>
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/03/11 21:15:55<td>None
+<tr><td colspan=4>
+<br>
+Amazing: I got the ./configure set up going thanks to automake, autoscan, autoconf and autoheader.<br>
+I made a few modifications to StokesV.h, main.cpp and rand.cpp to allow the customization<br>
+of config.h.  Now, one should be able to get everything configured (as a developer) with:<br>
+<br>
+autoheader<br>
+automake -ac<br>
+autoconf<br>
+<br>
+./configure --prefix=$HOME --bindir=$HOME/bin/$OS<br>
+make<br>
+make install<br>
+<br>
+Important problem: gcc 3.1 on Darwin has a problem with isnan()<br>
+(see http://mail.gnu.org/archive/html/lilypond-devel/2002-08/msg00175.html)<br>
+I had to define it empty if undefined.  Bizarre and will probably break on other<br>
+machines, but it compiles for now (does not run on OS X though).<br>
+
+</table><br>
+<a name="MCBox.cpp">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: MCBox.cpp</font></B><br></td></tr>
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/11/18 15:10:35<td>None
+<tr><td colspan=4>
+<br>
+All the floats were changed to double's.<br>
+
+</table><br>
+<a name="MCBox.h">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: MCBox.h</font></B><br></td></tr>
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/11/18 15:10:35<td>None
+<tr><td colspan=4>
+<br>
+All the floats were changed to double's.<br>
+
+</table><br>
+<a name="MCInfiniteLayers.cpp">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: MCInfiniteLayers.cpp</font></B><br></td></tr>
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/11/18 15:10:35<td>None
+<tr><td colspan=4>
+<br>
+All the floats were changed to double's.<br>
+
+</table><br>
+<a name="MCInfiniteLayers.h">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: MCInfiniteLayers.h</font></B><br></td></tr>
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/11/18 15:10:35<td>None
+<tr><td colspan=4>
+<br>
+All the floats were changed to double's.<br>
+
+</table><br>
+<a name="MCUtils.cpp">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: MCUtils.cpp</font></B><br></td></tr>
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/11/18 15:10:36<td>None
+<tr><td colspan=4>
+<br>
+All the floats were changed to double's.<br>
+
+</table><br>
+<a name="MCUtils.h">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: MCUtils.h</font></B><br></td></tr>
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/11/18 15:10:36<td>None
+<tr><td colspan=4>
+<br>
+All the floats were changed to double's.<br>
+
+</table><br>
+<a name="Makefile.orig">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: Makefile.orig</font></B><br></td></tr>
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/03/11 21:15:55<td>None
+<tr><td colspan=4>
+<br>
+Amazing: I got the ./configure set up going thanks to automake, autoscan, autoconf and autoheader.<br>
+I made a few modifications to StokesV.h, main.cpp and rand.cpp to allow the customization<br>
+of config.h.  Now, one should be able to get everything configured (as a developer) with:<br>
+<br>
+autoheader<br>
+automake -ac<br>
+autoconf<br>
+<br>
+./configure --prefix=$HOME --bindir=$HOME/bin/$OS<br>
+make<br>
+make install<br>
+<br>
+Important problem: gcc 3.1 on Darwin has a problem with isnan()<br>
+(see http://mail.gnu.org/archive/html/lilypond-devel/2002-08/msg00175.html)<br>
+I had to define it empty if undefined.  Bizarre and will probably break on other<br>
+machines, but it compiles for now (does not run on OS X though).<br>
+
+</table><br>
+<a name="NEWS">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: NEWS</font></B><br></td></tr>
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/03/11 21:15:55<td>None
+<tr><td colspan=4>
+<br>
+Amazing: I got the ./configure set up going thanks to automake, autoscan, autoconf and autoheader.<br>
+I made a few modifications to StokesV.h, main.cpp and rand.cpp to allow the customization<br>
+of config.h.  Now, one should be able to get everything configured (as a developer) with:<br>
+<br>
+autoheader<br>
+automake -ac<br>
+autoconf<br>
+<br>
+./configure --prefix=$HOME --bindir=$HOME/bin/$OS<br>
+make<br>
+make install<br>
+<br>
+Important problem: gcc 3.1 on Darwin has a problem with isnan()<br>
+(see http://mail.gnu.org/archive/html/lilypond-devel/2002-08/msg00175.html)<br>
+I had to define it empty if undefined.  Bizarre and will probably break on other<br>
+machines, but it compiles for now (does not run on OS X though).<br>
+
+</table><br>
+<a name="README">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: README</font></B><br></td></tr>
+<tr><td><b>Revision 1.3</b><td>dccote
+<td>2003/11/18 15:10:36<td>+6 -2
+<tr><td colspan=4>
+<br>
+All the floats were changed to double's.<br>
+
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2003/03/18 00:44:43<td>+25 -0
+<tr><td colspan=4>
+<br>
+Strated to add explanations about the code and the tests.  Work in progress.<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/03/11 21:15:55<td>None
+<tr><td colspan=4>
+<br>
+Amazing: I got the ./configure set up going thanks to automake, autoscan, autoconf and autoheader.<br>
+I made a few modifications to StokesV.h, main.cpp and rand.cpp to allow the customization<br>
+of config.h.  Now, one should be able to get everything configured (as a developer) with:<br>
+<br>
+autoheader<br>
+automake -ac<br>
+autoconf<br>
+<br>
+./configure --prefix=$HOME --bindir=$HOME/bin/$OS<br>
+make<br>
+make install<br>
+<br>
+Important problem: gcc 3.1 on Darwin has a problem with isnan()<br>
+(see http://mail.gnu.org/archive/html/lilypond-devel/2002-08/msg00175.html)<br>
+I had to define it empty if undefined.  Bizarre and will probably break on other<br>
+machines, but it compiles for now (does not run on OS X though).<br>
+
+</table><br>
+<a name="RealV.cpp">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: RealV.cpp</font></B><br></td></tr>
+<tr><td><b>Revision 1.3</b><td>dccote
+<td>2003/11/18 15:10:36<td>+3 -3
+<tr><td colspan=4>
+<br>
+All the floats were changed to double's.<br>
+
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2003/11/12 14:32:44<td>+31 -0
+<tr><td colspan=4>
+<br>
+<br>
+Moved a lot of the &quot;safety checks&quot; to RealV.  I now have NormalizedDotProduct and NormalizedCrossProduct that will enforce the bounds between 0 and 1.  This is particularly important when the products are used for determining the sdine or cosine between two vectors.  If one uses the regular DotProduct, for instance:<br>
+<br>
+float a = RealV::DotProduct(c,d);<br>
+float theta = acos(a);<br>
+<br>
+it is possible, sometimes, in extreme situations that a might be  a tiny bit over 1 (like say, 1.000001) even if c and d were normalized!  Of course, everything will fail from there, since theta will be NaN.  One must therefore use:<br>
+<br>
+float a = RealV::NormalizedDotProduct(c,d);<br>
+float theta = acos(a);<br>
+<br>
+I emphasize that even using double's isntead of floats would not solve the problem: it would just occur less frequently (which is not a solution).<br>
+<br>
+I also added a norm() function that provides the square of the magnitude, which is often enough and is faster than abs(). It is used in the normalized vector products.<br>
+<br>
+Added several functions to actually to vector additions, subtractions, etc... with += -= and + -.  All this means is that I can write simple expressions like:<br>
+<br>
+RealV a,b;<br>
+<br>
+RealV c = a+b;<br>
+RealV d = a-b;<br>
+<br>
+and things like that.<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/10/09 20:50:06<td>None
+<tr><td colspan=4>
+<br>
+Simple output operator added.  Has to be in separate file to avoid redefinition.<br>
+
+</table><br>
+<a name="StokesV.cpp">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: StokesV.cpp</font></B><br></td></tr>
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2003/10/09 20:17:31<td>+1 -1
+<tr><td colspan=4>
+<br>
+Corrected an important bug that crashed operator&lt;&lt;.  The function must return the stream.<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/03/18 00:34:56<td>None
+<tr><td colspan=4>
+<br>
+Modified to allow the use of the stream operator, which was actually not working<br>
+in previous versions.  The &lt;&lt; operator needs to be defined as a standolane function,<br>
+not a member function.<br>
+
+</table><br>
+<a name="constants.h">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: constants.h</font></B><br></td></tr>
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2003/09/15 15:21:17<td>+3 -1
+<tr><td colspan=4>
+<br>
+Minor formatting issues (removed tabs).<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/03/10 22:29:12<td>None
+<tr><td colspan=4>
+A few need constants.<br>
+
+</table><br>
+<a name="cubicspline.h">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: cubicspline.h</font></B><br></td></tr>
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/11/19 20:48:00<td>None
+<tr><td colspan=4>
+<br>
+New files added to CVS project.  They used to be independent, they are now part of the project.<br>
+
+</table><br>
+<a name="depcomp">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: depcomp</font></B><br></td></tr>
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/11/19 20:51:21<td>None
+<tr><td colspan=4>
+<br>
+Files from autoconf (i.e the configure script) have been added.<br>
+
+</table><br>
+<a name="extractmuellermatrixelements">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: extractmuellermatrixelements</font></B><br></td></tr>
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2002/12/02 22:36:17<td>None
+<tr><td colspan=4>
+Added three scripts to extract all the parameters from a single output file.<br>
+From a simple output file, one can get all Stokes vector components as a function of space.<br>
+From all the Stokes vectors from the various combinations of input Stokes vector, one can get<br>
+the Mueller matrix of the system.<br>
+
+</table><br>
+<a name="extractmuellermatrixelements.pl">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: extractmuellermatrixelements.pl</font></B><br></td></tr>
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/04/16 18:28:26<td>None
+<tr><td colspan=4>
+<br>
+Scripts used for analysis have been added to project.<br>
+They allow to extract all sub files, extract matrix elements when possible\<br>
+(i.e. if all the required files have been calculated) and write a summary<br>
+of all important values into a file for a series of runs (all done in DoAllThat.pl -analysis)<br>
+
+</table><br>
+<a name="extractstatsfromarrays.pl">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: extractstatsfromarrays.pl</font></B><br></td></tr>
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2003/11/12 14:44:45<td>+174 -11
+<tr><td colspan=4>
+<br>
+<br>
+The extraction scripts have been modified a bit to reflect the changes of the XML output file. Not much, really.<br>
+DoAllThat.pl has more options.<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/04/16 18:28:26<td>None
+<tr><td colspan=4>
+<br>
+Scripts used for analysis have been added to project.<br>
+They allow to extract all sub files, extract matrix elements when possible\<br>
+(i.e. if all the required files have been calculated) and write a summary<br>
+of all important values into a file for a series of runs (all done in DoAllThat.pl -analysis)<br>
+
+</table><br>
+<a name="extractsubfile.pl">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: extractsubfile.pl</font></B><br></td></tr>
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2003/04/07 17:31:17<td>+1 -1
+<tr><td colspan=4>
+<br>
+The program now uses /usr/local/perl.  Must make sure there is one on all<br>
+machines. I added one to my own OS X box.<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2002/12/02 22:36:17<td>None
+<tr><td colspan=4>
+Added three scripts to extract all the parameters from a single output file.<br>
+From a simple output file, one can get all Stokes vector components as a function of space.<br>
+From all the Stokes vectors from the various combinations of input Stokes vector, one can get<br>
+the Mueller matrix of the system.<br>
+
+</table><br>
+<a name="install-sh">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: install-sh</font></B><br></td></tr>
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/10/09 20:50:54<td>None
+<tr><td colspan=4>
+<br>
+Automake file added for compatibility.<br>
+
+</table><br>
+<a name="mkinstalldirs">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: mkinstalldirs</font></B><br></td></tr>
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/11/19 20:51:21<td>None
+<tr><td colspan=4>
+<br>
+Files from autoconf (i.e the configure script) have been added.<br>
+
+</table><br>
+<a name="mtRand.cpp">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: mtRand.cpp</font></B><br></td></tr>
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/11/19 20:48:00<td>None
+<tr><td colspan=4>
+<br>
+New files added to CVS project.  They used to be independent, they are now part of the project.<br>
+
+</table><br>
+<a name="mtRand.h">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: mtRand.h</font></B><br></td></tr>
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/11/19 20:48:00<td>None
+<tr><td colspan=4>
+<br>
+New files added to CVS project.  They used to be independent, they are now part of the project.<br>
+
+</table><br>
+<a name="muellermatrix.pl">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: muellermatrix.pl</font></B><br></td></tr>
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2002/11/25 21:06:14<td>+42 -0
+<tr><td colspan=4>
+First attempt at adding results to CVS.  Might not be done in the future, (could be too much data)<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2002/11/19 23:45:13<td>None
+<tr><td colspan=4>
+run.sh and run_all.sh: run batch files.<br>
+<br>
+Obtain Mueller matrix elements from output files I,Q,U,V for different states of polarization.<br>
+
+</table><br>
+<a name="rand.cpp">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: rand.cpp</font></B><br></td></tr>
+<tr><td><b>Revision 1.4</b><td>dccote
+<td>2003/09/15 15:00:53<td>+1 -2
+<tr><td colspan=4>
+<br>
+Minor formatting changes (removed tabs).<br>
+
+<tr><td><b>Revision 1.3</b><td>dccote
+<td>2003/03/11 21:15:55<td>+5 -0
+<tr><td colspan=4>
+<br>
+Amazing: I got the ./configure set up going thanks to automake, autoscan, autoconf and autoheader.<br>
+I made a few modifications to StokesV.h, main.cpp and rand.cpp to allow the customization<br>
+of config.h.  Now, one should be able to get everything configured (as a developer) with:<br>
+<br>
+autoheader<br>
+automake -ac<br>
+autoconf<br>
+<br>
+./configure --prefix=$HOME --bindir=$HOME/bin/$OS<br>
+make<br>
+make install<br>
+<br>
+Important problem: gcc 3.1 on Darwin has a problem with isnan()<br>
+(see http://mail.gnu.org/archive/html/lilypond-devel/2002-08/msg00175.html)<br>
+I had to define it empty if undefined.  Bizarre and will probably break on other<br>
+machines, but it compiles for now (does not run on OS X though).<br>
+
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2002/10/17 03:50:15<td>+91 -1
+<tr><td colspan=4>
+<br>
+Changed line endings from Mac to Unix<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2002/10/16 01:21:02<td>None
+<tr><td colspan=4>
+Initial revision<br>
+
+<tr><td><b>Revision 1.1.1.1</b><td>dccote
+<td>2002/10/16 01:21:02<td>+0 -0
+<tr><td colspan=4>
+<br>
+Initial import.<br>
+
+</table><br>
+<a name="rand.h">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: rand.h</font></B><br></td></tr>
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2002/10/16 01:21:02<td>None
+<tr><td colspan=4>
+Initial revision<br>
+
+<tr><td><b>Revision 1.1.1.1</b><td>dccote
+<td>2002/10/16 01:21:02<td>+0 -0
+<tr><td colspan=4>
+<br>
+Initial import.<br>
+
+</table><br>
+<a name="run.sh">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: run.sh</font></B><br></td></tr>
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2002/11/19 23:45:13<td>None
+<tr><td colspan=4>
+run.sh and run_all.sh: run batch files.<br>
+<br>
+Obtain Mueller matrix elements from output files I,Q,U,V for different states of polarization.<br>
+
+</table><br>
+<a name="run_all.sh">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: run_all.sh</font></B><br></td></tr>
+<tr><td><b>Revision 1.4</b><td>dccote
+<td>2003/04/07 17:19:06<td>+28 -4
+<tr><td colspan=4>
+<br>
+Added small correction to echo so everything looks and runs fine on<br>
+Linux, Sunos and Mac OS X.<br>
+
+<tr><td><b>Revision 1.3</b><td>dccote
+<td>2003/03/18 00:31:12<td>+7 -5
+<tr><td colspan=4>
+<br>
+Modified to reflect the new parameter file and program that will<br>
+automatically go through all four relevant Stokes vectors (we now<br>
+need to call mc only once).<br>
+
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2002/12/02 22:31:26<td>+9 -4
+<tr><td colspan=4>
+Send output to program mylogger, which stores everything in my log directory.<br>
+(~/log/dcote.log.x)<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2002/11/19 23:45:13<td>None
+<tr><td colspan=4>
+run.sh and run_all.sh: run batch files.<br>
+<br>
+Obtain Mueller matrix elements from output files I,Q,U,V for different states of polarization.<br>
+
+</table><br>
+<a name="test.cpp">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: test.cpp</font></B><br></td></tr>
+<tr><td><b>Revision 1.6</b><td>dccote
+<td>2003/11/18 15:10:36<td>+68 -24
+<tr><td colspan=4>
+<br>
+All the floats were changed to double's.<br>
+
+<tr><td><b>Revision 1.5</b><td>dccote
+<td>2003/09/15 14:56:17<td>+85 -87
+<tr><td colspan=4>
+<br>
+Just minor formatting (removed tabs).<br>
+
+<tr><td><b>Revision 1.4</b><td>dccote
+<td>2003/04/16 14:59:10<td>+24 -4
+<tr><td colspan=4>
+<br>
+Modified test.cpp so that it reflects some of the changes of main.cpp (parameters, normalization).<br>
+It now checks the normalization of the Mueller matrix.  Let's note that there is a difference between normalizing<br>
+to max value of S11 and normalizing to the integral of S11(theta) d_theta.  Moreover, as mentionned in another comment<br>
+(see randomscatter.cpp) the normalization should include the dependence on theta and phi, since the actually scattering<br>
+depends on the polarization a tiny bit.<br>
+
+<tr><td><b>Revision 1.3</b><td>dccote
+<td>2003/03/18 00:27:54<td>+47 -54
+<tr><td colspan=4>
+<br>
+<br>
+<br>
+The cubicplsine files are tested by spitting them out after having read them.<br>
+A plot of that file and the original file should be identical.<br>
+<br>
+The g parameter, which is sin(theta)*cos(theta) (because of the solid angle),<br>
+is calculated and can be compared with the known g parameter of the<br>
+MieScatteringMatrix element files that are provided in the parameter file.<br>
+<br>
+The code has been modified a tiny bit to allow the use of a new random number<br>
+generator via randomscatter.cpp.  Everything is decided in randomscatter.cpp<br>
+and the code itself does not have to do anything.  This means the<br>
+random numbers can come from any algorithm.<br>
+<br>
+Modified the name of the output file from mij.dat to test_mij.dat.<br>
+<br>
+Correction of output: there used to be an extra tabulation character being output<br>
+at the end of each line.  I now use an end of line character 'sep' which is<br>
+'\n' or '\t' depending upon the situation.<br>
+
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2003/03/13 23:15:40<td>+166 -61
+<tr><td colspan=4>
+<br>
+New functions to test for avg cosine, g, symmetry of scattering matrix and cubicspline function.<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/03/10 22:28:27<td>None
+<tr><td colspan=4>
+Started implementation of test section for testing Mueller matrices from interpolated data files.<br>
+Sample the function at all angles and spits out the total Mueller matrix mij in 16 different files.  The files are NOT as a funciton of position xy buyt as a function of angles theta phi.  Currently, phi is not being used.<br>
+
+</table><br>
+<a name="test.dat">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: test.dat</font></B><br></td></tr>
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/03/10 22:28:27<td>None
+<tr><td colspan=4>
+Started implementation of test section for testing Mueller matrices from interpolated data files.<br>
+Sample the function at all angles and spits out the total Mueller matrix mij in 16 different files.  The files are NOT as a funciton of position xy buyt as a function of angles theta phi.  Currently, phi is not being used.<br>
+
+</table><br>
+<a name="xmldump">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: xmldump</font></B><br></td></tr>
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2003/11/18 15:10:36<td>+1 -1
+<tr><td colspan=4>
+<br>
+All the floats were changed to double's.<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/10/09 20:54:25<td>None
+<tr><td colspan=4>
+<br>
+Allows one to read the output files and dump them in other ascii files for further processing.<br>
+
+</table><br>
+<a name="RealV.h">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: RealV.h</font></B><br></td></tr>
+<tr><td><b>Revision 1.8</b><td>dccote
+<td>2004/01/10 20:17:30<td>+2 -2
+<tr><td colspan=4>
+*** empty log message ***<br>
+
+<tr><td><b>Revision 1.7</b><td>dccote
+<td>2003/11/18 15:10:36<td>+20 -20
+<tr><td colspan=4>
+<br>
+All the floats were changed to double's.<br>
+
+<tr><td><b>Revision 1.6</b><td>dccote
+<td>2003/11/12 14:32:44<td>+108 -22
+<tr><td colspan=4>
+<br>
+<br>
+Moved a lot of the &quot;safety checks&quot; to RealV.  I now have NormalizedDotProduct and NormalizedCrossProduct that will enforce the bounds between 0 and 1.  This is particularly important when the products are used for determining the sdine or cosine between two vectors.  If one uses the regular DotProduct, for instance:<br>
+<br>
+float a = RealV::DotProduct(c,d);<br>
+float theta = acos(a);<br>
+<br>
+it is possible, sometimes, in extreme situations that a might be  a tiny bit over 1 (like say, 1.000001) even if c and d were normalized!  Of course, everything will fail from there, since theta will be NaN.  One must therefore use:<br>
+<br>
+float a = RealV::NormalizedDotProduct(c,d);<br>
+float theta = acos(a);<br>
+<br>
+I emphasize that even using double's isntead of floats would not solve the problem: it would just occur less frequently (which is not a solution).<br>
+<br>
+I also added a norm() function that provides the square of the magnitude, which is often enough and is faster than abs(). It is used in the normalized vector products.<br>
+<br>
+Added several functions to actually to vector additions, subtractions, etc... with += -= and + -.  All this means is that I can write simple expressions like:<br>
+<br>
+RealV a,b;<br>
+<br>
+RealV c = a+b;<br>
+RealV d = a-b;<br>
+<br>
+and things like that.<br>
+
+<tr><td><b>Revision 1.5</b><td>dccote
+<td>2003/10/09 18:41:45<td>+146 -40
+<tr><td colspan=4>
+<br>
+Added operator == and !=.<br>
+Corrected the abs() function which was erroneously returning the square of the modulus, not its square root.<br>
+Added a normalized Cross product<br>
+Added an OrientedAngleBetween() function which computes the angle between two vectors which would overlap both after<br>
+a rotation around a third vector.<br>
+Added areParallel() and arePerpendicular()<br>
+
+<tr><td><b>Revision 1.4</b><td>dccote
+<td>2003/09/15 15:18:16<td>+35 -7
+<tr><td colspan=4>
+<br>
+The operator= (assignment operator) has been corrected slightly to use const (see Stroustrup C++ book p.264).<br>
+Cleaned up formatting (no tabs)<br>
+
+<tr><td><b>Revision 1.3</b><td>dccote
+<td>2003/07/10 14:36:55<td>+63 -0
+<tr><td colspan=4>
+<br>
+Added Headerdoc comments.<br>
+<br>
+HeaderDoc is a program that prases header files for specially formatted comments.  Headerdoc is made by apple (it's a perl script)<br>
+and is documented at: http://developer.apple.com/darwin/projects/headerdoc/docs/HeaderDoc.html<br>
+<br>
+Once the information is entered, one can create HTML files with all the information for easy viewing in a web browser with these two simple commands:<br>
+<br>
+mc% headerdoc .<br>
+mc% gatherheaderdoc<br>
+<br>
+MasterTOC.html contains a table of contents for all the files.<br>
+
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2003/04/16 14:52:49<td>+13 -9
+<tr><td colspan=4>
+<br>
+Added abs() function to class, added std::abs() to the call to the standard abs() function.<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2002/11/22 21:45:34<td>None
+<tr><td colspan=4>
+Separation of the various classes into separate files.<br>
+<br>
+Most important aspect: the weight is not the intensity of the Stokes vector.<br>
+It is incorrect to take the unnormalized intensity of the scattered Stokes<br>
+vector.  The angles phi and theta are already sampled proportionally to the<br>
+probability of having a photon scattered at that phi and theta.  Therefore we always normalize<br>
+the StokesVectors after a scattering event (what we care about is the polarization and<br>
+the degree of polarization of a photon is unchanged upon scattering.  The nature<br>
+of the polarization changes.<br>
+<br>
+Added a real weight() to a photon, which allows to deal with absoprtion (untested).<br>
+<br>
+<br>
+Added a function to test if the photon is still in the medium.<br>
+Finally, if the propagation distance before next scattering event is such that the photon leaves the medium, the distance is corrected.<br>
+<br>
+Files for beta linear, circular and average distance travalled by a photon are<br>
+also produced.<br>
+
+</table><br>
+<a name="StokesV.h">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: StokesV.h</font></B><br></td></tr>
+<tr><td><b>Revision 1.11</b><td>dccote
+<td>2004/01/10 20:17:30<td>+31 -13
+<tr><td colspan=4>
+*** empty log message ***<br>
+
+<tr><td><b>Revision 1.10</b><td>dccote
+<td>2003/11/18 15:10:36<td>+24 -24
+<tr><td colspan=4>
+<br>
+All the floats were changed to double's.<br>
+
+<tr><td><b>Revision 1.9</b><td>dccote
+<td>2003/11/12 15:01:06<td>+30 -5
+<tr><td colspan=4>
+<br>
+Lots of debug checks added to ensure everything is ok.<br>
+
+<tr><td><b>Revision 1.8</b><td>dccote
+<td>2003/10/09 20:16:26<td>+298 -66
+<tr><td colspan=4>
+<br>
+Moved the reference axis into the Stokes vector, which is really where they should have been in the first place.<br>
+The class now has three RealV vectors: mEperp and mEpara and mEprop.  Hence, rotations of the reference frame or<br>
+rotation of the polarization state are unambiguously defined. Several functions have been renamed to emphasize what they do:<br>
+for instance, RotateBy() has been split in two functions: RotateReferenceFrameAroundPropagationDirectionBy() and RotatePolarizationStateBy().<br>
+They do exactly what their name implies.<br>
+<br>
+I have also added ChangePropagationDirectionAroundEPerpBy() for use in scattering calculations.<br>
+
+<tr><td><b>Revision 1.7</b><td>dccote
+<td>2003/09/15 15:21:17<td>+11 -11
+<tr><td colspan=4>
+<br>
+Minor formatting issues (removed tabs).<br>
+
+<tr><td><b>Revision 1.6</b><td>dccote
+<td>2003/07/10 14:36:55<td>+152 -26
+<tr><td colspan=4>
+<br>
+Added Headerdoc comments.<br>
+<br>
+HeaderDoc is a program that prases header files for specially formatted comments.  Headerdoc is made by apple (it's a perl script)<br>
+and is documented at: http://developer.apple.com/darwin/projects/headerdoc/docs/HeaderDoc.html<br>
+<br>
+Once the information is entered, one can create HTML files with all the information for easy viewing in a web browser with these two simple commands:<br>
+<br>
+mc% headerdoc .<br>
+mc% gatherheaderdoc<br>
+<br>
+MasterTOC.html contains a table of contents for all the files.<br>
+
+<tr><td><b>Revision 1.5</b><td>dccote
+<td>2003/04/16 14:54:12<td>+1 -1
+<tr><td colspan=4>
+<br>
+There was a mistake in the sign of the calculation of El:<br>
+<br>
+was:<br>
+&lt;         inEl *= exp(I*delta_theta);<br>
+<br>
+now is:<br>
+<br>
+&gt;         inEl *= exp(-I*delta_theta);<br>
+<br>
+It does not affect the previous calculations since I never looked at circular<br>
+polarization.<br>
+
+<tr><td><b>Revision 1.4</b><td>dccote
+<td>2003/03/18 00:34:56<td>+17 -6
+<tr><td colspan=4>
+<br>
+Modified to allow the use of the stream operator, which was actually not working<br>
+in previous versions.  The &lt;&lt; operator needs to be defined as a standolane function,<br>
+not a member function.<br>
+
+<tr><td><b>Revision 1.3</b><td>dccote
+<td>2003/03/11 21:15:55<td>+2 -0
+<tr><td colspan=4>
+<br>
+Amazing: I got the ./configure set up going thanks to automake, autoscan, autoconf and autoheader.<br>
+I made a few modifications to StokesV.h, main.cpp and rand.cpp to allow the customization<br>
+of config.h.  Now, one should be able to get everything configured (as a developer) with:<br>
+<br>
+autoheader<br>
+automake -ac<br>
+autoconf<br>
+<br>
+./configure --prefix=$HOME --bindir=$HOME/bin/$OS<br>
+make<br>
+make install<br>
+<br>
+Important problem: gcc 3.1 on Darwin has a problem with isnan()<br>
+(see http://mail.gnu.org/archive/html/lilypond-devel/2002-08/msg00175.html)<br>
+I had to define it empty if undefined.  Bizarre and will probably break on other<br>
+machines, but it compiles for now (does not run on OS X though).<br>
+
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2002/12/02 22:21:57<td>+21 -2
+<tr><td colspan=4>
+Changed cerr for clog to output to standard log (is usually the same as cerr, but who knows).<br>
+<br>
+Added two functions to rotate Stokes vector by angle phi.<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2002/11/22 21:45:34<td>None
+<tr><td colspan=4>
+Separation of the various classes into separate files.<br>
+<br>
+Most important aspect: the weight is not the intensity of the Stokes vector.<br>
+It is incorrect to take the unnormalized intensity of the scattered Stokes<br>
+vector.  The angles phi and theta are already sampled proportionally to the<br>
+probability of having a photon scattered at that phi and theta.  Therefore we always normalize<br>
+the StokesVectors after a scattering event (what we care about is the polarization and<br>
+the degree of polarization of a photon is unchanged upon scattering.  The nature<br>
+of the polarization changes.<br>
+<br>
+Added a real weight() to a photon, which allows to deal with absoprtion (untested).<br>
+<br>
+<br>
+Added a function to test if the photon is still in the medium.<br>
+Finally, if the propagation distance before next scattering event is such that the photon leaves the medium, the distance is corrected.<br>
+<br>
+Files for beta linear, circular and average distance travalled by a photon are<br>
+also produced.<br>
+
+</table><br>
+<a name="ChangeLog">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: ChangeLog</font></B><br></td></tr>
+<tr><td><b>Revision 1.3</b><td>dccote
+<td>2004/01/13 15:15:46<td>+1476 -106
+<tr><td colspan=4>
+<br>
+Newly updated ChangeLog (from cvs log .)<br>
+
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2003/11/18 15:10:35<td>+1468 -0
+<tr><td colspan=4>
+<br>
+All the floats were changed to double's.<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/03/11 21:15:55<td>None
+<tr><td colspan=4>
+<br>
+Amazing: I got the ./configure set up going thanks to automake, autoscan, autoconf and autoheader.<br>
+I made a few modifications to StokesV.h, main.cpp and rand.cpp to allow the customization<br>
+of config.h.  Now, one should be able to get everything configured (as a developer) with:<br>
+<br>
+autoheader<br>
+automake -ac<br>
+autoconf<br>
+<br>
+./configure --prefix=$HOME --bindir=$HOME/bin/$OS<br>
+make<br>
+make install<br>
+<br>
+Important problem: gcc 3.1 on Darwin has a problem with isnan()<br>
+(see http://mail.gnu.org/archive/html/lilypond-devel/2002-08/msg00175.html)<br>
+I had to define it empty if undefined.  Bizarre and will probably break on other<br>
+machines, but it compiles for now (does not run on OS X though).<br>
+
+</table><br>
+<a name="MuellerM.h">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: MuellerM.h</font></B><br></td></tr>
+<tr><td><b>Revision 1.12</b><td>dccote
+<td>2004/01/16 17:41:22<td>+2 -0
+<tr><td colspan=4>
+<br>
+Significant changes to allow the compilation of the program without<br>
+the SCATMECH library.  The scatmech library is obtainable on the web at:<br>
+http://physics.nist.gov/Divisions/Div844/facilities/scatmech/html/<br>
+For now, I use version 3.<br>
+<br>
+The configure program (not ideal, but works for now) accepts a:<br>
+--enable-scatmech paramater (THAT DEFAULTS TO NO) to compile the<br>
+program with WITH_POLARIZATION and NO_SCATMECH_NAMESPACE<br>
+(they are defined in config.h).  This way, if somebody does not have or does not<br>
+want SCATMECH/polarization info, they can compile the program<br>
+and run it in &quot;Intensity&quot; mode.<br>
+<br>
+If SCATMECH is not included, then we can't do Mie calculations.  hence, the only way to<br>
+describe scatteering is with the anisotropy parameter g and the Henyey-GreenStein distribution.<br>
+Those must be defined in the paramter file (which was modified to include comments about that).<br>
+<br>
+The Henyey-Greenstein random sampling class has been modified so it can be initialized either<br>
+from a Mueller matrix (which will happen when SCATMECH is used) or from the anisotropy parameter<br>
+(which will happen when SCATMECH is not used).<br>
+<br>
+A new photon (PhotonIntensity) has been created and does not compute polarization on scattering.<br>
+It still has a StokesV parameter, since it is currently used for Fresnel reflections and transmission<br>
+coefficients.  This way, the same math is used.  Might have to change that later.<br>
+
+<tr><td><b>Revision 1.11</b><td>dccote
+<td>2003/11/18 15:10:36<td>+33 -33
+<tr><td colspan=4>
+<br>
+All the floats were changed to double's.<br>
+
+<tr><td><b>Revision 1.10</b><td>dccote
+<td>2003/11/18 14:55:09<td>+1 -14
+<tr><td colspan=4>
+<br>
+I moved some of the functions from Mueller to randomscatter.cpp since that's where they belonged (the comaprison for the Jaillon method, for instance).  I also removed useless functions from Mueller.h<br>
+<br>
+randomscatter.cpp has better init functions for Jaillon. Alos, note the mAvgCosine was changed from float to double (in randomscatter.h).  This is critical since with 1e7 photons, the running sum will fail (and did fail).<br>
+
+<tr><td><b>Revision 1.9</b><td>dccote
+<td>2003/10/09 20:33:59<td>+192 -130
+<tr><td colspan=4>
+<br>
+Created a new class fastinterpolate (linear interpolation) which sped up the simulation significantly.<br>
+Also, there is a new constructor which takes tables as the input parameters, not files so we can generate everything straight in the code.<br>
+Changed the function to use radians instead of stupid degrees.  No idea why I did that in the first place.<br>
+Added a function to get only the top two elements (m11 and m12) to make the random sampling faster.<br>
+Added a function to get S1 and S2 from the Mueller matrix elements of a spherical Mueller matrix (GetDistS1DistS2)<br>
+Added a table called mComparisonFct which contains m11+abs(m12).  This is used for Jaillon's method for better rejection method.  This function should probably go to the class MCRandomScattererJaillon.<br>
+
+<tr><td><b>Revision 1.8</b><td>dccote
+<td>2003/09/15 15:21:17<td>+65 -65
+<tr><td colspan=4>
+<br>
+Minor formatting issues (removed tabs).<br>
+
+<tr><td><b>Revision 1.7</b><td>dccote
+<td>2003/07/10 14:36:55<td>+253 -116
+<tr><td colspan=4>
+<br>
+Added Headerdoc comments.<br>
+<br>
+HeaderDoc is a program that prases header files for specially formatted comments.  Headerdoc is made by apple (it's a perl script)<br>
+and is documented at: http://developer.apple.com/darwin/projects/headerdoc/docs/HeaderDoc.html<br>
+<br>
+Once the information is entered, one can create HTML files with all the information for easy viewing in a web browser with these two simple commands:<br>
+<br>
+mc% headerdoc .<br>
+mc% gatherheaderdoc<br>
+<br>
+MasterTOC.html contains a table of contents for all the files.<br>
+
+<tr><td><b>Revision 1.6</b><td>dccote
+<td>2003/04/16 15:06:34<td>+1 -0
+<tr><td colspan=4>
+<br>
+I forgot to include one important in previous commit message:  a function that provides a<br>
+normalization factor has been added to all MuellerM classes.  This allows one to normalize<br>
+to the integral of I(theta) d_Omega in various calculations.  This is slightly incorrect since<br>
+really the normalization in most functions should be I(theta,phi) (and therefore depends on S12() a bit).<br>
+HOwever, the change is small and will be dropped for now.  A warning is issued so that the user knows<br>
+what is being done.  This normalization is used for the rejection method (in randomscatter.cpp)<br>
+
+<tr><td><b>Revision 1.5</b><td>dccote
+<td>2003/04/16 14:55:49<td>+99 -10
+<tr><td colspan=4>
+<br>
+Optimized a few things, especially the access to matrix elements since a<br>
+significant fraction of the time was spent in there.  Still some work<br>
+to do, but a bit better now.<br>
+
+<tr><td><b>Revision 1.4</b><td>dccote
+<td>2003/03/13 23:20:30<td>+11 -8
+<tr><td colspan=4>
+<br>
+MuellerMRayleigh::GetMatrixForTheta was modified to include phi dependence.<br>
+
+<tr><td><b>Revision 1.3</b><td>dccote
+<td>2003/03/13 23:19:24<td>+19 -17
+<tr><td colspan=4>
+<br>
+Modified GetMatrixForTheta() to actually be GetMatrixForThetaAndPhi(), although the name of the function was not changed.<br>
+It is now possible to obtain the matrix at an arbitrary angle phi (which simplifies the testing and makes the code more uniform). This still needs to be implemented in Photon.h to make sure everything is using the same funciton.  Also, MuellerMRayleigh has NOT been modified yet.<br>
+
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2003/03/10 22:28:27<td>+1 -0
+<tr><td colspan=4>
+Started implementation of test section for testing Mueller matrices from interpolated data files.<br>
+Sample the function at all angles and spits out the total Mueller matrix mij in 16 different files.  The files are NOT as a funciton of position xy buyt as a function of angles theta phi.  Currently, phi is not being used.<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2002/11/22 21:45:34<td>None
+<tr><td colspan=4>
+Separation of the various classes into separate files.<br>
+<br>
+Most important aspect: the weight is not the intensity of the Stokes vector.<br>
+It is incorrect to take the unnormalized intensity of the scattered Stokes<br>
+vector.  The angles phi and theta are already sampled proportionally to the<br>
+probability of having a photon scattered at that phi and theta.  Therefore we always normalize<br>
+the StokesVectors after a scattering event (what we care about is the polarization and<br>
+the degree of polarization of a photon is unchanged upon scattering.  The nature<br>
+of the polarization changes.<br>
+<br>
+Added a real weight() to a photon, which allows to deal with absoprtion (untested).<br>
+<br>
+<br>
+Added a function to test if the photon is still in the medium.<br>
+Finally, if the propagation distance before next scattering event is such that the photon leaves the medium, the distance is corrected.<br>
+<br>
+Files for beta linear, circular and average distance travalled by a photon are<br>
+also produced.<br>
+
+</table><br>
+<a name="missing">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: missing</font></B><br></td></tr>
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2004/01/16 17:41:23<td>+5 -5
+<tr><td colspan=4>
+<br>
+Significant changes to allow the compilation of the program without<br>
+the SCATMECH library.  The scatmech library is obtainable on the web at:<br>
+http://physics.nist.gov/Divisions/Div844/facilities/scatmech/html/<br>
+For now, I use version 3.<br>
+<br>
+The configure program (not ideal, but works for now) accepts a:<br>
+--enable-scatmech paramater (THAT DEFAULTS TO NO) to compile the<br>
+program with WITH_POLARIZATION and NO_SCATMECH_NAMESPACE<br>
+(they are defined in config.h).  This way, if somebody does not have or does not<br>
+want SCATMECH/polarization info, they can compile the program<br>
+and run it in &quot;Intensity&quot; mode.<br>
+<br>
+If SCATMECH is not included, then we can't do Mie calculations.  hence, the only way to<br>
+describe scatteering is with the anisotropy parameter g and the Henyey-GreenStein distribution.<br>
+Those must be defined in the paramter file (which was modified to include comments about that).<br>
+<br>
+The Henyey-Greenstein random sampling class has been modified so it can be initialized either<br>
+from a Mueller matrix (which will happen when SCATMECH is used) or from the anisotropy parameter<br>
+(which will happen when SCATMECH is not used).<br>
+<br>
+A new photon (PhotonIntensity) has been created and does not compute polarization on scattering.<br>
+It still has a StokesV parameter, since it is currently used for Fresnel reflections and transmission<br>
+coefficients.  This way, the same math is used.  Might have to change that later.<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/11/19 20:51:21<td>None
+<tr><td colspan=4>
+<br>
+Files from autoconf (i.e the configure script) have been added.<br>
+
+</table><br>
+<a name="testVectors.cpp">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: testVectors.cpp</font></B><br></td></tr>
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2004/01/13 22:16:56<td>+10 -10
+<tr><td colspan=4>
+Newer makefiles for compiling on other machines (Sharcnet cluster)<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/11/19 20:48:00<td>None
+<tr><td colspan=4>
+<br>
+New files added to CVS project.  They used to be independent, they are now part of the project.<br>
+
+</table><br>
+<a name="MCObject.h">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: MCObject.h</font></B><br></td></tr>
+<tr><td><b>Revision 1.8</b><td>dccote
+<td>2004/02/03 15:08:26<td>+1 -1
+<tr><td colspan=4>
+First, chaged the numScatter table in MCObject to an array of double: numScatter is not an integer, it is the average number of scattering events.<br>
+Second I figured out why I was getting photons that had not scattered in the back direction: they are multiple reflections.  It was not an error in the code at all.  If one sets the index of the medium to 1, there will be not Fresnel reflections and everything is fine.<br>
+<br>
+In Photon.h I modified that stat collection routine:  I used to have numEvents for the number of scattering events and I would use that to tabulate the position of the photon. This was incorrect because a photon can move without scattering (Fresnel reflection is an example).  Hence I created another variable (mStatsMove) which keeps track of the number of times a photon has moved.  The tables has all the position+Stokes+direction the photon has passed through, including the initial values.  We still keep tyrack of the number of scattering events mNumEvents.<br>
+
+<tr><td><b>Revision 1.7</b><td>dccote
+<td>2004/01/28 12:39:39<td>+2 -0
+<tr><td colspan=4>
+First attempt at keeping track of the number scattering events.  The<br>
+idea is pretty much the same as the path length (in terms of<br>
+implementation): we have a big multidimensional array (each point on<br>
+each face for each output angle) and we score numberOfScatteringEvents<br>
+* weight of photon.  At the very end, before outputting everything, we<br>
+normalize.<br>
+<br>
+My initial testing shows that for mu_s=1, g ~ 0.9, the average number<br>
+of scattering events in the forward direction (directly forward) is<br>
+zero.  It is also zero in the backward direction and it seems to not<br>
+maike sense.  Everything else looks<br>
+reasonnable&quot; but I need to do more testing.<br>
+
+<tr><td><b>Revision 1.6</b><td>dccote
+<td>2004/01/16 17:41:21<td>+3 -1
+<tr><td colspan=4>
+<br>
+Significant changes to allow the compilation of the program without<br>
+the SCATMECH library.  The scatmech library is obtainable on the web at:<br>
+http://physics.nist.gov/Divisions/Div844/facilities/scatmech/html/<br>
+For now, I use version 3.<br>
+<br>
+The configure program (not ideal, but works for now) accepts a:<br>
+--enable-scatmech paramater (THAT DEFAULTS TO NO) to compile the<br>
+program with WITH_POLARIZATION and NO_SCATMECH_NAMESPACE<br>
+(they are defined in config.h).  This way, if somebody does not have or does not<br>
+want SCATMECH/polarization info, they can compile the program<br>
+and run it in &quot;Intensity&quot; mode.<br>
+<br>
+If SCATMECH is not included, then we can't do Mie calculations.  hence, the only way to<br>
+describe scatteering is with the anisotropy parameter g and the Henyey-GreenStein distribution.<br>
+Those must be defined in the paramter file (which was modified to include comments about that).<br>
+<br>
+The Henyey-Greenstein random sampling class has been modified so it can be initialized either<br>
+from a Mueller matrix (which will happen when SCATMECH is used) or from the anisotropy parameter<br>
+(which will happen when SCATMECH is not used).<br>
+<br>
+A new photon (PhotonIntensity) has been created and does not compute polarization on scattering.<br>
+It still has a StokesV parameter, since it is currently used for Fresnel reflections and transmission<br>
+coefficients.  This way, the same math is used.  Might have to change that later.<br>
+
+<tr><td><b>Revision 1.5</b><td>dccote
+<td>2004/01/10 20:17:30<td>+1 -0
+<tr><td colspan=4>
+*** empty log message ***<br>
+
+<tr><td><b>Revision 1.4</b><td>dccote
+<td>2003/11/18 15:10:36<td>+18 -18
+<tr><td colspan=4>
+<br>
+All the floats were changed to double's.<br>
+
+<tr><td><b>Revision 1.3</b><td>dccote
+<td>2003/11/18 15:00:52<td>+4 -13
+<tr><td colspan=4>
+<br>
+First, MCCube and MCInfiniteLayers have been created, therefore MCObject has been emptied of some of its functions. For instance, init() now does not allocate the surface elements.<br>
+<br>
+<br>
+Also, variables that used to be members of MCObject are now part of the structure SurfaceElement (the number of elements Na and Nb for vectors a and b).  Hence, some of the functions that dealt with Nx and Ny directly before now use Na and Nb from the structure.<br>
+<br>
+The indices kNoInterface, etc... were renumbered so that ForwardZ and BackwardZ are 0 and 1, instead of 1 and 2.  We save quite a bit of memory because before, 0 was still allocated.<br>
+<br>
+Two functions for allocating memory were created AllocateStatsMemory() and AllocateStatsMemory().<br>
+
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2003/11/12 14:12:02<td>+25 -16
+<tr><td colspan=4>
+<br>
+<br>
+Several important changes, the most important one being that now, all the interfaces are treated the same way.  This means an object is now a set of Interfaces, with normals, spanning vectors, etc... and does not rely on a &quot;specific&quot; geometry (i.e. the z axis, or other things like that).  Currently, MCObject is a cube, but that's irrelevant:  it is just a test for the routines, which work perfectly fine (see comments below).  The next step will be to derive objects (like MCCube, MCInfiniteLayers, MCSphere, etc...).  Fortunately, most of the routines of MCObject can (and will) be reused.<br>
+<br>
+* The function PathCrossesInterface() has been extensively rewritten to treat all the interface elements the same.  Using vector calculus, one can obtain a general formalution for the distance between a point and an interface and so on.   There is an important &quot;comment&quot; in that function: we must &quot;cheat&quot; a little bit because of round off errors.  For instance, although the distance calculated between a given point and a plane might be less than the propagating distance, sometimes, extremely rarely but still possible, the new computed position is slightly (just a tiny wee bit) passed the plane (which means the photon has exited but was never seen crossing the interface).  Hence, when a photon is alsmost crossing an interface (and I really mean almost), then we consider that it did.<br>
+<br>
+* There exists two new structures to deal with a SurfaceElement and IntersectElement. Surface is any interface defining the volume.  Intersect is all the information about the intersection point of a path with a surface element.<br>
+<br>
+* The function ScoreOnSurface is now completely general and simply store the intesection point and other stats in a multi dimensional table, which tabulates all faces, all Stokes parameters for all acceptance angles.  As usual, everything is dumped to disk in one big XML file.  We &quot;bin&quot; the photons by the cosine they make with the interface they cross, however they are output to file as a &quot;intergated&quot; measurement.  For instance, the photons are binned with cosines from 1 to 0.95, 0.5 to 0.9, 085 to 0.8 etc...  However, when comes the time to output to disk, with include everything up to a certain value.  Hence, the images are for acceptance cosine down to 0.9, down to 0.85, down to 0.8, etc...  It is faster to &quot;do the math&quot; when outputting everything to disk than to do it as we go.<br>
+<br>
+* Of course, because of these changes, the XML format has changed a bit.  The file is pretty self-explanatory.  All parameters are written in that file.<br>
+<br>
+The transport coefficient mu_s + mu_a is now checked to be non zero.  If it is, we can't go on (scattering distance is infinite).<br>
+<br>
+The product of two unit vectors is not always smaller than 1 (it can be a wee bit more).  We use the Normalized functions for cross products and dot products  which enforce bounds.<br>
+<br>
+There is now a few active checks for &quot;things&quot; that can't happen.  For instance, in rare occasions, the random number genetaor can return 0.  This would make the scattering distance infinite, we must check for that.  Also, just to avoid infinite loops, if a photon does not exit within a finite, reasoonable amoount of time, we warn the user.  Once again, this is useful in debugging.<br>
+<br>
+Reflections and transmissions (FResnel coefficients) have been added at interfaces.  Before, the photon was always transmitted.<br>
+<br>
+I also added the possibility to seed the random number generator so I can use the same sequence for testing (very useful).<br>
+<br>
+I also added an &quot;isotropic scattering test&quot;, which allows one to test various things. I corrected a few things with the &quot;single scattering test&quot; (for the scattering distance).<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/10/09 20:43:56<td>None
+<tr><td colspan=4>
+<br>
+Uber-major rewrite in terms of a new object called MCObject (as in Monte Carlo object).  The object MCObject<br>
+is currently just a layer, but the structure is ready to accept any shape (cube, cuvette, layer, cylinder, etc...).<br>
+main.cpp now only reads parameters and passes the control to MCObject.  The main function is PropagateInObject().  Eventually (I dont' know when , but at some point), MCObject will be able to contain other MCObjects that have different properties and the photons will propagate through all the objects using the simple functions declared by MCObject.<br>
+<br>
+The functions for dumping to file have been modified.  They are now real XML files, and can be analyzed with xmldump (which I have written).<br>
+Also, it is now a piece of cake to collect the backscattered photons.  They are collected and stored in the same file, under &quot;interface&quot;,id=backward.<br>
+MCObject is much better (and stricter) when crossing interfaces, since the algorithm has been streamlined.  See the class for explanations (although there currently are no comments in the header file).  The place to start is in PropagateInObject().<br>
+<br>
+<br>
+In main.cpp, I have also finally fixed the exception-catch problem. One must use:<br>
+catch (exception&amp; e)<br>
+         clog &lt;&lt; RightNow() &lt;&lt; &quot;Exception caught: &quot; &lt;&lt; string(e.what()) &lt;&lt; endl;<br>
+and not<br>
+catch (exception e)<br>
+         clog &lt;&lt; RightNow() &lt;&lt; &quot;Exception caught: &quot; &lt;&lt; string(e.what()) &lt;&lt; endl;<br>
+
+</table><br>
+<a name="xml2flatfiles.xslt">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: xml2flatfiles.xslt</font></B><br></td></tr>
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2004/02/20 05:07:37<td>None
+<tr><td colspan=4>
+<br>
+Fancy new tool: a &quot;XML Stylesheet Transformation&quot; file that transforms<br>
+the XML output into something else.  In this case, it will extract all the files from the XML file and save them to disk.<br>
+I learned about those in Mastering XML transformation by Doug Tidwell.  Not easy at first, but worth it.<br>
+<br>
+The transformation requires Xalan (search on google for Xalan):<br>
+http://xml.apache.org/xalan-j/downloads.html<br>
+<br>
+You download it and install it in some directory (for instance ~/bin/java/).<br>
+Then you set the classpath:<br>
+	setenv CLASSPATH ~/bin/java<br>
+After that, you can call:<br>
+<br>
+java org.apache.xalan.xslt.Process -in OutS1100.dat -xsl xml2flatfiles.xslt<br>
+<br>
+and *all* the files will get created.<br>
+
+</table><br>
+<a name="configfiles.h">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: configfiles.h</font></B><br></td></tr>
+<tr><td><b>Revision 1.3</b><td>dccote
+<td>2004/02/20 05:08:40<td>+1 -0
+<tr><td colspan=4>
+Added a simple XML output to configfile.<br>
+Modified MCObject.cpp to use that XML output.<br>
+
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2003/11/20 15:31:12<td>+3 -8
+<tr><td colspan=4>
+<br>
+Some changes related to handling of errors (with files).<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/11/19 20:47:59<td>None
+<tr><td colspan=4>
+<br>
+New files added to CVS project.  They used to be independent, they are now part of the project.<br>
+
+</table><br>
+<a name="configfiles.cpp">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: configfiles.cpp</font></B><br></td></tr>
+<tr><td><b>Revision 1.3</b><td>dccote
+<td>2004/02/20 05:08:40<td>+20 -0
+<tr><td colspan=4>
+Added a simple XML output to configfile.<br>
+Modified MCObject.cpp to use that XML output.<br>
+
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2003/11/20 15:31:12<td>+8 -2
+<tr><td colspan=4>
+<br>
+Some changes related to handling of errors (with files).<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/11/19 20:47:59<td>None
+<tr><td colspan=4>
+<br>
+New files added to CVS project.  They used to be independent, they are now part of the project.<br>
+
+</table><br>
+<a name="extractallsubfiles.sh">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: extractallsubfiles.sh</font></B><br></td></tr>
+<tr><td><b>Revision 1.4</b><td>dccote
+<td>2004/02/04 21:48:14<td>+14 -12
+<tr><td colspan=4>
+<br>
+Added the extraction of numscatter to the script (now that the data gets written to disk).<br>
+
+<tr><td><b>Revision 1.3</b><td>dccote
+<td>2003/11/12 14:44:45<td>+117 -8
+<tr><td colspan=4>
+<br>
+<br>
+The extraction scripts have been modified a bit to reflect the changes of the XML output file. Not much, really.<br>
+DoAllThat.pl has more options.<br>
+
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2003/03/18 00:39:23<td>+19 -7
+<tr><td colspan=4>
+<br>
+Does not use perl explcitly, so can now be set up in  the user's path.<br>
+Will now call extractmuellermatrixelements.pl when done.<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2002/12/02 22:36:17<td>None
+<tr><td colspan=4>
+Added three scripts to extract all the parameters from a single output file.<br>
+From a simple output file, one can get all Stokes vector components as a function of space.<br>
+From all the Stokes vectors from the various combinations of input Stokes vector, one can get<br>
+the Mueller matrix of the system.<br>
+
+</table><br>
+<a name="mydebug.h">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: mydebug.h</font></B><br></td></tr>
+<tr><td><b>Revision 1.4</b><td>dccote
+<td>2004/02/04 21:47:30<td>+2 -0
+<tr><td colspan=4>
+<br>
+Added a PrintMessage_() macro for debugging purposes.<br>
+
+<tr><td><b>Revision 1.3</b><td>dccote
+<td>2004/01/16 17:41:23<td>+1 -1
+<tr><td colspan=4>
+<br>
+Significant changes to allow the compilation of the program without<br>
+the SCATMECH library.  The scatmech library is obtainable on the web at:<br>
+http://physics.nist.gov/Divisions/Div844/facilities/scatmech/html/<br>
+For now, I use version 3.<br>
+<br>
+The configure program (not ideal, but works for now) accepts a:<br>
+--enable-scatmech paramater (THAT DEFAULTS TO NO) to compile the<br>
+program with WITH_POLARIZATION and NO_SCATMECH_NAMESPACE<br>
+(they are defined in config.h).  This way, if somebody does not have or does not<br>
+want SCATMECH/polarization info, they can compile the program<br>
+and run it in &quot;Intensity&quot; mode.<br>
+<br>
+If SCATMECH is not included, then we can't do Mie calculations.  hence, the only way to<br>
+describe scatteering is with the anisotropy parameter g and the Henyey-GreenStein distribution.<br>
+Those must be defined in the paramter file (which was modified to include comments about that).<br>
+<br>
+The Henyey-Greenstein random sampling class has been modified so it can be initialized either<br>
+from a Mueller matrix (which will happen when SCATMECH is used) or from the anisotropy parameter<br>
+(which will happen when SCATMECH is not used).<br>
+<br>
+A new photon (PhotonIntensity) has been created and does not compute polarization on scattering.<br>
+It still has a StokesV parameter, since it is currently used for Fresnel reflections and transmission<br>
+coefficients.  This way, the same math is used.  Might have to change that later.<br>
+
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2004/01/10 20:24:10<td>+43 -37
+<tr><td colspan=4>
+<br>
+Function areTheSame and isZero now accept a third parameter (mandatory) that gives the order to which the comparison is performed.<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/11/19 20:48:00<td>None
+<tr><td colspan=4>
+<br>
+New files added to CVS project.  They used to be independent, they are now part of the project.<br>
+
+</table><br>
+<a name="param.dat">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: param.dat</font></B><br></td></tr>
+<tr><td><b>Revision 1.11</b><td>dccote
+<td>2004/02/24 17:34:51<td>+14 -7
+<tr><td colspan=4>
+<br>
+Added two new parameters for extended beam with comments: inputBeamType and<br>
+inputBeamDiameter.<br>
+<br>
+Input Beam type: by default, the beam is a pencil beam<br>
+at (0,0,0).  The supported beam types are pencil and disk.<br>
+For disk, inputBeamDiameter must be defined.<br>
+
+<tr><td><b>Revision 1.10</b><td>dccote
+<td>2004/02/03 15:08:27<td>+6 -6
+<tr><td colspan=4>
+First, chaged the numScatter table in MCObject to an array of double: numScatter is not an integer, it is the average number of scattering events.<br>
+Second I figured out why I was getting photons that had not scattered in the back direction: they are multiple reflections.  It was not an error in the code at all.  If one sets the index of the medium to 1, there will be not Fresnel reflections and everything is fine.<br>
+<br>
+In Photon.h I modified that stat collection routine:  I used to have numEvents for the number of scattering events and I would use that to tabulate the position of the photon. This was incorrect because a photon can move without scattering (Fresnel reflection is an example).  Hence I created another variable (mStatsMove) which keeps track of the number of times a photon has moved.  The tables has all the position+Stokes+direction the photon has passed through, including the initial values.  We still keep tyrack of the number of scattering events mNumEvents.<br>
+
+<tr><td><b>Revision 1.9</b><td>dccote
+<td>2004/01/16 17:41:23<td>+15 -10
+<tr><td colspan=4>
+<br>
+Significant changes to allow the compilation of the program without<br>
+the SCATMECH library.  The scatmech library is obtainable on the web at:<br>
+http://physics.nist.gov/Divisions/Div844/facilities/scatmech/html/<br>
+For now, I use version 3.<br>
+<br>
+The configure program (not ideal, but works for now) accepts a:<br>
+--enable-scatmech paramater (THAT DEFAULTS TO NO) to compile the<br>
+program with WITH_POLARIZATION and NO_SCATMECH_NAMESPACE<br>
+(they are defined in config.h).  This way, if somebody does not have or does not<br>
+want SCATMECH/polarization info, they can compile the program<br>
+and run it in &quot;Intensity&quot; mode.<br>
+<br>
+If SCATMECH is not included, then we can't do Mie calculations.  hence, the only way to<br>
+describe scatteering is with the anisotropy parameter g and the Henyey-GreenStein distribution.<br>
+Those must be defined in the paramter file (which was modified to include comments about that).<br>
+<br>
+The Henyey-Greenstein random sampling class has been modified so it can be initialized either<br>
+from a Mueller matrix (which will happen when SCATMECH is used) or from the anisotropy parameter<br>
+(which will happen when SCATMECH is not used).<br>
+<br>
+A new photon (PhotonIntensity) has been created and does not compute polarization on scattering.<br>
+It still has a StokesV parameter, since it is currently used for Fresnel reflections and transmission<br>
+coefficients.  This way, the same math is used.  Might have to change that later.<br>
+
+<tr><td><b>Revision 1.8</b><td>dccote
+<td>2004/01/13 22:16:56<td>+4 -3
+<tr><td colspan=4>
+Newer makefiles for compiling on other machines (Sharcnet cluster)<br>
+
+<tr><td><b>Revision 1.7</b><td>dccote
+<td>2004/01/10 20:33:53<td>+17 -14
+<tr><td colspan=4>
+<br>
+Improved param.dat with most recent additions.<br>
+
+<tr><td><b>Revision 1.6</b><td>dccote
+<td>2003/11/18 15:10:36<td>+20 -14
+<tr><td colspan=4>
+<br>
+All the floats were changed to double's.<br>
+
+<tr><td><b>Revision 1.5</b><td>dccote
+<td>2003/11/12 14:46:49<td>+21 -8
+<tr><td colspan=4>
+<br>
+The parameter file has been extensively &quot;rewritten&quot; (i.e. commented) and now has several new parameters necessary due to the changes in MCObject for instance.  Everything is self-explanatory.<br>
+
+<tr><td><b>Revision 1.4</b><td>dccote
+<td>2003/10/09 20:46:53<td>+67 -16
+<tr><td colspan=4>
+<br>
+The parameter file now has better comments and nnew parameters.  Everything is explained in the file itself.<br>
+
+<tr><td><b>Revision 1.3</b><td>dccote
+<td>2003/04/16 14:59:43<td>+14 -13
+<tr><td colspan=4>
+<br>
+New parameters added (index_med, index_scat, radius_scat, wavelength).<br>
+
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2003/03/10 22:28:27<td>+4 -4
+<tr><td colspan=4>
+Started implementation of test section for testing Mueller matrices from interpolated data files.<br>
+Sample the function at all angles and spits out the total Mueller matrix mij in 16 different files.  The files are NOT as a funciton of position xy buyt as a function of angles theta phi.  Currently, phi is not being used.<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2002/11/22 21:47:10<td>None
+<tr><td colspan=4>
+Added a parameter file to the project to allow testing.<br>
+
+</table><br>
+<a name="DoAllThat.pl">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: DoAllThat.pl</font></B><br></td></tr>
+<tr><td><b>Revision 1.4</b><td>dccote
+<td>2004/03/03 14:54:25<td>+114 -48
+<tr><td colspan=4>
+<br>
+Modified DoAllThat.pl to allow the set up, run and analysis of multiple runs: the Monte Carlo code itself does not require to be modified.  One can run independent simulations and add the results.  This is what's done here.<br>
+<br>
+DoAllThat.pl setup will accept the parameter -m for multiple runs (with a number) and will set up subdirectories in the main directory of the run called run_digit/ with a copy of param.dat in it.  It will create a file called mutlipleruns.dat that lists all the sub-directories (i.e. the independent runs).<br>
+<br>
+DoAllThat.pl run will look for a multipleruns.dat file, and if it's there will cycle through the subdirectories to run the Monte Carlo simulation.  The section &quot;run&quot; in DoAllThat.pl was signficantly modified: we build an array of job directories, then we cycle through them.  Much better than before.<br>
+<br>
+DoAllThat.pl analysis will also look for a multipleruns.dat file, if it's there it will 1) extract all subfiles for each run in their respective directories $ROOT/run_digit/ by calling extractallsubfiles.sh and then 2) combine all the Stokes vector files together at the top level $ROOT by calling combineMultipleRuns.pl (see below).  That stats (average path length) requires a normalization that I haven't done yet: we need to multiply avgpath by intensity before summing.  On the other hand, all the Stokes vectors data does not require it.<br>
+<br>
+combineMultipleRuns.pl and MyLibs.pm:  combineMultipleRuns.pl will look for a multipleRuns.dat file and will look for identical files of Stokes vector [IQUV] and will combine them by calling functions from MyLibs.pm (which should be kept in a direcotry where Perl can access it as a module, typically $HOME/lib when you have set the environment variable PERL5LIB=$HOME/lib.<br>
+<br>
+MyLibs.pm has a few helperfunctions (GetDirectory, ChildStatus, AddFiles, SubtractFiles, DivideFiles).  I haven't done MultiplyFiles yet.<br>
+
+<tr><td><b>Revision 1.3</b><td>dccote
+<td>2003/11/12 14:44:45<td>+97 -23
+<tr><td colspan=4>
+<br>
+<br>
+The extraction scripts have been modified a bit to reflect the changes of the XML output file. Not much, really.<br>
+DoAllThat.pl has more options.<br>
+
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2003/04/16 18:26:50<td>+39 -3
+<tr><td colspan=4>
+<br>
+Added analysis in process, corrected accepted options.<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/04/07 17:26:41<td>None
+<tr><td colspan=4>
+<br>
+The program that does it all: DoAllThat.pl will setup, run and analyze a<br>
+series of directories.  Several options can (and must) be passed for<br>
+functionning, ingeneral they simply identfy the series of directories one<br>
+wants to work on.<br>
+<br>
+DoAllThat.pl must be run from the top directory (i.e. in my case, work/).<br>
+<br>
+Setup:<br>
+Given base directory, prefix and all, setup will create a set of<br>
+directories that closely match the base directory, except that mu_s will<br>
+be increased by 5 cm^{-1} each time.  Eventually, this could do something<br>
+else (like chaning optical activity), but for now, does not do that.<br>
+<br>
+Run:<br>
+Run is quite fancy:  it will run &quot;run_all.sh&quot; in each directory, but will<br>
+also fork as many times as the user wants (set with the -t option, as in<br>
+&quot;threads&quot;).  This is very useful on the Linux cluster (lc1) where 8<br>
+threads will run unimpeded since there are 8 processors available.  When<br>
+everything is done, run_all.sh sends an email to the owner of the job, so<br>
+you get notified that the calculation is over.<br>
+<br>
+Analyse:<br>
+Will create all the subfiles that can be created by running<br>
+extractallsubfiles in each directory.<br>
+<br>
+Eventually, I might fork multiple times for the analyse, as this takes<br>
+some time, but not for now.  There is also a chance I might add a<br>
+&quot;clever&quot; algorithm to check how many threads should be created and maybe<br>
+try to use other computers if they are not busy (like s0 to s6).<br>
+
+</table><br>
+<a name="Makefile.am">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: Makefile.am</font></B><br></td></tr>
+<tr><td><b>Revision 1.9</b><td>dccote
+<td>2004/03/03 18:55:47<td>+7 -5
+<tr><td colspan=4>
+<br>
+Files committed to repository to avoid autoconf problems on other remote machines without autoconf.<br>
+
+<tr><td><b>Revision 1.8</b><td>dccote
+<td>2004/01/16 17:41:22<td>+4 -4
+<tr><td colspan=4>
+<br>
+Significant changes to allow the compilation of the program without<br>
+the SCATMECH library.  The scatmech library is obtainable on the web at:<br>
+http://physics.nist.gov/Divisions/Div844/facilities/scatmech/html/<br>
+For now, I use version 3.<br>
+<br>
+The configure program (not ideal, but works for now) accepts a:<br>
+--enable-scatmech paramater (THAT DEFAULTS TO NO) to compile the<br>
+program with WITH_POLARIZATION and NO_SCATMECH_NAMESPACE<br>
+(they are defined in config.h).  This way, if somebody does not have or does not<br>
+want SCATMECH/polarization info, they can compile the program<br>
+and run it in &quot;Intensity&quot; mode.<br>
+<br>
+If SCATMECH is not included, then we can't do Mie calculations.  hence, the only way to<br>
+describe scatteering is with the anisotropy parameter g and the Henyey-GreenStein distribution.<br>
+Those must be defined in the paramter file (which was modified to include comments about that).<br>
+<br>
+The Henyey-Greenstein random sampling class has been modified so it can be initialized either<br>
+from a Mueller matrix (which will happen when SCATMECH is used) or from the anisotropy parameter<br>
+(which will happen when SCATMECH is not used).<br>
+<br>
+A new photon (PhotonIntensity) has been created and does not compute polarization on scattering.<br>
+It still has a StokesV parameter, since it is currently used for Fresnel reflections and transmission<br>
+coefficients.  This way, the same math is used.  Might have to change that later.<br>
+
+<tr><td><b>Revision 1.7</b><td>dccote
+<td>2004/01/13 22:16:55<td>+2 -2
+<tr><td colspan=4>
+Newer makefiles for compiling on other machines (Sharcnet cluster)<br>
+
+<tr><td><b>Revision 1.6</b><td>dccote
+<td>2003/11/18 15:10:36<td>+2 -2
+<tr><td colspan=4>
+<br>
+All the floats were changed to double's.<br>
+
+<tr><td><b>Revision 1.5</b><td>dccote
+<td>2003/10/09 20:47:51<td>+11 -3
+<tr><td colspan=4>
+<br>
+The autoconf files has been modifieed.  test.cpp is broken and has been temporarily removed from the make process.<br>
+
+<tr><td><b>Revision 1.4</b><td>dccote
+<td>2003/04/07 17:33:08<td>+3 -3
+<tr><td colspan=4>
+<br>
+Changed the name from mc to polmc since 1) it is actually polarization<br>
+monte Carlo, not just monte Carlo, and 2) mc is actually a command on the<br>
+linux cluster (who would have thought?).  A few files were added to the<br>
+distribution.<br>
+
+<tr><td><b>Revision 1.3</b><td>dccote
+<td>2003/03/18 00:37:03<td>+2 -2
+<tr><td colspan=4>
+<br>
+Added StokesV.cpp to the project.<br>
+
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2003/03/13 23:24:12<td>+3 -3
+<tr><td colspan=4>
+<br>
+Added randomscatterer.h and randomscatterer.cpp to project.<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/03/11 21:15:55<td>None
+<tr><td colspan=4>
+<br>
+Amazing: I got the ./configure set up going thanks to automake, autoscan, autoconf and autoheader.<br>
+I made a few modifications to StokesV.h, main.cpp and rand.cpp to allow the customization<br>
+of config.h.  Now, one should be able to get everything configured (as a developer) with:<br>
+<br>
+autoheader<br>
+automake -ac<br>
+autoconf<br>
+<br>
+./configure --prefix=$HOME --bindir=$HOME/bin/$OS<br>
+make<br>
+make install<br>
+<br>
+Important problem: gcc 3.1 on Darwin has a problem with isnan()<br>
+(see http://mail.gnu.org/archive/html/lilypond-devel/2002-08/msg00175.html)<br>
+I had to define it empty if undefined.  Bizarre and will probably break on other<br>
+machines, but it compiles for now (does not run on OS X though).<br>
+
+</table><br>
+<a name="MyLibs.pm">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: MyLibs.pm</font></B><br></td></tr>
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2004/03/03 14:54:25<td>None
+<tr><td colspan=4>
+<br>
+Modified DoAllThat.pl to allow the set up, run and analysis of multiple runs: the Monte Carlo code itself does not require to be modified.  One can run independent simulations and add the results.  This is what's done here.<br>
+<br>
+DoAllThat.pl setup will accept the parameter -m for multiple runs (with a number) and will set up subdirectories in the main directory of the run called run_digit/ with a copy of param.dat in it.  It will create a file called mutlipleruns.dat that lists all the sub-directories (i.e. the independent runs).<br>
+<br>
+DoAllThat.pl run will look for a multipleruns.dat file, and if it's there will cycle through the subdirectories to run the Monte Carlo simulation.  The section &quot;run&quot; in DoAllThat.pl was signficantly modified: we build an array of job directories, then we cycle through them.  Much better than before.<br>
+<br>
+DoAllThat.pl analysis will also look for a multipleruns.dat file, if it's there it will 1) extract all subfiles for each run in their respective directories $ROOT/run_digit/ by calling extractallsubfiles.sh and then 2) combine all the Stokes vector files together at the top level $ROOT by calling combineMultipleRuns.pl (see below).  That stats (average path length) requires a normalization that I haven't done yet: we need to multiply avgpath by intensity before summing.  On the other hand, all the Stokes vectors data does not require it.<br>
+<br>
+combineMultipleRuns.pl and MyLibs.pm:  combineMultipleRuns.pl will look for a multipleRuns.dat file and will look for identical files of Stokes vector [IQUV] and will combine them by calling functions from MyLibs.pm (which should be kept in a direcotry where Perl can access it as a module, typically $HOME/lib when you have set the environment variable PERL5LIB=$HOME/lib.<br>
+<br>
+MyLibs.pm has a few helperfunctions (GetDirectory, ChildStatus, AddFiles, SubtractFiles, DivideFiles).  I haven't done MultiplyFiles yet.<br>
+
+</table><br>
+<a name="combineMultipleRuns.pl">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: combineMultipleRuns.pl</font></B><br></td></tr>
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2004/03/03 14:54:25<td>None
+<tr><td colspan=4>
+<br>
+Modified DoAllThat.pl to allow the set up, run and analysis of multiple runs: the Monte Carlo code itself does not require to be modified.  One can run independent simulations and add the results.  This is what's done here.<br>
+<br>
+DoAllThat.pl setup will accept the parameter -m for multiple runs (with a number) and will set up subdirectories in the main directory of the run called run_digit/ with a copy of param.dat in it.  It will create a file called mutlipleruns.dat that lists all the sub-directories (i.e. the independent runs).<br>
+<br>
+DoAllThat.pl run will look for a multipleruns.dat file, and if it's there will cycle through the subdirectories to run the Monte Carlo simulation.  The section &quot;run&quot; in DoAllThat.pl was signficantly modified: we build an array of job directories, then we cycle through them.  Much better than before.<br>
+<br>
+DoAllThat.pl analysis will also look for a multipleruns.dat file, if it's there it will 1) extract all subfiles for each run in their respective directories $ROOT/run_digit/ by calling extractallsubfiles.sh and then 2) combine all the Stokes vector files together at the top level $ROOT by calling combineMultipleRuns.pl (see below).  That stats (average path length) requires a normalization that I haven't done yet: we need to multiply avgpath by intensity before summing.  On the other hand, all the Stokes vectors data does not require it.<br>
+<br>
+combineMultipleRuns.pl and MyLibs.pm:  combineMultipleRuns.pl will look for a multipleRuns.dat file and will look for identical files of Stokes vector [IQUV] and will combine them by calling functions from MyLibs.pm (which should be kept in a direcotry where Perl can access it as a module, typically $HOME/lib when you have set the environment variable PERL5LIB=$HOME/lib.<br>
+<br>
+MyLibs.pm has a few helperfunctions (GetDirectory, ChildStatus, AddFiles, SubtractFiles, DivideFiles).  I haven't done MultiplyFiles yet.<br>
+
+</table><br>
+<a name="Makefile.in">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: Makefile.in</font></B><br></td></tr>
+<tr><td><b>Revision 1.8</b><td>dccote
+<td>2004/03/04 05:20:12<td>+6 -5
+<tr><td colspan=4>
+Rewrote the MCRandomScatterer class to decide which rando number generator we are going to use.  This is done this way:<br>
+<br>
+the ./configure script now takes a --with-random-generator argument (see its help with ./configure --help) where we set it equal to mtrand or numrecipes, as in :<br>
+<br>
+--with-random-generator=mtrand<br>
+<br>
+It defaults to mtrand, which is a good random number generator, but does not seem to compile well on all mchines (some Alpha Linux don't like it).  Hence, we can also pick num recipes version.  By selecting that --with-random-generator, we define (implicitly USE_MTRAND or USE_NUMRECIPES_RAND) in config.h. In randomscatter.cpp and randomscatter.h, we therefore test for those variables and compile everything appropriately (we notifiy the user of our choice) in the logfile.<br>
+Eventually, I could also implement a /dev/rand or a standard C/C++ rand() function, but I don't fell ike it now.<br>
+
+<tr><td><b>Revision 1.7</b><td>dccote
+<td>2004/01/16 17:41:22<td>+16 -37
+<tr><td colspan=4>
+<br>
+Significant changes to allow the compilation of the program without<br>
+the SCATMECH library.  The scatmech library is obtainable on the web at:<br>
+http://physics.nist.gov/Divisions/Div844/facilities/scatmech/html/<br>
+For now, I use version 3.<br>
+<br>
+The configure program (not ideal, but works for now) accepts a:<br>
+--enable-scatmech paramater (THAT DEFAULTS TO NO) to compile the<br>
+program with WITH_POLARIZATION and NO_SCATMECH_NAMESPACE<br>
+(they are defined in config.h).  This way, if somebody does not have or does not<br>
+want SCATMECH/polarization info, they can compile the program<br>
+and run it in &quot;Intensity&quot; mode.<br>
+<br>
+If SCATMECH is not included, then we can't do Mie calculations.  hence, the only way to<br>
+describe scatteering is with the anisotropy parameter g and the Henyey-GreenStein distribution.<br>
+Those must be defined in the paramter file (which was modified to include comments about that).<br>
+<br>
+The Henyey-Greenstein random sampling class has been modified so it can be initialized either<br>
+from a Mueller matrix (which will happen when SCATMECH is used) or from the anisotropy parameter<br>
+(which will happen when SCATMECH is not used).<br>
+<br>
+A new photon (PhotonIntensity) has been created and does not compute polarization on scattering.<br>
+It still has a StokesV parameter, since it is currently used for Fresnel reflections and transmission<br>
+coefficients.  This way, the same math is used.  Might have to change that later.<br>
+
+<tr><td><b>Revision 1.6</b><td>dccote
+<td>2004/01/13 22:16:55<td>+46 -40
+<tr><td colspan=4>
+Newer makefiles for compiling on other machines (Sharcnet cluster)<br>
+
+<tr><td><b>Revision 1.5</b><td>dccote
+<td>2003/11/18 15:10:36<td>+65 -3
+<tr><td colspan=4>
+<br>
+All the floats were changed to double's.<br>
+
+<tr><td><b>Revision 1.4</b><td>dccote
+<td>2003/10/09 20:47:51<td>+201 -32
+<tr><td colspan=4>
+<br>
+The autoconf files has been modifieed.  test.cpp is broken and has been temporarily removed from the make process.<br>
+
+<tr><td><b>Revision 1.3</b><td>dccote
+<td>2003/04/07 17:33:08<td>+24 -24
+<tr><td colspan=4>
+<br>
+Changed the name from mc to polmc since 1) it is actually polarization<br>
+monte Carlo, not just monte Carlo, and 2) mc is actually a command on the<br>
+linux cluster (who would have thought?).  A few files were added to the<br>
+distribution.<br>
+
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2003/03/18 00:43:48<td>+26 -19
+<tr><td colspan=4>
+<br>
+Since atuomake -ac was run, Makefile.in has changed.  I need to keep Makefile.,in in the<br>
+project because it is required when running ./configure.<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/03/11 21:15:55<td>None
+<tr><td colspan=4>
+<br>
+Amazing: I got the ./configure set up going thanks to automake, autoscan, autoconf and autoheader.<br>
+I made a few modifications to StokesV.h, main.cpp and rand.cpp to allow the customization<br>
+of config.h.  Now, one should be able to get everything configured (as a developer) with:<br>
+<br>
+autoheader<br>
+automake -ac<br>
+autoconf<br>
+<br>
+./configure --prefix=$HOME --bindir=$HOME/bin/$OS<br>
+make<br>
+make install<br>
+<br>
+Important problem: gcc 3.1 on Darwin has a problem with isnan()<br>
+(see http://mail.gnu.org/archive/html/lilypond-devel/2002-08/msg00175.html)<br>
+I had to define it empty if undefined.  Bizarre and will probably break on other<br>
+machines, but it compiles for now (does not run on OS X though).<br>
+
+</table><br>
+<a name="configure">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: configure</font></B><br></td></tr>
+<tr><td><b>Revision 1.10</b><td>dccote
+<td>2004/03/04 05:20:12<td>+39 -0
+<tr><td colspan=4>
+Rewrote the MCRandomScatterer class to decide which rando number generator we are going to use.  This is done this way:<br>
+<br>
+the ./configure script now takes a --with-random-generator argument (see its help with ./configure --help) where we set it equal to mtrand or numrecipes, as in :<br>
+<br>
+--with-random-generator=mtrand<br>
+<br>
+It defaults to mtrand, which is a good random number generator, but does not seem to compile well on all mchines (some Alpha Linux don't like it).  Hence, we can also pick num recipes version.  By selecting that --with-random-generator, we define (implicitly USE_MTRAND or USE_NUMRECIPES_RAND) in config.h. In randomscatter.cpp and randomscatter.h, we therefore test for those variables and compile everything appropriately (we notifiy the user of our choice) in the logfile.<br>
+Eventually, I could also implement a /dev/rand or a standard C/C++ rand() function, but I don't fell ike it now.<br>
+
+<tr><td><b>Revision 1.9</b><td>dccote
+<td>2004/02/04 21:28:17<td>+21 -6
+<tr><td colspan=4>
+<br>
+Added an argument for profiling: --enable-profiler.<br>
+
+<tr><td><b>Revision 1.8</b><td>dccote
+<td>2004/02/03 15:03:46<td>+32 -0
+<tr><td colspan=4>
+added a new option: --enable-debug for setting __MYDEBUG to 1 and getting all the debug messages.<br>
+The #define __MYDEBUG 1 message gets written to config.h, hence one must make sure that<br>
+config.h gets included one way or another in all files.  mydebug.h does include it, so it should be enough.<br>
+
+<tr><td><b>Revision 1.7</b><td>dccote
+<td>2004/01/23 18:00:46<td>+100 -202
+<tr><td colspan=4>
+<br>
+Better configuration script that will detect if SCATMECH is installed.<br>
+This took a lot of work because I didn't know that AC_CHECK_LIB does not check the<br>
+$prefix/lib path.  I had to roll my own test.  All the information is in configure.ac<br>
+
+<tr><td><b>Revision 1.6</b><td>dccote
+<td>2004/01/19 21:49:24<td>+63 -2
+<tr><td colspan=4>
+<br>
+Updated autoconfiguration files.<br>
+
+<tr><td><b>Revision 1.5</b><td>dccote
+<td>2004/01/16 17:41:22<td>+38 -20
+<tr><td colspan=4>
+<br>
+Significant changes to allow the compilation of the program without<br>
+the SCATMECH library.  The scatmech library is obtainable on the web at:<br>
+http://physics.nist.gov/Divisions/Div844/facilities/scatmech/html/<br>
+For now, I use version 3.<br>
+<br>
+The configure program (not ideal, but works for now) accepts a:<br>
+--enable-scatmech paramater (THAT DEFAULTS TO NO) to compile the<br>
+program with WITH_POLARIZATION and NO_SCATMECH_NAMESPACE<br>
+(they are defined in config.h).  This way, if somebody does not have or does not<br>
+want SCATMECH/polarization info, they can compile the program<br>
+and run it in &quot;Intensity&quot; mode.<br>
+<br>
+If SCATMECH is not included, then we can't do Mie calculations.  hence, the only way to<br>
+describe scatteering is with the anisotropy parameter g and the Henyey-GreenStein distribution.<br>
+Those must be defined in the paramter file (which was modified to include comments about that).<br>
+<br>
+The Henyey-Greenstein random sampling class has been modified so it can be initialized either<br>
+from a Mueller matrix (which will happen when SCATMECH is used) or from the anisotropy parameter<br>
+(which will happen when SCATMECH is not used).<br>
+<br>
+A new photon (PhotonIntensity) has been created and does not compute polarization on scattering.<br>
+It still has a StokesV parameter, since it is currently used for Fresnel reflections and transmission<br>
+coefficients.  This way, the same math is used.  Might have to change that later.<br>
+
+<tr><td><b>Revision 1.4</b><td>dccote
+<td>2004/01/13 22:16:55<td>+2372 -1277
+<tr><td colspan=4>
+Newer makefiles for compiling on other machines (Sharcnet cluster)<br>
+
+<tr><td><b>Revision 1.3</b><td>dccote
+<td>2003/11/18 15:10:36<td>+417 -344
+<tr><td colspan=4>
+<br>
+All the floats were changed to double's.<br>
+
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2003/10/09 20:47:51<td>+13 -13
+<tr><td colspan=4>
+<br>
+The autoconf files has been modifieed.  test.cpp is broken and has been temporarily removed from the make process.<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/04/16 18:25:23<td>None
+<tr><td colspan=4>
+<br>
+Configure script actually added to project since not all computers have autoconf.<br>
+
+</table><br>
+<a name="configure.ac">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: configure.ac</font></B><br></td></tr>
+<tr><td><b>Revision 1.10</b><td>dccote
+<td>2004/03/04 05:20:13<td>+19 -0
+<tr><td colspan=4>
+Rewrote the MCRandomScatterer class to decide which rando number generator we are going to use.  This is done this way:<br>
+<br>
+the ./configure script now takes a --with-random-generator argument (see its help with ./configure --help) where we set it equal to mtrand or numrecipes, as in :<br>
+<br>
+--with-random-generator=mtrand<br>
+<br>
+It defaults to mtrand, which is a good random number generator, but does not seem to compile well on all mchines (some Alpha Linux don't like it).  Hence, we can also pick num recipes version.  By selecting that --with-random-generator, we define (implicitly USE_MTRAND or USE_NUMRECIPES_RAND) in config.h. In randomscatter.cpp and randomscatter.h, we therefore test for those variables and compile everything appropriately (we notifiy the user of our choice) in the logfile.<br>
+Eventually, I could also implement a /dev/rand or a standard C/C++ rand() function, but I don't fell ike it now.<br>
+
+<tr><td><b>Revision 1.9</b><td>dccote
+<td>2004/02/04 21:28:17<td>+16 -2
+<tr><td colspan=4>
+<br>
+Added an argument for profiling: --enable-profiler.<br>
+
+<tr><td><b>Revision 1.8</b><td>dccote
+<td>2004/02/03 15:03:46<td>+18 -0
+<tr><td colspan=4>
+added a new option: --enable-debug for setting __MYDEBUG to 1 and getting all the debug messages.<br>
+The #define __MYDEBUG 1 message gets written to config.h, hence one must make sure that<br>
+config.h gets included one way or another in all files.  mydebug.h does include it, so it should be enough.<br>
+
+<tr><td><b>Revision 1.7</b><td>dccote
+<td>2004/01/23 18:00:46<td>+47 -18
+<tr><td colspan=4>
+<br>
+Better configuration script that will detect if SCATMECH is installed.<br>
+This took a lot of work because I didn't know that AC_CHECK_LIB does not check the<br>
+$prefix/lib path.  I had to roll my own test.  All the information is in configure.ac<br>
+
+<tr><td><b>Revision 1.6</b><td>dccote
+<td>2004/01/19 21:49:24<td>+4 -0
+<tr><td colspan=4>
+<br>
+Updated autoconfiguration files.<br>
+
+<tr><td><b>Revision 1.5</b><td>dccote
+<td>2004/01/16 17:41:23<td>+14 -10
+<tr><td colspan=4>
+<br>
+Significant changes to allow the compilation of the program without<br>
+the SCATMECH library.  The scatmech library is obtainable on the web at:<br>
+http://physics.nist.gov/Divisions/Div844/facilities/scatmech/html/<br>
+For now, I use version 3.<br>
+<br>
+The configure program (not ideal, but works for now) accepts a:<br>
+--enable-scatmech paramater (THAT DEFAULTS TO NO) to compile the<br>
+program with WITH_POLARIZATION and NO_SCATMECH_NAMESPACE<br>
+(they are defined in config.h).  This way, if somebody does not have or does not<br>
+want SCATMECH/polarization info, they can compile the program<br>
+and run it in &quot;Intensity&quot; mode.<br>
+<br>
+If SCATMECH is not included, then we can't do Mie calculations.  hence, the only way to<br>
+describe scatteering is with the anisotropy parameter g and the Henyey-GreenStein distribution.<br>
+Those must be defined in the paramter file (which was modified to include comments about that).<br>
+<br>
+The Henyey-Greenstein random sampling class has been modified so it can be initialized either<br>
+from a Mueller matrix (which will happen when SCATMECH is used) or from the anisotropy parameter<br>
+(which will happen when SCATMECH is not used).<br>
+<br>
+A new photon (PhotonIntensity) has been created and does not compute polarization on scattering.<br>
+It still has a StokesV parameter, since it is currently used for Fresnel reflections and transmission<br>
+coefficients.  This way, the same math is used.  Might have to change that later.<br>
+
+<tr><td><b>Revision 1.4</b><td>dccote
+<td>2004/01/13 22:16:56<td>+1 -1
+<tr><td colspan=4>
+Newer makefiles for compiling on other machines (Sharcnet cluster)<br>
+
+<tr><td><b>Revision 1.3</b><td>dccote
+<td>2003/11/18 15:10:36<td>+17 -4
+<tr><td colspan=4>
+<br>
+All the floats were changed to double's.<br>
+
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2003/10/09 20:47:50<td>+1 -1
+<tr><td colspan=4>
+<br>
+The autoconf files has been modifieed.  test.cpp is broken and has been temporarily removed from the make process.<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/03/11 21:15:55<td>None
+<tr><td colspan=4>
+<br>
+Amazing: I got the ./configure set up going thanks to automake, autoscan, autoconf and autoheader.<br>
+I made a few modifications to StokesV.h, main.cpp and rand.cpp to allow the customization<br>
+of config.h.  Now, one should be able to get everything configured (as a developer) with:<br>
+<br>
+autoheader<br>
+automake -ac<br>
+autoconf<br>
+<br>
+./configure --prefix=$HOME --bindir=$HOME/bin/$OS<br>
+make<br>
+make install<br>
+<br>
+Important problem: gcc 3.1 on Darwin has a problem with isnan()<br>
+(see http://mail.gnu.org/archive/html/lilypond-devel/2002-08/msg00175.html)<br>
+I had to define it empty if undefined.  Bizarre and will probably break on other<br>
+machines, but it compiles for now (does not run on OS X though).<br>
+
+</table><br>
+<a name="randomscatter.h">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: randomscatter.h</font></B><br></td></tr>
+<tr><td><b>Revision 1.8</b><td>dccote
+<td>2004/03/04 05:20:13<td>+2 -1
+<tr><td colspan=4>
+Rewrote the MCRandomScatterer class to decide which rando number generator we are going to use.  This is done this way:<br>
+<br>
+the ./configure script now takes a --with-random-generator argument (see its help with ./configure --help) where we set it equal to mtrand or numrecipes, as in :<br>
+<br>
+--with-random-generator=mtrand<br>
+<br>
+It defaults to mtrand, which is a good random number generator, but does not seem to compile well on all mchines (some Alpha Linux don't like it).  Hence, we can also pick num recipes version.  By selecting that --with-random-generator, we define (implicitly USE_MTRAND or USE_NUMRECIPES_RAND) in config.h. In randomscatter.cpp and randomscatter.h, we therefore test for those variables and compile everything appropriately (we notifiy the user of our choice) in the logfile.<br>
+Eventually, I could also implement a /dev/rand or a standard C/C++ rand() function, but I don't fell ike it now.<br>
+
+<tr><td><b>Revision 1.7</b><td>dccote
+<td>2004/02/04 21:10:34<td>+55 -2
+<tr><td colspan=4>
+<br>
+Added a lot of documentation in the header (headerdoc information).<br>
+<br>
+To generate documentation with headerdoc, do the following;<br>
+<br>
+headerdoc2html *.h<br>
+gatherheaderdoc .<br>
+<br>
+gatherheaderdoc will generate a master table of contents called MasterTOC.html<br>
+which links to all the other files.  The other files are kept in seperate directories.<br>
+
+<tr><td><b>Revision 1.6</b><td>dccote
+<td>2004/01/16 17:41:23<td>+8 -0
+<tr><td colspan=4>
+<br>
+Significant changes to allow the compilation of the program without<br>
+the SCATMECH library.  The scatmech library is obtainable on the web at:<br>
+http://physics.nist.gov/Divisions/Div844/facilities/scatmech/html/<br>
+For now, I use version 3.<br>
+<br>
+The configure program (not ideal, but works for now) accepts a:<br>
+--enable-scatmech paramater (THAT DEFAULTS TO NO) to compile the<br>
+program with WITH_POLARIZATION and NO_SCATMECH_NAMESPACE<br>
+(they are defined in config.h).  This way, if somebody does not have or does not<br>
+want SCATMECH/polarization info, they can compile the program<br>
+and run it in &quot;Intensity&quot; mode.<br>
+<br>
+If SCATMECH is not included, then we can't do Mie calculations.  hence, the only way to<br>
+describe scatteering is with the anisotropy parameter g and the Henyey-GreenStein distribution.<br>
+Those must be defined in the paramter file (which was modified to include comments about that).<br>
+<br>
+The Henyey-Greenstein random sampling class has been modified so it can be initialized either<br>
+from a Mueller matrix (which will happen when SCATMECH is used) or from the anisotropy parameter<br>
+(which will happen when SCATMECH is not used).<br>
+<br>
+A new photon (PhotonIntensity) has been created and does not compute polarization on scattering.<br>
+It still has a StokesV parameter, since it is currently used for Fresnel reflections and transmission<br>
+coefficients.  This way, the same math is used.  Might have to change that later.<br>
+
+<tr><td><b>Revision 1.5</b><td>dccote
+<td>2003/11/18 15:10:36<td>+15 -15
+<tr><td colspan=4>
+<br>
+All the floats were changed to double's.<br>
+
+<tr><td><b>Revision 1.4</b><td>dccote
+<td>2003/11/18 14:47:30<td>+9 -3
+<tr><td colspan=4>
+<br>
+Important change:  when calculating the runnning sum for AvgCosine, if the number of photon is more then 1e7, then<br>
+the sum won't work anymore, since we are adding approximately 1 to a number close to 1e7 and we use floats.  I changed mAvgCosine<br>
+to double, but I will later change everything to double.<br>
+
+<tr><td><b>Revision 1.3</b><td>dccote
+<td>2003/11/12 14:21:03<td>+11 -5
+<tr><td colspan=4>
+<br>
+<br>
+Added the possiblity to seed the random number generator with a user-supplied seed. Very useful for debugging purposes.<br>
+<br>
+Corrected an important but quite subtle bug: some random number generators (including the one I use) may generate &quot;zero&quot; as a number.  If that's the case, then the calculation of random distance (which is proportional to log(random)) will fail.  Hence, we have to reject zero explicitly.<br>
+<br>
+I also added a safety net for the random angle generators: if after a certain large number of iterations (often hardcoded as 1000) there is still no angles generated, it will throw an exception.  This could be due for instance to a bad Stokes input.<br>
+<br>
+To compute the stats, I use a new function WhichBin().  I still have a problem with the computed g which sometimes is completely out of whack although from the histogram, it can be calculated to be correct.<br>
+
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2003/10/09 18:34:50<td>+116 -6
+<tr><td colspan=4>
+<br>
+Major rewrite of angle sampling functions, correcting an actual mistake in the literature<br>
+AND making it much faster (using Kaplan's method).<br>
+<br>
+Bottom line: Wang, Bartel, Mourant have it wrong: the probability of scattering at theta, phi<br>
+is not proportional to I(theta,phi).  It is proportional to I(theta,phi) sin(theta).<br>
+That changes quite a bit.  Jaillon and Kaplan have it right (although they are not explicitly<br>
+shoing their result, the math is correct).<br>
+<br>
+The way to check this, is to calculate &lt;cos theta&gt;.  The wrong distributions end up with a much larger g (which<br>
+explains why previously, all my beta_lin calculations were too &quot;generous&quot; (i.e. the sample did not depolarize fast enough). This was so because mu_s prime was much smaller (due to the value of g near 1).  Now, everything makes more sense, and values are much closer to experimental values).<br>
+<br>
+I have a longer discussion (and proof) about this in a Mathematica file called RandomNumbers.nb.  The schemes studied are:<br>
+Bartel et al. &quot;Monte Carlo simulations of the diffuse backscattering Mueller matrix for highly scattering media&quot;, Applied Optics,  39, No 10, p. 1580, (2000)<br>
+Jaillon et al. &quot;Description and time reduction of a Monte Carlo code to simulate propagation of polarized light through scattering media&quot;, Applied Optics,  42, No 16, p. 3290, (2003)<br>
+Kaplan et al. &quot;Mueller matrix of dense polystyrene latex sphere suspensions: measurements and Monte Carlo simulation&quot;, Applied Optics,  40, No 16, p. 2769, (2001)<br>
+L. Wang et al. &quot;Monte Carlo Modeling of Light Transport in multi-layered Tissues in Standard C&quot;, http://ece.ogi.edu/mcml/ (1998)<br>
+<br>
+I have now created a new object MCRandomScatterer that takes charge of generating random angles.  By choosing the appropriate subclass MCRandomScattererKaplan, MCRandomScattererHenyeyGreenstein, MCRandomScattererJaillon, one can compare the various schemes.  Hence, in the main loop, one creates the object that corresponds to their need and calls the generating function GetRandomScatteringAngle(), which is specific to each object.<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/03/13 23:14:40<td>None
+<tr><td colspan=4>
+<br>
+New file with random angle selection function.h<br>
+
+</table><br>
+<a name="MCObject.cpp">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: MCObject.cpp</font></B><br></td></tr>
+<tr><td><b>Revision 1.12</b><td>dccote
+<td>2004/04/01 19:20:53<td>+13 -7
+<tr><td colspan=4>
+<br>
+<br>
+The next event estimator (which still has not been tested to great extent)was incorrect, because it did not<br>
+weigh the unscattered photon by the probably of getting to the interface unscattered.<br>
+Now it does, and results look much better (although I still don't use it<br>
+for publications).  I also added a small check to discard its use when the photon is unlikely to reach<br>
+the interface without scattering.<br>
+
+<tr><td><b>Revision 1.11</b><td>dccote
+<td>2004/02/24 17:21:22<td>+3 -4
+<tr><td colspan=4>
+<br>
+Removed the &quot;KeppStats() call in PropagateInObject (can be done outside, does not need to be done here).<br>
+Corrected typo in comment.<br>
+
+<tr><td><b>Revision 1.10</b><td>dccote
+<td>2004/02/20 05:08:40<td>+2 -2
+<tr><td colspan=4>
+Added a simple XML output to configfile.<br>
+Modified MCObject.cpp to use that XML output.<br>
+
+<tr><td><b>Revision 1.9</b><td>dccote
+<td>2004/02/03 15:08:26<td>+12 -11
+<tr><td colspan=4>
+First, chaged the numScatter table in MCObject to an array of double: numScatter is not an integer, it is the average number of scattering events.<br>
+Second I figured out why I was getting photons that had not scattered in the back direction: they are multiple reflections.  It was not an error in the code at all.  If one sets the index of the medium to 1, there will be not Fresnel reflections and everything is fine.<br>
+<br>
+In Photon.h I modified that stat collection routine:  I used to have numEvents for the number of scattering events and I would use that to tabulate the position of the photon. This was incorrect because a photon can move without scattering (Fresnel reflection is an example).  Hence I created another variable (mStatsMove) which keeps track of the number of times a photon has moved.  The tables has all the position+Stokes+direction the photon has passed through, including the initial values.  We still keep tyrack of the number of scattering events mNumEvents.<br>
+
+<tr><td><b>Revision 1.8</b><td>dccote
+<td>2004/01/28 12:39:39<td>+44 -4
+<tr><td colspan=4>
+First attempt at keeping track of the number scattering events.  The<br>
+idea is pretty much the same as the path length (in terms of<br>
+implementation): we have a big multidimensional array (each point on<br>
+each face for each output angle) and we score numberOfScatteringEvents<br>
+* weight of photon.  At the very end, before outputting everything, we<br>
+normalize.<br>
+<br>
+My initial testing shows that for mu_s=1, g ~ 0.9, the average number<br>
+of scattering events in the forward direction (directly forward) is<br>
+zero.  It is also zero in the backward direction and it seems to not<br>
+maike sense.  Everything else looks<br>
+reasonnable&quot; but I need to do more testing.<br>
+
+<tr><td><b>Revision 1.7</b><td>dccote
+<td>2004/01/16 17:41:21<td>+57 -19
+<tr><td colspan=4>
+<br>
+Significant changes to allow the compilation of the program without<br>
+the SCATMECH library.  The scatmech library is obtainable on the web at:<br>
+http://physics.nist.gov/Divisions/Div844/facilities/scatmech/html/<br>
+For now, I use version 3.<br>
+<br>
+The configure program (not ideal, but works for now) accepts a:<br>
+--enable-scatmech paramater (THAT DEFAULTS TO NO) to compile the<br>
+program with WITH_POLARIZATION and NO_SCATMECH_NAMESPACE<br>
+(they are defined in config.h).  This way, if somebody does not have or does not<br>
+want SCATMECH/polarization info, they can compile the program<br>
+and run it in &quot;Intensity&quot; mode.<br>
+<br>
+If SCATMECH is not included, then we can't do Mie calculations.  hence, the only way to<br>
+describe scatteering is with the anisotropy parameter g and the Henyey-GreenStein distribution.<br>
+Those must be defined in the paramter file (which was modified to include comments about that).<br>
+<br>
+The Henyey-Greenstein random sampling class has been modified so it can be initialized either<br>
+from a Mueller matrix (which will happen when SCATMECH is used) or from the anisotropy parameter<br>
+(which will happen when SCATMECH is not used).<br>
+<br>
+A new photon (PhotonIntensity) has been created and does not compute polarization on scattering.<br>
+It still has a StokesV parameter, since it is currently used for Fresnel reflections and transmission<br>
+coefficients.  This way, the same math is used.  Might have to change that later.<br>
+
+<tr><td><b>Revision 1.6</b><td>dccote
+<td>2004/01/13 03:07:29<td>+13 -2
+<tr><td colspan=4>
+<br>
+I found the problem with the path length.  It was twofold: 1) I was normalizing by the weight twice (very stupid).  I rewrote the section below:<br>
+<br>
+&lt; mStokesV[inIntersectElement.interface][inIntersectElement.i][inIntersectElement.j][cosineBin] += (so *= ioPhoton-&gt;GetWeight() );<br>
+&lt; path[inIntersectElement.interface][inIntersectElement.i][inIntersectElement.j][cosineBin] += (ioPhoton-&gt;GetDistanceTraveled() * so.mI * ioPhoton-&gt;GetWeight());<br>
+<br>
+as the following:<br>
+<br>
+&gt; so *= ioPhoton-&gt;GetWeight();<br>
+&gt;<br>
+&gt; mStokesV[inIntersectElement.interface][inIntersectElement.i][inIntersectElement.j][cosineBin] +=  so ;<br>
+&gt; path[inIntersectElement.interface][inIntersectElement.i][inIntersectElement.j][cosineBin] += (ioPhoton-&gt;GetDistanceTraveled() * so.mI )<br>
+<br>
+2) I forgot to initialize the arrays of the path length to 0 (since array of double's don't get intialized like objects do). Beyond stupid: this explained why the rsults would change with the number of photons (bigger arrays are more likely to have junk in them).  I had noticed junk at the edges of my arrays but could not figureout where this was coming from. Done.<br>
+
+<tr><td><b>Revision 1.5</b><td>dccote
+<td>2004/01/09 22:06:32<td>+28 -4
+<tr><td colspan=4>
+<br>
+<br>
+Added the next event estimator, but it has not been tested a lot.  Still needs work.  Currently off by default.<br>
+I noticed that in the straightforward direction, with the next event estimator, I get a large peak (of course, all photons are counted), but everything else looks fine.<br>
+I suspect I might have the weight wrong.  Not a lot of people explain exactly how they do it (Jaillon does not), so I'll need to dig up som einfo on it later.<br>
+<br>
+*Bugs/feature/screwup*: The way I calculate the average path length was definitely wrong before, but although I though what I currently do would be perfect, I get strange things: for mu_s -&gt; 0, the average path length is not 1 cm is the forward direction (at least after the extractstats program goes through them).  I am quite sure it is incorrect and I will need to look through that: I suspect it comes from the modifications I made some time ago to bin the output angle in different arrays (before, when I was setting the acceptance angle as an input to the program, everything was very reasonable).  Maybe the way I perform the average is biased.<br>
+
+<tr><td><b>Revision 1.4</b><td>dccote
+<td>2003/11/18 15:10:35<td>+37 -37
+<tr><td colspan=4>
+<br>
+All the floats were changed to double's.<br>
+
+<tr><td><b>Revision 1.3</b><td>dccote
+<td>2003/11/18 15:00:52<td>+63 -139
+<tr><td colspan=4>
+<br>
+First, MCCube and MCInfiniteLayers have been created, therefore MCObject has been emptied of some of its functions. For instance, init() now does not allocate the surface elements.<br>
+<br>
+<br>
+Also, variables that used to be members of MCObject are now part of the structure SurfaceElement (the number of elements Na and Nb for vectors a and b).  Hence, some of the functions that dealt with Nx and Ny directly before now use Na and Nb from the structure.<br>
+<br>
+The indices kNoInterface, etc... were renumbered so that ForwardZ and BackwardZ are 0 and 1, instead of 1 and 2.  We save quite a bit of memory because before, 0 was still allocated.<br>
+<br>
+Two functions for allocating memory were created AllocateStatsMemory() and AllocateStatsMemory().<br>
+
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2003/11/12 14:12:02<td>+506 -266
+<tr><td colspan=4>
+<br>
+<br>
+Several important changes, the most important one being that now, all the interfaces are treated the same way.  This means an object is now a set of Interfaces, with normals, spanning vectors, etc... and does not rely on a &quot;specific&quot; geometry (i.e. the z axis, or other things like that).  Currently, MCObject is a cube, but that's irrelevant:  it is just a test for the routines, which work perfectly fine (see comments below).  The next step will be to derive objects (like MCCube, MCInfiniteLayers, MCSphere, etc...).  Fortunately, most of the routines of MCObject can (and will) be reused.<br>
+<br>
+* The function PathCrossesInterface() has been extensively rewritten to treat all the interface elements the same.  Using vector calculus, one can obtain a general formalution for the distance between a point and an interface and so on.   There is an important &quot;comment&quot; in that function: we must &quot;cheat&quot; a little bit because of round off errors.  For instance, although the distance calculated between a given point and a plane might be less than the propagating distance, sometimes, extremely rarely but still possible, the new computed position is slightly (just a tiny wee bit) passed the plane (which means the photon has exited but was never seen crossing the interface).  Hence, when a photon is alsmost crossing an interface (and I really mean almost), then we consider that it did.<br>
+<br>
+* There exists two new structures to deal with a SurfaceElement and IntersectElement. Surface is any interface defining the volume.  Intersect is all the information about the intersection point of a path with a surface element.<br>
+<br>
+* The function ScoreOnSurface is now completely general and simply store the intesection point and other stats in a multi dimensional table, which tabulates all faces, all Stokes parameters for all acceptance angles.  As usual, everything is dumped to disk in one big XML file.  We &quot;bin&quot; the photons by the cosine they make with the interface they cross, however they are output to file as a &quot;intergated&quot; measurement.  For instance, the photons are binned with cosines from 1 to 0.95, 0.5 to 0.9, 085 to 0.8 etc...  However, when comes the time to output to disk, with include everything up to a certain value.  Hence, the images are for acceptance cosine down to 0.9, down to 0.85, down to 0.8, etc...  It is faster to &quot;do the math&quot; when outputting everything to disk than to do it as we go.<br>
+<br>
+* Of course, because of these changes, the XML format has changed a bit.  The file is pretty self-explanatory.  All parameters are written in that file.<br>
+<br>
+The transport coefficient mu_s + mu_a is now checked to be non zero.  If it is, we can't go on (scattering distance is infinite).<br>
+<br>
+The product of two unit vectors is not always smaller than 1 (it can be a wee bit more).  We use the Normalized functions for cross products and dot products  which enforce bounds.<br>
+<br>
+There is now a few active checks for &quot;things&quot; that can't happen.  For instance, in rare occasions, the random number genetaor can return 0.  This would make the scattering distance infinite, we must check for that.  Also, just to avoid infinite loops, if a photon does not exit within a finite, reasoonable amoount of time, we warn the user.  Once again, this is useful in debugging.<br>
+<br>
+Reflections and transmissions (FResnel coefficients) have been added at interfaces.  Before, the photon was always transmitted.<br>
+<br>
+I also added the possibility to seed the random number generator so I can use the same sequence for testing (very useful).<br>
+<br>
+I also added an &quot;isotropic scattering test&quot;, which allows one to test various things. I corrected a few things with the &quot;single scattering test&quot; (for the scattering distance).<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/10/09 20:43:56<td>None
+<tr><td colspan=4>
+<br>
+Uber-major rewrite in terms of a new object called MCObject (as in Monte Carlo object).  The object MCObject<br>
+is currently just a layer, but the structure is ready to accept any shape (cube, cuvette, layer, cylinder, etc...).<br>
+main.cpp now only reads parameters and passes the control to MCObject.  The main function is PropagateInObject().  Eventually (I dont' know when , but at some point), MCObject will be able to contain other MCObjects that have different properties and the photons will propagate through all the objects using the simple functions declared by MCObject.<br>
+<br>
+The functions for dumping to file have been modified.  They are now real XML files, and can be analyzed with xmldump (which I have written).<br>
+Also, it is now a piece of cake to collect the backscattered photons.  They are collected and stored in the same file, under &quot;interface&quot;,id=backward.<br>
+MCObject is much better (and stricter) when crossing interfaces, since the algorithm has been streamlined.  See the class for explanations (although there currently are no comments in the header file).  The place to start is in PropagateInObject().<br>
+<br>
+<br>
+In main.cpp, I have also finally fixed the exception-catch problem. One must use:<br>
+catch (exception&amp; e)<br>
+         clog &lt;&lt; RightNow() &lt;&lt; &quot;Exception caught: &quot; &lt;&lt; string(e.what()) &lt;&lt; endl;<br>
+and not<br>
+catch (exception e)<br>
+         clog &lt;&lt; RightNow() &lt;&lt; &quot;Exception caught: &quot; &lt;&lt; string(e.what()) &lt;&lt; endl;<br>
+
+</table><br>
+<a name="Photon.h">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: Photon.h</font></B><br></td></tr>
+<tr><td><b>Revision 1.17</b><td>dccote
+<td>2004/04/01 19:17:00<td>+7 -8
+<tr><td colspan=4>
+<br>
+There was an additional Fresnel calculation that was just there for debug, but it did not work.  I simply removed it (does not affectt results).<br>
+Some cosmetic changes.<br>
+
+<tr><td><b>Revision 1.16</b><td>dccote
+<td>2004/02/24 17:23:20<td>+11 -3
+<tr><td colspan=4>
+<br>
+Added function to set the position of the photon (we already had GetPosition(), now we have SetPosition()).<br>
+This can therefore be used to position the photon at different spots on the interface.  This was long overdue, now it's done.  It also means the incidence point on the object does not have to be (0,0,0) anymore.<br>
+
+<tr><td><b>Revision 1.15</b><td>dccote
+<td>2004/02/04 21:50:59<td>+56 -73
+<tr><td colspan=4>
+<br>
+Worked more on PhotonCote to include I,Q,U and V from polarizer rotation measurements.<br>
+Needs more testing and does not give the same results as Jaillon (but do I expect the same results? not sure I do).<br>
+This is still incomplete and should not be used.<br>
+
+<tr><td><b>Revision 1.14</b><td>dccote
+<td>2004/02/03 15:08:26<td>+21 -11
+<tr><td colspan=4>
+First, chaged the numScatter table in MCObject to an array of double: numScatter is not an integer, it is the average number of scattering events.<br>
+Second I figured out why I was getting photons that had not scattered in the back direction: they are multiple reflections.  It was not an error in the code at all.  If one sets the index of the medium to 1, there will be not Fresnel reflections and everything is fine.<br>
+<br>
+In Photon.h I modified that stat collection routine:  I used to have numEvents for the number of scattering events and I would use that to tabulate the position of the photon. This was incorrect because a photon can move without scattering (Fresnel reflection is an example).  Hence I created another variable (mStatsMove) which keeps track of the number of times a photon has moved.  The tables has all the position+Stokes+direction the photon has passed through, including the initial values.  We still keep tyrack of the number of scattering events mNumEvents.<br>
+
+<tr><td><b>Revision 1.13</b><td>dccote
+<td>2004/01/28 12:39:39<td>+7 -0
+<tr><td colspan=4>
+First attempt at keeping track of the number scattering events.  The<br>
+idea is pretty much the same as the path length (in terms of<br>
+implementation): we have a big multidimensional array (each point on<br>
+each face for each output angle) and we score numberOfScatteringEvents<br>
+* weight of photon.  At the very end, before outputting everything, we<br>
+normalize.<br>
+<br>
+My initial testing shows that for mu_s=1, g ~ 0.9, the average number<br>
+of scattering events in the forward direction (directly forward) is<br>
+zero.  It is also zero in the backward direction and it seems to not<br>
+maike sense.  Everything else looks<br>
+reasonnable&quot; but I need to do more testing.<br>
+
+<tr><td><b>Revision 1.12</b><td>dccote
+<td>2004/01/27 23:34:56<td>+11 -6
+<tr><td colspan=4>
+<br>
+Added the correct numEvent counting, even when a copy of the photon is made.<br>
+
+<tr><td><b>Revision 1.11</b><td>dccote
+<td>2004/01/16 17:41:22<td>+121 -6
+<tr><td colspan=4>
+<br>
+Significant changes to allow the compilation of the program without<br>
+the SCATMECH library.  The scatmech library is obtainable on the web at:<br>
+http://physics.nist.gov/Divisions/Div844/facilities/scatmech/html/<br>
+For now, I use version 3.<br>
+<br>
+The configure program (not ideal, but works for now) accepts a:<br>
+--enable-scatmech paramater (THAT DEFAULTS TO NO) to compile the<br>
+program with WITH_POLARIZATION and NO_SCATMECH_NAMESPACE<br>
+(they are defined in config.h).  This way, if somebody does not have or does not<br>
+want SCATMECH/polarization info, they can compile the program<br>
+and run it in &quot;Intensity&quot; mode.<br>
+<br>
+If SCATMECH is not included, then we can't do Mie calculations.  hence, the only way to<br>
+describe scatteering is with the anisotropy parameter g and the Henyey-GreenStein distribution.<br>
+Those must be defined in the paramter file (which was modified to include comments about that).<br>
+<br>
+The Henyey-Greenstein random sampling class has been modified so it can be initialized either<br>
+from a Mueller matrix (which will happen when SCATMECH is used) or from the anisotropy parameter<br>
+(which will happen when SCATMECH is not used).<br>
+<br>
+A new photon (PhotonIntensity) has been created and does not compute polarization on scattering.<br>
+It still has a StokesV parameter, since it is currently used for Fresnel reflections and transmission<br>
+coefficients.  This way, the same math is used.  Might have to change that later.<br>
+
+<tr><td><b>Revision 1.10</b><td>dccote
+<td>2004/01/10 20:17:30<td>+100 -1
+<tr><td colspan=4>
+*** empty log message ***<br>
+
+<tr><td><b>Revision 1.9</b><td>dccote
+<td>2003/11/18 15:10:36<td>+65 -65
+<tr><td colspan=4>
+<br>
+All the floats were changed to double's.<br>
+
+<tr><td><b>Revision 1.8</b><td>dccote
+<td>2003/11/12 14:58:04<td>+375 -50
+<tr><td colspan=4>
+<br>
+<br>
+The function MeasureStokesVector in lab frame has been rewritten to apply for any plane and any reference frame.  This is necessary for the new 3D geometry, and is also a good sanity check for everything else.  The corresponding function for all the other Photon classes (PhotonBartel, PhotonCote, PhotonJaillon) have been rewritten.  I could not find a good way to rewrite PhotonMourant (which I don't use anyway) so I check to see if it is the z plane and if not, I throw an exception.<br>
+<br>
+Important note:  PhotonCote is still a bit incomplete and does not compute U and V.  I don't really use it as much as PhotonJaillon (which computes everything, but I am not sure about one of its correction factor: he rotates the reference frame in the detection plane and I don't understand the physical meaning of that).<br>
+<br>
+Added a (pretty expensive) function to keep track of the path of a photon.  By default, this is off.  It is quite time and memory consuming and should only be used for debugging purposes.  It requires the dynamic allocation of a large array, which is why it is so &quot;slow&quot;.  It is activated with KeepStats().  The stats are dumped to stream with DumpStats().<br>
+<br>
+Added functions for reflection and transmission coefficients (since they depend on the polarization state of a photon, they really belong here).<br>
+The function GetFresnelCoefficients() is self-explanatory: we rotate the reference frame in the s and p plane before computing the Fresnel coefficients.<br>
+<br>
+There are two functions for TransmitThroughInterface() and ReflectAtInterface() to transform the photon upon reflection/transmission.<br>
+<br>
+Finally, there is a function that returns the probability a photon will be reflected at an interface.  It uses the Fresnel coefficients computed above to calculate that value.<br>
+
+<tr><td><b>Revision 1.7</b><td>dccote
+<td>2003/10/09 20:27:10<td>+425 -291
+<tr><td colspan=4>
+<br>
+Major changes:<br>
+PhotonCote, PhotonMourant, PhotonJaillon, PhotonBartel rewritten to access StokesV properly.<br>
+The key function MeasureStokesVectorInLabFrame() is different for each class and is the reason why these subclasses exist: the detection scheme is different.<br>
+PhotonCote is a &quot;direct&quot; application of the measurement scheme I use in the lab: measure intensity, rotate polarizer, measure again.  I suspect theat Jaillon, and others who use some kind of cos theta ^2 factor for non normal incidence are wrong, but I can't prove it.  Bartel does not have it, Mourant does not have it, but some others (Moscoso et al, JOSA A, April 2001, 18, 4 p. 952) have it too.<br>
+<br>
+In the main loop, one must therefore create a Photon and pass it to the main Monte Carlo loop.<br>
+
+<tr><td><b>Revision 1.6</b><td>dccote
+<td>2003/07/10 14:36:55<td>+185 -13
+<tr><td colspan=4>
+<br>
+Added Headerdoc comments.<br>
+<br>
+HeaderDoc is a program that prases header files for specially formatted comments.  Headerdoc is made by apple (it's a perl script)<br>
+and is documented at: http://developer.apple.com/darwin/projects/headerdoc/docs/HeaderDoc.html<br>
+<br>
+Once the information is entered, one can create HTML files with all the information for easy viewing in a web browser with these two simple commands:<br>
+<br>
+mc% headerdoc .<br>
+mc% gatherheaderdoc<br>
+<br>
+MasterTOC.html contains a table of contents for all the files.<br>
+
+<tr><td><b>Revision 1.5</b><td>dccote
+<td>2003/04/16 14:52:05<td>+23 -5
+<tr><td colspan=4>
+<br>
+A few function for modifying the weight of a photon have been added.<br>
+
+<tr><td><b>Revision 1.4</b><td>dccote
+<td>2003/03/18 00:36:29<td>+24 -4
+<tr><td colspan=4>
+<br>
+Added a constructor to allow the creation of a Photon with a given Stokes<br>
+vector StokesV (not just the independent components).<br>
+In the process, an init() function was created to manage initalization.<br>
+
+<tr><td><b>Revision 1.3</b><td>dccote
+<td>2003/03/13 23:22:44<td>+2 -2
+<tr><td colspan=4>
+<br>
+GetMatrixForTheta() has been adjusted to reflect new syntax with theta and phi, but phi is always set to zero.<br>
+Later, if any roation is actually necessary, this will be done via the calling of that function GetMatrixForTheta() with a non zero phi, but for now, this is enough to get the code to do the same thing as before.<br>
+
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2002/12/02 22:29:07<td>+7 -3
+<tr><td colspan=4>
+Added function to rotate Stokes vector by angle phi.<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2002/11/22 21:45:34<td>None
+<tr><td colspan=4>
+Separation of the various classes into separate files.<br>
+<br>
+Most important aspect: the weight is not the intensity of the Stokes vector.<br>
+It is incorrect to take the unnormalized intensity of the scattered Stokes<br>
+vector.  The angles phi and theta are already sampled proportionally to the<br>
+probability of having a photon scattered at that phi and theta.  Therefore we always normalize<br>
+the StokesVectors after a scattering event (what we care about is the polarization and<br>
+the degree of polarization of a photon is unchanged upon scattering.  The nature<br>
+of the polarization changes.<br>
+<br>
+Added a real weight() to a photon, which allows to deal with absoprtion (untested).<br>
+<br>
+<br>
+Added a function to test if the photon is still in the medium.<br>
+Finally, if the propagation distance before next scattering event is such that the photon leaves the medium, the distance is corrected.<br>
+<br>
+Files for beta linear, circular and average distance travalled by a photon are<br>
+also produced.<br>
+
+</table><br>
+<a name="UTimer.cpp">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: UTimer.cpp</font></B><br></td></tr>
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2004/04/01 19:18:24<td>+4 -20
+<tr><td colspan=4>
+<br>
+Finally fixed the UTimer implementation: there is no need to use clock(), one should use time().<br>
+Clock() will wrap, but not time().  Everything has been fixed to use time() instead of clock().<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/11/19 20:47:59<td>None
+<tr><td colspan=4>
+<br>
+New files added to CVS project.  They used to be independent, they are now part of the project.<br>
+
+</table><br>
+<a name="aclocal.m4">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: aclocal.m4</font></B><br></td></tr>
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2004/01/19 21:49:24<td>None
+<tr><td colspan=4>
+<br>
+Updated autoconfiguration files.<br>
+
+</table><br>
+<a name="config.h.in">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: config.h.in</font></B><br></td></tr>
+<tr><td><b>Revision 1.7</b><td>dccote
+<td>2004/03/04 05:20:12<td>+6 -0
+<tr><td colspan=4>
+Rewrote the MCRandomScatterer class to decide which rando number generator we are going to use.  This is done this way:<br>
+<br>
+the ./configure script now takes a --with-random-generator argument (see its help with ./configure --help) where we set it equal to mtrand or numrecipes, as in :<br>
+<br>
+--with-random-generator=mtrand<br>
+<br>
+It defaults to mtrand, which is a good random number generator, but does not seem to compile well on all mchines (some Alpha Linux don't like it).  Hence, we can also pick num recipes version.  By selecting that --with-random-generator, we define (implicitly USE_MTRAND or USE_NUMRECIPES_RAND) in config.h. In randomscatter.cpp and randomscatter.h, we therefore test for those variables and compile everything appropriately (we notifiy the user of our choice) in the logfile.<br>
+Eventually, I could also implement a /dev/rand or a standard C/C++ rand() function, but I don't fell ike it now.<br>
+
+<tr><td><b>Revision 1.6</b><td>dccote
+<td>2004/02/04 21:28:17<td>+1 -1
+<tr><td colspan=4>
+<br>
+Added an argument for profiling: --enable-profiler.<br>
+
+<tr><td><b>Revision 1.5</b><td>dccote
+<td>2004/02/03 15:03:46<td>+3 -0
+<tr><td colspan=4>
+added a new option: --enable-debug for setting __MYDEBUG to 1 and getting all the debug messages.<br>
+The #define __MYDEBUG 1 message gets written to config.h, hence one must make sure that<br>
+config.h gets included one way or another in all files.  mydebug.h does include it, so it should be enough.<br>
+
+<tr><td><b>Revision 1.4</b><td>dccote
+<td>2004/01/23 18:00:46<td>+0 -6
+<tr><td colspan=4>
+<br>
+Better configuration script that will detect if SCATMECH is installed.<br>
+This took a lot of work because I didn't know that AC_CHECK_LIB does not check the<br>
+$prefix/lib path.  I had to roll my own test.  All the information is in configure.ac<br>
+
+<tr><td><b>Revision 1.3</b><td>dccote
+<td>2004/01/19 21:49:24<td>+3 -0
+<tr><td colspan=4>
+<br>
+Updated autoconfiguration files.<br>
+
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2004/01/16 17:41:22<td>+41 -20
+<tr><td colspan=4>
+<br>
+Significant changes to allow the compilation of the program without<br>
+the SCATMECH library.  The scatmech library is obtainable on the web at:<br>
+http://physics.nist.gov/Divisions/Div844/facilities/scatmech/html/<br>
+For now, I use version 3.<br>
+<br>
+The configure program (not ideal, but works for now) accepts a:<br>
+--enable-scatmech paramater (THAT DEFAULTS TO NO) to compile the<br>
+program with WITH_POLARIZATION and NO_SCATMECH_NAMESPACE<br>
+(they are defined in config.h).  This way, if somebody does not have or does not<br>
+want SCATMECH/polarization info, they can compile the program<br>
+and run it in &quot;Intensity&quot; mode.<br>
+<br>
+If SCATMECH is not included, then we can't do Mie calculations.  hence, the only way to<br>
+describe scatteering is with the anisotropy parameter g and the Henyey-GreenStein distribution.<br>
+Those must be defined in the paramter file (which was modified to include comments about that).<br>
+<br>
+The Henyey-Greenstein random sampling class has been modified so it can be initialized either<br>
+from a Mueller matrix (which will happen when SCATMECH is used) or from the anisotropy parameter<br>
+(which will happen when SCATMECH is not used).<br>
+<br>
+A new photon (PhotonIntensity) has been created and does not compute polarization on scattering.<br>
+It still has a StokesV parameter, since it is currently used for Fresnel reflections and transmission<br>
+coefficients.  This way, the same math is used.  Might have to change that later.<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/03/11 21:15:55<td>None
+<tr><td colspan=4>
+<br>
+Amazing: I got the ./configure set up going thanks to automake, autoscan, autoconf and autoheader.<br>
+I made a few modifications to StokesV.h, main.cpp and rand.cpp to allow the customization<br>
+of config.h.  Now, one should be able to get everything configured (as a developer) with:<br>
+<br>
+autoheader<br>
+automake -ac<br>
+autoconf<br>
+<br>
+./configure --prefix=$HOME --bindir=$HOME/bin/$OS<br>
+make<br>
+make install<br>
+<br>
+Important problem: gcc 3.1 on Darwin has a problem with isnan()<br>
+(see http://mail.gnu.org/archive/html/lilypond-devel/2002-08/msg00175.html)<br>
+I had to define it empty if undefined.  Bizarre and will probably break on other<br>
+machines, but it compiles for now (does not run on OS X though).<br>
+
+</table><br>
+<a name="cubicspline.cpp">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: cubicspline.cpp</font></B><br></td></tr>
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2004/04/01 19:35:31<td>+1 -1
+<tr><td colspan=4>
+<br>
+Removed all divide by zero possibilities: this can make some computers/compilers crash.<br>
+This is highly likely a precautions on large scale clusters.  Much simpler to simply deal with it in my code than just &quot;hope&quot;.<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/11/19 20:47:59<td>None
+<tr><td colspan=4>
+<br>
+New files added to CVS project.  They used to be independent, they are now part of the project.<br>
+
+</table><br>
+<a name="fastinterpolate.cpp">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: fastinterpolate.cpp</font></B><br></td></tr>
+<tr><td><b>Revision 1.4</b><td>dccote
+<td>2004/04/01 19:35:31<td>+1 -1
+<tr><td colspan=4>
+<br>
+Removed all divide by zero possibilities: this can make some computers/compilers crash.<br>
+This is highly likely a precautions on large scale clusters.  Much simpler to simply deal with it in my code than just &quot;hope&quot;.<br>
+
+<tr><td><b>Revision 1.3</b><td>dccote
+<td>2004/04/01 19:06:13<td>+25 -5
+<tr><td colspan=4>
+<br>
+Added a function to insert a table of points at once.<br>
+<br>
+Added another approximate interpolation method:  if approximate methods are accepted,<br>
+(enableApproximation()), and points are equally spaced in X, then we don't even interpolate.<br>
+This is fine as long as we have a lot of points.  By default, approximations are off.<br>
+It is about 10% faster than linear interpolation.<br>
+
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2004/01/16 17:41:23<td>+3 -1
+<tr><td colspan=4>
+<br>
+Significant changes to allow the compilation of the program without<br>
+the SCATMECH library.  The scatmech library is obtainable on the web at:<br>
+http://physics.nist.gov/Divisions/Div844/facilities/scatmech/html/<br>
+For now, I use version 3.<br>
+<br>
+The configure program (not ideal, but works for now) accepts a:<br>
+--enable-scatmech paramater (THAT DEFAULTS TO NO) to compile the<br>
+program with WITH_POLARIZATION and NO_SCATMECH_NAMESPACE<br>
+(they are defined in config.h).  This way, if somebody does not have or does not<br>
+want SCATMECH/polarization info, they can compile the program<br>
+and run it in &quot;Intensity&quot; mode.<br>
+<br>
+If SCATMECH is not included, then we can't do Mie calculations.  hence, the only way to<br>
+describe scatteering is with the anisotropy parameter g and the Henyey-GreenStein distribution.<br>
+Those must be defined in the paramter file (which was modified to include comments about that).<br>
+<br>
+The Henyey-Greenstein random sampling class has been modified so it can be initialized either<br>
+from a Mueller matrix (which will happen when SCATMECH is used) or from the anisotropy parameter<br>
+(which will happen when SCATMECH is not used).<br>
+<br>
+A new photon (PhotonIntensity) has been created and does not compute polarization on scattering.<br>
+It still has a StokesV parameter, since it is currently used for Fresnel reflections and transmission<br>
+coefficients.  This way, the same math is used.  Might have to change that later.<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/11/19 20:47:59<td>None
+<tr><td colspan=4>
+<br>
+New files added to CVS project.  They used to be independent, they are now part of the project.<br>
+
+</table><br>
+<a name="fastinterpolate.h">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: fastinterpolate.h</font></B><br></td></tr>
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2004/04/01 19:06:13<td>+4 -0
+<tr><td colspan=4>
+<br>
+Added a function to insert a table of points at once.<br>
+<br>
+Added another approximate interpolation method:  if approximate methods are accepted,<br>
+(enableApproximation()), and points are equally spaced in X, then we don't even interpolate.<br>
+This is fine as long as we have a lot of points.  By default, approximations are off.<br>
+It is about 10% faster than linear interpolation.<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/11/19 20:47:59<td>None
+<tr><td colspan=4>
+<br>
+New files added to CVS project.  They used to be independent, they are now part of the project.<br>
+
+</table><br>
+<a name="main.cpp">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: main.cpp</font></B><br></td></tr>
+<tr><td><b>Revision 1.23</b><td>dccote
+<td>2004/04/01 19:24:05<td>+1 -3
+<tr><td colspan=4>
+<br>
+No need to call GetTicks() anymore in the loop.  This was actually a problem on clusters since a call to clock() requires a system call.<br>
+Long story short: it's not there and it's better.<br>
+
+<tr><td><b>Revision 1.22</b><td>dccote
+<td>2004/02/24 17:32:10<td>+54 -1
+<tr><td colspan=4>
+<br>
+<br>
+First, moved the &quot;KeepStats()&quot; call to the main loop, since it really should be here, not in MCObject::ProagateInObject():  this is something that is not general and should not be in the class.<br>
+<br>
+Second added a &quot;pencil/disk&quot; beam (gaussian will be added later). This means we read two parameters from the parameter file (inputBeamType and inputBeamDiameter).  Before calling PropagateInObject() we set the position.  Notice that for the disk for position the photon uniformly within a disk (the obvious random*radius*cos(random*2*pi) and random*radius*sin(random*2*pi) is not correct: a little bit of math required here, didn't have time today and it's no big deal).<br>
+
+<tr><td><b>Revision 1.21</b><td>dccote
+<td>2004/02/03 15:08:27<td>+1 -1
+<tr><td colspan=4>
+First, chaged the numScatter table in MCObject to an array of double: numScatter is not an integer, it is the average number of scattering events.<br>
+Second I figured out why I was getting photons that had not scattered in the back direction: they are multiple reflections.  It was not an error in the code at all.  If one sets the index of the medium to 1, there will be not Fresnel reflections and everything is fine.<br>
+<br>
+In Photon.h I modified that stat collection routine:  I used to have numEvents for the number of scattering events and I would use that to tabulate the position of the photon. This was incorrect because a photon can move without scattering (Fresnel reflection is an example).  Hence I created another variable (mStatsMove) which keeps track of the number of times a photon has moved.  The tables has all the position+Stokes+direction the photon has passed through, including the initial values.  We still keep tyrack of the number of scattering events mNumEvents.<br>
+
+<tr><td><b>Revision 1.20</b><td>dccote
+<td>2004/01/16 17:41:23<td>+15 -1
+<tr><td colspan=4>
+<br>
+Significant changes to allow the compilation of the program without<br>
+the SCATMECH library.  The scatmech library is obtainable on the web at:<br>
+http://physics.nist.gov/Divisions/Div844/facilities/scatmech/html/<br>
+For now, I use version 3.<br>
+<br>
+The configure program (not ideal, but works for now) accepts a:<br>
+--enable-scatmech paramater (THAT DEFAULTS TO NO) to compile the<br>
+program with WITH_POLARIZATION and NO_SCATMECH_NAMESPACE<br>
+(they are defined in config.h).  This way, if somebody does not have or does not<br>
+want SCATMECH/polarization info, they can compile the program<br>
+and run it in &quot;Intensity&quot; mode.<br>
+<br>
+If SCATMECH is not included, then we can't do Mie calculations.  hence, the only way to<br>
+describe scatteering is with the anisotropy parameter g and the Henyey-GreenStein distribution.<br>
+Those must be defined in the paramter file (which was modified to include comments about that).<br>
+<br>
+The Henyey-Greenstein random sampling class has been modified so it can be initialized either<br>
+from a Mueller matrix (which will happen when SCATMECH is used) or from the anisotropy parameter<br>
+(which will happen when SCATMECH is not used).<br>
+<br>
+A new photon (PhotonIntensity) has been created and does not compute polarization on scattering.<br>
+It still has a StokesV parameter, since it is currently used for Fresnel reflections and transmission<br>
+coefficients.  This way, the same math is used.  Might have to change that later.<br>
+
+<tr><td><b>Revision 1.19</b><td>dccote
+<td>2004/01/09 21:59:25<td>+2 -4
+<tr><td colspan=4>
+<br>
+Added better error message when ObjectType is not defined.<br>
+
+<tr><td><b>Revision 1.18</b><td>dccote
+<td>2003/11/18 15:10:36<td>+1 -1
+<tr><td colspan=4>
+<br>
+All the floats were changed to double's.<br>
+
+<tr><td><b>Revision 1.17</b><td>dccote
+<td>2003/11/18 15:02:46<td>+15 -2
+<tr><td colspan=4>
+<br>
+Main has been rewritten to take advantage of the new 3D objects Box and InifniteLayers.<br>
+
+<tr><td><b>Revision 1.16</b><td>dccote
+<td>2003/11/12 14:36:25<td>+19 -13
+<tr><td colspan=4>
+<br>
+<br>
+First, I now redirect stdlog (or clog) to file to obtain a log file in real time.  Before, it would only get dumped to file at the end of the calculation (which served no purpose).<br>
+<br>
+I also use the fancy-shmancy auto_ptr&lt;&gt; to allocate pointers and have them deleted automatically.<br>
+<br>
+I have created a new timer UTimer (separate) to avoid the wrapping problem I had before on some machine.  For instance, when running on linux, if the program ran for more than 12 hours, the counter had time to wrap.  This UTimer now fixes that and provides a few other functions for nice output.<br>
+
+<tr><td><b>Revision 1.15</b><td>dccote
+<td>2003/10/09 20:43:56<td>+86 -395
+<tr><td colspan=4>
+<br>
+Uber-major rewrite in terms of a new object called MCObject (as in Monte Carlo object).  The object MCObject<br>
+is currently just a layer, but the structure is ready to accept any shape (cube, cuvette, layer, cylinder, etc...).<br>
+main.cpp now only reads parameters and passes the control to MCObject.  The main function is PropagateInObject().  Eventually (I dont' know when , but at some point), MCObject will be able to contain other MCObjects that have different properties and the photons will propagate through all the objects using the simple functions declared by MCObject.<br>
+<br>
+The functions for dumping to file have been modified.  They are now real XML files, and can be analyzed with xmldump (which I have written).<br>
+Also, it is now a piece of cake to collect the backscattered photons.  They are collected and stored in the same file, under &quot;interface&quot;,id=backward.<br>
+MCObject is much better (and stricter) when crossing interfaces, since the algorithm has been streamlined.  See the class for explanations (although there currently are no comments in the header file).  The place to start is in PropagateInObject().<br>
+<br>
+<br>
+In main.cpp, I have also finally fixed the exception-catch problem. One must use:<br>
+catch (exception&amp; e)<br>
+         clog &lt;&lt; RightNow() &lt;&lt; &quot;Exception caught: &quot; &lt;&lt; string(e.what()) &lt;&lt; endl;<br>
+and not<br>
+catch (exception e)<br>
+         clog &lt;&lt; RightNow() &lt;&lt; &quot;Exception caught: &quot; &lt;&lt; string(e.what()) &lt;&lt; endl;<br>
+
+<tr><td><b>Revision 1.14</b><td>dccote
+<td>2003/09/15 15:00:17<td>+143 -90
+<tr><td colspan=4>
+<br>
+Minor formatting changes (removed tabs).<br>
+
+<tr><td><b>Revision 1.13</b><td>dccote
+<td>2003/04/16 14:35:40<td>+57 -13
+<tr><td colspan=4>
+<br>
+<br>
+Important change that might have been responsible for inaccurate numbers.  When counting photons,<br>
+it used to be:<br>
+<br>
+so *= S1.GetWeight() / so.mI;<br>
+<br>
+but this has been changed to<br>
+<br>
+so *= S1.GetWeight();<br>
+<br>
+The division by so.mI was for normalization, which is now done in the main loop.  Also the rejection method<br>
+in randomscatter.cpp has been re-implemented using Kaplan et al.<br>
+<br>
+<br>
+Added acceptance angle acceptanceCos.  If parameter is not given in parameter file, it is set to zero, that is<br>
+we accept everything (costheta &gt; 0 means anything going through the exit plane).<br>
+<br>
+A few DEBUG__VERBOSE sections were added to allow debugging without having to rewrite everything everytime.<br>
+One should compile with make CXXFLAGS=&quot;-D__DEBUG_VERBOSE&quot; in order to activate it.  ./configure is not affected by that.<br>
+<br>
+Added new parameters to parameter file (mandatory):<br>
+<br>
+index_med, index_scat, wavelength, radius<br>
+<br>
+so we know what we are dealing with.  Moreover, there is a chance it will be necessary to deal with the 1/k^2d^2<br>
+factor that is dropped in most Monte Carlo calculations.  I suspect this is necessary, but I am unsure now.<br>
+
+<tr><td><b>Revision 1.12</b><td>dccote
+<td>2003/04/07 17:30:10<td>+10 -10
+<tr><td colspan=4>
+<br>
+There was an error when wiritng files to disk: an extra white space was<br>
+added to each line ( and was screwing up other programs later, especially<br>
+Mathematica).  Also an &quot;and&quot; was actually replaced by &quot;&amp;&amp;&quot;.  I am not too<br>
+sure how the program compiled before.<br>
+<br>
+This compiles fine on SunOS, Linux and Mac OS X if ./configure is used.<br>
+The best option, is to call it like this:<br>
+<br>
+./configure --prefix=$HOME --exec-prefix=$HOME/bin/sunos<br>
+./configure --prefix=$HOME --exec-prefix=$HOME/bin/linux<br>
+./configure --prefix=$HOME --exec-prefix=$HOME/bin/darwin<br>
+<br>
+so the same program gets compiled for all platforms and therefore can be<br>
+run on anything.<br>
+
+<tr><td><b>Revision 1.11</b><td>dccote
+<td>2003/03/18 00:23:53<td>+218 -168
+<tr><td colspan=4>
+<br>
+TESTS:<br>
+<br>
+<br>
+There is a new test mode that can be defined with singleScattering=true<br>
+where a single scattering event will take place half way through the thickness<br>
+of the cuvette and then the photon will propagate to the interface of the cuvette.<br>
+This allows one to test the validity of the Monte Carlo code with simple<br>
+analytical expressions<br>
+<br>
+<br>
+I added a new variable to the parameter file, to avoid having to duplicate<br>
+S1000 S1100 S1010 and S1001 parameter files.  Now, if the variable<br>
+allStokesVector is defined in the parameter file, then the program<br>
+will automatically loop through the four important Stokes vectors. If not, the<br>
+program does the same thing as before. This forced a reorganization of the file, with a new loop added.<br>
+Some important initializations the need to be done only once have been moved<br>
+out of that loop, whereas others that need to be done every time have been moved in.<br>
+The StokesVector (and output filenames) are kept in &quot;arrays&quot; (C++ vector&lt;&gt;).<br>
+<br>
+<br>
+Correction of output: there used to be an extra number being output<br>
+at the end of each line.  Lines of the form:<br>
+&lt;       for (long i = 0; i &lt; Nx; i++) {<br>
+were changed to<br>
+&gt;       for (long i = 0; i &lt; Nx-1; i++) {<br>
+in the function Dump*ToStream()<br>
+
+<tr><td><b>Revision 1.10</b><td>dccote
+<td>2003/03/13 23:13:26<td>+1 -94
+<tr><td colspan=4>
+<br>
+Removed testing functions from main.cpp and created new file randomscatterer.cpp (with header)<br>
+Also moved the layout of the file a bit.<br>
+
+<tr><td><b>Revision 1.9</b><td>dccote
+<td>2003/03/11 21:15:55<td>+11 -2
+<tr><td colspan=4>
+<br>
+Amazing: I got the ./configure set up going thanks to automake, autoscan, autoconf and autoheader.<br>
+I made a few modifications to StokesV.h, main.cpp and rand.cpp to allow the customization<br>
+of config.h.  Now, one should be able to get everything configured (as a developer) with:<br>
+<br>
+autoheader<br>
+automake -ac<br>
+autoconf<br>
+<br>
+./configure --prefix=$HOME --bindir=$HOME/bin/$OS<br>
+make<br>
+make install<br>
+<br>
+Important problem: gcc 3.1 on Darwin has a problem with isnan()<br>
+(see http://mail.gnu.org/archive/html/lilypond-devel/2002-08/msg00175.html)<br>
+I had to define it empty if undefined.  Bizarre and will probably break on other<br>
+machines, but it compiles for now (does not run on OS X though).<br>
+
+<tr><td><b>Revision 1.8</b><td>dccote
+<td>2002/12/02 22:28:13<td>+147 -72
+<tr><td colspan=4>
+<br>
+Changed cerr for clog to output to standard log (is usually the same as cerr, but who knows).<br>
+Added tons of logging functions.  The output goes to clog and can be redirect from the shell into a logfile.<br>
+<br>
+Allow the input from a file or from stdin.  A file is preferred since it allows to keep track of the file name in the log file.<br>
+<br>
+<br>
+<br>
+Now everything gets dumped into one big file that looks like an XML file (but is not).  All the parameters<br>
+are included.  From this big file, one can run other programs to extract individual files<br>
+(extractsubfile extractallsubfiles, extractmuellermatrixelements).  Two functions that dump the content<br>
+of the simulations have been created.  Straightforward dump.<br>
+
+<tr><td><b>Revision 1.7</b><td>dccote
+<td>2002/11/22 21:45:34<td>+321 -840
+<tr><td colspan=4>
+Separation of the various classes into separate files.<br>
+<br>
+Most important aspect: the weight is not the intensity of the Stokes vector.<br>
+It is incorrect to take the unnormalized intensity of the scattered Stokes<br>
+vector.  The angles phi and theta are already sampled proportionally to the<br>
+probability of having a photon scattered at that phi and theta.  Therefore we always normalize<br>
+the StokesVectors after a scattering event (what we care about is the polarization and<br>
+the degree of polarization of a photon is unchanged upon scattering.  The nature<br>
+of the polarization changes.<br>
+<br>
+Added a real weight() to a photon, which allows to deal with absoprtion (untested).<br>
+<br>
+<br>
+Added a function to test if the photon is still in the medium.<br>
+Finally, if the propagation distance before next scattering event is such that the photon leaves the medium, the distance is corrected.<br>
+<br>
+Files for beta linear, circular and average distance travalled by a photon are<br>
+also produced.<br>
+
+<tr><td><b>Revision 1.6</b><td>dccote
+<td>2002/11/19 23:41:11<td>+479 -108
+<tr><td colspan=4>
+Most important change:  apparently, Bartel et al. have an error in the sign of some of the<br>
+vectors in Eq. (10) and (11) (should be +,+,- and +,+,+).  One way to see that is to look at figure 2<br>
+(drawn for a positive phi) and use geometric arguments.  After that, take -phi (which is the transformation<br>
+that is being performed).  The function GetStokesVectorInLocalFrame() has been modified.<br>
+<br>
+Added the Mourant reference at the beginning of file.<br>
+<br>
+Added a &quot;things to know&quot; list, describing important<br>
+technical aspect of the program.  Currently, has very little.<br>
+<br>
+Added various warning messages using constructs of the form:<br>
+<br>
+&gt; 		static bool warning=true;<br>
+&gt;<br>
+&gt; 		if (warning) {<br>
+&gt; 			cerr &lt;&lt; &quot;We take the absoluate value of I-Q and I + Q to work around numerical round off errors\n&quot;;<br>
+&gt; 			warning = false;<br>
+&gt; 		}<br>
+<br>
+<br>
+GetLocalComplexFields(), and StokesV() constructor added to deal with fields in addition to Intensities.<br>
+<br>
+Sometimes, theta is a wee bit larger than pi when converted from degrees.  We force it down to 180.<br>
+<br>
+Added a few functions to aid in debugging:<br>
+	static float DotProduct(RealV&amp; u, RealV&amp; v)<br>
+	static void CheckTriad(RealV&amp; x, RealV&amp; y, RealV&amp; z)<br>
+<br>
+called everywhere to check the unit vectors.<br>
+<br>
+<br>
+Added a compile time choice of formalism:  __MOURANT_FORMALISM or anything else.  By default, we use Bartel's.<br>
+<br>
+Added a compile time choice of Stokes vector detection __MOURANT_STOKES_DETECTION.  By default, we use my own. Mourant's way of<br>
+obtaining the Stokes vector seems wrong<br>
+<br>
+<br>
+A variable singleScattering has been added, but won't stay there:  this was to do the calculation for a single scattering<br>
+event but is too cumbersome to keep for what is gained.  Instead, just use a very low mu_s.<br>
+<br>
+Now dumps everything (I,Q,U,V) to file.<br>
+
+<tr><td><b>Revision 1.5</b><td>dccote
+<td>2002/11/07 21:56:00<td>+39 -26
+<tr><td colspan=4>
+This version highly likely has a few sign mistakes since it did not pass simple tests.<br>
+<br>
+Added functions for degree of polarization. Due to round off errors, every now and then one might want to check its value (it sometimes goes a bit above 1).<br>
+<br>
+Started to add logging functions.<br>
+<br>
+I now output &quot;beta&quot; into another file.  Preliminary tests show that there might be an error in the code because linearly, vertically polarized light is almost all depolarized, but unpolarized light is not.<br>
+<br>
+Reverted __isnan to isnan, since g++ 3.2 supports it.  Will find a work around for g++ 3.1.<br>
+<br>
+The parameter file now requires a filename for the output files.<br>
+
+<tr><td><b>Revision 1.4</b><td>dccote
+<td>2002/11/06 05:27:33<td>+258 -67
+<tr><td colspan=4>
+<br>
+Major changes, adding the reading of the Stokes vector element in the lab frame.<br>
+Corrected multiplication of Stokes vector by mueller matrix: one cannot assign the value of say &quot;I&quot;, since it is used for the calculation of the other values (Q,U,V).  One must use temporary variables.  This is true for any &quot;matrix multiplciation&quot; and I had a mistake in the original version.<br>
+<br>
+isnan(x) is a problem: I had to use math.h and __isnan(). I am not sure why, this looks like a namespace problem in GCC3. I could not ind anything on the web, although I have seen a few things regarding the use of _GLIBCPP_USE_C99 and how it could be defined on the command line, but it did not always work (in simple cases it did, not in complicated cases).<br>
+<br>
+Added tons of parameters in param.dat file so that the Monte Carlo program does not have to be recompiled every time parameters are changed:<br>
+The parameters for the input photon are taken from the parameter file<br>
+The filename for the various output files is in the parameter file<br>
+We keep track of progress but spitting out where we are to standard output.<br>
+
+<tr><td><b>Revision 1.3</b><td>dccote
+<td>2002/10/16 23:37:59<td>+3 -3
+<tr><td colspan=4>
+<br>
+Added parameter file.<br>
+
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2002/10/16 17:51:04<td>+340 -1
+<tr><td colspan=4>
+Completion of the transformations for er,el,e3 following better understanding<br>
+Addition of configfiles and mydebug for parameters<br>
+Completion of various functions for simulations of many photons.<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2002/10/16 01:21:02<td>None
+<tr><td colspan=4>
+Initial revision<br>
+
+<tr><td><b>Revision 1.1.1.1</b><td>dccote
+<td>2002/10/16 01:21:02<td>+0 -0
+<tr><td colspan=4>
+<br>
+Initial import.<br>
+
+</table><br>
+<a name="mydebug.cpp">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: mydebug.cpp</font></B><br></td></tr>
+<tr><td><b>Revision 1.3</b><td>dccote
+<td>2004/04/01 19:35:31<td>+2 -2
+<tr><td colspan=4>
+<br>
+Removed all divide by zero possibilities: this can make some computers/compilers crash.<br>
+This is highly likely a precautions on large scale clusters.  Much simpler to simply deal with it in my code than just &quot;hope&quot;.<br>
+
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2004/04/01 19:22:34<td>+5 -1
+<tr><td colspan=4>
+<br>
+Corrected a few small things for computers that don't run Unix: there is no process ID on windows<br>
+(at least none I can easily use).<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/11/19 20:48:00<td>None
+<tr><td colspan=4>
+<br>
+New files added to CVS project.  They used to be independent, they are now part of the project.<br>
+
+</table><br>
+<a name="randomscatter.cpp">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: randomscatter.cpp</font></B><br></td></tr>
+<tr><td><b>Revision 1.13</b><td>dccote
+<td>2004/04/01 19:35:31<td>+17 -9
+<tr><td colspan=4>
+<br>
+Removed all divide by zero possibilities: this can make some computers/compilers crash.<br>
+This is highly likely a precautions on large scale clusters.  Much simpler to simply deal with it in my code than just &quot;hope&quot;.<br>
+
+<tr><td><b>Revision 1.12</b><td>dccote
+<td>2004/04/01 19:02:19<td>+17 -9
+<tr><td colspan=4>
+<br>
+<br>
+Added a check to make sure the stats don't &quot;wrap&quot;: because we use &quot;long int&quot; (32 bits)<br>
+if we run very long calculations and go beyond 2^31-1, it will wrap and break the<br>
+stats.  We stop when we have 2^30 (I did not want to deal with signed versus unsigned,<br>
+that's why I picked 2^30 and not 2^31-1).<br>
+<br>
+Commented out the part where the seed is attempted to be obtained from /de/vrandom:<br>
+it does not work yet and is not being used.<br>
+
+<tr><td><b>Revision 1.11</b><td>dccote
+<td>2004/03/04 05:20:13<td>+25 -11
+<tr><td colspan=4>
+Rewrote the MCRandomScatterer class to decide which rando number generator we are going to use.  This is done this way:<br>
+<br>
+the ./configure script now takes a --with-random-generator argument (see its help with ./configure --help) where we set it equal to mtrand or numrecipes, as in :<br>
+<br>
+--with-random-generator=mtrand<br>
+<br>
+It defaults to mtrand, which is a good random number generator, but does not seem to compile well on all mchines (some Alpha Linux don't like it).  Hence, we can also pick num recipes version.  By selecting that --with-random-generator, we define (implicitly USE_MTRAND or USE_NUMRECIPES_RAND) in config.h. In randomscatter.cpp and randomscatter.h, we therefore test for those variables and compile everything appropriately (we notifiy the user of our choice) in the logfile.<br>
+Eventually, I could also implement a /dev/rand or a standard C/C++ rand() function, but I don't fell ike it now.<br>
+
+<tr><td><b>Revision 1.10</b><td>dccote
+<td>2004/03/03 14:58:08<td>+41 -2
+<tr><td colspan=4>
+<br>
+Modified the init() function so the the seed is &quot;as random as possible&quot;.  I used to seed with the time() function, but if several runs were started at the same time, they would get the same seed.  I now try to seed with the process ID (which is fine on any Unix based system, including Mac OS X), but will not work on PCs.  As a fallback, I use the timer if getpid() does not exist.  I also thought of using /dev/random/, but I can't get it to work properly.<br>
+
+<tr><td><b>Revision 1.9</b><td>dccote
+<td>2004/01/16 17:41:23<td>+14 -3
+<tr><td colspan=4>
+<br>
+Significant changes to allow the compilation of the program without<br>
+the SCATMECH library.  The scatmech library is obtainable on the web at:<br>
+http://physics.nist.gov/Divisions/Div844/facilities/scatmech/html/<br>
+For now, I use version 3.<br>
+<br>
+The configure program (not ideal, but works for now) accepts a:<br>
+--enable-scatmech paramater (THAT DEFAULTS TO NO) to compile the<br>
+program with WITH_POLARIZATION and NO_SCATMECH_NAMESPACE<br>
+(they are defined in config.h).  This way, if somebody does not have or does not<br>
+want SCATMECH/polarization info, they can compile the program<br>
+and run it in &quot;Intensity&quot; mode.<br>
+<br>
+If SCATMECH is not included, then we can't do Mie calculations.  hence, the only way to<br>
+describe scatteering is with the anisotropy parameter g and the Henyey-GreenStein distribution.<br>
+Those must be defined in the paramter file (which was modified to include comments about that).<br>
+<br>
+The Henyey-Greenstein random sampling class has been modified so it can be initialized either<br>
+from a Mueller matrix (which will happen when SCATMECH is used) or from the anisotropy parameter<br>
+(which will happen when SCATMECH is not used).<br>
+<br>
+A new photon (PhotonIntensity) has been created and does not compute polarization on scattering.<br>
+It still has a StokesV parameter, since it is currently used for Fresnel reflections and transmission<br>
+coefficients.  This way, the same math is used.  Might have to change that later.<br>
+
+<tr><td><b>Revision 1.8</b><td>dccote
+<td>2003/11/18 15:10:36<td>+36 -36
+<tr><td colspan=4>
+<br>
+All the floats were changed to double's.<br>
+
+<tr><td><b>Revision 1.7</b><td>dccote
+<td>2003/11/18 14:55:09<td>+25 -6
+<tr><td colspan=4>
+<br>
+I moved some of the functions from Mueller to randomscatter.cpp since that's where they belonged (the comaprison for the Jaillon method, for instance).  I also removed useless functions from Mueller.h<br>
+<br>
+randomscatter.cpp has better init functions for Jaillon. Alos, note the mAvgCosine was changed from float to double (in randomscatter.h).  This is critical since with 1e7 photons, the running sum will fail (and did fail).<br>
+
+<tr><td><b>Revision 1.6</b><td>dccote
+<td>2003/11/12 14:21:03<td>+59 -34
+<tr><td colspan=4>
+<br>
+<br>
+Added the possiblity to seed the random number generator with a user-supplied seed. Very useful for debugging purposes.<br>
+<br>
+Corrected an important but quite subtle bug: some random number generators (including the one I use) may generate &quot;zero&quot; as a number.  If that's the case, then the calculation of random distance (which is proportional to log(random)) will fail.  Hence, we have to reject zero explicitly.<br>
+<br>
+I also added a safety net for the random angle generators: if after a certain large number of iterations (often hardcoded as 1000) there is still no angles generated, it will throw an exception.  This could be due for instance to a bad Stokes input.<br>
+<br>
+To compute the stats, I use a new function WhichBin().  I still have a problem with the computed g which sometimes is completely out of whack although from the histogram, it can be calculated to be correct.<br>
+
+<tr><td><b>Revision 1.5</b><td>dccote
+<td>2003/10/09 18:34:50<td>+377 -59
+<tr><td colspan=4>
+<br>
+Major rewrite of angle sampling functions, correcting an actual mistake in the literature<br>
+AND making it much faster (using Kaplan's method).<br>
+<br>
+Bottom line: Wang, Bartel, Mourant have it wrong: the probability of scattering at theta, phi<br>
+is not proportional to I(theta,phi).  It is proportional to I(theta,phi) sin(theta).<br>
+That changes quite a bit.  Jaillon and Kaplan have it right (although they are not explicitly<br>
+shoing their result, the math is correct).<br>
+<br>
+The way to check this, is to calculate &lt;cos theta&gt;.  The wrong distributions end up with a much larger g (which<br>
+explains why previously, all my beta_lin calculations were too &quot;generous&quot; (i.e. the sample did not depolarize fast enough). This was so because mu_s prime was much smaller (due to the value of g near 1).  Now, everything makes more sense, and values are much closer to experimental values).<br>
+<br>
+I have a longer discussion (and proof) about this in a Mathematica file called RandomNumbers.nb.  The schemes studied are:<br>
+Bartel et al. &quot;Monte Carlo simulations of the diffuse backscattering Mueller matrix for highly scattering media&quot;, Applied Optics,  39, No 10, p. 1580, (2000)<br>
+Jaillon et al. &quot;Description and time reduction of a Monte Carlo code to simulate propagation of polarized light through scattering media&quot;, Applied Optics,  42, No 16, p. 3290, (2003)<br>
+Kaplan et al. &quot;Mueller matrix of dense polystyrene latex sphere suspensions: measurements and Monte Carlo simulation&quot;, Applied Optics,  40, No 16, p. 2769, (2001)<br>
+L. Wang et al. &quot;Monte Carlo Modeling of Light Transport in multi-layered Tissues in Standard C&quot;, http://ece.ogi.edu/mcml/ (1998)<br>
+<br>
+I have now created a new object MCRandomScatterer that takes charge of generating random angles.  By choosing the appropriate subclass MCRandomScattererKaplan, MCRandomScattererHenyeyGreenstein, MCRandomScattererJaillon, one can compare the various schemes.  Hence, in the main loop, one creates the object that corresponds to their need and calls the generating function GetRandomScatteringAngle(), which is specific to each object.<br>
+
+<tr><td><b>Revision 1.4</b><td>dccote
+<td>2003/09/15 14:55:49<td>+9 -8
+<tr><td colspan=4>
+<br>
+<br>
+The rejection method used is that of Kaplan,  Appl. Opt. 40, 16 p. 2773.<br>
+
+<tr><td><b>Revision 1.3</b><td>dccote
+<td>2003/04/16 14:44:10<td>+10 -3
+<tr><td colspan=4>
+<br>
+Very important change:<br>
+<br>
+1) we normalize the Stokes vector before the calculation<br>
+2) We normalize the sum with the integral of the Mueller matrix over d_Omega<br>
+   with a new function that has been added to MuellerM<br>
+<br>
+This is following Kaplan et al., who are much more explicit about what they do<br>
+for the rejection method.  However, I still have a slight bias in my implementation:<br>
+the normalization is done for S11(theta) only.  This is actually wrong, but not too much.<br>
+The integral should actually be performed every time with theta and phi since the sacattered<br>
+intensity depends on phi a tiny bit.  However, for now I don't. I checked the difference<br>
+with an without phi and the normalization is affected by ~ 1%.<br>
+I output a warning, and I keep going.<br>
+
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2003/03/18 00:33:20<td>+29 -16
+<tr><td colspan=4>
+<br>
+Rewritten to allow the use of different random number generators.<br>
+Macro definitions were reintroduced so that one can swap the algorithm<br>
+easily.<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/03/13 23:14:29<td>None
+<tr><td colspan=4>
+<br>
+New file with random angle selection function.<br>
+
+</table><br>
+<a name="UTimer.h">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: UTimer.h</font></B><br></td></tr>
+<tr><td><b>Revision 1.3</b><td>dccote
+<td>2004/04/01 19:18:24<td>+1 -5
+<tr><td colspan=4>
+<br>
+Finally fixed the UTimer implementation: there is no need to use clock(), one should use time().<br>
+Clock() will wrap, but not time().  Everything has been fixed to use time() instead of clock().<br>
+
+<tr><td><b>Revision 1.2</b><td>dccote
+<td>2004/02/03 15:08:27<td>+4 -0
+<tr><td colspan=4>
+First, chaged the numScatter table in MCObject to an array of double: numScatter is not an integer, it is the average number of scattering events.<br>
+Second I figured out why I was getting photons that had not scattered in the back direction: they are multiple reflections.  It was not an error in the code at all.  If one sets the index of the medium to 1, there will be not Fresnel reflections and everything is fine.<br>
+<br>
+In Photon.h I modified that stat collection routine:  I used to have numEvents for the number of scattering events and I would use that to tabulate the position of the photon. This was incorrect because a photon can move without scattering (Fresnel reflection is an example).  Hence I created another variable (mStatsMove) which keeps track of the number of times a photon has moved.  The tables has all the position+Stokes+direction the photon has passed through, including the initial values.  We still keep tyrack of the number of scattering events mNumEvents.<br>
+
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2003/11/19 20:47:59<td>None
+<tr><td colspan=4>
+<br>
+New files added to CVS project.  They used to be independent, they are now part of the project.<br>
+
+</table><br>
+<a name="updateDocumentation.sh">
+</a>
+<table border=0 cellspacing=1 cellpadding=3 bgcolor="#c7c7c7" width="100%">
+<tr>
+<td colspan=4 bgcolor="#7777FF"><b><font size="+1">
+Filename: updateDocumentation.sh</font></B><br></td></tr>
+<tr><td><b>Revision 1.1</b><td>dccote
+<td>2004/04/02 17:44:59<td>None
+<tr><td colspan=4>
+Simple script added to update documentation:<br>
+in the doc directory, one will get two sets of files: one for all the comments in the header files, and one for<br>
+a nicely formatted CVS log output.<br>
+
+</table><br>
+<hr>
+<center><font size="-1">
+File made using version 1.96 of <a href="http://cvs.sslug.dk/cvs2html" target="_new">cvs2html</a> by dccote at 2004-04-02 16:08   </font></center>
+</body>
+</html>

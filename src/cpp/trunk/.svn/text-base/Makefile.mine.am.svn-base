@@ -1,0 +1,70 @@
+#
+# Modify this file if you add a new source file to the Pol-MC
+# library.
+#
+# The is the base file used to generate the Makefile.
+# It is part of the autoconf/automake combo.
+# You only have this file to modify.  When you are done,
+# you should execute automake (type "automake") then run
+# configure again. 
+#
+
+# This Makefile makes two or three targets: polmc (example program)
+# simple (a simple example) and xpath (if libxml2 is installed)
+# After, it makes a library called libpolmc.a
+
+# If there libxml2 is present (set up by ./configure)
+# we compile "xpath", the program to extract sections of an 
+# XML file
+if XML_SUPPORT
+bin_PROGRAMS = polmc xpath 
+else
+bin_PROGRAMS = polmc
+endif
+# We always make a library with all the source files
+lib_LIBRARIES = libpolmc.a
+
+# polmc is an "example" program but can be quite useful in its own right.  
+# Any three-dimensional problem is long and tedious to describe, and there 
+# are too many specific needs to make a unique program that will satisfy
+# everybody.  polmc allows you to use a single object, a single source
+# and a single detector.
+polmc_SOURCES = main-private.cpp UTimer.cpp UTimer.h MCUtils.cpp MCUtils.h MCWorld.cpp MCWorld.h MCObject.cpp MCObject.h \
+    MCBox.cpp MCBox.h  MCInfiniteLayers.cpp MCInfiniteLayers.h fastinterpolate.cpp \
+    configfiles.cpp RealV.cpp StokesV.cpp MCRandoSscatteer.ccpp cubicspline.cpp mydebug.cpp \
+    rand.cpp mtRand.cpp mtRand.h MuellerM.h MuellerM.cpp Photon.cpp Photon.h RealV.h StokesV.h rand.h configfiles.h \
+    constants.h cubicspline.h mydebug.h MCRandomScatterer.h fastinterpolate.h MCEllipsoid.cpp MCEllipsoid.h \
+    MCCylinder.cpp MCCylinder.h MCSource.cpp MCSource.h MCDetector.cpp MCDetector.h
+polmc_LDFLAGS = $(LDFLAGS)
+
+# We make a library with all the source files, so other people (and myself) don't have to compile all of the files
+# every time they need to use Pol-MC for specific purposes.
+libpolmc_a_SOURCES = UTimer.cpp UTimer.h MCUtils.cpp MCUtils.h MCWorld.cpp MCWorld.h MCObject.cpp MCObject.h \
+    MCBox.cpp MCBox.h  MCInfiniteLayers.cpp MCInfiniteLayers.h fastinterpolate.cpp \
+    configfiles.cpp RealV.cpp StokesV.cpp MCRandomScatterer.cpp cubicspline.cpp mydebug.cpp \
+    rand.cpp mtRand.cpp mtRand.h MuellerM.h MuellerM.cpp Photon.cpp Photon.h RealV.h StokesV.h rand.h configfiles.h \
+    constants.h cubicspline.h mydebug.h MCRandomScatterer.h fastinterpolate.h MCEllipsoid.cpp MCEllipsoid.h \
+    MCCylinder.cpp MCCylinder.h MCSource.cpp MCSource.h MCDetector.cpp MCDetector.h
+
+library_includedir=$(includedir)
+library_include_HEADERS = UTimer.h MCUtils.h MCWorld.h MCObject.h \
+    MCBox.h  MCInfiniteLayers.h \
+    mtRand.h MuellerM.h Photon.h RealV.h StokesV.h rand.h configfiles.h \
+    constants.h cubicspline.h mydebug.h MCRandomScatterer.h fastinterpolate.h MCEllipsoid.h \
+    MCCylinder.h MCSource.h MCDetector.h
+    
+
+# XPath is a "XML path extractor".  It is a syntax that allows one
+# to extract absolutely anything from an XML file.
+xpath_SOURCES = xpath.cpp
+xpath_CXXFLAGS = -O2 -I$(includedir)
+
+# These are extra files that need to be distributed with polmc
+# Documentation and parameter files.
+dist_data_DATA = param.dat
+EXTRA_DIST = doc/MuellerM doc/RealV doc/mc__lfl.html doc/mc__rf.html doc/MCRandomScatterer doc/MasterTOC.html  doc/Photon doc/StokesV doc/mc.html doc/mc__lfu.html  doc/mydebug doc/MCObject
+
+# Forget this, this is not important:
+dist-hook:
+	rm -rf `find $(distdir)/doc -name CVS`
+

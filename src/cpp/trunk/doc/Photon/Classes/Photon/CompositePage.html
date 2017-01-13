@@ -1,0 +1,683 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html><style type="text/css"><!--a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style><head>
+    <title>Photon</title>
+	 <meta name="generator" content="HeaderDoc">
+</head><body bgcolor="#ffffff">
+<h1><font face="Geneva,Arial,Helvtica">Photon</font></h1><br>
+<a name="//apple_ref/doc/class/Photon" title="Photon"></a>
+<h2>Discussion</h2>
+<br><br>
+The class photon provides the necessary encapsulation for manipulating photon wavepackets
+with their polarization.  It keeps track of direction, distance traveled, position
+and weight, where the weight is initially 1 and is reduced due to partial absorption.
+The class Photon is an abstract class.  Other classes (PhotonBartel, PhotonCote, and PhotonMourant)
+implement some of the abstract functions following published implementations.<hr><br><h2>Member Functions</h2>
+<a name="HeaderDoc_functions"></a>
+<dl>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/Photon" target="_top">Photon</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/Photon/doubleRealV" target="_top">Photon(double, RealV)</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/Photon/doubledoubledoubledoubleRealVRealV" target="_top">Photon(double, double, double, double, RealV, RealV)</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/Photon/StokesV%38" target="_top">Photon(StokesV &)</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/MakeCopy" target="_top">MakeCopy</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/%126Photon" target="_top">~Photon</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/init" target="_top">init</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/IsDead" target="_top">IsDead</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/IsNotDead" target="_top">IsNotDead</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/GetWeight" target="_top">GetWeight</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/SetWeight/double" target="_top">SetWeight</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/MultiplyWeightBy/double" target="_top">MultiplyWeightBy</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/DecreaseWeightBy/double" target="_top">DecreaseWeightBy</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/GetStokesVectorInLocalFrame/StokesV%38" target="_top">GetStokesVectorInLocalFrame</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/SetStokesVector/StokesV%38" target="_top">SetStokesVector</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/RotateReferenceFrameInFresnelPlane/RealV%38" target="_top">RotateReferenceFrameInFresnelPlane</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/GetReflectionProbability/RealV%38doubledoubledoubledouble" target="_top">GetReflectionProbability</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/TransmitThroughInterface/RealV%38doubledoubledoubledoubledoubledouble" target="_top">TransmitThroughInterface</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/TransmitThrough/RealV%38doubledoubledoubledoubledoubledouble" target="_top">TransmitThrough</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/ReflectAtInterface/RealV%38doubledoubledoubledoubledoubledouble" target="_top">ReflectAtInterface</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/MultiplyStokesV/double" target="_top">MultiplyStokesV</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/ChangePropagationDirectionAroundEPerpBy/double" target="_top">ChangePropagationDirectionAroundEPerpBy</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/This%32function%32rotates%32the%32reference%32frame%32mEpara%32and%32mEperp%32by%32an%32angle/double" target="_top">This function rotates the reference frame mEpara and mEperp by an angle</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/RotateReferenceFrameAroundPropagationDirectionBy/double" target="_top">RotateReferenceFrameAroundPropagationDirectionBy</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/RotatePolarizationStateBy/double" target="_top">RotatePolarizationStateBy</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/GetLocalPosition" target="_top">GetLocalPosition</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/SetLocalPosition/RealV" target="_top">SetLocalPosition</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/SetGlobalPosition/RealV" target="_top">SetGlobalPosition</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/GetGlobalOrigin" target="_top">GetGlobalOrigin</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/SetGlobalOrigin/RealVbool" target="_top">SetGlobalOrigin</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/GetGlobalPosition" target="_top">GetGlobalPosition</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/GetDistanceTraveled" target="_top">GetDistanceTraveled</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/ResetDistanceTraveled" target="_top">ResetDistanceTraveled</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/GetNumberOfScatteringevents" target="_top">GetNumberOfScatteringevents</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/GetNumberOfScatteringEvents" target="_top">GetNumberOfScatteringEvents</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/GetPropagationDirectionInLabFrame" target="_top">GetPropagationDirectionInLabFrame</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/SetPropagationDirectionInLabFrame/RealV%38" target="_top">SetPropagationDirectionInLabFrame</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/IntensityThroughLinearPolarizer/StokesV%38RealV%38RealV%38RealV%38double%38double%38" target="_top">IntensityThroughLinearPolarizer</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/IntensityThroughCircularPolarizer/StokesV%38RealV%38RealV%38RealV%38double%38double%38" target="_top">IntensityThroughCircularPolarizer</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/MoveBy/double" target="_top">MoveBy</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/Photon/ScatterBy/doubledoubleMuellerM*" target="_top">ScatterBy</a></tt></dt>
+<dd></dd>
+</dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/ChangePropagationDirectionAroundEPerpBy/double; name=Photon::ChangePropagationDirectionAroundEPerpBy -->
+<a name="//apple_ref/cpp/instm/Photon/ChangePropagationDirectionAroundEPerpBy/double"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="ChangePropagationDirectionAroundEPerpBy">ChangePropagationDirectionAroundEPerpBy</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void ChangePropagationDirectionAroundEPerpBy(
+    double inTheta );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p><br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inTheta</em></tt></dt><dd>The angle by which the frame of reference is rotated</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/DecreaseWeightBy/double; name=Photon::DecreaseWeightBy -->
+<a name="//apple_ref/cpp/instm/Photon/DecreaseWeightBy/double"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="DecreaseWeightBy">DecreaseWeightBy</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual bool DecreaseWeightBy(
+    double inDeltaWeight ) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Decrease the weight of a photon by a constant
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inDeltaWeight</em></tt></dt><dd>The amount by which the photon is decreased</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>0 if weight is still within legal range [0,1], 1 if not.
+        </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/GetDistanceTraveled; name=Photon::GetDistanceTraveled -->
+<a name="//apple_ref/cpp/instm/Photon/GetDistanceTraveled"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetDistanceTraveled">GetDistanceTraveled</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual double GetDistanceTraveled(
+) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Returns the distance traveled by the photon.
+</p>
+<dl><dt><i>function result</i></dt><dd>The distance traveled
+        </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/GetGlobalOrigin; name=Photon::GetGlobalOrigin -->
+<a name="//apple_ref/cpp/instm/Photon/GetGlobalOrigin"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetGlobalOrigin">GetGlobalOrigin</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual RealV GetGlobalOrigin(
+) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Returns the position of the origin in global coordinates.
+</p>
+<dl><dt><i>function result</i></dt><dd>The vector representing the position (x,y,z).
+        </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/GetGlobalPosition; name=Photon::GetGlobalPosition -->
+<a name="//apple_ref/cpp/instm/Photon/GetGlobalPosition"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetGlobalPosition">GetGlobalPosition</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual RealV GetGlobalPosition(
+) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Returns the position of the photon in global coordinates.
+</p>
+<dl><dt><i>function result</i></dt><dd>The vector representing the position (x,y,z).
+         </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/GetLocalPosition; name=Photon::GetLocalPosition -->
+<a name="//apple_ref/cpp/instm/Photon/GetLocalPosition"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetLocalPosition">GetLocalPosition</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual RealV GetLocalPosition(
+) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Returns the position of the photon in local coordinates.
+</p>
+<dl><dt><i>function result</i></dt><dd>The vector representing the position (x,y,z).
+        </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/GetNumberOfScatteringEvents; name=Photon::GetNumberOfScatteringEvents -->
+<a name="//apple_ref/cpp/instm/Photon/GetNumberOfScatteringEvents"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetNumberOfScatteringEvents">GetNumberOfScatteringEvents</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual long GetNumberOfScatteringEvents(
+);
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Returns the number of scattering events suffered by the photon.
+</p>
+<dl><dt><i>function result</i></dt><dd>The number of scattering events
+         </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/GetNumberOfScatteringevents; name=Photon::GetNumberOfScatteringevents -->
+<a name="//apple_ref/cpp/instm/Photon/GetNumberOfScatteringevents"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetNumberOfScatteringevents">GetNumberOfScatteringevents</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual long GetNumberOfScatteringEvents(
+);
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Returns the number of scattering events suffered by the photon.
+</p>
+<dl><dt><i>function result</i></dt><dd>The number of scattering events
+         </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/GetPropagationDirectionInLabFrame; name=Photon::GetPropagationDirectionInLabFrame -->
+<a name="//apple_ref/cpp/instm/Photon/GetPropagationDirectionInLabFrame"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetPropagationDirectionInLabFrame">GetPropagationDirectionInLabFrame</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual RealV GetPropagationDirectionInLabFrame(
+) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Gives the propagation direction of the photon (mE3)
+</p>
+<dl><dt><i>function result</i></dt><dd>The propagation direction mE3 of the photon
+         </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/GetReflectionProbability/RealV%38doubledoubledoubledouble; name=Photon::GetReflectionProbability -->
+<a name="//apple_ref/cpp/instm/Photon/GetReflectionProbability/RealV%38doubledoubledoubledouble"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetReflectionProbability">GetReflectionProbability</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual double GetReflectionProbability(
+    RealV & inNormal,
+    double rp,
+    double rs,
+    double tp,
+    double ts );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Provides the Fresnel reflection and transmission coefficients
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inNormal</em></tt></dt><dd></dd>
+<dt><tt><em>inIndexFrom</em></tt></dt><dd></dd>
+<dt><tt><em>inIndexTO</em></tt></dt><dd></dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/GetStokesVectorInLocalFrame/StokesV%38; name=Photon::GetStokesVectorInLocalFrame -->
+<a name="//apple_ref/cpp/instm/Photon/GetStokesVectorInLocalFrame/StokesV%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetStokesVectorInLocalFrame">GetStokesVectorInLocalFrame</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void GetStokesVectorInLocalFrame(
+    StokesV & outS ) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Returns the Stokes vector in the local frame of reference of
+the photon.
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>outS</em></tt></dt><dd>The Stokes vector is returned in this parameter.</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/GetWeight; name=Photon::GetWeight -->
+<a name="//apple_ref/cpp/instm/Photon/GetWeight"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetWeight">GetWeight</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual double GetWeight(
+) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Returns the weight of a photon.  The weight should always be between 0 and 1.
+<br><br>
+</p>
+<dl><dt><i>function result</i></dt><dd>The weight of the photon.
+        </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/IntensityThroughCircularPolarizer/StokesV%38RealV%38RealV%38RealV%38double%38double%38; name=Photon::IntensityThroughCircularPolarizer -->
+<a name="//apple_ref/cpp/instm/Photon/IntensityThroughCircularPolarizer/StokesV%38RealV%38RealV%38RealV%38double%38double%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="IntensityThroughCircularPolarizer">IntensityThroughCircularPolarizer</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void IntensityThroughCircularPolarizer(
+    StokesV & inS,
+    RealV & inEparaLab,
+    RealV & inEperpLab,
+    RealV & inNormalLab,
+    double & outIRightCirc,
+    double & outILeftCirc );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Gives the intensity after photon has propagated through a circular polarizer
+</p>
+<dl><dt><i>function result</i></dt><dd>The intensity
+         </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/IntensityThroughLinearPolarizer/StokesV%38RealV%38RealV%38RealV%38double%38double%38; name=Photon::IntensityThroughLinearPolarizer -->
+<a name="//apple_ref/cpp/instm/Photon/IntensityThroughLinearPolarizer/StokesV%38RealV%38RealV%38RealV%38double%38double%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="IntensityThroughLinearPolarizer">IntensityThroughLinearPolarizer</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void IntensityThroughLinearPolarizer(
+    StokesV & inS,
+    RealV & inEparaLab,
+    RealV & inEperpLab,
+    RealV & inNormalLab,
+    double & outIpara,
+    double & outIperp ) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Gives the intensity after photon has propagated through linear polarizer
+</p>
+<dl><dt><i>function result</i></dt><dd>The intensity
+         </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/IsDead; name=Photon::IsDead -->
+<a name="//apple_ref/cpp/instm/Photon/IsDead"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="IsDead">IsDead</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>bool IsDead(
+) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>If the weight is zero, the photon is dead.
+<br><br>
+</p>
+<dl><dt><i>function result</i></dt><dd>True if photon is dead.
+        </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/IsNotDead; name=Photon::IsNotDead -->
+<a name="//apple_ref/cpp/instm/Photon/IsNotDead"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="IsNotDead">IsNotDead</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>bool IsNotDead(
+) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>If the weight is zero, the photon is dead.
+<br><br>
+</p>
+<dl><dt><i>function result</i></dt><dd>True if photon is not dead.
+        </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/MakeCopy; name=Photon::MakeCopy -->
+<a name="//apple_ref/cpp/instm/Photon/MakeCopy"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="MakeCopy">MakeCopy</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual Photon *MakeCopy(
+) = 0;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Make a copy of a photon from the another Photon.
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inPhoton</em></tt></dt><dd>The other Photon</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/MoveBy/double; name=Photon::MoveBy -->
+<a name="//apple_ref/cpp/instm/Photon/MoveBy/double"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="MoveBy">MoveBy</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void MoveBy(
+    double inDz ) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Displaces the photon by a specified distance, in the direction of the current
+propagation direction.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inDz</em></tt></dt><dd>distance by which the photon travels</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/MultiplyStokesV/double; name=Photon::MultiplyStokesV -->
+<a name="//apple_ref/cpp/instm/Photon/MultiplyStokesV/double"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="MultiplyStokesV">MultiplyStokesV</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void MultiplyStokesV(
+    double inFactor );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Multiply the Stokes vector of a photon by a constant
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inFactor</em></tt></dt><dd>The factor by which the Stokes vector is multiplied</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/MultiplyWeightBy/double; name=Photon::MultiplyWeightBy -->
+<a name="//apple_ref/cpp/instm/Photon/MultiplyWeightBy/double"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="MultiplyWeightBy">MultiplyWeightBy</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual bool MultiplyWeightBy(
+    double inFactor );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Multiply the weight of a photon by a constant
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inFactor</em></tt></dt><dd>The factor by which the photon is multiplied</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>0 if weight is still within legal range [0,1], 1 if not.
+        </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/Photon; name=Photon::Photon -->
+<a name="//apple_ref/cpp/instm/Photon/Photon"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="Photon">Photon</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>Photon(
+) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Default constructor
+		</p>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/Photon/StokesV%38; name=Photon::Photon -->
+<a name="//apple_ref/cpp/instm/Photon/Photon/StokesV%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="Photon(StokesV%32%38)">Photon(StokesV &)</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>Photon(
+    StokesV & inStokesVector );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Constructor of a photon from the a Stokes vector.
+Position is set to (0,0,0), weight to 1.
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inStokesVector</em></tt></dt><dd>The initial Stokes vector</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/Photon/doubleRealV; name=Photon::Photon -->
+<a name="//apple_ref/cpp/instm/Photon/Photon/doubleRealV"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="Photon(double%44%32RealV)">Photon(double, RealV)</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>Photon(
+    double inI,
+    RealV inEprop ) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Constructor of a photon from the four Stokes parameters.
+Position is set to (0,0,0), weight to 1.
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inI</em></tt></dt><dd>The intensity (first Stokes parameter)</dd>
+<dt><tt><em>inEprop</em></tt></dt><dd>The direction of propagation</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/Photon/doubledoubledoubledoubleRealVRealV; name=Photon::Photon -->
+<a name="//apple_ref/cpp/instm/Photon/Photon/doubledoubledoubledoubleRealVRealV"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="Photon(double%44%32double%44%32double%44%32double%44%32RealV%44%32RealV)">Photon(double, double, double, double, RealV, RealV)</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>Photon(
+    double inI,
+    double inQ,
+    double inU,
+    double inV,
+    RealV inEpara ,
+    RealV inEprop );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Constructor of a photon from the four Stokes parameters.
+Position is set to (0,0,0), weight to 1.
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inI</em></tt></dt><dd>The intensity (first Stokes parameter)</dd>
+<dt><tt><em>inQ</em></tt></dt><dd>The Q parameter (second Stokes parameter)</dd>
+<dt><tt><em>inU</em></tt></dt><dd>The U parameter (third Stokes parameter)</dd>
+<dt><tt><em>inV</em></tt></dt><dd>The V parameter (fourth Stokes parameter)</dd>
+<dt><tt><em>inEpara</em></tt></dt><dd>A vector in the parallel plane (can be Epara, but doesn't have to be):
+If Eprop and Epara are not perpendicular, Epara will be adjusted.</dd>
+<dt><tt><em>inEprop</em></tt></dt><dd>The direction of propagation</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/ReflectAtInterface/RealV%38doubledoubledoubledoubledoubledouble; name=Photon::ReflectAtInterface -->
+<a name="//apple_ref/cpp/instm/Photon/ReflectAtInterface/RealV%38doubledoubledoubledoubledoubledouble"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="ReflectAtInterface">ReflectAtInterface</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void ReflectAtInterface(
+    RealV & inNormal,
+    double inIndexFrom,
+    double inIndexTo,
+    double rp,
+    double rs,
+    double tp,
+    double ts );
+</pre></blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/ResetDistanceTraveled; name=Photon::ResetDistanceTraveled -->
+<a name="//apple_ref/cpp/instm/Photon/ResetDistanceTraveled"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="ResetDistanceTraveled">ResetDistanceTraveled</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void ResetDistanceTraveled(
+) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Resets distance traveled.
+         </p>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/RotatePolarizationStateBy/double; name=Photon::RotatePolarizationStateBy -->
+<a name="//apple_ref/cpp/instm/Photon/RotatePolarizationStateBy/double"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="RotatePolarizationStateBy">RotatePolarizationStateBy</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void RotatePolarizationStateBy(
+    double inPhi );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Rotates the polarization state by an angle phi.
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inPhi</em></tt></dt><dd>Angle by which the polarization state is rotated.  Can be positivie or negative.
+<br><br></dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/RotateReferenceFrameAroundPropagationDirectionBy/double; name=Photon::RotateReferenceFrameAroundPropagationDirectionBy -->
+<a name="//apple_ref/cpp/instm/Photon/RotateReferenceFrameAroundPropagationDirectionBy/double"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="RotateReferenceFrameAroundPropagationDirectionBy">RotateReferenceFrameAroundPropagationDirectionBy</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void 
+    RotateReferenceFrameAroundPropagationDirectionBy(
+    double inPhi ) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>phi around mEprop.  This does not change the polarization state of the StokesV: it only
+changes the reference frame.
+<br><br></p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inPhi</em></tt></dt><dd>The angle by which the frame of reference is rotated</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/RotateReferenceFrameInFresnelPlane/RealV%38; name=Photon::RotateReferenceFrameInFresnelPlane -->
+<a name="//apple_ref/cpp/instm/Photon/RotateReferenceFrameInFresnelPlane/RealV%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="RotateReferenceFrameInFresnelPlane">RotateReferenceFrameInFresnelPlane</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void RotateReferenceFrameInFresnelPlane(
+    RealV & inNormal ) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Rotates the reference plane of the Stokes vector in the Fresnel s and p plane
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inNormal</em></tt></dt><dd></dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/ScatterBy/doubledoubleMuellerM*; name=Photon::ScatterBy -->
+<a name="//apple_ref/cpp/instm/Photon/ScatterBy/doubledoubleMuellerM*"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="ScatterBy">ScatterBy</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void ScatterBy(
+    double inTheta,
+    double inPhi,
+    MuellerM *inM );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function scatters is the core of the class.  It computes the
+scattered photon at scattering angle  and azimuthal angle  given
+the Mueller matrix.   Upon return, the direction and reference frame
+of the photon will have changed.
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inTheta</em></tt></dt><dd>Scattering angle [0:pi] (not in degrees, in radians) measured in the same frame of reference as the Mueller matrix</dd>
+<dt><tt><em>inPhi</em></tt></dt><dd>Azimuthal angle [0:2 pi] (not in degrees, in radians) measured in the same frame of reference as the Mueller matrix</dd>
+<dt><tt><em>inM</em></tt></dt><dd>Mueller matrix of the scatterer, given in standard frame of reference (parallel and perpendicular)</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/SetGlobalOrigin/RealVbool; name=Photon::SetGlobalOrigin -->
+<a name="//apple_ref/cpp/instm/Photon/SetGlobalOrigin/RealVbool"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="SetGlobalOrigin">SetGlobalOrigin</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void SetGlobalOrigin(
+    RealV inNewOrigin,
+    bool inTransformLocalCoordinates ) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Sets the position of the origin in global coordinates, and adjust
+the mLocalPos to reflect it if demanded.
+         </p>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/SetGlobalPosition/RealV; name=Photon::SetGlobalPosition -->
+<a name="//apple_ref/cpp/instm/Photon/SetGlobalPosition/RealV"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="SetGlobalPosition">SetGlobalPosition</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void SetGlobalPosition(
+    RealV inPos ) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Sets the position of the photon in global coordinates.
+         </p>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/SetLocalPosition/RealV; name=Photon::SetLocalPosition -->
+<a name="//apple_ref/cpp/instm/Photon/SetLocalPosition/RealV"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="SetLocalPosition">SetLocalPosition</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void SetLocalPosition(
+    RealV inPos ) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Sets the position of the photon in local coordinates.
+         </p>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/SetPropagationDirectionInLabFrame/RealV%38; name=Photon::SetPropagationDirectionInLabFrame -->
+<a name="//apple_ref/cpp/instm/Photon/SetPropagationDirectionInLabFrame/RealV%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="SetPropagationDirectionInLabFrame">SetPropagationDirectionInLabFrame</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void SetPropagationDirectionInLabFrame(
+    RealV & inDirection );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Sets the propagation direction of the photon (mE3).  
+ePerp and ePara are valid, but arbitrary after
+function call.
+         </p>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/SetStokesVector/StokesV%38; name=Photon::SetStokesVector -->
+<a name="//apple_ref/cpp/instm/Photon/SetStokesVector/StokesV%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="SetStokesVector">SetStokesVector</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void SetStokesVector(
+    StokesV & inS ) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Sets the Stokes vector in the local frame of reference of
+the photon.  Important: this also sets direction of propagation and reference
+frame for polarization.
+         </p>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/SetWeight/double; name=Photon::SetWeight -->
+<a name="//apple_ref/cpp/instm/Photon/SetWeight/double"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="SetWeight">SetWeight</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void SetWeight(
+    double inWeight );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Set the weight of a photon
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inWeight</em></tt></dt><dd>The weight of the photon.</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/This%32function%32rotates%32the%32reference%32frame%32mEpara%32and%32mEperp%32by%32an%32angle/double; name=Photon::ThisfunctionrotatesthereferenceframemEparaandmEperpbyanangle -->
+<a name="//apple_ref/cpp/instm/Photon/This%32function%32rotates%32the%32reference%32frame%32mEpara%32and%32mEperp%32by%32an%32angle/double"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="This%32function%32rotates%32the%32reference%32frame%32mEpara%32and%32mEperp%32by%32an%32angle">This function rotates the reference frame mEpara and mEperp by an angle</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void 
+    RotateReferenceFrameAroundPropagationDirectionBy(
+    double inPhi ) ;
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>phi around mEprop.  This does not change the polarization state of the StokesV: it only
+changes the reference frame.
+<br><br></p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inPhi</em></tt></dt><dd>The angle by which the frame of reference is rotated</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/TransmitThrough/RealV%38doubledoubledoubledoubledoubledouble; name=Photon::TransmitThrough -->
+<a name="//apple_ref/cpp/instm/Photon/TransmitThrough/RealV%38doubledoubledoubledoubledoubledouble"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="TransmitThrough">TransmitThrough</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void TransmitThrough(
+    RealV & inNormal,
+    double inIndexFrom,
+    double inIndexTo,
+    double rp,
+    double rs,
+    double tp,
+    double ts ) ;
+</pre></blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/TransmitThroughInterface/RealV%38doubledoubledoubledoubledoubledouble; name=Photon::TransmitThroughInterface -->
+<a name="//apple_ref/cpp/instm/Photon/TransmitThroughInterface/RealV%38doubledoubledoubledoubledoubledouble"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="TransmitThroughInterface">TransmitThroughInterface</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void TransmitThrough(
+    RealV & inNormal,
+    double inIndexFrom,
+    double inIndexTo,
+    double rp,
+    double rs,
+    double tp,
+    double ts ) ;
+</pre></blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/init; name=Photon::init -->
+<a name="//apple_ref/cpp/instm/Photon/init"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="init">init</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void init(
+);
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Initialize anything that is left to initialize.
+        </p>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/Photon/%126Photon; name=Photon::~Photon -->
+<a name="//apple_ref/cpp/instm/Photon/%126Photon"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="%126Photon">~Photon</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual ~ Photon(
+);
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Destructor
+<br><br>
+         </p>
+<hr>
+<h2>Member Data</h2>
+<hr>
+<p>(Last Updated 2/23/2005)
+</p></body></html>

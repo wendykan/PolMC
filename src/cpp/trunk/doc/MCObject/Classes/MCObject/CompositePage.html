@@ -1,0 +1,1432 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html><style type="text/css"><!--a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style><head>
+    <title>MCObject</title>
+	 <meta name="generator" content="HeaderDoc">
+</head><body bgcolor="#ffffff">
+<h1><font face="Geneva,Arial,Helvtica">MCObject</font></h1><br>
+<a name="//apple_ref/doc/class/MCObject" title="MCObject"></a>
+<h2>Abstract</h2>
+ Class that takes care of propagating photons within objects. This is the top class for any object.
+<h2>Discussion</h2>
+ The class MCObject (for Monte Carlo object) is the base class for all "scattering/turbid" objects: it takes care of most of the complexity
+involved in propagating a photon in a scattering medium.  One does not instantiate an MCObject: you instantiate a derived class (MCBox, 
+MCInfiniteLayer, etc...).   MCObject moves the photon, decreases its weight, checks to see if it crosses 
+interfaces, calculates the probability of Fresnel reflection/transmission by querying the Photon when required, etc... 
+It does not assume any particular shape for the object, it does not assume any particular formalism for the scattering interaction, it does
+not assume anything about the photon (wavelength, polarization, etc...) and does not assume a particular random number generator or algorithm 
+for arbitrary distribution.
+<br><br>
+A scattering object may contain other scattering objects, which are "placed" inside this object using PlaceIntoObject() and local coordinates
+for the object.  Each specific object has its own local origin (look at the documentation, but for MCBox, it is the center of one face).
+<hr><br><h2>Member Functions</h2>
+<a name="HeaderDoc_functions"></a>
+<dl>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/MCObject%32constructor" target="_top">MCObject constructor</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/MCObject" target="_top">MCObject</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/MCObject%32constructor/doubledoubledoublebool" target="_top">MCObject constructor(double, double, double, bool)</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/MCObject/doubledoubledoublebool" target="_top">MCObject(double, double, double, bool)</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/MCObject%32dictionary%32constructor/mapstring%44string%38" target="_top">MCObject dictionary constructor</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/MCObject/mapstring%44string%38" target="_top">MCObject(map string , string &)</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/init/doubledoubledoublebool" target="_top">init(double, double, double, bool)</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/init/mapstring%44string%38" target="_top">init(map string , string &)</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/InitConnectivityTablesFromSurfaceElements" target="_top">InitConnectivityTablesFromSurfaceElements</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/InitSurfaceElementsFromConnectivityTables" target="_top">InitSurfaceElementsFromConnectivityTables</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/MCObject%32destructor" target="_top">MCObject destructor</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/%126MCObject" target="_top">~MCObject</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/FinishCreate" target="_top">FinishCreate</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/GetGlobalOrigin" target="_top">GetGlobalOrigin</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/SetGlobalOrigin/RealV" target="_top">SetGlobalOrigin</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/PropagateInObject/Photon*double" target="_top">PropagateInObject</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/GetName" target="_top">GetName</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/SetName/string" target="_top">SetName</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/GetIndexMedium/Photon*" target="_top">GetIndexMedium</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/SetIndexMedium/double" target="_top">SetIndexMedium</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/GetRandomScatteringDistance/Photon*" target="_top">GetRandomScatteringDistance</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/GetRandomScatteringAngles/Photon*double%38double%38" target="_top">GetRandomScatteringAngles</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/GetTotalExtinctionCoefficient/Photon*" target="_top">GetTotalExtinctionCoefficient</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/GetScatteringCoefficient/Photon*" target="_top">GetScatteringCoefficient</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/GetAbsorptionCoefficient/Photon*" target="_top">GetAbsorptionCoefficient</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/SetPropertiesByName/string%38double" target="_top">SetPropertiesByName</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/SetRandomScatterer/MCRandomScatterer*" target="_top">SetRandomScatterer</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/GetRandomScatterer" target="_top">GetRandomScatterer</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/GetSurfaceElements/vectorSurfaceElement*%38" target="_top">GetSurfaceElements</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/GetSurfaceElementsCloseToSegment/vectorSurfaceElement*%38RealVRealV" target="_top">GetSurfaceElementsCloseToSegment</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/GetSurfaceElementsWithinBox/vectorSurfaceElement*%38RealVRealV" target="_top">GetSurfaceElementsWithinBox</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/GetBoundarySurfaceElements/vectorSurfaceElement*%38" target="_top">GetBoundarySurfaceElements</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/PathCrossesInterface/Photon*doubleIntersectElement%38long" target="_top">PathCrossesInterface</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/IsTransmitted/Photon*IntersectElement%38" target="_top">IsTransmitted</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/TransmitThroughInterface/Photon*IntersectElement%38" target="_top">TransmitThroughInterface</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/ReflectAtInterface/Photon*IntersectElement%38" target="_top">ReflectAtInterface</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/clm/MCObject/SetFresnelCoefficients/IntersectElement%38" target="_top">SetFresnelCoefficients</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/RotateObject/doubledoubledouble" target="_top">RotateObject</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/ScaleObject/doubledoubledouble" target="_top">ScaleObject(double, double, double)</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/ScaleObject/double" target="_top">ScaleObject(double)</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/NormalizationFactorForInstensityStatistics/double" target="_top">NormalizationFactorForInstensityStatistics</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/DumpInterfacesToFile/ostream%38" target="_top">DumpInterfacesToFile</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/DumpGeometryToStream/ostream%38boollong" target="_top">DumpGeometryToStream</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/IsOutsideBoundingBox/Photon*" target="_top">IsOutsideBoundingBox</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/IsOutsideObject/Photon*" target="_top">IsOutsideObject(Photon *)</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/IsOutsideObject/RealV%38" target="_top">IsOutsideObject(RealV &)</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/IsInsideObject/Photon*" target="_top">IsInsideObject</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/IsGeometryConsistent" target="_top">IsGeometryConsistent</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/GetWorld" target="_top">GetWorld</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/SetWorld/MCWorld*" target="_top">SetWorld</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/GetRandomPointInsideObjectUniformDistribution" target="_top">GetRandomPointInsideObjectUniformDistribution</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/GetRandomPointInsideObjectEnergyDistribution" target="_top">GetRandomPointInsideObjectEnergyDistribution</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/GetBoundingBox/RealV%38RealV%38" target="_top">GetBoundingBox</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/DecreaseWeight/Photon*" target="_top">DecreaseWeight</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/MoveWithinObject/Photon*double" target="_top">MoveWithinObject</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/ScatterInObject/Photon*doubledouble" target="_top">ScatterInObject</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/ScoreOnSurface/Photon*IntersectElement%38" target="_top">ScoreOnSurface</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/ScoreInVolume/Photon*double" target="_top">ScoreInVolume</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/DumpInterfaceContructionParametersToStream/ostream%38long" target="_top">DumpInterfaceContructionParametersToStream</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/DumpEnergyDepositionToStream/ostream%38" target="_top">DumpEnergyDepositionToStream</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/DumpStokesVToStream/ostream%38long" target="_top">DumpStokesVToStream</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/DumpOtherStatsToStream/ostream%38long" target="_top">DumpOtherStatsToStream</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/cpp/instm/MCObject/DumpProximityListStatistics/ostream%38" target="_top">DumpProximityListStatistics</a></tt></dt>
+<dd></dd>
+</dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/DecreaseWeight/Photon*; name=MCObject::DecreaseWeight -->
+<a name="//apple_ref/cpp/instm/MCObject/DecreaseWeight/Photon*"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="DecreaseWeight">DecreaseWeight</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void DecreaseWeight(
+    Photon *ioPhoton );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This decreases the weight of the photon after a scattering event
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>ioPhoton</em></tt></dt><dd></dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/DumpEnergyDepositionToStream/ostream%38; name=MCObject::DumpEnergyDepositionToStream -->
+<a name="//apple_ref/cpp/instm/MCObject/DumpEnergyDepositionToStream/ostream%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="DumpEnergyDepositionToStream">DumpEnergyDepositionToStream</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void DumpEnergyDepositionToStream(
+    ostream & out );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This is part of the "Dump" function series to save everything to stream (output or file).
+Energy deposited is saved to stream.  Note that only MCWorld will call this function.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>out</em></tt></dt><dd>The output stream</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/DumpGeometryToStream/ostream%38boollong; name=MCObject::DumpGeometryToStream -->
+<a name="//apple_ref/cpp/instm/MCObject/DumpGeometryToStream/ostream%38boollong"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="DumpGeometryToStream">DumpGeometryToStream</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void DumpGeometryToStream(
+    ostream & out,
+    bool inAlsoIncludedObjects,
+    long inFormat = kMathematicaPolygons );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This is part of the "Dump" function series to save everything to stream (output or file).
+This will save the geometry to stream in the format demanded by the user. The formats
+are kMathematicaPolygons (for mathematica), kGenericXML (for this program).
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>out</em></tt></dt><dd></dd>
+<dt><tt><em>inAlsoIncludedObjects</em></tt></dt><dd></dd>
+<dt><tt><em>inFormat</em></tt></dt><dd></dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/DumpInterfaceContructionParametersToStream/ostream%38long; name=MCObject::DumpInterfaceContructionParametersToStream -->
+<a name="//apple_ref/cpp/instm/MCObject/DumpInterfaceContructionParametersToStream/ostream%38long"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="DumpInterfaceContructionParametersToStream">DumpInterfaceContructionParametersToStream</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void DumpInterfaceContructionParametersToStream(
+    ostream & out,
+    long interface );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This is part of the "Dump" function series to save everything to stream (output or file).
+All the parameters related to given interface (normal, a, b vectors, etc...) are output
+to stream
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>out</em></tt></dt><dd>The output stream</dd>
+<dt><tt><em>interface</em></tt></dt><dd>The interface</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/DumpInterfacesToFile/ostream%38; name=MCObject::DumpInterfacesToFile -->
+<a name="//apple_ref/cpp/instm/MCObject/DumpInterfacesToFile/ostream%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="DumpInterfacesToFile">DumpInterfacesToFile</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void DumpInterfacesToFile(
+    ostream & out );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This is part of the "Dump" function series to save everything to stream (output or file).
+This will cycle through all the interfaces (or surface elements) of the object and save
+their information to stream.  This function is called from DumpToFile()
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>out</em></tt></dt><dd></dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/DumpOtherStatsToStream/ostream%38long; name=MCObject::DumpOtherStatsToStream -->
+<a name="//apple_ref/cpp/instm/MCObject/DumpOtherStatsToStream/ostream%38long"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="DumpOtherStatsToStream">DumpOtherStatsToStream</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void DumpOtherStatsToStream(
+    ostream & out,
+    long interface );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This is part of the "Dump" function series to save everything to stream (output or file).
+It outputs to stream the other stats for the photons that have crossed that interface and 
+that are not Stokes-vector related (path length for instance).
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>out</em></tt></dt><dd>The output stream</dd>
+<dt><tt><em>interface</em></tt></dt><dd>The interface</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/DumpProximityListStatistics/ostream%38; name=MCObject::DumpProximityListStatistics -->
+<a name="//apple_ref/cpp/instm/MCObject/DumpProximityListStatistics/ostream%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="DumpProximityListStatistics">DumpProximityListStatistics</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void DumpProximityListStatistics(
+    ostream & out );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Dump the proximity list statistics
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>out</em></tt></dt><dd>The output stream</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/DumpStokesVToStream/ostream%38long; name=MCObject::DumpStokesVToStream -->
+<a name="//apple_ref/cpp/instm/MCObject/DumpStokesVToStream/ostream%38long"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="DumpStokesVToStream">DumpStokesVToStream</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void DumpStokesVToStream(
+    ostream & out,
+    long interface );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This is part of the "Dump" function series to save everything to stream (output or file).
+It saves the Stokes vector information accumulated for the photons that have crossed that interface.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>out</em></tt></dt><dd>Output strean</dd>
+<dt><tt><em>interface</em></tt></dt><dd>The interface</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/FinishCreate; name=MCObject::FinishCreate -->
+<a name="//apple_ref/cpp/instm/MCObject/FinishCreate"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="FinishCreate">FinishCreate</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>void FinishCreate(
+);
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function must be called by subclasses when they are done creating themselves
+to ensure MCObject has a chance to finish creating various tables
+	 </p>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/GetAbsorptionCoefficient/Photon*; name=MCObject::GetAbsorptionCoefficient -->
+<a name="//apple_ref/cpp/instm/MCObject/GetAbsorptionCoefficient/Photon*"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetAbsorptionCoefficient">GetAbsorptionCoefficient</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual double GetAbsorptionCoefficient(
+    Photon *inPhoton );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Get the absorption coefficient for this photon.  This function actually calls the random scatterer class associated with this object. 
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>ioPhoton</em></tt></dt><dd>The photon</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>the absorption coefficient. For discrete scaterers, this is mu_a. 
+	 </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/GetBoundarySurfaceElements/vectorSurfaceElement*%38; name=MCObject::GetBoundarySurfaceElements -->
+<a name="//apple_ref/cpp/instm/MCObject/GetBoundarySurfaceElements/vectorSurfaceElement*%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetBoundarySurfaceElements">GetBoundarySurfaceElements</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual long GetBoundarySurfaceElements(
+    vector< SurfaceElement * >& outSe );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Get an array of all surface elements that define the boundary of this object
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>outSe</em></tt></dt><dd>A reference to an array pointer that will contain the surface elements.</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>the number of elements.  Indexing the array goes from 0 to (numOfElements-1).
+	 </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/GetBoundingBox/RealV%38RealV%38; name=MCObject::GetBoundingBox -->
+<a name="//apple_ref/cpp/instm/MCObject/GetBoundingBox/RealV%38RealV%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetBoundingBox">GetBoundingBox</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void GetBoundingBox(
+    RealV & outTopLeft,
+    RealV & outBottomRight );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function is under development. It returns the two opposite corners of a box
+that contains the object.
+	 </p>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/GetGlobalOrigin; name=MCObject::GetGlobalOrigin -->
+<a name="//apple_ref/cpp/instm/MCObject/GetGlobalOrigin"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetGlobalOrigin">GetGlobalOrigin</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual RealV GetGlobalOrigin(
+);
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Returns the origin of the object in global coordinates as a RealV.  The definition of where this origin is on the object depends on the subclass.
+</p>
+<dl><dt><i>function result</i></dt><dd>the origin of the object in global coordinates
+	 </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/GetIndexMedium/Photon*; name=MCObject::GetIndexMedium -->
+<a name="//apple_ref/cpp/instm/MCObject/GetIndexMedium/Photon*"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetIndexMedium">GetIndexMedium</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>double GetIndexMedium(
+    Photon *inPhoton );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Get the index of the medium
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>ioPhoton</em></tt></dt><dd>The photon</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>The index of the medium
+	 </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/GetName; name=MCObject::GetName -->
+<a name="//apple_ref/cpp/instm/MCObject/GetName"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetName">GetName</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>string GetName(
+);
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Get name of object
+</p>
+<dl><dt><i>function result</i></dt><dd>The name of the object as a string. This is used for convenience in the output file.
+	 </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/GetRandomPointInsideObjectEnergyDistribution; name=MCObject::GetRandomPointInsideObjectEnergyDistribution -->
+<a name="//apple_ref/cpp/instm/MCObject/GetRandomPointInsideObjectEnergyDistribution"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetRandomPointInsideObjectEnergyDistribution">GetRandomPointInsideObjectEnergyDistribution</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual RealV GetRandomPointInsideObjectEnergyDistribution(
+);
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function is under development. It will be used for obtaining a point distributed according
+to energy distribution inside object.
+	 </p>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/GetRandomPointInsideObjectUniformDistribution; name=MCObject::GetRandomPointInsideObjectUniformDistribution -->
+<a name="//apple_ref/cpp/instm/MCObject/GetRandomPointInsideObjectUniformDistribution"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetRandomPointInsideObjectUniformDistribution">GetRandomPointInsideObjectUniformDistribution</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual RealV GetRandomPointInsideObjectUniformDistribution(
+);
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function is under development. It will be used for obtaining a point uniformly distributed inside object.
+	 </p>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/GetRandomScatterer; name=MCObject::GetRandomScatterer -->
+<a name="//apple_ref/cpp/instm/MCObject/GetRandomScatterer"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetRandomScatterer">GetRandomScatterer</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>MCRandomScatterer *GetRandomScatterer(
+);
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Get the object responsible for all the random interactions. MCRandomScatterer takes care of all properties and action related 
+to the scatterers.  This MCObject does not really need to know the details of the scattering and will simply call the appropriate function of MCRandomScatter. 
+<br><br>
+</p>
+<dl><dt><i>function result</i></dt><dd>The random scatterer for this object. It is owned by MCObject after the call and should not be freed. 
+	 </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/GetRandomScatteringAngles/Photon*double%38double%38; name=MCObject::GetRandomScatteringAngles -->
+<a name="//apple_ref/cpp/instm/MCObject/GetRandomScatteringAngles/Photon*double%38double%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetRandomScatteringAngles">GetRandomScatteringAngles</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>void GetRandomScatteringAngles(
+    Photon *ioPhoton,
+    double & outTheta,
+    double & outPhi );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Get a random scattering angles for this photon.  This function actually calls the random scatterer class associated 
+with this object.  The polarization of the photon may be used for calculation.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>ioPhoton</em></tt></dt><dd>The photon</dd>
+<dt><tt><em>outTheta</em></tt></dt><dd>The scattering angle</dd>
+<dt><tt><em>outPhi</em></tt></dt><dd>The angle that the new scattering plane makes with the current scattering plane</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/GetRandomScatteringDistance/Photon*; name=MCObject::GetRandomScatteringDistance -->
+<a name="//apple_ref/cpp/instm/MCObject/GetRandomScatteringDistance/Photon*"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetRandomScatteringDistance">GetRandomScatteringDistance</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>double GetRandomScatteringDistance(
+    Photon *ioPhoton );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Get a random scattering distance for this photon.  This function actually calls the random scatterer class associated 
+with this object
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>ioPhoton</em></tt></dt><dd>The photon</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>Random scattering distance
+	 </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/GetScatteringCoefficient/Photon*; name=MCObject::GetScatteringCoefficient -->
+<a name="//apple_ref/cpp/instm/MCObject/GetScatteringCoefficient/Photon*"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetScatteringCoefficient">GetScatteringCoefficient</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual double GetScatteringCoefficient(
+    Photon *inPhoton );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Get the scattering coefficient for this photon.  This function actually calls the random scatterer class associated with this object. 
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>ioPhoton</em></tt></dt><dd>The photon</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>the scattering coefficient. For discrete scaterers, this is mu_s. 
+	 </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/GetSurfaceElements/vectorSurfaceElement*%38; name=MCObject::GetSurfaceElements -->
+<a name="//apple_ref/cpp/instm/MCObject/GetSurfaceElements/vectorSurfaceElement*%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetSurfaceElements">GetSurfaceElements</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual long GetSurfaceElements(
+    vector< SurfaceElement * >& outSe );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Get an array of all surface elements that define this object (including other objects inside)
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>outSe</em></tt></dt><dd>A reference to an array pointer that will contain the surface elements.</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>the number of elements.  Indexing the array goes from 0 to (numOfElements-1).
+	 </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/GetSurfaceElementsCloseToSegment/vectorSurfaceElement*%38RealVRealV; name=MCObject::GetSurfaceElementsCloseToSegment -->
+<a name="//apple_ref/cpp/instm/MCObject/GetSurfaceElementsCloseToSegment/vectorSurfaceElement*%38RealVRealV"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetSurfaceElementsCloseToSegment">GetSurfaceElementsCloseToSegment</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual long GetSurfaceElementsCloseToSegment(
+    vector< SurfaceElement * >& outSe,
+    RealV inStart,
+    RealV inEnd );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Get an array of all surface elements close to line segment
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>outSe</em></tt></dt><dd>A reference to an array pointer that will contain the surface elements.</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>the number of elements.  Indexing the array goes from 0 to (numOfElements-1).
+	 </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/GetSurfaceElementsWithinBox/vectorSurfaceElement*%38RealVRealV; name=MCObject::GetSurfaceElementsWithinBox -->
+<a name="//apple_ref/cpp/instm/MCObject/GetSurfaceElementsWithinBox/vectorSurfaceElement*%38RealVRealV"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetSurfaceElementsWithinBox">GetSurfaceElementsWithinBox</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual long GetSurfaceElementsWithinBox(
+    vector< SurfaceElement * >& outSe,
+    RealV inBottom,
+    RealV inTop );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Get an array of all surface elements within a given box
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>outSe</em></tt></dt><dd>A reference to an array pointer that will contain the surface elements.</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>the number of elements.  Indexing the array goes from 0 to (numOfElements-1).
+	 </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/GetTotalExtinctionCoefficient/Photon*; name=MCObject::GetTotalExtinctionCoefficient -->
+<a name="//apple_ref/cpp/instm/MCObject/GetTotalExtinctionCoefficient/Photon*"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetTotalExtinctionCoefficient">GetTotalExtinctionCoefficient</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual double GetTotalExtinctionCoefficient(
+    Photon *inPhoton );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Get the total extinction coefficient for this photon.  This function actually calls the random scatterer class associated with this object. 
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>ioPhoton</em></tt></dt><dd>The photon</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>the total extinction coefficient. For discrete scaterers, this is mu_s + mu_a. 
+	 </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/GetWorld; name=MCObject::GetWorld -->
+<a name="//apple_ref/cpp/instm/MCObject/GetWorld"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetWorld">GetWorld</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>MCWorld *GetWorld(
+);
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Obtain the highest object that contains this object (i.e. world)
+	 </p>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/InitConnectivityTablesFromSurfaceElements; name=MCObject::InitConnectivityTablesFromSurfaceElements -->
+<a name="//apple_ref/cpp/instm/MCObject/InitConnectivityTablesFromSurfaceElements"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="InitConnectivityTablesFromSurfaceElements">InitConnectivityTablesFromSurfaceElements</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>bool InitConnectivityTablesFromSurfaceElements(
+);
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function is under development.  It initializes a list of faces, vertices, common
+in 3D graphics programs (Matlab, .obj, etc...)
+	 </p>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/InitSurfaceElementsFromConnectivityTables; name=MCObject::InitSurfaceElementsFromConnectivityTables -->
+<a name="//apple_ref/cpp/instm/MCObject/InitSurfaceElementsFromConnectivityTables"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="InitSurfaceElementsFromConnectivityTables">InitSurfaceElementsFromConnectivityTables</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>bool InitSurfaceElementsFromConnectivityTables(
+);
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function is under development.  It initializes the object from a list of
+faces and vertices.
+	 </p>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/IsGeometryConsistent; name=MCObject::IsGeometryConsistent -->
+<a name="//apple_ref/cpp/instm/MCObject/IsGeometryConsistent"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="IsGeometryConsistent">IsGeometryConsistent</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>bool IsGeometryConsistent(
+);
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>The function makes multiple checks to ensure everything was entered correctly or coded correctly.
+It verifies the indices at interfaces (inside, outside) and other parameters.
+</p>
+<dl><dt><i>function result</i></dt><dd>If the geometry is consistent, return true.  If it returns false, there might be a problem in the code.
+	 </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/IsInsideObject/Photon*; name=MCObject::IsInsideObject -->
+<a name="//apple_ref/cpp/instm/MCObject/IsInsideObject/Photon*"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="IsInsideObject">IsInsideObject</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual bool IsInsideObject(
+    Photon *ioPhoton );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function serves a debugging purpose only. If photon is inside object, the function should return true.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>ioPhoton</em></tt></dt><dd></dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/IsOutsideBoundingBox/Photon*; name=MCObject::IsOutsideBoundingBox -->
+<a name="//apple_ref/cpp/instm/MCObject/IsOutsideBoundingBox/Photon*"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="IsOutsideBoundingBox">IsOutsideBoundingBox</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>bool IsOutsideBoundingBox(
+    Photon *ioPhoton );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function serves a debugging purpose only.
+If the photon is outside the bounding box of the object, this function  returns true. 
+The photon is for sure outside of the object at this point.  It does not mean that if the function
+returns false, the photon is outside: the bounding box is larger than the object.  However,
+it is much faster to compute whether or not the photon is inside a box.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>ioPhoton</em></tt></dt><dd>the photon</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>true if photon is outisde bounding box
+	 </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/IsOutsideObject/Photon*; name=MCObject::IsOutsideObject -->
+<a name="//apple_ref/cpp/instm/MCObject/IsOutsideObject/Photon*"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="IsOutsideObject(Photon%32*)">IsOutsideObject(Photon *)</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>bool IsOutsideObject(
+    Photon *ioPhoton );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function serves a debugging purpose only.
+If the photon is outside the object, this function should return true.  This will actually 
+call the function IsOutsideObject(RealV& inLocalPosition) with the position of the photon.
+Objects should not override this function, they should override 
+IsOutsideObject(RealV& inLocalPosition); 
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>ioPhoton</em></tt></dt><dd></dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>true if IsOutsideObject(RealV& inLocalPosition) returns true.
+	 </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/IsOutsideObject/RealV%38; name=MCObject::IsOutsideObject -->
+<a name="//apple_ref/cpp/instm/MCObject/IsOutsideObject/RealV%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="IsOutsideObject(RealV%32%38)">IsOutsideObject(RealV &)</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual bool IsOutsideObject(
+    RealV & inLocalPosition );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function serves a debugging purpose only. If the position is outside, the function should return true.
+The default implementation of this function throws an exception.  Subclasses must override.
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inLocalPosition</em></tt></dt><dd>The position to check</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>true if object is outside object.
+	 </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/IsTransmitted/Photon*IntersectElement%38; name=MCObject::IsTransmitted -->
+<a name="//apple_ref/cpp/instm/MCObject/IsTransmitted/Photon*IntersectElement%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="IsTransmitted">IsTransmitted</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual bool IsTransmitted(
+    Photon *ioPhoton,
+    IntersectElement & inIntersectElement );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>The function is called with an IntersectElement to determine whether or not the photon is transmitted.
+This is determined by calculating the Fresnel coefficients at that interface, at that angle of incidence
+with that polarization state.  The photon isn't moved or transformed.  The photon TransmitThrough should
+be called if the result is true, ReflectAtInterface() should be called if it's false.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>ioPhoton</em></tt></dt><dd>The photon</dd>
+<dt><tt><em>inIntersectElement</em></tt></dt><dd>Reference to an intersect element which contains all the information about the intersection point
+and interface.  This is obtained from PathCrossesInterface()</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>whether or not the photon should be transmitted
+	 </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/MCObject; name=MCObject::MCObject -->
+<a name="//apple_ref/cpp/instm/MCObject/MCObject"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="MCObject">MCObject</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>MCObject(
+);
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Default constructor for MCObject.  It will initialize everything to sane values (index in and out is zero) 
+and assign a MCRandomScatterer with mu_s and mu_a of zero.
+	 </p>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/MCObject%32constructor; name=MCObject::MCObjectconstructor -->
+<a name="//apple_ref/cpp/instm/MCObject/MCObject%32constructor"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="MCObject%32constructor">MCObject constructor</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>MCObject(
+);
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Default constructor for MCObject.  It will initialize everything to sane values (index in and out is zero) 
+and assign a MCRandomScatterer with mu_s and mu_a of zero.
+	 </p>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/MCObject%32constructor/doubledoubledoublebool; name=MCObject::MCObjectconstructor -->
+<a name="//apple_ref/cpp/instm/MCObject/MCObject%32constructor/doubledoubledoublebool"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="MCObject%32constructor(double%44%32double%44%32double%44%32bool)">MCObject constructor(double, double, double, bool)</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>MCObject(
+    double inIndexMedium,
+    double inIndexOutside,
+    double inRotationPerCmInClearSpace,
+    bool inUseNextEventEstimator );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Constructor for MCObject that accepts parameters common to any object of any shape.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inIndexMedium</em></tt></dt><dd>Index of refraction of the medium contained in the object</dd>
+<dt><tt><em>inIndexOutside</em></tt></dt><dd>Index of refraction of the medium outside the object</dd>
+<dt><tt><em>inRotationPerCmInClearSpace</em></tt></dt><dd>Optical activity, given in radian per centimer in clear space</dd>
+<dt><tt><em>inAcceptanceCosineElements</em></tt></dt><dd>Number of bins used for storing the exit angle of a photon with the normal to an interface</dd>
+<dt><tt><em>inUseNextEventEstimator</em></tt></dt><dd></dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/MCObject%32destructor; name=MCObject::MCObjectdestructor -->
+<a name="//apple_ref/cpp/instm/MCObject/MCObject%32destructor"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="MCObject%32destructor">MCObject destructor</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual ~ MCObject(
+);
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>The destructor is responsible for destroying anything it allocates except the stats memory which must be freed
+by the sub class (see functions below AllocateStatsMemory() and FreeStatsMemory())
+	 </p>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/MCObject%32dictionary%32constructor/mapstring%44string%38; name=MCObject::MCObjectdictionaryconstructor -->
+<a name="//apple_ref/cpp/instm/MCObject/MCObject%32dictionary%32constructor/mapstring%44string%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="MCObject%32dictionary%32constructor">MCObject dictionary constructor</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>MCObject(
+    map< string, string >& inDict );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Constructor for MCObject that accepts parameters common to any object of any shape in the form of a string dictionary (or 'hash' table, or
+associative array).  It is not recommended (use the other constructors) but can be use for simplicity.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inDict</em></tt></dt><dd>Associative array (map<string,string>) that must contain index_outside, index_med and may contain acceptanceCosElements, rotationPerCmInClearSpace
+Vol_Nx and such, and useNextEventEstimator.</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/MCObject/doubledoubledoublebool; name=MCObject::MCObject -->
+<a name="//apple_ref/cpp/instm/MCObject/MCObject/doubledoubledoublebool"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="MCObject(double%44%32double%44%32double%44%32bool)">MCObject(double, double, double, bool)</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>MCObject(
+    double inIndexMedium,
+    double inIndexOutside,
+    double inRotationPerCmInClearSpace,
+    bool inUseNextEventEstimator );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Constructor for MCObject that accepts parameters common to any object of any shape.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inIndexMedium</em></tt></dt><dd>Index of refraction of the medium contained in the object</dd>
+<dt><tt><em>inIndexOutside</em></tt></dt><dd>Index of refraction of the medium outside the object</dd>
+<dt><tt><em>inRotationPerCmInClearSpace</em></tt></dt><dd>Optical activity, given in radian per centimer in clear space</dd>
+<dt><tt><em>inAcceptanceCosineElements</em></tt></dt><dd>Number of bins used for storing the exit angle of a photon with the normal to an interface</dd>
+<dt><tt><em>inUseNextEventEstimator</em></tt></dt><dd></dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/MCObject/mapstring%44string%38; name=MCObject::MCObject -->
+<a name="//apple_ref/cpp/instm/MCObject/MCObject/mapstring%44string%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="MCObject(map%32string%32%44%32string%32%38)">MCObject(map string , string &)</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>MCObject(
+    map< string, string >& inDict );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Constructor for MCObject that accepts parameters common to any object of any shape in the form of a string dictionary (or 'hash' table, or
+associative array).  It is not recommended (use the other constructors) but can be use for simplicity.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inDict</em></tt></dt><dd>Associative array (map<string,string>) that must contain index_outside, index_med and may contain acceptanceCosElements, rotationPerCmInClearSpace
+Vol_Nx and such, and useNextEventEstimator.</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/MoveWithinObject/Photon*double; name=MCObject::MoveWithinObject -->
+<a name="//apple_ref/cpp/instm/MCObject/MoveWithinObject/Photon*double"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="MoveWithinObject">MoveWithinObject</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void MoveWithinObject(
+    Photon *ioPhoton,
+    double inDist );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>The photon is displaced by a given distance in the object (between scattering events). 
+If the medium is optically active, the photon polarization is rotated.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>ioPhoton</em></tt></dt><dd>The photon to move</dd>
+<dt><tt><em>inDist</em></tt></dt><dd>The distance by which the photon moves</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/NormalizationFactorForInstensityStatistics/double; name=MCObject::NormalizationFactorForInstensityStatistics -->
+<a name="//apple_ref/cpp/instm/MCObject/NormalizationFactorForInstensityStatistics/double"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="NormalizationFactorForInstensityStatistics">NormalizationFactorForInstensityStatistics</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void NormalizationFactorForInstensityStatistics(
+    double inNorm );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>The transmittance at interfaces is normalized with this factor when
+the DumpXXX() functions are called.  Note that the total number of photons
+launched in this object is not equal to the total number of launched photons by the
+source: there are reflections at interfaces (usually).  However, most of the time
+we want transmittance, reflectance and absorbance in reference to the source
+intensity, not the photons that make it inside the object.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inNorm</em></tt></dt><dd>Normalization factor.  Usually obtained from MCSource::GetNumberOfPhotonsLaunched()
+<br><br></dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/PathCrossesInterface/Photon*doubleIntersectElement%38long; name=MCObject::PathCrossesInterface -->
+<a name="//apple_ref/cpp/instm/MCObject/PathCrossesInterface/Photon*doubleIntersectElement%38long"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="PathCrossesInterface">PathCrossesInterface</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual long PathCrossesInterface(
+    Photon *ioPhoton,
+    double inDist,
+    IntersectElement & outIntersectElement,
+    long inCrossingEvents );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>The most critical function (in terms of speed) for the computation.  This function returns whether or not a photon
+path crosses a surface element and computes the intersection point.  It will call recusively the same function
+for any contained object if inOnlyInto is true.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>ioPhoton</em></tt></dt><dd>The photon</dd>
+<dt><tt><em>inDist</em></tt></dt><dd>Distance by which the photon could travel</dd>
+<dt><tt><em>outIntersectElement</em></tt></dt><dd>Reference to an intersect element which will contain all the information about the intersection point</dd>
+<dt><tt><em>inCrossingEvents</em></tt></dt><dd>What crossing events are considered</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>The interface number that was crossed
+	 </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/PropagateInObject/Photon*double; name=MCObject::PropagateInObject -->
+<a name="//apple_ref/cpp/instm/MCObject/PropagateInObject/Photon*double"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="PropagateInObject">PropagateInObject</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual IntersectElement PropagateInObject(
+    Photon *ioPhoton,
+    double inDist = 0 );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This is the single most important function of this class, since it takes care of propagating
+a photon until it crosses an interface an exits the object.  If other objects are included in this object
+the photon will be moved into it upon crossing their surface. If useNextEventEstimator is set to true,
+it could use this variance reduction technique (see code).
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>ioPhoton</em></tt></dt><dd>Pointer to a photon the content of which will be modified upon scattering and displacement.</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>The last IntersectElement crossed by the photon
+	 </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/ReflectAtInterface/Photon*IntersectElement%38; name=MCObject::ReflectAtInterface -->
+<a name="//apple_ref/cpp/instm/MCObject/ReflectAtInterface/Photon*IntersectElement%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="ReflectAtInterface">ReflectAtInterface</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void ReflectAtInterface(
+    Photon *ioPhoton,
+    IntersectElement & ioIntersectElement );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function actually transforms the photon upon reflection at the given interface. 
+This means the photon is reflected, and its polarization is transformed according to the Fresnel coefficients
+the polarization state and the angle of incidence. Note that the object doesn't actually do the transoromation:
+it calls the photon's function ReflectAtInterface() with its relevant parameters to do the actul work.
+ScoreOnSurface() is NOT called since the photon never crossed the interface.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>ioPhoton</em></tt></dt><dd>The photon</dd>
+<dt><tt><em>inIntersectElement</em></tt></dt><dd>Reference to an intersect element which contains all the information about the intersection point
+and interface.  This is obtained from PathCrossesInterface()</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/RotateObject/doubledoubledouble; name=MCObject::RotateObject -->
+<a name="//apple_ref/cpp/instm/MCObject/RotateObject/doubledoubledouble"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="RotateObject">RotateObject</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void RotateObject(
+    double inAlpha,
+    double inBeta,
+    double inGamma );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This rotates the object by an angle alpha around the local x axis, beta around y and 
+gamma around z.  The sign of rotation is determined by the right-hand rule: with your thumb
+pointing in the direction of the axis, your hand folds towards the positive direction.
+If the object contains other objects, this function will fail (and throw an exception).   
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inAlpha</em></tt></dt><dd>Amount by which the object is rotated around the x axis.</dd>
+<dt><tt><em>inBeta</em></tt></dt><dd>Amount by which the object is rotated around the y axis.</dd>
+<dt><tt><em>inGamma</em></tt></dt><dd>Amount by which the object is rotated around the z axis.</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/ScaleObject/double; name=MCObject::ScaleObject -->
+<a name="//apple_ref/cpp/instm/MCObject/ScaleObject/double"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="ScaleObject(double)">ScaleObject(double)</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void ScaleObject(
+    double inScale );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function scales the object along x, y and z (local frame)
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inScale</em></tt></dt><dd>Factor to scale along all axis</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/ScaleObject/doubledoubledouble; name=MCObject::ScaleObject -->
+<a name="//apple_ref/cpp/instm/MCObject/ScaleObject/doubledoubledouble"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="ScaleObject(double%44%32double%44%32double)">ScaleObject(double, double, double)</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void ScaleObject(
+    double inX,
+    double inY,
+    double inZ );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function scales the object along x, y and z (local frame)
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inX</em></tt></dt><dd>Factor to scale along x axis</dd>
+<dt><tt><em>inY</em></tt></dt><dd>Factor to scale along y axis</dd>
+<dt><tt><em>inZ</em></tt></dt><dd>Factor to scale along z axis</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/ScatterInObject/Photon*doubledouble; name=MCObject::ScatterInObject -->
+<a name="//apple_ref/cpp/instm/MCObject/ScatterInObject/Photon*doubledouble"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="ScatterInObject">ScatterInObject</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void ScatterInObject(
+    Photon *ioPhoton,
+    double inTheta,
+    double inPhi );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This transforms the photon upon scattering: the Stokes vector of the photon is multiplied
+by the Mueller matrix that represents the scatterer.  The Stokes vector
+is normalized after the multiplication.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>ioPhoton</em></tt></dt><dd>The photon</dd>
+<dt><tt><em>inTheta</em></tt></dt><dd>The scattering angle</dd>
+<dt><tt><em>inPhi</em></tt></dt><dd>The transverse angle by which the current e_parallel needs to be rotated
+in order to be in the scattering plane</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/ScoreInVolume/Photon*double; name=MCObject::ScoreInVolume -->
+<a name="//apple_ref/cpp/instm/MCObject/ScoreInVolume/Photon*double"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="ScoreInVolume">ScoreInVolume</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void ScoreInVolume(
+    Photon *ioPhoton,
+    double inEnergyDeposited );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>All statistics are scored here after energy is deposited in the object.
+Very important: the statstics are stored "globally" (in MCWorld) not in each
+object.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>ioPhoton</em></tt></dt><dd>The photon</dd>
+<dt><tt><em>inEnergyDeposited</em></tt></dt><dd>The amount of energy that was deposited (in units of photons)</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/ScoreOnSurface/Photon*IntersectElement%38; name=MCObject::ScoreOnSurface -->
+<a name="//apple_ref/cpp/instm/MCObject/ScoreOnSurface/Photon*IntersectElement%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="ScoreOnSurface">ScoreOnSurface</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void ScoreOnSurface(
+    Photon *inPhoton,
+    IntersectElement & inIntersectElement );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>All statistics are scored here after interface crossing.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inPhoton</em></tt></dt><dd>The photon</dd>
+<dt><tt><em>inIntersectElement</em></tt></dt><dd>The properties of the intersect element.</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=clm; uid=//apple_ref/cpp/clm/MCObject/SetFresnelCoefficients/IntersectElement%38; name=MCObject::SetFresnelCoefficients -->
+<a name="//apple_ref/cpp/clm/MCObject/SetFresnelCoefficients/IntersectElement%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="SetFresnelCoefficients">SetFresnelCoefficients</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>static bool SetFresnelCoefficients(
+    IntersectElement & inIntersectElement );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This sets all the necessary values for Fresnel reflections in the IntersectElement (angle of refraction,
+Fresnel coefficients). 
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>ioIntersectElement</em></tt></dt><dd>Reference to an intersect element which contains the interface and angle of incidence,
+as well as the indices of refraction.</dd>
+<dt><tt><em>returns</em></tt></dt><dd>true if the photon is beyond the critical angle and is totally internally reflected.</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/SetGlobalOrigin/RealV; name=MCObject::SetGlobalOrigin -->
+<a name="//apple_ref/cpp/instm/MCObject/SetGlobalOrigin/RealV"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="SetGlobalOrigin">SetGlobalOrigin</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void SetGlobalOrigin(
+    RealV inOrigin );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Sets the origin of the object in global coordinates.  This should not be called directly (use PlaceIntoObject()).
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>the</em></tt></dt><dd>new origin of the object in global coordinates</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/SetIndexMedium/double; name=MCObject::SetIndexMedium -->
+<a name="//apple_ref/cpp/instm/MCObject/SetIndexMedium/double"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="SetIndexMedium">SetIndexMedium</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>void SetIndexMedium(
+    double inIndex );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Set the index of the medium, an internally adjusts all the surface elements to reflect it
+</p>
+<dl><dt><i>function result</i></dt><dd>inIndex The index of the medium
+	 </dd></dl>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/SetName/string; name=MCObject::SetName -->
+<a name="//apple_ref/cpp/instm/MCObject/SetName/string"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="SetName">SetName</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>void SetName(
+    string inName );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Set name of object.  This is used for convenience in the output file.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>The</em></tt></dt><dd>name of the object as a string</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/SetPropertiesByName/string%38double; name=MCObject::SetPropertiesByName -->
+<a name="//apple_ref/cpp/instm/MCObject/SetPropertiesByName/string%38double"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="SetPropertiesByName">SetPropertiesByName</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual bool SetPropertiesByName(
+    string & inMaterialName,
+    double inWavelength );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Sets the scattering and optical properties by "tissue type".  See code for specific tissues
+that are implemented. Ideally, this would be read from a file.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inMaterialName</em></tt></dt><dd>This is a string that corresponds to the tissue type.  See MCObject.cpp for specifics.</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/SetRandomScatterer/MCRandomScatterer*; name=MCObject::SetRandomScatterer -->
+<a name="//apple_ref/cpp/instm/MCObject/SetRandomScatterer/MCRandomScatterer*"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="SetRandomScatterer">SetRandomScatterer</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>void SetRandomScatterer(
+    MCRandomScatterer *inRandomScatterer );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Sets the object responsible for all the random interactions. MCRandomScatterer takes care of all properties and action related 
+to the scatterers.  This MCObject does not really need to know the details of the scattering and will simply call the appropriate function of MCRandomScatter. 
+<br><br>
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inRandomScatterer</em></tt></dt><dd>The random scatterer for this object. It is owned by MCObject after the call and should not be freed.</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/SetWorld/MCWorld*; name=MCObject::SetWorld -->
+<a name="//apple_ref/cpp/instm/MCObject/SetWorld/MCWorld*"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="SetWorld">SetWorld</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>void SetWorld(
+    MCWorld *inWorld );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Set the world that contains this object.
+	 </p>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/TransmitThroughInterface/Photon*IntersectElement%38; name=MCObject::TransmitThroughInterface -->
+<a name="//apple_ref/cpp/instm/MCObject/TransmitThroughInterface/Photon*IntersectElement%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="TransmitThroughInterface">TransmitThroughInterface</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void TransmitThroughInterface(
+    Photon *ioPhoton,
+    IntersectElement & inIntersectElement );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function actually transforms the photon upon propagation through the given interface. 
+This means the photon is refracted, and its polarization is transformed according to the Fresnel coefficients
+the polarization state and the angle of incidence. Note that the object doesn't actually do the transoromation:
+it calls the photon's function TransmitThrough() with its relevant parameters to do the actul work.
+After, it scores the photon values for4 this interface by calling ScoreOnSurface().
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>ioPhoton</em></tt></dt><dd>The photon</dd>
+<dt><tt><em>inIntersectElement</em></tt></dt><dd>Reference to an intersect element which contains all the information about the intersection point
+and interface.  This is obtained from PathCrossesInterface()</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/init/doubledoubledoublebool; name=MCObject::init -->
+<a name="//apple_ref/cpp/instm/MCObject/init/doubledoubledoublebool"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="init(double%44%32double%44%32double%44%32bool)">init(double, double, double, bool)</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>void init(
+    double inIndexMedium,
+    double inIndexOutside,
+    double inRotationPerCmInClearSpace,
+    bool inUseNextEventEstimator );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Init function for MCObject that accepts parameters common to any object of any shape.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inIndexMedium</em></tt></dt><dd>Index of refraction of the medium contained in the object</dd>
+<dt><tt><em>inIndexOutside</em></tt></dt><dd>Index of refraction of the medium outside the object</dd>
+<dt><tt><em>inRotationPerCmInClearSpace</em></tt></dt><dd>Optical activity, given in radian per centimer in clear space</dd>
+<dt><tt><em>inAcceptanceCosineElements</em></tt></dt><dd>Number of bins used for storing the exit angle of a photon with the normal to an interface</dd>
+<dt><tt><em>inUseNextEventEstimator</em></tt></dt><dd></dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/init/mapstring%44string%38; name=MCObject::init -->
+<a name="//apple_ref/cpp/instm/MCObject/init/mapstring%44string%38"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="init(map%32string%32%44%32string%32%38)">init(map string , string &)</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual void init(
+    map< string, string >& inDict );
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Init function for MCObject that accepts parameters common to any object of any shape in the form of a string dictionary (or 'hash' table, or
+associative array).  It is not recommended (use the other constructors) but can be use for simplicity.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>inDict</em></tt></dt><dd>Associative array (map<string,string>) that must contain index_outside, index_med and may contain acceptanceCosElements, rotationPerCmInClearSpace
+Vol_Nx and such, and useNextEventEstimator.</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm; uid=//apple_ref/cpp/instm/MCObject/%126MCObject; name=MCObject::~MCObject -->
+<a name="//apple_ref/cpp/instm/MCObject/%126MCObject"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="%126MCObject">~MCObject</a></h2>
+</td></tr></table><blockquote><pre><tt>public:</tt>
+<br>virtual ~ MCObject(
+);
+</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>The destructor is responsible for destroying anything it allocates except the stats memory which must be freed
+by the sub class (see functions below AllocateStatsMemory() and FreeStatsMemory())
+	 </p>
+<hr>
+<h2>Member Data</h2>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/N_photon; name=MCObject::N_photon -->
+<a name="//apple_ref/cpp/data/MCObject/N_photon"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="N_photon">N_photon</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> long N_photon;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>				Number of photons that have been launched in this object</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/Vol_Nx; name=MCObject::Vol_Nx -->
+<a name="//apple_ref/cpp/data/MCObject/Vol_Nx"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="Vol_Nx">Vol_Nx</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> long Vol_Nx;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>		Number of bins in x coordinates for mEnergy</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/Vol_Ny; name=MCObject::Vol_Ny -->
+<a name="//apple_ref/cpp/data/MCObject/Vol_Ny"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="Vol_Ny">Vol_Ny</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> long Vol_Ny ;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>		Number of bins in y coordinates for mEnergy</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/Vol_Nz; name=MCObject::Vol_Nz -->
+<a name="//apple_ref/cpp/data/MCObject/Vol_Nz"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="Vol_Nz">Vol_Nz</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> long Vol_Nz;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>		Number of bins in z coordinates for mEnergy</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/Vol_XMax; name=MCObject::Vol_XMax -->
+<a name="//apple_ref/cpp/data/MCObject/Vol_XMax"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="Vol_XMax">Vol_XMax</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> double Vol_XMax;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>	Maximum x value (global coordinates) for tabulating statistics for mEnergy</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/Vol_XMin; name=MCObject::Vol_XMin -->
+<a name="//apple_ref/cpp/data/MCObject/Vol_XMin"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="Vol_XMin">Vol_XMin</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> double Vol_XMin;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>	Mininum x value (global coordinates) for tabulating statistics for mEnergy</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/Vol_YMax; name=MCObject::Vol_YMax -->
+<a name="//apple_ref/cpp/data/MCObject/Vol_YMax"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="Vol_YMax">Vol_YMax</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> double Vol_YMax;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>	Maximum y value (global coordinates) for tabulating statistics for mEnergy</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/Vol_YMin; name=MCObject::Vol_YMin -->
+<a name="//apple_ref/cpp/data/MCObject/Vol_YMin"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="Vol_YMin">Vol_YMin</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> double Vol_YMin;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>	Mininum y value (global coordinates) for tabulating statistics for mEnergy</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/Vol_ZMax; name=MCObject::Vol_ZMax -->
+<a name="//apple_ref/cpp/data/MCObject/Vol_ZMax"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="Vol_ZMax">Vol_ZMax</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> double Vol_ZMax ;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>	Maximum z value (global coordinates) for tabulating statistics for mEnergy</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/Vol_ZMin; name=MCObject::Vol_ZMin -->
+<a name="//apple_ref/cpp/data/MCObject/Vol_ZMin"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="Vol_ZMin">Vol_ZMin</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> double Vol_ZMin;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>	Mininum z value (global coordinates) for tabulating statistics for mEnergy</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/dict; name=MCObject::dict -->
+<a name="//apple_ref/cpp/data/MCObject/dict"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="dict">dict</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> map< string, string > dict;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>	Deprecated. Dictionary (associative array) that contains the construction parameters (saved so it can be saved to disk).</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/gNormalOffset; name=MCObject::gNormalOffset -->
+<a name="//apple_ref/cpp/data/MCObject/gNormalOffset"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="gNormalOffset">gNormalOffset</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> static long gNormalOffset;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p> Offset representing the number of vertices output so far for .obj (internal, do not use)</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/gNormalizationIntensity; name=MCObject::gNormalizationIntensity -->
+<a name="//apple_ref/cpp/data/MCObject/gNormalizationIntensity"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="gNormalizationIntensity">gNormalizationIntensity</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> static double gNormalizationIntensity;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>    Normalization factor for transmittance, reflectance, absorbance</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/gObjectCounter; name=MCObject::gObjectCounter -->
+<a name="//apple_ref/cpp/data/MCObject/gObjectCounter"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="gObjectCounter">gObjectCounter</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> static long gObjectCounter;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Global counter for assigning unique object ID</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/gVertexOffset; name=MCObject::gVertexOffset -->
+<a name="//apple_ref/cpp/data/MCObject/gVertexOffset"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="gVertexOffset">gVertexOffset</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> static long gVertexOffset;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p> Offset representing the number of vertices output so far for .obj format (internal, do not use)</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/mAbsorbedPhotons; name=MCObject::mAbsorbedPhotons -->
+<a name="//apple_ref/cpp/data/MCObject/mAbsorbedPhotons"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="mAbsorbedPhotons">mAbsorbedPhotons</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> double mAbsorbedPhotons;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>           Amount of energy (in photon weight) that has been absorbed in this object</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/mBallisticPhotons; name=MCObject::mBallisticPhotons -->
+<a name="//apple_ref/cpp/data/MCObject/mBallisticPhotons"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="mBallisticPhotons">mBallisticPhotons</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> bool mBallisticPhotons;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>								Typically, objects will consider ballistic photons, but detectors won't.</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/mBallisticPhotons%09Variable%32to%32determine%32whether%32of%32not%32ballistic%32photons%32are%32scored%46; name=MCObject::mBallisticPhotonsVariabletodeterminewhetherofnotballisticphotonsarescored. -->
+<a name="//apple_ref/cpp/data/MCObject/mBallisticPhotons%09Variable%32to%32determine%32whether%32of%32not%32ballistic%32photons%32are%32scored%46"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="mBallisticPhotons%09Variable%32to%32determine%32whether%32of%32not%32ballistic%32photons%32are%32scored%46">mBallisticPhotons	Variable to determine whether of not ballistic photons are scored.</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> bool mBallisticPhotons;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>								Typically, objects will consider ballistic photons, but detectors won't.</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/mEnergy; name=MCObject::mEnergy -->
+<a name="//apple_ref/cpp/data/MCObject/mEnergy"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="mEnergy">mEnergy</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> double ***mEnergy;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>	Three dimensional array pointer for storing the energy that gets deposited in all objects</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/mFaceList; name=MCObject::mFaceList -->
+<a name="//apple_ref/cpp/data/MCObject/mFaceList"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="mFaceList">mFaceList</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> vector< Face > mFaceList;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>a list of Face structs, see definition in MCObject.h. It contains
+                            indexes of vertex, normal and texture (texture is currently unused).</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/mFaceList%32%32%32%32List%32of%32faces%44%32where%32a%32face%32is%32defined%32as%32a%32structure%32containing; name=MCObject::mFaceListListoffaces,whereafaceisdefinedasastructurecontaining -->
+<a name="//apple_ref/cpp/data/MCObject/mFaceList%32%32%32%32List%32of%32faces%44%32where%32a%32face%32is%32defined%32as%32a%32structure%32containing"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="mFaceList%32%32%32%32List%32of%32faces%44%32where%32a%32face%32is%32defined%32as%32a%32structure%32containing">mFaceList    List of faces, where a face is defined as a structure containing</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> vector< Face > mFaceList;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>a list of Face structs, see definition in MCObject.h. It contains
+                            indexes of vertex, normal and texture (texture is currently unused).</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/mGlobalOrigin; name=MCObject::mGlobalOrigin -->
+<a name="//apple_ref/cpp/data/MCObject/mGlobalOrigin"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="mGlobalOrigin">mGlobalOrigin</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> RealV mGlobalOrigin;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Origin of object in global coordinates</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/mIndexMedium; name=MCObject::mIndexMedium -->
+<a name="//apple_ref/cpp/data/MCObject/mIndexMedium"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="mIndexMedium">mIndexMedium</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> double mIndexMedium;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>			Index of refraction inside the object</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/mIndexOutside; name=MCObject::mIndexOutside -->
+<a name="//apple_ref/cpp/data/MCObject/mIndexOutside"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="mIndexOutside">mIndexOutside</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> double mIndexOutside;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>			Index of refraction outside the object</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/mIntensityList; name=MCObject::mIntensityList -->
+<a name="//apple_ref/cpp/data/MCObject/mIntensityList"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="mIntensityList">mIntensityList</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> vector< double > mIntensityList;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>   List of all vertices, in global coordinates</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/mNormalList; name=MCObject::mNormalList -->
+<a name="//apple_ref/cpp/data/MCObject/mNormalList"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="mNormalList">mNormalList</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> vector< RealV > mNormalList;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>   List of all normals, in global coordinates</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/mObjectID; name=MCObject::mObjectID -->
+<a name="//apple_ref/cpp/data/MCObject/mObjectID"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="mObjectID">mObjectID</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> long mObjectID;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>A unique object ID that identifies this object unambiguously</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/mObjectName; name=MCObject::mObjectName -->
+<a name="//apple_ref/cpp/data/MCObject/mObjectName"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="mObjectName">mObjectName</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> string mObjectName;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>A name for this object (optional).  For readability in output file</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/mProximity; name=MCObject::mProximity -->
+<a name="//apple_ref/cpp/data/MCObject/mProximity"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="mProximity">mProximity</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> bool mProximity;
+</blockquote>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/mRandomScatterer; name=MCObject::mRandomScatterer -->
+<a name="//apple_ref/cpp/data/MCObject/mRandomScatterer"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="mRandomScatterer">mRandomScatterer</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> MCRandomScatterer *mRandomScatterer;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Pointer to object responsible for dealing with any scattering-related issue</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/mSurfaceElements; name=MCObject::mSurfaceElements -->
+<a name="//apple_ref/cpp/data/MCObject/mSurfaceElements"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="mSurfaceElements">mSurfaceElements</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> vector< SurfaceElement * > mSurfaceElements;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>                                to any other object</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/mVertexList; name=MCObject::mVertexList -->
+<a name="//apple_ref/cpp/data/MCObject/mVertexList"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="mVertexList">mVertexList</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> vector< RealV > mVertexList;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>   List of all vertices, in global coordinates</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/mVertexList; name=MCObject::mVertexList -->
+<a name="//apple_ref/cpp/data/MCObject/mVertexList"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="mVertexList">mVertexList</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> vector< double > mIntensityList;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>   List of all vertices, in global coordinates</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/mWorld; name=MCObject::mWorld -->
+<a name="//apple_ref/cpp/data/MCObject/mWorld"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="mWorld">mWorld</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> MCWorld *mWorld;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>  This is a pointer to the top object (an MCWorld).</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/mXRotation; name=MCObject::mXRotation -->
+<a name="//apple_ref/cpp/data/MCObject/mXRotation"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="mXRotation">mXRotation</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> double mXRotation;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>	By how much the object has been rotated around the X axis (lab frame)</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/mYRotation; name=MCObject::mYRotation -->
+<a name="//apple_ref/cpp/data/MCObject/mYRotation"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="mYRotation">mYRotation</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> double mYRotation;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>	By how much the object has been rotated around the Y axis (lab frame)</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/mZRotation; name=MCObject::mZRotation -->
+<a name="//apple_ref/cpp/data/MCObject/mZRotation"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="mZRotation">mZRotation</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> double mZRotation;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>	By how much the object has been rotated around the Z axis (lab frame)</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/rotationPerCmInClearSpace; name=MCObject::rotationPerCmInClearSpace -->
+<a name="//apple_ref/cpp/data/MCObject/rotationPerCmInClearSpace"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="rotationPerCmInClearSpace">rotationPerCmInClearSpace</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> double rotationPerCmInClearSpace;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Optical activity given in rotation per centimeter in clear media</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/surfaceElements%09Vector%32of%32surface%32elements%32that%32define%32this%32object%44%32as%32well%32as%32any%32interface; name=MCObject::surfaceElementsVectorofsurfaceelementsthatdefinethisobject,aswellasanyinterface -->
+<a name="//apple_ref/cpp/data/MCObject/surfaceElements%09Vector%32of%32surface%32elements%32that%32define%32this%32object%44%32as%32well%32as%32any%32interface"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="surfaceElements%09Vector%32of%32surface%32elements%32that%32define%32this%32object%44%32as%32well%32as%32any%32interface">surfaceElements	Vector of surface elements that define this object, as well as any interface</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> vector< SurfaceElement * > mSurfaceElements;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>                                to any other object</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/MCObject/useNextEventEstimator; name=MCObject::useNextEventEstimator -->
+<a name="//apple_ref/cpp/data/MCObject/useNextEventEstimator"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="useNextEventEstimator">useNextEventEstimator</a></h2>
+</td></tr></table><blockquote><tt>protected:</tt> bool useNextEventEstimator;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>	Whether or not we use the next event estimator in PropagateInObject()</p>
+<hr>
+<p>(Last Updated 2/23/2005)
+</p></body></html>

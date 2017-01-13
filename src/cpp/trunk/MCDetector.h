@@ -1,0 +1,35 @@
+#include "MCBox.h"
+#include "MuellerM.h"
+
+#ifndef MCDETECTOR_H
+#define MCDETECTOR_H
+
+class MCDetector : public MCBox {
+	public:
+
+	MCDetector(double inWidth, long inN, long inDetectionType, long inAcceptanceElements, bool thereIsAPolarizer, int polarizeAxis);
+	
+	/*!
+	@function PropagateInObject
+	 @discussion This is the single most important function of this class, since it takes care of propagating
+				 a photon until it crosses an interface an exits the object.  If other objects are included in this object
+				 the photon will be moved into it upon crossing their surface. If useNextEventEstimator is set to true,
+				 it could use this variance reduction technique (see code).
+	 @param      ioPhoton	Pointer to a photon the content of which will be modified upon scattering and displacement.
+	 @result     The last IntersectElement crossed by the photon
+	 */
+	
+    virtual IntersectElement	PropagateInObject(Photon *ioPhoton, double inDist = 0);
+	bool	IsTransmitted(Photon *ioPhoton, IntersectElement& inIntersectElement);
+	void SetPolarizerAlong(int axis, MuellerM *inM);
+	void ScoreOnSurface(Photon *ioPhoton, IntersectElement& inIntersectElement);
+
+protected:
+		bool timeResolved;
+		bool thereIsAPolarizer;
+		int polarizeAxis;
+//		MuellerM* inM;
+	
+};
+
+#endif

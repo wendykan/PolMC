@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html><head>
+    <title>Enumerations</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="generator" content="HeaderDoc" />
+<style type="text/css"><!--.keyword {background:#ffffff; color:#761550;}.template {background:#ffffff; color:#761550;}.number {background: #ffffff; color:#0000ff;}.function {background:#ffffff; color:#000000;}.string {background: #ffffff; color:#891315;}.preprocessor {background:#ffffff; color:#236e25}.comment {background:#ffffff; color:#236e25}.char {background: #ffffff; color:#0000ff;}.var {background:#ffffff; color:#000000;}.type {background:#ffffff; color:#761550;}.param {background:#ffffff; color:#000000;}a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style></head><body bgcolor="#ffffff">
+<a name="top"></a>
+<hr><!-- headerDoc=title:tag;  uid=//apple_ref/doc/title:tag/Commonsurfaceelements;  name=Commonsurfaceelements -->
+<a name="//apple_ref/doc/title:tag/Commonsurfaceelements"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="Commonsurfaceelements">Common surface elements </a></h3>
+</td></tr></table><hr><p></p><pre><span class="keyword">enum</span> { 
+    <!-- a logicalPath="//apple_ref/c/cl/kInfinity //apple_ref/c/tdef/kInfinity //apple_ref/c/tag/kInfinity //apple_ref/c/econst/kInfinity //apple_ref/c/struct/kInfinity //apple_ref/c/clconst/kInfinity //apple_ref/c/intf/kInfinity" --><span class="type">kInfinity</span><!-- /a --> = -<span class="number">2</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/kNoInterface //apple_ref/c/tdef/kNoInterface //apple_ref/c/tag/kNoInterface //apple_ref/c/econst/kNoInterface //apple_ref/c/struct/kNoInterface //apple_ref/c/clconst/kNoInterface //apple_ref/c/intf/kNoInterface" --><span class="type">kNoInterface</span><!-- /a --> = -<span class="number">1</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/kForwardZPlane //apple_ref/c/tdef/kForwardZPlane //apple_ref/c/tag/kForwardZPlane //apple_ref/c/econst/kForwardZPlane //apple_ref/c/struct/kForwardZPlane //apple_ref/c/clconst/kForwardZPlane //apple_ref/c/intf/kForwardZPlane" --><span class="type">kForwardZPlane</span><!-- /a --> = <span class="number">0</span>, 
+    <span class="var">kBackwardZPlane</span>, 
+    <span class="var">kPositiveXPlane</span>, 
+    <span class="var">kNegativeXPlane</span>, 
+    <span class="var">kPositiveYPlane</span>, 
+    <span class="var">kNegativeYPlane</span> 
+};  </pre>
+<p></p><hr><!-- headerDoc=title:tag;  uid=//apple_ref/doc/title:tag/Surfaceoutputformat;  name=Surfaceoutputformat -->
+<a name="//apple_ref/doc/title:tag/Surfaceoutputformat"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="Surfaceoutputformat">Surface output format </a></h3>
+</td></tr></table><hr><p></p><pre><span class="keyword">enum</span> { 
+    <span class="var">kMathematicaPolygons</span>, 
+    <span class="var">kGenericXML</span>, 
+    <span class="var">kMatlabPatch</span>, 
+    <span class="var">kWaveFrontObj</span>, 
+    <span class="var">kBinary3DFormat</span> 
+};  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion --><br><br>
+The class can output a description of itself in a 3D format.  Currently, we only support
+Mathematica, but that is very simple to change and it is expected that other types will
+be added later.<!-- end discussion --></p>
+<p></p><hr><!-- headerDoc=title:tag;  uid=//apple_ref/doc/title:tag/Typesofsurfaceelements;  name=Typesofsurfaceelements -->
+<a name="//apple_ref/doc/title:tag/Typesofsurfaceelements"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="Typesofsurfaceelements">Types of surface elements </a></h3>
+</td></tr></table><hr><p></p><pre><span class="keyword">enum</span> { 
+    <span class="var">kParallelogram</span>, 
+    <span class="var">kTriangle</span>, 
+    <span class="var">kConic</span>, 
+    <span class="var">kInfinitePlane</span> 
+};  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion --><br><br>
+These are the various types of surface elements used to delimit objects.  Any three dimensional object
+can be described by a set of these surface elements.  The difference between the various types is
+important when calculating whether or not a path crosses an interface.
+<br><br><!-- end discussion --></p>
+<p></p><p>Last Updated: Tuesday, June 30, 2009
+</p></body></html>

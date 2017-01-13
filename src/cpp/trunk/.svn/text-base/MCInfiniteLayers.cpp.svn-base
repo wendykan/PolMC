@@ -1,0 +1,136 @@
+#include "MCInfiniteLayers.h"
+
+#include "configfiles.h"
+#include "MCObject.h"
+#include "Photon.h"
+#include "StokesV.h"
+#include "MuellerM.h"
+#include "MCRandomScatterer.h"
+#include "MCUtils.h"
+
+
+MCInfiniteLayer::MCInfiniteLayer(double inThickness,
+                                 double inImgWidth,
+                                 double inImgHeight,
+                                 long inPtsWidth,
+                                 long inPtsHeight,
+                                 double inIndexMedium,
+                                 double inIndexOutside,
+                                 double inRotationPerCmInClearSpace,
+								 long inDetectionType,
+                                 long inAcceptanceCosineElements,
+                                 bool inUseNextEventEstimator):MCObject(inIndexMedium, inIndexOutside, inRotationPerCmInClearSpace, inUseNextEventEstimator)
+{
+     init(inThickness, inImgWidth, inImgHeight, inPtsWidth, inPtsHeight, inDetectionType, inAcceptanceCosineElements);
+}
+
+
+void
+MCInfiniteLayer::init(double inThickness, double inImgWidth, double inImgHeight, long inPtsWidth, long inPtsHeight, long inDetectionType, long inAcceptanceCosineElements)
+{
+    mObjectName="infinite layer";
+    mThickness = inThickness;
+
+    mNumOfInterfaces = 2;
+
+    for (long i = 0; i < mNumOfInterfaces; i++) {
+        // We have to allocate individually because
+        // new[] must be deleted with delete[], and we can't do that
+        // because we give ownership to MCWorld (later on)
+        SurfaceElement* se = new SurfaceElement;
+        mSurfaceElements.push_back(se);
+    }
+    
+    double hw = inImgWidth/2.;
+    double hh = inImgHeight/2.;
+
+    mSurfaceElements[kForwardZPlane]->name = "forward";
+    mSurfaceElements[kForwardZPlane]->origin = RealV(-hw,-hh,inThickness);
+    mSurfaceElements[kForwardZPlane]->a = RealV(1,0,0);
+    mSurfaceElements[kForwardZPlane]->b = RealV(0,1,0);
+    mSurfaceElements[kForwardZPlane]->a *= inImgWidth;
+    mSurfaceElements[kForwardZPlane]->b *= inImgHeight;
+    mSurfaceElements[kForwardZPlane]->Na = inPtsWidth;
+    mSurfaceElements[kForwardZPlane]->Nb = inPtsHeight;
+    mSurfaceElements[kForwardZPlane]->el = RealV(1,0,0);
+    mSurfaceElements[kForwardZPlane]->er = RealV(0,1,0);
+    mSurfaceElements[kForwardZPlane]->normal = RealV(0,0,1);
+    mSurfaceElements[kForwardZPlane]->surfaceShape = kInfinitePlane;
+    mSurfaceElements[kForwardZPlane]->mDetection = inDetectionType;
+	mSurfaceElements[kForwardZPlane]->mCosineElements = inAcceptanceCosineElements;
+	mSurfaceElements[kForwardZPlane]->init();
+    
+    mSurfaceElements[kBackwardZPlane]->name = "backward";
+    mSurfaceElements[kBackwardZPlane]->origin = RealV(hw,-hh,0);
+    mSurfaceElements[kBackwardZPlane]->a = RealV(-1,0,0);
+    mSurfaceElements[kBackwardZPlane]->b = RealV(0,1,0);
+    mSurfaceElements[kBackwardZPlane]->a *= inImgWidth;
+    mSurfaceElements[kBackwardZPlane]->b *= inImgHeight;
+    mSurfaceElements[kBackwardZPlane]->Na = inPtsWidth;
+    mSurfaceElements[kBackwardZPlane]->Nb = inPtsHeight;
+    mSurfaceElements[kBackwardZPlane]->el = RealV(-1,0,0);
+    mSurfaceElements[kBackwardZPlane]->er = RealV(0,1,0);
+    mSurfaceElements[kBackwardZPlane]->normal = RealV(0,0,-1);
+    mSurfaceElements[kBackwardZPlane]->surfaceShape = kInfinitePlane;
+    mSurfaceElements[kBackwardZPlane]->mDetection = inDetectionType;
+	mSurfaceElements[kBackwardZPlane]->mCosineElements = inAcceptanceCosineElements;
+	mSurfaceElements[kBackwardZPlane]->init();
+    
+    FinishCreate();
+
+}
+
+void
+MCInfiniteLayer::init(map<string,string>& inDict)
+{
+
+    long Nx, Ny, acceptanceCosElements;
+    double imagingWidth, imagingHeight;
+    
+    InitVariable(dict, "thickness", mThickness);
+    InitVariable(dict, "Nx",Nx);
+    InitVariable(dict, "Ny",Ny);
+    InitVariable(dict, "imagingWidth",imagingWidth);
+    InitVariable(dict, "imagingHeight",imagingHeight);
+    InitVariable(dict, "acceptanceCosElements",acceptanceCosElements);
+
+    init(mThickness, imagingWidth, imagingHeight, Nx, Ny, kFromInside, acceptanceCosElements);
+}
+
+
+bool
+MCInfiniteLayer::IsOutsideObject(RealV& inLocalPosition)
+{
+    if (inLocalPosition.z <= mThickness && inLocalPosition.z >= 0) {
+        return false;
+    } else {
+        return true;
+    }
+
+}
+
+void
+MCInfiniteLayer::InterfaceTouchesOtherObject(MCObject * inOtherObject, long inOtherInterface, long thisObjectInterface)
+{
+    throw logic_error("Unimplemented InterfaceTouchesOtherObject");
+/*
+    vector<SurfaceElement*> thisObjectSurfaceElements;
+    long thisObjectHowMany;
+    thisObjectHowMany = GetSurfaceElements(thisObjectSurfaceElements);
+
+    vector<SurfaceElement*> otherObjectSurfaceElements;
+    long otherObjectHowMany;
+    otherObjectHowMany = inOtherObject->GetSurfaceElements(otherObjectSurfaceElements);
+
+    thisObjectSurfaceElements[thisObjectInterface]->inContactWithObject = inOtherObject;
+    thisObjectSurfaceElements[thisObjectInterface]->inContactWithInterface = inOtherInterface;
+    thisObjectSurfaceElements[thisObjectInterface]->indexOut = otherObjectSurfaceElements[inOtherInterface]->indexIn;
+
+    otherObjectSurfaceElements[inOtherInterface]->inContactWithObject = this;
+    otherObjectSurfaceElements[inOtherInterface]->inContactWithInterface = thisObjectInterface;
+    otherObjectSurfaceElements[inOtherInterface]->indexOut = thisObjectSurfaceElements[thisObjectInterface]->indexIn;
+*/
+}
+
+
+

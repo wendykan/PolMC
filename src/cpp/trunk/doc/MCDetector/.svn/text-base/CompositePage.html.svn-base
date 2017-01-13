@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html><head>
+    <title>MCDetector.h</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="generator" content="HeaderDoc" />
+<style type="text/css"><!--.keyword {background:#ffffff; color:#761550;}.template {background:#ffffff; color:#761550;}.number {background: #ffffff; color:#0000ff;}.function {background:#ffffff; color:#000000;}.string {background: #ffffff; color:#891315;}.preprocessor {background:#ffffff; color:#236e25}.comment {background:#ffffff; color:#236e25}.char {background: #ffffff; color:#0000ff;}.var {background:#ffffff; color:#000000;}.type {background:#ffffff; color:#761550;}.param {background:#ffffff; color:#000000;}a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style></head><body bgcolor="#ffffff">
+<a name="top"></a>
+<a name="//apple_ref/doc/header/MCDetector.h" title="MCDetector.h"></a>
+<hr><table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h1><a name="MCDetector.h">MCDetector.h</a></h1>
+</td></tr></table><hr><p></p><dl><b>Includes:</b> <!-- a logicalPath="//apple_ref/doc/header/MCBox.h" -->"MCBox.h"<!-- /a --><br>
+</dl><p></p><hr><br><h2>Functions</h2>
+<a name="HeaderDoc_functions"></a>
+<dl>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/PropagateInObject" target="_top">PropagateInObject </a></tt></dt>
+<dd></dd>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/PropagateInObject;  name=PropagateInObject -->
+<a name="//apple_ref/doc/compositePage/c/func/PropagateInObject"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="PropagateInObject">PropagateInObject </a></h3>
+</td></tr></table><hr><p></p><pre><!-- a logicalPath="//apple_ref/c/cl/virtual //apple_ref/c/tdef/virtual //apple_ref/c/tag/virtual //apple_ref/c/econst/virtual //apple_ref/c/struct/virtual //apple_ref/c/clconst/virtual //apple_ref/c/intf/virtual" --><span class="type">virtual</span><!-- /a --> <!-- a logicalPath="//apple_ref/c/cl/IntersectElement //apple_ref/c/tdef/IntersectElement //apple_ref/c/tag/IntersectElement //apple_ref/c/econst/IntersectElement //apple_ref/c/struct/IntersectElement //apple_ref/c/clconst/IntersectElement //apple_ref/c/intf/IntersectElement" --><span class="type">IntersectElement</span><!-- /a --> <!-- a logicalPath="//apple_ref/c/instm/PropagateInObject //apple_ref/c/clm/PropagateInObject //apple_ref/c/intfcm/PropagateInObject //apple_ref/c/intfm/PropagateInObject //apple_ref/c/func/PropagateInObject //apple_ref/c/ftmplt/PropagateInObject //apple_ref/c/defn/PropagateInObject //apple_ref/c/macro/PropagateInObject" --><span class="function">PropagateInObject</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/c/cl/Photon //apple_ref/c/tdef/Photon //apple_ref/c/tag/Photon //apple_ref/c/econst/Photon //apple_ref/c/struct/Photon //apple_ref/c/clconst/Photon //apple_ref/c/intf/Photon" --><span class="type">Photon</span><!-- /a --> *<span class="param">ioPhoton</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/double //apple_ref/c/tdef/double //apple_ref/c/tag/double //apple_ref/c/econst/double //apple_ref/c/struct/double //apple_ref/c/clconst/double //apple_ref/c/intf/double" --><span class="type">double</span><!-- /a --> <!-- a logicalPath="//apple_ref/c/cl/inDist //apple_ref/c/tdef/inDist //apple_ref/c/tag/inDist //apple_ref/c/econst/inDist //apple_ref/c/struct/inDist //apple_ref/c/clconst/inDist //apple_ref/c/intf/inDist" --><span class="type">inDist</span><!-- /a --> = <span class="number">0</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>ioPhoton </code></dt><dd>Pointer to a photon the content of which will be modified upon scattering and displacement.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5><p><!-- begin return value -->The last IntersectElement crossed by the photon
+	 
+<!-- end return value --></p><h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5><p><!-- begin discussion -->This is the single most important function of this class, since it takes care of propagating
+a photon until it crosses an interface an exits the object.  If other objects are included in this object
+the photon will be moved into it upon crossing their surface. If useNextEventEstimator is set to true,
+it could use this variance reduction technique (see code).
+<!-- end discussion --></p>
+<p></p><p>Last Updated: Tuesday, June 30, 2009
+</p></body></html>

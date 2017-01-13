@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html><style type="text/css"><!--a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style><head>
+    <title>IntersectElement</title>
+	 <meta name="generator" content="HeaderDoc">
+</head><body bgcolor="#ffffff">
+<h1><font face="Geneva,Arial,Helvtica">IntersectElement</font></h1><br>
+<a name="//apple_ref/doc/class/IntersectElement" title="IntersectElement"></a>
+<h2>Discussion</h2>
+<br><br>
+This class is a very close cousin of SurfaceElement.  It describes anything one needs to know about the intersection
+between a photon path and a surface element.  It is "more" than just a SurfaceElement since we may cross in or out,
+the Fresnel reflection depends on photon polarization, etc... It uses the same numbering scheme as surface elements.<hr><br><h2>Member Functions</h2>
+<hr>
+<h2>Member Data</h2>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/IntersectElement/Rp; name=IntersectElement::Rp -->
+<a name="//apple_ref/cpp/data/IntersectElement/Rp"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="Rp">Rp</a></h2>
+</td></tr></table><blockquote><tt>public:</tt> double Rp;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p> Fresnel reflection coefficient for field along "p" polarization (electric field in the plane of incidence )</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/IntersectElement/Rs; name=IntersectElement::Rs -->
+<a name="//apple_ref/cpp/data/IntersectElement/Rs"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="Rs">Rs</a></h2>
+</td></tr></table><blockquote><tt>public:</tt> double Rs;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p> Fresnel reflection coefficient for field along "s" polarization (electric field perp to the plane of incidence)</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/IntersectElement/Tp; name=IntersectElement::Tp -->
+<a name="//apple_ref/cpp/data/IntersectElement/Tp"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="Tp">Tp</a></h2>
+</td></tr></table><blockquote><tt>public:</tt> double Tp;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p> Fresnel transmission coefficient for field along "p" polarization (electric field in the plane of incidence )</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/IntersectElement/Ts; name=IntersectElement::Ts -->
+<a name="//apple_ref/cpp/data/IntersectElement/Ts"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="Ts">Ts</a></h2>
+</td></tr></table><blockquote><tt>public:</tt> double Ts;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p> Fresnel transmission coefficient for field along "s" polarization (electric field perp to the plane of incidence)</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/IntersectElement/cosine; name=IntersectElement::cosine -->
+<a name="//apple_ref/cpp/data/IntersectElement/cosine"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="cosine">cosine</a></h2>
+</td></tr></table><blockquote><tt>public:</tt> double cosine;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p> Cosine of the angle between propagation direction and normal.  Negative if going in, positive if going out.</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/IntersectElement/distanceLeftover; name=IntersectElement::distanceLeftover -->
+<a name="//apple_ref/cpp/data/IntersectElement/distanceLeftover"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="distanceLeftover">distanceLeftover</a></h2>
+</td></tr></table><blockquote><tt>public:</tt> double distanceLeftover;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Distance left over to propagate after interface</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/IntersectElement/distanceToMove; name=IntersectElement::distanceToMove -->
+<a name="//apple_ref/cpp/data/IntersectElement/distanceToMove"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="distanceToMove">distanceToMove</a></h2>
+</td></tr></table><blockquote><tt>public:</tt> double distanceToMove;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Distance to move until interface</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/IntersectElement/i; name=IntersectElement::i -->
+<a name="//apple_ref/cpp/data/IntersectElement/i"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="i">i</a></h2>
+</td></tr></table><blockquote><tt>public:</tt> long i;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>  Bin number of position along a (between 0 and Na)</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/IntersectElement/indexFrom; name=IntersectElement::indexFrom -->
+<a name="//apple_ref/cpp/data/IntersectElement/indexFrom"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="indexFrom">indexFrom</a></h2>
+</td></tr></table><blockquote><tt>public:</tt> double indexFrom;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p> Index of refraction on the side from which the photon originates</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/IntersectElement/indexTo; name=IntersectElement::indexTo -->
+<a name="//apple_ref/cpp/data/IntersectElement/indexTo"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="indexTo">indexTo</a></h2>
+</td></tr></table><blockquote><tt>public:</tt> double indexTo;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p> Index of refraction on the side to which the photon is going</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/IntersectElement/interface; name=IntersectElement::interface -->
+<a name="//apple_ref/cpp/data/IntersectElement/interface"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="interface">interface</a></h2>
+</td></tr></table><blockquote><tt>public:</tt> long interface;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>  interface we crossed</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/IntersectElement/j; name=IntersectElement::j -->
+<a name="//apple_ref/cpp/data/IntersectElement/j"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="j">j</a></h2>
+</td></tr></table><blockquote><tt>public:</tt> long j;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>  Bin number of position along b (between 0 and Nb)</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/IntersectElement/normal; name=IntersectElement::normal -->
+<a name="//apple_ref/cpp/data/IntersectElement/normal"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="normal">normal</a></h2>
+</td></tr></table><blockquote><tt>public:</tt> RealV normal;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>  Normal to the surface, points outwards</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/IntersectElement/objectInside; name=IntersectElement::objectInside -->
+<a name="//apple_ref/cpp/data/IntersectElement/objectInside"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="objectInside">objectInside</a></h2>
+</td></tr></table><blockquote><tt>public:</tt> MCObject *objectInside;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p> Object that owns to which this intersect/surface element belongs</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/IntersectElement/objectOutside; name=IntersectElement::objectOutside -->
+<a name="//apple_ref/cpp/data/IntersectElement/objectOutside"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="objectOutside">objectOutside</a></h2>
+</td></tr></table><blockquote><tt>public:</tt> MCObject *objectOutside;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p> This intersect/surface element touches another object</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/IntersectElement/opticalPathLeftover; name=IntersectElement::opticalPathLeftover -->
+<a name="//apple_ref/cpp/data/IntersectElement/opticalPathLeftover"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="opticalPathLeftover">opticalPathLeftover</a></h2>
+</td></tr></table><blockquote><tt>public:</tt> double opticalPathLeftover;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Optical path (mu_t times physical distance) left over to propagate after interface</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/IntersectElement/surfaceElement; name=IntersectElement::surfaceElement -->
+<a name="//apple_ref/cpp/data/IntersectElement/surfaceElement"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="surfaceElement">surfaceElement</a></h2>
+</td></tr></table><blockquote><tt>public:</tt> SurfaceElement *surfaceElement;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>The surface element being crossed</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/IntersectElement/u; name=IntersectElement::u -->
+<a name="//apple_ref/cpp/data/IntersectElement/u"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="u">u</a></h2>
+</td></tr></table><blockquote><tt>public:</tt> double u;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>  Coefficient for "a" vector decribing position of intersect on plane</p>
+<hr><!-- headerDoc=data; uid=//apple_ref/cpp/data/IntersectElement/v; name=IntersectElement::v -->
+<a name="//apple_ref/cpp/data/IntersectElement/v"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="v">v</a></h2>
+</td></tr></table><blockquote><tt>public:</tt> double v;
+</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>  Coefficient for "b" vector decribing position of intersect on plane</p>
+<hr>
+<p>(Last Updated 2/23/2005)
+</p></body></html>

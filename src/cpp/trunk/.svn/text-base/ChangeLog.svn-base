@@ -1,0 +1,2838 @@
+? .DS_Store
+? config.log
+? Makefile
+? config.status
+? config.h
+? mc
+? ._extractsubfile.pl
+? StokesV
+? stamp-h1
+? [config.h].in
+? MuellerM
+? Builde
+? polmc-1.2.tar.gz
+? Sample.h
+? array3d.h
+? RealV
+? ._RealV.h
+? ._main.cpp
+? ._Photon.h
+? .deps
+? s.dat
+? ._MuellerM.h
+? outtest.dat
+? mydebug.tar
+? ._test.cpp
+? gprof.analysis.txt
+? mueller.eps
+? gprof.analysis.valarray.txt
+? theta_test.dat
+? ._configure.ac
+? ._configure.scan
+? aclocal.m4
+? ._Makefile.am
+? gprof.analysis.double.txt
+? array3d.cpp
+? phi_test.dat
+? theta.txt
+? t
+? Changelog
+? diff
+? ._m21.dat
+? ._rand.cpp
+? ._mydebug.cpp
+? ._run_all.sh
+? ._matrix.cpp
+? ._cubicspline.cpp
+? ._mydebug.h
+? ._mtRand.h
+? test.log
+? ._test_files.dem
+? ._constants.h
+? S11_test.dat
+? S12_test.dat
+? prof2.txt
+? ._README
+? S33_test.dat
+? S34_test.dat
+? ._cubicspline.h
+? main_old.cpp
+? ._ChangeLog
+? stokes.eps
+? Photon
+? ._extractallsubfiles.sh
+? ._histogram.pl
+? angle_stats.dat
+? dist.eps
+? gprof.txt
+? prof.txt
+? matrix.cpp
+? index.html
+? ._OutS1100.dat
+? ._configfiles.h
+? polmc-1.3.tar.gz
+? side.dat
+? crono.html
+? kaplan_dist_fct.dat
+? mc-1.1.tar.gz
+? side.I.dat
+? cleanupmc
+? ._cleanupmc
+? side.Q.dat
+? M11.dat
+? CompleteLogs.txt
+? M12.dat
+? ._DoAllThat.pl
+? side.U.dat
+? back.dat
+? back.I.dat
+? back.Q.dat
+? back.U.dat
+? forward.U.dat
+? forward.Q.dat
+? forward.I.dat
+? M13.dat
+? M14.dat
+? M21.dat
+? M22.dat
+? M23.dat
+? M24.dat
+? M31.dat
+? M32.dat
+? M33.dat
+? M34.dat
+? M41.dat
+? ._extractstatsfromarrays.pl
+? M42.dat
+? M43.dat
+? M44.dat
+? M12n.dat
+? M13n.dat
+? M14n.dat
+? M21n.dat
+? M22n.dat
+? M23n.dat
+? M24n.dat
+? M31n.dat
+? mueller_norm.eps
+? M32n.dat
+? M33n.dat
+? M34n.dat
+? M41n.dat
+? MasterTOC.html
+? M42n.dat
+? mydebug
+? M43n.dat
+? M44n.dat
+? factors.dat
+? InvPS1.dat
+? kaplan_S1S2.dat
+? ._InvPS1.dat
+? kaplan_InvF1_phi.dat
+? kaplan_InvF2_phi.dat
+? kaplan_InvProbS1.dat
+? kaplan_InvProbS2.dat
+? polmc
+? OutS1100.dat
+? 0,
+? index__rf.html
+? text
+? Intensity.thin
+? Intensity.fat
+? index__lfl.html
+? index__lfu.html
+? autom4te.cache
+? randomscatter
+? OutS1100.dat.forward.I.dat
+? OutS1100.dat.forward.Q.dat
+? OutS1100.dat.forward.U.dat
+? OutS1100.dat.forward.V.dat
+? OutS1100.dat.forward.betalin.dat
+? OutS1100.dat.forward.betacirc.dat
+? OutS1100.dat.forward.avgpath.dat
+? OutS1100.dat.backward.I.dat
+? OutS1100.dat.backward.Q.dat
+? OutS1100.dat.backward.U.dat
+? OutS1100.dat.backward.V.dat
+? OutS1100.dat.backward.betalin.dat
+? OutS1100.dat.backward.betacirc.dat
+? OutS1100.dat.backward.avgpath.dat
+? OutS1100.dat.positiveX.I.dat
+? OutS1100.dat.positiveX.Q.dat
+? OutS1100.dat.positiveX.U.dat
+? OutS1100.dat.positiveX.V.dat
+? OutS1100.dat.positiveX.betalin.dat
+? OutS1100.dat.positiveX.betacirc.dat
+? OutS1100.dat.positiveX.avgpath.dat
+? OutS1100.dat.negativeX.I.dat
+? OutS1100.dat.negativeX.Q.dat
+? OutS1100.dat.negativeX.U.dat
+? OutS1100.dat.negativeX.V.dat
+? OutS1100.dat.negativeX.betalin.dat
+? OutS1100.dat.negativeX.betacirc.dat
+? OutS1100.dat.negativeX.avgpath.dat
+? OutS1100.dat.positiveY.I.dat
+? OutS1100.dat.positiveY.Q.dat
+? OutS1100.dat.positiveY.U.dat
+? OutS1100.dat.positiveY.V.dat
+? OutS1100.dat.positiveY.betalin.dat
+? OutS1100.dat.positiveY.betacirc.dat
+? OutS1100.dat.positiveY.avgpath.dat
+? OutS1100.dat.negativeY.I.dat
+? OutS1100.dat.negativeY.Q.dat
+? OutS1100.dat.negativeY.U.dat
+? OutS1100.dat.negativeY.V.dat
+? polmc.log
+? stamp-h1.in
+? stamp-h2.in
+? stamp-h3.in
+? stamp-h4.in
+? OutS1100.dat.negativeY.betalin.dat
+? OutS1100.dat.negativeY.betacirc.dat
+? OutS1100.dat.negativeY.avgpath.dat
+? diff.txt
+? test_vectors
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/AUTHORS,v
+Working file: AUTHORS
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2003/03/11 21:15:55;  author: dccote;  state: Exp;
+
+Amazing: I got the ./configure set up going thanks to automake, autoscan, autoconf and autoheader.
+I made a few modifications to StokesV.h, main.cpp and rand.cpp to allow the customization
+of config.h.  Now, one should be able to get everything configured (as a developer) with:
+
+autoheader
+automake -ac
+autoconf
+
+./configure --prefix=$HOME --bindir=$HOME/bin/$OS
+make
+make install
+
+Important problem: gcc 3.1 on Darwin has a problem with isnan()
+(see http://mail.gnu.org/archive/html/lilypond-devel/2002-08/msg00175.html)
+I had to define it empty if undefined.  Bizarre and will probably break on other
+machines, but it compiles for now (does not run on OS X though).
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/COPYING,v
+Working file: COPYING
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2003/03/11 21:15:55;  author: dccote;  state: Exp;
+
+Amazing: I got the ./configure set up going thanks to automake, autoscan, autoconf and autoheader.
+I made a few modifications to StokesV.h, main.cpp and rand.cpp to allow the customization
+of config.h.  Now, one should be able to get everything configured (as a developer) with:
+
+autoheader
+automake -ac
+autoconf
+
+./configure --prefix=$HOME --bindir=$HOME/bin/$OS
+make
+make install
+
+Important problem: gcc 3.1 on Darwin has a problem with isnan()
+(see http://mail.gnu.org/archive/html/lilypond-devel/2002-08/msg00175.html)
+I had to define it empty if undefined.  Bizarre and will probably break on other
+machines, but it compiles for now (does not run on OS X though).
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/ChangeLog,v
+Working file: ChangeLog
+head: 1.2
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 2;	selected revisions: 2
+description:
+----------------------------
+revision 1.2
+date: 2003/11/18 15:10:35;  author: dccote;  state: Exp;  lines: +1468 -0
+
+All the floats were changed to double's.
+----------------------------
+revision 1.1
+date: 2003/03/11 21:15:55;  author: dccote;  state: Exp;
+
+Amazing: I got the ./configure set up going thanks to automake, autoscan, autoconf and autoheader.
+I made a few modifications to StokesV.h, main.cpp and rand.cpp to allow the customization
+of config.h.  Now, one should be able to get everything configured (as a developer) with:
+
+autoheader
+automake -ac
+autoconf
+
+./configure --prefix=$HOME --bindir=$HOME/bin/$OS
+make
+make install
+
+Important problem: gcc 3.1 on Darwin has a problem with isnan()
+(see http://mail.gnu.org/archive/html/lilypond-devel/2002-08/msg00175.html)
+I had to define it empty if undefined.  Bizarre and will probably break on other
+machines, but it compiles for now (does not run on OS X though).
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/DoAllThat.pl,v
+Working file: DoAllThat.pl
+head: 1.3
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 3;	selected revisions: 3
+description:
+----------------------------
+revision 1.3
+date: 2003/11/12 14:44:45;  author: dccote;  state: Exp;  lines: +97 -23
+
+
+The extraction scripts have been modified a bit to reflect the changes of the XML output file. Not much, really.
+DoAllThat.pl has more options.
+----------------------------
+revision 1.2
+date: 2003/04/16 18:26:50;  author: dccote;  state: Exp;  lines: +39 -3
+
+Added analysis in process, corrected accepted options.
+----------------------------
+revision 1.1
+date: 2003/04/07 17:26:41;  author: dccote;  state: Exp;
+
+The program that does it all: DoAllThat.pl will setup, run and analyze a
+series of directories.  Several options can (and must) be passed for
+functionning, ingeneral they simply identfy the series of directories one
+wants to work on.
+
+DoAllThat.pl must be run from the top directory (i.e. in my case, work/).
+
+Setup:
+Given base directory, prefix and all, setup will create a set of
+directories that closely match the base directory, except that mu_s will
+be increased by 5 cm^{-1} each time.  Eventually, this could do something
+else (like chaning optical activity), but for now, does not do that.
+
+Run:
+Run is quite fancy:  it will run "run_all.sh" in each directory, but will
+also fork as many times as the user wants (set with the -t option, as in
+"threads").  This is very useful on the Linux cluster (lc1) where 8
+threads will run unimpeded since there are 8 processors available.  When
+everything is done, run_all.sh sends an email to the owner of the job, so
+you get notified that the calculation is over.
+
+Analyse:
+Will create all the subfiles that can be created by running
+extractallsubfiles in each directory.
+
+Eventually, I might fork multiple times for the analyse, as this takes
+some time, but not for now.  There is also a chance I might add a
+"clever" algorithm to check how many threads should be created and maybe
+try to use other computers if they are not busy (like s0 to s6).
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/INSTALL,v
+Working file: INSTALL
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2003/03/11 21:15:55;  author: dccote;  state: Exp;
+
+Amazing: I got the ./configure set up going thanks to automake, autoscan, autoconf and autoheader.
+I made a few modifications to StokesV.h, main.cpp and rand.cpp to allow the customization
+of config.h.  Now, one should be able to get everything configured (as a developer) with:
+
+autoheader
+automake -ac
+autoconf
+
+./configure --prefix=$HOME --bindir=$HOME/bin/$OS
+make
+make install
+
+Important problem: gcc 3.1 on Darwin has a problem with isnan()
+(see http://mail.gnu.org/archive/html/lilypond-devel/2002-08/msg00175.html)
+I had to define it empty if undefined.  Bizarre and will probably break on other
+machines, but it compiles for now (does not run on OS X though).
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/MCBox.cpp,v
+Working file: MCBox.cpp
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2003/11/18 15:10:35;  author: dccote;  state: Exp;
+
+All the floats were changed to double's.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/MCBox.h,v
+Working file: MCBox.h
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2003/11/18 15:10:35;  author: dccote;  state: Exp;
+
+All the floats were changed to double's.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/MCInfiniteLayers.cpp,v
+Working file: MCInfiniteLayers.cpp
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2003/11/18 15:10:35;  author: dccote;  state: Exp;
+
+All the floats were changed to double's.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/MCInfiniteLayers.h,v
+Working file: MCInfiniteLayers.h
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2003/11/18 15:10:35;  author: dccote;  state: Exp;
+
+All the floats were changed to double's.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/MCObject.cpp,v
+Working file: MCObject.cpp
+head: 1.6
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 6;	selected revisions: 6
+description:
+----------------------------
+revision 1.6
+date: 2004/01/13 03:07:29;  author: dccote;  state: Exp;  lines: +13 -2
+
+I found the problem with the path length.  It was twofold: 1) I was normalizing by the weight twice (very stupid).  I rewrote the section below:
+
+< mStokesV[inIntersectElement.interface][inIntersectElement.i][inIntersectElement.j][cosineBin] += (so *= ioPhoton->GetWeight() );
+< path[inIntersectElement.interface][inIntersectElement.i][inIntersectElement.j][cosineBin] += (ioPhoton->GetDistanceTraveled() * so.mI * ioPhoton->GetWeight());
+
+as the following:
+
+> so *= ioPhoton->GetWeight();
+>
+> mStokesV[inIntersectElement.interface][inIntersectElement.i][inIntersectElement.j][cosineBin] +=  so ;
+> path[inIntersectElement.interface][inIntersectElement.i][inIntersectElement.j][cosineBin] += (ioPhoton->GetDistanceTraveled() * so.mI )
+
+2) I forgot to initialize the arrays of the path length to 0 (since array of double's don't get intialized like objects do). Beyond stupid: this explained why the rsults would change with the number of photons (bigger arrays are more likely to have junk in them).  I had noticed junk at the edges of my arrays but could not figureout where this was coming from. Done.
+----------------------------
+revision 1.5
+date: 2004/01/09 22:06:32;  author: dccote;  state: Exp;  lines: +28 -4
+
+
+Added the next event estimator, but it has not been tested a lot.  Still needs work.  Currently off by default.
+I noticed that in the straightforward direction, with the next event estimator, I get a large peak (of course, all photons are counted), but everything else looks fine.
+I suspect I might have the weight wrong.  Not a lot of people explain exactly how they do it (Jaillon does not), so I'll need to dig up som einfo on it later.
+
+*Bugs/feature/screwup*: The way I calculate the average path length was definitely wrong before, but although I though what I currently do would be perfect, I get strange things: for mu_s -> 0, the average path length is not 1 cm is the forward direction (at least after the extractstats program goes through them).  I am quite sure it is incorrect and I will need to look through that: I suspect it comes from the modifications I made some time ago to bin the output angle in different arrays (before, when I was setting the acceptance angle as an input to the program, everything was very reasonable).  Maybe the way I perform the average is biased.
+----------------------------
+revision 1.4
+date: 2003/11/18 15:10:35;  author: dccote;  state: Exp;  lines: +37 -37
+
+All the floats were changed to double's.
+----------------------------
+revision 1.3
+date: 2003/11/18 15:00:52;  author: dccote;  state: Exp;  lines: +63 -139
+
+First, MCCube and MCInfiniteLayers have been created, therefore MCObject has been emptied of some of its functions. For instance, init() now does not allocate the surface elements.
+
+
+Also, variables that used to be members of MCObject are now part of the structure SurfaceElement (the number of elements Na and Nb for vectors a and b).  Hence, some of the functions that dealt with Nx and Ny directly before now use Na and Nb from the structure.
+
+The indices kNoInterface, etc... were renumbered so that ForwardZ and BackwardZ are 0 and 1, instead of 1 and 2.  We save quite a bit of memory because before, 0 was still allocated.
+
+Two functions for allocating memory were created AllocateStatsMemory() and AllocateStatsMemory().
+----------------------------
+revision 1.2
+date: 2003/11/12 14:12:02;  author: dccote;  state: Exp;  lines: +506 -266
+
+
+Several important changes, the most important one being that now, all the interfaces are treated the same way.  This means an object is now a set of Interfaces, with normals, spanning vectors, etc... and does not rely on a "specific" geometry (i.e. the z axis, or other things like that).  Currently, MCObject is a cube, but that's irrelevant:  it is just a test for the routines, which work perfectly fine (see comments below).  The next step will be to derive objects (like MCCube, MCInfiniteLayers, MCSphere, etc...).  Fortunately, most of the routines of MCObject can (and will) be reused.
+
+* The function PathCrossesInterface() has been extensively rewritten to treat all the interface elements the same.  Using vector calculus, one can obtain a general formalution for the distance between a point and an interface and so on.   There is an important "comment" in that function: we must "cheat" a little bit because of round off errors.  For instance, although the distance calculated between a given point and a plane might be less than the propagating distance, sometimes, extremely rarely but still possible, the new computed position is slightly (just a tiny wee bit) passed the plane (which means the photon has exited but was never seen crossing the interface).  Hence, when a photon is alsmost crossing an interface (and I really mean almost), then we consider that it did.
+
+* There exists two new structures to deal with a SurfaceElement and IntersectElement. Surface is any interface defining the volume.  Intersect is all the information about the intersection point of a path with a surface element.
+
+* The function ScoreOnSurface is now completely general and simply store the intesection point and other stats in a multi dimensional table, which tabulates all faces, all Stokes parameters for all acceptance angles.  As usual, everything is dumped to disk in one big XML file.  We "bin" the photons by the cosine they make with the interface they cross, however they are output to file as a "intergated" measurement.  For instance, the photons are binned with cosines from 1 to 0.95, 0.5 to 0.9, 085 to 0.8 etc...  However, when comes the time to output to disk, with include everything up to a certain value.  Hence, the images are for acceptance cosine down to 0.9, down to 0.85, down to 0.8, etc...  It is faster to "do the math" when outputting everything to disk than to do it as we go.
+
+* Of course, because of these changes, the XML format has changed a bit.  The file is pretty self-explanatory.  All parameters are written in that file.
+
+The transport coefficient mu_s + mu_a is now checked to be non zero.  If it is, we can't go on (scattering distance is infinite).
+
+The product of two unit vectors is not always smaller than 1 (it can be a wee bit more).  We use the Normalized functions for cross products and dot products  which enforce bounds.
+
+There is now a few active checks for "things" that can't happen.  For instance, in rare occasions, the random number genetaor can return 0.  This would make the scattering distance infinite, we must check for that.  Also, just to avoid infinite loops, if a photon does not exit within a finite, reasoonable amoount of time, we warn the user.  Once again, this is useful in debugging.
+
+Reflections and transmissions (FResnel coefficients) have been added at interfaces.  Before, the photon was always transmitted.
+
+I also added the possibility to seed the random number generator so I can use the same sequence for testing (very useful).
+
+I also added an "isotropic scattering test", which allows one to test various things. I corrected a few things with the "single scattering test" (for the scattering distance).
+----------------------------
+revision 1.1
+date: 2003/10/09 20:43:56;  author: dccote;  state: Exp;
+
+Uber-major rewrite in terms of a new object called MCObject (as in Monte Carlo object).  The object MCObject
+is currently just a layer, but the structure is ready to accept any shape (cube, cuvette, layer, cylinder, etc...).
+main.cpp now only reads parameters and passes the control to MCObject.  The main function is PropagateInObject().  Eventually (I dont' know when , but at some point), MCObject will be able to contain other MCObjects that have different properties and the photons will propagate through all the objects using the simple functions declared by MCObject.
+
+The functions for dumping to file have been modified.  They are now real XML files, and can be analyzed with xmldump (which I have written).
+Also, it is now a piece of cake to collect the backscattered photons.  They are collected and stored in the same file, under "interface",id=backward.
+MCObject is much better (and stricter) when crossing interfaces, since the algorithm has been streamlined.  See the class for explanations (although there currently are no comments in the header file).  The place to start is in PropagateInObject().
+
+
+In main.cpp, I have also finally fixed the exception-catch problem. One must use:
+catch (exception& e)
+         clog << RightNow() << "Exception caught: " << string(e.what()) << endl;
+and not
+catch (exception e)
+         clog << RightNow() << "Exception caught: " << string(e.what()) << endl;
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/MCObject.h,v
+Working file: MCObject.h
+head: 1.5
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 5;	selected revisions: 5
+description:
+----------------------------
+revision 1.5
+date: 2004/01/10 20:17:30;  author: dccote;  state: Exp;  lines: +1 -0
+*** empty log message ***
+----------------------------
+revision 1.4
+date: 2003/11/18 15:10:36;  author: dccote;  state: Exp;  lines: +18 -18
+
+All the floats were changed to double's.
+----------------------------
+revision 1.3
+date: 2003/11/18 15:00:52;  author: dccote;  state: Exp;  lines: +4 -13
+
+First, MCCube and MCInfiniteLayers have been created, therefore MCObject has been emptied of some of its functions. For instance, init() now does not allocate the surface elements.
+
+
+Also, variables that used to be members of MCObject are now part of the structure SurfaceElement (the number of elements Na and Nb for vectors a and b).  Hence, some of the functions that dealt with Nx and Ny directly before now use Na and Nb from the structure.
+
+The indices kNoInterface, etc... were renumbered so that ForwardZ and BackwardZ are 0 and 1, instead of 1 and 2.  We save quite a bit of memory because before, 0 was still allocated.
+
+Two functions for allocating memory were created AllocateStatsMemory() and AllocateStatsMemory().
+----------------------------
+revision 1.2
+date: 2003/11/12 14:12:02;  author: dccote;  state: Exp;  lines: +25 -16
+
+
+Several important changes, the most important one being that now, all the interfaces are treated the same way.  This means an object is now a set of Interfaces, with normals, spanning vectors, etc... and does not rely on a "specific" geometry (i.e. the z axis, or other things like that).  Currently, MCObject is a cube, but that's irrelevant:  it is just a test for the routines, which work perfectly fine (see comments below).  The next step will be to derive objects (like MCCube, MCInfiniteLayers, MCSphere, etc...).  Fortunately, most of the routines of MCObject can (and will) be reused.
+
+* The function PathCrossesInterface() has been extensively rewritten to treat all the interface elements the same.  Using vector calculus, one can obtain a general formalution for the distance between a point and an interface and so on.   There is an important "comment" in that function: we must "cheat" a little bit because of round off errors.  For instance, although the distance calculated between a given point and a plane might be less than the propagating distance, sometimes, extremely rarely but still possible, the new computed position is slightly (just a tiny wee bit) passed the plane (which means the photon has exited but was never seen crossing the interface).  Hence, when a photon is alsmost crossing an interface (and I really mean almost), then we consider that it did.
+
+* There exists two new structures to deal with a SurfaceElement and IntersectElement. Surface is any interface defining the volume.  Intersect is all the information about the intersection point of a path with a surface element.
+
+* The function ScoreOnSurface is now completely general and simply store the intesection point and other stats in a multi dimensional table, which tabulates all faces, all Stokes parameters for all acceptance angles.  As usual, everything is dumped to disk in one big XML file.  We "bin" the photons by the cosine they make with the interface they cross, however they are output to file as a "intergated" measurement.  For instance, the photons are binned with cosines from 1 to 0.95, 0.5 to 0.9, 085 to 0.8 etc...  However, when comes the time to output to disk, with include everything up to a certain value.  Hence, the images are for acceptance cosine down to 0.9, down to 0.85, down to 0.8, etc...  It is faster to "do the math" when outputting everything to disk than to do it as we go.
+
+* Of course, because of these changes, the XML format has changed a bit.  The file is pretty self-explanatory.  All parameters are written in that file.
+
+The transport coefficient mu_s + mu_a is now checked to be non zero.  If it is, we can't go on (scattering distance is infinite).
+
+The product of two unit vectors is not always smaller than 1 (it can be a wee bit more).  We use the Normalized functions for cross products and dot products  which enforce bounds.
+
+There is now a few active checks for "things" that can't happen.  For instance, in rare occasions, the random number genetaor can return 0.  This would make the scattering distance infinite, we must check for that.  Also, just to avoid infinite loops, if a photon does not exit within a finite, reasoonable amoount of time, we warn the user.  Once again, this is useful in debugging.
+
+Reflections and transmissions (FResnel coefficients) have been added at interfaces.  Before, the photon was always transmitted.
+
+I also added the possibility to seed the random number generator so I can use the same sequence for testing (very useful).
+
+I also added an "isotropic scattering test", which allows one to test various things. I corrected a few things with the "single scattering test" (for the scattering distance).
+----------------------------
+revision 1.1
+date: 2003/10/09 20:43:56;  author: dccote;  state: Exp;
+
+Uber-major rewrite in terms of a new object called MCObject (as in Monte Carlo object).  The object MCObject
+is currently just a layer, but the structure is ready to accept any shape (cube, cuvette, layer, cylinder, etc...).
+main.cpp now only reads parameters and passes the control to MCObject.  The main function is PropagateInObject().  Eventually (I dont' know when , but at some point), MCObject will be able to contain other MCObjects that have different properties and the photons will propagate through all the objects using the simple functions declared by MCObject.
+
+The functions for dumping to file have been modified.  They are now real XML files, and can be analyzed with xmldump (which I have written).
+Also, it is now a piece of cake to collect the backscattered photons.  They are collected and stored in the same file, under "interface",id=backward.
+MCObject is much better (and stricter) when crossing interfaces, since the algorithm has been streamlined.  See the class for explanations (although there currently are no comments in the header file).  The place to start is in PropagateInObject().
+
+
+In main.cpp, I have also finally fixed the exception-catch problem. One must use:
+catch (exception& e)
+         clog << RightNow() << "Exception caught: " << string(e.what()) << endl;
+and not
+catch (exception e)
+         clog << RightNow() << "Exception caught: " << string(e.what()) << endl;
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/MCUtils.cpp,v
+Working file: MCUtils.cpp
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2003/11/18 15:10:36;  author: dccote;  state: Exp;
+
+All the floats were changed to double's.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/MCUtils.h,v
+Working file: MCUtils.h
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2003/11/18 15:10:36;  author: dccote;  state: Exp;
+
+All the floats were changed to double's.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/Attic/Makefile,v
+Working file: Makefile
+head: 1.8
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 8;	selected revisions: 8
+description:
+----------------------------
+revision 1.8
+date: 2003/03/18 00:45:39;  author: dccote;  state: dead;  lines: +0 -0
+
+This isn't need since it gets created by ./configure.
+----------------------------
+revision 1.7
+date: 2003/03/11 21:15:55;  author: dccote;  state: Exp;  lines: +431 -56
+
+Amazing: I got the ./configure set up going thanks to automake, autoscan, autoconf and autoheader.
+I made a few modifications to StokesV.h, main.cpp and rand.cpp to allow the customization
+of config.h.  Now, one should be able to get everything configured (as a developer) with:
+
+autoheader
+automake -ac
+autoconf
+
+./configure --prefix=$HOME --bindir=$HOME/bin/$OS
+make
+make install
+
+Important problem: gcc 3.1 on Darwin has a problem with isnan()
+(see http://mail.gnu.org/archive/html/lilypond-devel/2002-08/msg00175.html)
+I had to define it empty if undefined.  Bizarre and will probably break on other
+machines, but it compiles for now (does not run on OS X though).
+----------------------------
+revision 1.6
+date: 2003/03/10 22:28:26;  author: dccote;  state: Exp;  lines: +8 -1
+Started implementation of test section for testing Mueller matrices from interpolated data files.
+Sample the function at all angles and spits out the total Mueller matrix mij in 16 different files.  The files are NOT as a funciton of position xy buyt as a function of angles theta phi.  Currently, phi is not being used.
+----------------------------
+revision 1.5
+date: 2003/02/03 16:59:53;  author: dccote;  state: Exp;  lines: +4 -4
+Makefile for different platforms
+----------------------------
+revision 1.4
+date: 2002/12/02 22:29:50;  author: dccote;  state: Exp;  lines: +11 -10
+Added multiple targets for linux.
+----------------------------
+revision 1.3
+date: 2002/11/25 21:06:14;  author: dccote;  state: Exp;  lines: +5 -0
+First attempt at adding results to CVS.  Might not be done in the future, (could be too much data)
+----------------------------
+revision 1.2
+date: 2002/11/19 23:41:56;  author: dccote;  state: Exp;  lines: +6 -1
+By default, build debug version mc.d
+----------------------------
+revision 1.1
+date: 2002/11/08 21:22:49;  author: dccote;  state: Exp;
+Added a makefile with three targets: mc (optimized code) mc.prof (with debugging and profiling) and install (which copies everything to the user $HOME directory).
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/Makefile.am,v
+Working file: Makefile.am
+head: 1.6
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 6;	selected revisions: 6
+description:
+----------------------------
+revision 1.6
+date: 2003/11/18 15:10:36;  author: dccote;  state: Exp;  lines: +2 -2
+
+All the floats were changed to double's.
+----------------------------
+revision 1.5
+date: 2003/10/09 20:47:51;  author: dccote;  state: Exp;  lines: +11 -3
+
+The autoconf files has been modifieed.  test.cpp is broken and has been temporarily removed from the make process.
+----------------------------
+revision 1.4
+date: 2003/04/07 17:33:08;  author: dccote;  state: Exp;  lines: +3 -3
+
+Changed the name from mc to polmc since 1) it is actually polarization
+monte Carlo, not just monte Carlo, and 2) mc is actually a command on the
+linux cluster (who would have thought?).  A few files were added to the
+distribution.
+----------------------------
+revision 1.3
+date: 2003/03/18 00:37:03;  author: dccote;  state: Exp;  lines: +2 -2
+
+Added StokesV.cpp to the project.
+----------------------------
+revision 1.2
+date: 2003/03/13 23:24:12;  author: dccote;  state: Exp;  lines: +3 -3
+
+Added randomscatterer.h and randomscatterer.cpp to project.
+----------------------------
+revision 1.1
+date: 2003/03/11 21:15:55;  author: dccote;  state: Exp;
+
+Amazing: I got the ./configure set up going thanks to automake, autoscan, autoconf and autoheader.
+I made a few modifications to StokesV.h, main.cpp and rand.cpp to allow the customization
+of config.h.  Now, one should be able to get everything configured (as a developer) with:
+
+autoheader
+automake -ac
+autoconf
+
+./configure --prefix=$HOME --bindir=$HOME/bin/$OS
+make
+make install
+
+Important problem: gcc 3.1 on Darwin has a problem with isnan()
+(see http://mail.gnu.org/archive/html/lilypond-devel/2002-08/msg00175.html)
+I had to define it empty if undefined.  Bizarre and will probably break on other
+machines, but it compiles for now (does not run on OS X though).
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/Makefile.in,v
+Working file: Makefile.in
+head: 1.5
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 5;	selected revisions: 5
+description:
+----------------------------
+revision 1.5
+date: 2003/11/18 15:10:36;  author: dccote;  state: Exp;  lines: +65 -3
+
+All the floats were changed to double's.
+----------------------------
+revision 1.4
+date: 2003/10/09 20:47:51;  author: dccote;  state: Exp;  lines: +201 -32
+
+The autoconf files has been modifieed.  test.cpp is broken and has been temporarily removed from the make process.
+----------------------------
+revision 1.3
+date: 2003/04/07 17:33:08;  author: dccote;  state: Exp;  lines: +24 -24
+
+Changed the name from mc to polmc since 1) it is actually polarization
+monte Carlo, not just monte Carlo, and 2) mc is actually a command on the
+linux cluster (who would have thought?).  A few files were added to the
+distribution.
+----------------------------
+revision 1.2
+date: 2003/03/18 00:43:48;  author: dccote;  state: Exp;  lines: +26 -19
+
+Since atuomake -ac was run, Makefile.in has changed.  I need to keep Makefile.,in in the
+project because it is required when running ./configure.
+----------------------------
+revision 1.1
+date: 2003/03/11 21:15:55;  author: dccote;  state: Exp;
+
+Amazing: I got the ./configure set up going thanks to automake, autoscan, autoconf and autoheader.
+I made a few modifications to StokesV.h, main.cpp and rand.cpp to allow the customization
+of config.h.  Now, one should be able to get everything configured (as a developer) with:
+
+autoheader
+automake -ac
+autoconf
+
+./configure --prefix=$HOME --bindir=$HOME/bin/$OS
+make
+make install
+
+Important problem: gcc 3.1 on Darwin has a problem with isnan()
+(see http://mail.gnu.org/archive/html/lilypond-devel/2002-08/msg00175.html)
+I had to define it empty if undefined.  Bizarre and will probably break on other
+machines, but it compiles for now (does not run on OS X though).
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/Makefile.orig,v
+Working file: Makefile.orig
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2003/03/11 21:15:55;  author: dccote;  state: Exp;
+
+Amazing: I got the ./configure set up going thanks to automake, autoscan, autoconf and autoheader.
+I made a few modifications to StokesV.h, main.cpp and rand.cpp to allow the customization
+of config.h.  Now, one should be able to get everything configured (as a developer) with:
+
+autoheader
+automake -ac
+autoconf
+
+./configure --prefix=$HOME --bindir=$HOME/bin/$OS
+make
+make install
+
+Important problem: gcc 3.1 on Darwin has a problem with isnan()
+(see http://mail.gnu.org/archive/html/lilypond-devel/2002-08/msg00175.html)
+I had to define it empty if undefined.  Bizarre and will probably break on other
+machines, but it compiles for now (does not run on OS X though).
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/MuellerM.h,v
+Working file: MuellerM.h
+head: 1.11
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 11;	selected revisions: 11
+description:
+----------------------------
+revision 1.11
+date: 2003/11/18 15:10:36;  author: dccote;  state: Exp;  lines: +33 -33
+
+All the floats were changed to double's.
+----------------------------
+revision 1.10
+date: 2003/11/18 14:55:09;  author: dccote;  state: Exp;  lines: +1 -14
+
+I moved some of the functions from Mueller to randomscatter.cpp since that's where they belonged (the comaprison for the Jaillon method, for instance).  I also removed useless functions from Mueller.h
+
+randomscatter.cpp has better init functions for Jaillon. Alos, note the mAvgCosine was changed from float to double (in randomscatter.h).  This is critical since with 1e7 photons, the running sum will fail (and did fail).
+----------------------------
+revision 1.9
+date: 2003/10/09 20:33:59;  author: dccote;  state: Exp;  lines: +192 -130
+
+Created a new class fastinterpolate (linear interpolation) which sped up the simulation significantly.
+Also, there is a new constructor which takes tables as the input parameters, not files so we can generate everything straight in the code.
+Changed the function to use radians instead of stupid degrees.  No idea why I did that in the first place.
+Added a function to get only the top two elements (m11 and m12) to make the random sampling faster.
+Added a function to get S1 and S2 from the Mueller matrix elements of a spherical Mueller matrix (GetDistS1DistS2)
+Added a table called mComparisonFct which contains m11+abs(m12).  This is used for Jaillon's method for better rejection method.  This function should probably go to the class MCRandomScattererJaillon.
+----------------------------
+revision 1.8
+date: 2003/09/15 15:21:17;  author: dccote;  state: Exp;  lines: +65 -65
+
+Minor formatting issues (removed tabs).
+----------------------------
+revision 1.7
+date: 2003/07/10 14:36:55;  author: dccote;  state: Exp;  lines: +253 -116
+
+Added Headerdoc comments.
+
+HeaderDoc is a program that prases header files for specially formatted comments.  Headerdoc is made by apple (it's a perl script)
+and is documented at: http://developer.apple.com/darwin/projects/headerdoc/docs/HeaderDoc.html
+
+Once the information is entered, one can create HTML files with all the information for easy viewing in a web browser with these two simple commands:
+
+mc% headerdoc .
+mc% gatherheaderdoc
+
+MasterTOC.html contains a table of contents for all the files.
+----------------------------
+revision 1.6
+date: 2003/04/16 15:06:34;  author: dccote;  state: Exp;  lines: +1 -0
+
+I forgot to include one important in previous commit message:  a function that provides a
+normalization factor has been added to all MuellerM classes.  This allows one to normalize
+to the integral of I(theta) d_Omega in various calculations.  This is slightly incorrect since
+really the normalization in most functions should be I(theta,phi) (and therefore depends on S12() a bit).
+HOwever, the change is small and will be dropped for now.  A warning is issued so that the user knows
+what is being done.  This normalization is used for the rejection method (in randomscatter.cpp)
+----------------------------
+revision 1.5
+date: 2003/04/16 14:55:49;  author: dccote;  state: Exp;  lines: +99 -10
+
+Optimized a few things, especially the access to matrix elements since a
+significant fraction of the time was spent in there.  Still some work
+to do, but a bit better now.
+----------------------------
+revision 1.4
+date: 2003/03/13 23:20:30;  author: dccote;  state: Exp;  lines: +11 -8
+
+MuellerMRayleigh::GetMatrixForTheta was modified to include phi dependence.
+----------------------------
+revision 1.3
+date: 2003/03/13 23:19:24;  author: dccote;  state: Exp;  lines: +19 -17
+
+Modified GetMatrixForTheta() to actually be GetMatrixForThetaAndPhi(), although the name of the function was not changed.
+It is now possible to obtain the matrix at an arbitrary angle phi (which simplifies the testing and makes the code more uniform). This still needs to be implemented in Photon.h to make sure everything is using the same funciton.  Also, MuellerMRayleigh has NOT been modified yet.
+----------------------------
+revision 1.2
+date: 2003/03/10 22:28:27;  author: dccote;  state: Exp;  lines: +1 -0
+Started implementation of test section for testing Mueller matrices from interpolated data files.
+Sample the function at all angles and spits out the total Mueller matrix mij in 16 different files.  The files are NOT as a funciton of position xy buyt as a function of angles theta phi.  Currently, phi is not being used.
+----------------------------
+revision 1.1
+date: 2002/11/22 21:45:34;  author: dccote;  state: Exp;
+Separation of the various classes into separate files.
+
+Most important aspect: the weight is not the intensity of the Stokes vector.
+It is incorrect to take the unnormalized intensity of the scattered Stokes
+vector.  The angles phi and theta are already sampled proportionally to the
+probability of having a photon scattered at that phi and theta.  Therefore we always normalize
+the StokesVectors after a scattering event (what we care about is the polarization and
+the degree of polarization of a photon is unchanged upon scattering.  The nature
+of the polarization changes.
+
+Added a real weight() to a photon, which allows to deal with absoprtion (untested).
+
+
+Added a function to test if the photon is still in the medium.
+Finally, if the propagation distance before next scattering event is such that the photon leaves the medium, the distance is corrected.
+
+Files for beta linear, circular and average distance travalled by a photon are
+also produced.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/NEWS,v
+Working file: NEWS
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2003/03/11 21:15:55;  author: dccote;  state: Exp;
+
+Amazing: I got the ./configure set up going thanks to automake, autoscan, autoconf and autoheader.
+I made a few modifications to StokesV.h, main.cpp and rand.cpp to allow the customization
+of config.h.  Now, one should be able to get everything configured (as a developer) with:
+
+autoheader
+automake -ac
+autoconf
+
+./configure --prefix=$HOME --bindir=$HOME/bin/$OS
+make
+make install
+
+Important problem: gcc 3.1 on Darwin has a problem with isnan()
+(see http://mail.gnu.org/archive/html/lilypond-devel/2002-08/msg00175.html)
+I had to define it empty if undefined.  Bizarre and will probably break on other
+machines, but it compiles for now (does not run on OS X though).
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/Photon.h,v
+Working file: Photon.h
+head: 1.10
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 10;	selected revisions: 10
+description:
+----------------------------
+revision 1.10
+date: 2004/01/10 20:17:30;  author: dccote;  state: Exp;  lines: +100 -1
+*** empty log message ***
+----------------------------
+revision 1.9
+date: 2003/11/18 15:10:36;  author: dccote;  state: Exp;  lines: +65 -65
+
+All the floats were changed to double's.
+----------------------------
+revision 1.8
+date: 2003/11/12 14:58:04;  author: dccote;  state: Exp;  lines: +375 -50
+
+
+The function MeasureStokesVector in lab frame has been rewritten to apply for any plane and any reference frame.  This is necessary for the new 3D geometry, and is also a good sanity check for everything else.  The corresponding function for all the other Photon classes (PhotonBartel, PhotonCote, PhotonJaillon) have been rewritten.  I could not find a good way to rewrite PhotonMourant (which I don't use anyway) so I check to see if it is the z plane and if not, I throw an exception.
+
+Important note:  PhotonCote is still a bit incomplete and does not compute U and V.  I don't really use it as much as PhotonJaillon (which computes everything, but I am not sure about one of its correction factor: he rotates the reference frame in the detection plane and I don't understand the physical meaning of that).
+
+Added a (pretty expensive) function to keep track of the path of a photon.  By default, this is off.  It is quite time and memory consuming and should only be used for debugging purposes.  It requires the dynamic allocation of a large array, which is why it is so "slow".  It is activated with KeepStats().  The stats are dumped to stream with DumpStats().
+
+Added functions for reflection and transmission coefficients (since they depend on the polarization state of a photon, they really belong here).
+The function GetFresnelCoefficients() is self-explanatory: we rotate the reference frame in the s and p plane before computing the Fresnel coefficients.
+
+There are two functions for TransmitThroughInterface() and ReflectAtInterface() to transform the photon upon reflection/transmission.
+
+Finally, there is a function that returns the probability a photon will be reflected at an interface.  It uses the Fresnel coefficients computed above to calculate that value.
+----------------------------
+revision 1.7
+date: 2003/10/09 20:27:10;  author: dccote;  state: Exp;  lines: +425 -291
+
+Major changes:
+PhotonCote, PhotonMourant, PhotonJaillon, PhotonBartel rewritten to access StokesV properly.
+The key function MeasureStokesVectorInLabFrame() is different for each class and is the reason why these subclasses exist: the detection scheme is different.
+PhotonCote is a "direct" application of the measurement scheme I use in the lab: measure intensity, rotate polarizer, measure again.  I suspect theat Jaillon, and others who use some kind of cos theta ^2 factor for non normal incidence are wrong, but I can't prove it.  Bartel does not have it, Mourant does not have it, but some others (Moscoso et al, JOSA A, April 2001, 18, 4 p. 952) have it too.
+
+In the main loop, one must therefore create a Photon and pass it to the main Monte Carlo loop.
+----------------------------
+revision 1.6
+date: 2003/07/10 14:36:55;  author: dccote;  state: Exp;  lines: +185 -13
+
+Added Headerdoc comments.
+
+HeaderDoc is a program that prases header files for specially formatted comments.  Headerdoc is made by apple (it's a perl script)
+and is documented at: http://developer.apple.com/darwin/projects/headerdoc/docs/HeaderDoc.html
+
+Once the information is entered, one can create HTML files with all the information for easy viewing in a web browser with these two simple commands:
+
+mc% headerdoc .
+mc% gatherheaderdoc
+
+MasterTOC.html contains a table of contents for all the files.
+----------------------------
+revision 1.5
+date: 2003/04/16 14:52:05;  author: dccote;  state: Exp;  lines: +23 -5
+
+A few function for modifying the weight of a photon have been added.
+----------------------------
+revision 1.4
+date: 2003/03/18 00:36:29;  author: dccote;  state: Exp;  lines: +24 -4
+
+Added a constructor to allow the creation of a Photon with a given Stokes
+vector StokesV (not just the independent components).
+In the process, an init() function was created to manage initalization.
+----------------------------
+revision 1.3
+date: 2003/03/13 23:22:44;  author: dccote;  state: Exp;  lines: +2 -2
+
+GetMatrixForTheta() has been adjusted to reflect new syntax with theta and phi, but phi is always set to zero.
+Later, if any roation is actually necessary, this will be done via the calling of that function GetMatrixForTheta() with a non zero phi, but for now, this is enough to get the code to do the same thing as before.
+----------------------------
+revision 1.2
+date: 2002/12/02 22:29:07;  author: dccote;  state: Exp;  lines: +7 -3
+Added function to rotate Stokes vector by angle phi.
+----------------------------
+revision 1.1
+date: 2002/11/22 21:45:34;  author: dccote;  state: Exp;
+Separation of the various classes into separate files.
+
+Most important aspect: the weight is not the intensity of the Stokes vector.
+It is incorrect to take the unnormalized intensity of the scattered Stokes
+vector.  The angles phi and theta are already sampled proportionally to the
+probability of having a photon scattered at that phi and theta.  Therefore we always normalize
+the StokesVectors after a scattering event (what we care about is the polarization and
+the degree of polarization of a photon is unchanged upon scattering.  The nature
+of the polarization changes.
+
+Added a real weight() to a photon, which allows to deal with absoprtion (untested).
+
+
+Added a function to test if the photon is still in the medium.
+Finally, if the propagation distance before next scattering event is such that the photon leaves the medium, the distance is corrected.
+
+Files for beta linear, circular and average distance travalled by a photon are
+also produced.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/README,v
+Working file: README
+head: 1.3
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 3;	selected revisions: 3
+description:
+----------------------------
+revision 1.3
+date: 2003/11/18 15:10:36;  author: dccote;  state: Exp;  lines: +6 -2
+
+All the floats were changed to double's.
+----------------------------
+revision 1.2
+date: 2003/03/18 00:44:43;  author: dccote;  state: Exp;  lines: +25 -0
+
+Strated to add explanations about the code and the tests.  Work in progress.
+----------------------------
+revision 1.1
+date: 2003/03/11 21:15:55;  author: dccote;  state: Exp;
+
+Amazing: I got the ./configure set up going thanks to automake, autoscan, autoconf and autoheader.
+I made a few modifications to StokesV.h, main.cpp and rand.cpp to allow the customization
+of config.h.  Now, one should be able to get everything configured (as a developer) with:
+
+autoheader
+automake -ac
+autoconf
+
+./configure --prefix=$HOME --bindir=$HOME/bin/$OS
+make
+make install
+
+Important problem: gcc 3.1 on Darwin has a problem with isnan()
+(see http://mail.gnu.org/archive/html/lilypond-devel/2002-08/msg00175.html)
+I had to define it empty if undefined.  Bizarre and will probably break on other
+machines, but it compiles for now (does not run on OS X though).
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/RealV.cpp,v
+Working file: RealV.cpp
+head: 1.3
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 3;	selected revisions: 3
+description:
+----------------------------
+revision 1.3
+date: 2003/11/18 15:10:36;  author: dccote;  state: Exp;  lines: +3 -3
+
+All the floats were changed to double's.
+----------------------------
+revision 1.2
+date: 2003/11/12 14:32:44;  author: dccote;  state: Exp;  lines: +31 -0
+
+
+Moved a lot of the "safety checks" to RealV.  I now have NormalizedDotProduct and NormalizedCrossProduct that will enforce the bounds between 0 and 1.  This is particularly important when the products are used for determining the sdine or cosine between two vectors.  If one uses the regular DotProduct, for instance:
+
+float a = RealV::DotProduct(c,d);
+float theta = acos(a);
+
+it is possible, sometimes, in extreme situations that a might be  a tiny bit over 1 (like say, 1.000001) even if c and d were normalized!  Of course, everything will fail from there, since theta will be NaN.  One must therefore use:
+
+float a = RealV::NormalizedDotProduct(c,d);
+float theta = acos(a);
+
+I emphasize that even using double's isntead of floats would not solve the problem: it would just occur less frequently (which is not a solution).
+
+I also added a norm() function that provides the square of the magnitude, which is often enough and is faster than abs(). It is used in the normalized vector products.
+
+Added several functions to actually to vector additions, subtractions, etc... with += -= and + -.  All this means is that I can write simple expressions like:
+
+RealV a,b;
+
+RealV c = a+b;
+RealV d = a-b;
+
+and things like that.
+----------------------------
+revision 1.1
+date: 2003/10/09 20:50:06;  author: dccote;  state: Exp;
+
+Simple output operator added.  Has to be in separate file to avoid redefinition.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/RealV.h,v
+Working file: RealV.h
+head: 1.8
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 8;	selected revisions: 8
+description:
+----------------------------
+revision 1.8
+date: 2004/01/10 20:17:30;  author: dccote;  state: Exp;  lines: +2 -2
+*** empty log message ***
+----------------------------
+revision 1.7
+date: 2003/11/18 15:10:36;  author: dccote;  state: Exp;  lines: +20 -20
+
+All the floats were changed to double's.
+----------------------------
+revision 1.6
+date: 2003/11/12 14:32:44;  author: dccote;  state: Exp;  lines: +108 -22
+
+
+Moved a lot of the "safety checks" to RealV.  I now have NormalizedDotProduct and NormalizedCrossProduct that will enforce the bounds between 0 and 1.  This is particularly important when the products are used for determining the sdine or cosine between two vectors.  If one uses the regular DotProduct, for instance:
+
+float a = RealV::DotProduct(c,d);
+float theta = acos(a);
+
+it is possible, sometimes, in extreme situations that a might be  a tiny bit over 1 (like say, 1.000001) even if c and d were normalized!  Of course, everything will fail from there, since theta will be NaN.  One must therefore use:
+
+float a = RealV::NormalizedDotProduct(c,d);
+float theta = acos(a);
+
+I emphasize that even using double's isntead of floats would not solve the problem: it would just occur less frequently (which is not a solution).
+
+I also added a norm() function that provides the square of the magnitude, which is often enough and is faster than abs(). It is used in the normalized vector products.
+
+Added several functions to actually to vector additions, subtractions, etc... with += -= and + -.  All this means is that I can write simple expressions like:
+
+RealV a,b;
+
+RealV c = a+b;
+RealV d = a-b;
+
+and things like that.
+----------------------------
+revision 1.5
+date: 2003/10/09 18:41:45;  author: dccote;  state: Exp;  lines: +146 -40
+
+Added operator == and !=.
+Corrected the abs() function which was erroneously returning the square of the modulus, not its square root.
+Added a normalized Cross product
+Added an OrientedAngleBetween() function which computes the angle between two vectors which would overlap both after
+a rotation around a third vector.
+Added areParallel() and arePerpendicular()
+----------------------------
+revision 1.4
+date: 2003/09/15 15:18:16;  author: dccote;  state: Exp;  lines: +35 -7
+
+The operator= (assignment operator) has been corrected slightly to use const (see Stroustrup C++ book p.264).
+Cleaned up formatting (no tabs)
+----------------------------
+revision 1.3
+date: 2003/07/10 14:36:55;  author: dccote;  state: Exp;  lines: +63 -0
+
+Added Headerdoc comments.
+
+HeaderDoc is a program that prases header files for specially formatted comments.  Headerdoc is made by apple (it's a perl script)
+and is documented at: http://developer.apple.com/darwin/projects/headerdoc/docs/HeaderDoc.html
+
+Once the information is entered, one can create HTML files with all the information for easy viewing in a web browser with these two simple commands:
+
+mc% headerdoc .
+mc% gatherheaderdoc
+
+MasterTOC.html contains a table of contents for all the files.
+----------------------------
+revision 1.2
+date: 2003/04/16 14:52:49;  author: dccote;  state: Exp;  lines: +13 -9
+
+Added abs() function to class, added std::abs() to the call to the standard abs() function.
+----------------------------
+revision 1.1
+date: 2002/11/22 21:45:34;  author: dccote;  state: Exp;
+Separation of the various classes into separate files.
+
+Most important aspect: the weight is not the intensity of the Stokes vector.
+It is incorrect to take the unnormalized intensity of the scattered Stokes
+vector.  The angles phi and theta are already sampled proportionally to the
+probability of having a photon scattered at that phi and theta.  Therefore we always normalize
+the StokesVectors after a scattering event (what we care about is the polarization and
+the degree of polarization of a photon is unchanged upon scattering.  The nature
+of the polarization changes.
+
+Added a real weight() to a photon, which allows to deal with absoprtion (untested).
+
+
+Added a function to test if the photon is still in the medium.
+Finally, if the propagation distance before next scattering event is such that the photon leaves the medium, the distance is corrected.
+
+Files for beta linear, circular and average distance travalled by a photon are
+also produced.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/StokesV.cpp,v
+Working file: StokesV.cpp
+head: 1.2
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 2;	selected revisions: 2
+description:
+----------------------------
+revision 1.2
+date: 2003/10/09 20:17:31;  author: dccote;  state: Exp;  lines: +1 -1
+
+Corrected an important bug that crashed operator<<.  The function must return the stream.
+----------------------------
+revision 1.1
+date: 2003/03/18 00:34:56;  author: dccote;  state: Exp;
+
+Modified to allow the use of the stream operator, which was actually not working
+in previous versions.  The << operator needs to be defined as a standolane function,
+not a member function.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/StokesV.h,v
+Working file: StokesV.h
+head: 1.11
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 11;	selected revisions: 11
+description:
+----------------------------
+revision 1.11
+date: 2004/01/10 20:17:30;  author: dccote;  state: Exp;  lines: +31 -13
+*** empty log message ***
+----------------------------
+revision 1.10
+date: 2003/11/18 15:10:36;  author: dccote;  state: Exp;  lines: +24 -24
+
+All the floats were changed to double's.
+----------------------------
+revision 1.9
+date: 2003/11/12 15:01:06;  author: dccote;  state: Exp;  lines: +30 -5
+
+Lots of debug checks added to ensure everything is ok.
+----------------------------
+revision 1.8
+date: 2003/10/09 20:16:26;  author: dccote;  state: Exp;  lines: +298 -66
+
+Moved the reference axis into the Stokes vector, which is really where they should have been in the first place.
+The class now has three RealV vectors: mEperp and mEpara and mEprop.  Hence, rotations of the reference frame or
+rotation of the polarization state are unambiguously defined. Several functions have been renamed to emphasize what they do:
+for instance, RotateBy() has been split in two functions: RotateReferenceFrameAroundPropagationDirectionBy() and RotatePolarizationStateBy().
+They do exactly what their name implies.
+
+I have also added ChangePropagationDirectionAroundEPerpBy() for use in scattering calculations.
+----------------------------
+revision 1.7
+date: 2003/09/15 15:21:17;  author: dccote;  state: Exp;  lines: +11 -11
+
+Minor formatting issues (removed tabs).
+----------------------------
+revision 1.6
+date: 2003/07/10 14:36:55;  author: dccote;  state: Exp;  lines: +152 -26
+
+Added Headerdoc comments.
+
+HeaderDoc is a program that prases header files for specially formatted comments.  Headerdoc is made by apple (it's a perl script)
+and is documented at: http://developer.apple.com/darwin/projects/headerdoc/docs/HeaderDoc.html
+
+Once the information is entered, one can create HTML files with all the information for easy viewing in a web browser with these two simple commands:
+
+mc% headerdoc .
+mc% gatherheaderdoc
+
+MasterTOC.html contains a table of contents for all the files.
+----------------------------
+revision 1.5
+date: 2003/04/16 14:54:12;  author: dccote;  state: Exp;  lines: +1 -1
+
+There was a mistake in the sign of the calculation of El:
+
+was:
+<         inEl *= exp(I*delta_theta);
+
+now is:
+
+>         inEl *= exp(-I*delta_theta);
+
+It does not affect the previous calculations since I never looked at circular
+polarization.
+----------------------------
+revision 1.4
+date: 2003/03/18 00:34:56;  author: dccote;  state: Exp;  lines: +17 -6
+
+Modified to allow the use of the stream operator, which was actually not working
+in previous versions.  The << operator needs to be defined as a standolane function,
+not a member function.
+----------------------------
+revision 1.3
+date: 2003/03/11 21:15:55;  author: dccote;  state: Exp;  lines: +2 -0
+
+Amazing: I got the ./configure set up going thanks to automake, autoscan, autoconf and autoheader.
+I made a few modifications to StokesV.h, main.cpp and rand.cpp to allow the customization
+of config.h.  Now, one should be able to get everything configured (as a developer) with:
+
+autoheader
+automake -ac
+autoconf
+
+./configure --prefix=$HOME --bindir=$HOME/bin/$OS
+make
+make install
+
+Important problem: gcc 3.1 on Darwin has a problem with isnan()
+(see http://mail.gnu.org/archive/html/lilypond-devel/2002-08/msg00175.html)
+I had to define it empty if undefined.  Bizarre and will probably break on other
+machines, but it compiles for now (does not run on OS X though).
+----------------------------
+revision 1.2
+date: 2002/12/02 22:21:57;  author: dccote;  state: Exp;  lines: +21 -2
+Changed cerr for clog to output to standard log (is usually the same as cerr, but who knows).
+
+Added two functions to rotate Stokes vector by angle phi.
+----------------------------
+revision 1.1
+date: 2002/11/22 21:45:34;  author: dccote;  state: Exp;
+Separation of the various classes into separate files.
+
+Most important aspect: the weight is not the intensity of the Stokes vector.
+It is incorrect to take the unnormalized intensity of the scattered Stokes
+vector.  The angles phi and theta are already sampled proportionally to the
+probability of having a photon scattered at that phi and theta.  Therefore we always normalize
+the StokesVectors after a scattering event (what we care about is the polarization and
+the degree of polarization of a photon is unchanged upon scattering.  The nature
+of the polarization changes.
+
+Added a real weight() to a photon, which allows to deal with absoprtion (untested).
+
+
+Added a function to test if the photon is still in the medium.
+Finally, if the propagation distance before next scattering event is such that the photon leaves the medium, the distance is corrected.
+
+Files for beta linear, circular and average distance travalled by a photon are
+also produced.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/UTimer.cpp,v
+Working file: UTimer.cpp
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2003/11/19 20:47:59;  author: dccote;  state: Exp;
+
+New files added to CVS project.  They used to be independent, they are now part of the project.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/UTimer.h,v
+Working file: UTimer.h
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2003/11/19 20:47:59;  author: dccote;  state: Exp;
+
+New files added to CVS project.  They used to be independent, they are now part of the project.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/config.h.in,v
+Working file: config.h.in
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2003/03/11 21:15:55;  author: dccote;  state: Exp;
+
+Amazing: I got the ./configure set up going thanks to automake, autoscan, autoconf and autoheader.
+I made a few modifications to StokesV.h, main.cpp and rand.cpp to allow the customization
+of config.h.  Now, one should be able to get everything configured (as a developer) with:
+
+autoheader
+automake -ac
+autoconf
+
+./configure --prefix=$HOME --bindir=$HOME/bin/$OS
+make
+make install
+
+Important problem: gcc 3.1 on Darwin has a problem with isnan()
+(see http://mail.gnu.org/archive/html/lilypond-devel/2002-08/msg00175.html)
+I had to define it empty if undefined.  Bizarre and will probably break on other
+machines, but it compiles for now (does not run on OS X though).
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/configfiles.cpp,v
+Working file: configfiles.cpp
+head: 1.2
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 2;	selected revisions: 2
+description:
+----------------------------
+revision 1.2
+date: 2003/11/20 15:31:12;  author: dccote;  state: Exp;  lines: +8 -2
+
+Some changes related to handling of errors (with files).
+----------------------------
+revision 1.1
+date: 2003/11/19 20:47:59;  author: dccote;  state: Exp;
+
+New files added to CVS project.  They used to be independent, they are now part of the project.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/configfiles.h,v
+Working file: configfiles.h
+head: 1.2
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 2;	selected revisions: 2
+description:
+----------------------------
+revision 1.2
+date: 2003/11/20 15:31:12;  author: dccote;  state: Exp;  lines: +3 -8
+
+Some changes related to handling of errors (with files).
+----------------------------
+revision 1.1
+date: 2003/11/19 20:47:59;  author: dccote;  state: Exp;
+
+New files added to CVS project.  They used to be independent, they are now part of the project.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/configure,v
+Working file: configure
+head: 1.3
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 3;	selected revisions: 3
+description:
+----------------------------
+revision 1.3
+date: 2003/11/18 15:10:36;  author: dccote;  state: Exp;  lines: +417 -344
+
+All the floats were changed to double's.
+----------------------------
+revision 1.2
+date: 2003/10/09 20:47:51;  author: dccote;  state: Exp;  lines: +13 -13
+
+The autoconf files has been modifieed.  test.cpp is broken and has been temporarily removed from the make process.
+----------------------------
+revision 1.1
+date: 2003/04/16 18:25:23;  author: dccote;  state: Exp;
+
+Configure script actually added to project since not all computers have autoconf.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/configure.ac,v
+Working file: configure.ac
+head: 1.3
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 3;	selected revisions: 3
+description:
+----------------------------
+revision 1.3
+date: 2003/11/18 15:10:36;  author: dccote;  state: Exp;  lines: +17 -4
+
+All the floats were changed to double's.
+----------------------------
+revision 1.2
+date: 2003/10/09 20:47:50;  author: dccote;  state: Exp;  lines: +1 -1
+
+The autoconf files has been modifieed.  test.cpp is broken and has been temporarily removed from the make process.
+----------------------------
+revision 1.1
+date: 2003/03/11 21:15:55;  author: dccote;  state: Exp;
+
+Amazing: I got the ./configure set up going thanks to automake, autoscan, autoconf and autoheader.
+I made a few modifications to StokesV.h, main.cpp and rand.cpp to allow the customization
+of config.h.  Now, one should be able to get everything configured (as a developer) with:
+
+autoheader
+automake -ac
+autoconf
+
+./configure --prefix=$HOME --bindir=$HOME/bin/$OS
+make
+make install
+
+Important problem: gcc 3.1 on Darwin has a problem with isnan()
+(see http://mail.gnu.org/archive/html/lilypond-devel/2002-08/msg00175.html)
+I had to define it empty if undefined.  Bizarre and will probably break on other
+machines, but it compiles for now (does not run on OS X though).
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/constants.h,v
+Working file: constants.h
+head: 1.2
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 2;	selected revisions: 2
+description:
+----------------------------
+revision 1.2
+date: 2003/09/15 15:21:17;  author: dccote;  state: Exp;  lines: +3 -1
+
+Minor formatting issues (removed tabs).
+----------------------------
+revision 1.1
+date: 2003/03/10 22:29:12;  author: dccote;  state: Exp;
+A few need constants.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/cubicspline.cpp,v
+Working file: cubicspline.cpp
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2003/11/19 20:47:59;  author: dccote;  state: Exp;
+
+New files added to CVS project.  They used to be independent, they are now part of the project.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/cubicspline.h,v
+Working file: cubicspline.h
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2003/11/19 20:48:00;  author: dccote;  state: Exp;
+
+New files added to CVS project.  They used to be independent, they are now part of the project.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/depcomp,v
+Working file: depcomp
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2003/11/19 20:51:21;  author: dccote;  state: Exp;
+
+Files from autoconf (i.e the configure script) have been added.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/extractallsubfiles.sh,v
+Working file: extractallsubfiles.sh
+head: 1.3
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 3;	selected revisions: 3
+description:
+----------------------------
+revision 1.3
+date: 2003/11/12 14:44:45;  author: dccote;  state: Exp;  lines: +117 -8
+
+
+The extraction scripts have been modified a bit to reflect the changes of the XML output file. Not much, really.
+DoAllThat.pl has more options.
+----------------------------
+revision 1.2
+date: 2003/03/18 00:39:23;  author: dccote;  state: Exp;  lines: +19 -7
+
+Does not use perl explcitly, so can now be set up in  the user's path.
+Will now call extractmuellermatrixelements.pl when done.
+----------------------------
+revision 1.1
+date: 2002/12/02 22:36:17;  author: dccote;  state: Exp;
+Added three scripts to extract all the parameters from a single output file.
+From a simple output file, one can get all Stokes vector components as a function of space.
+From all the Stokes vectors from the various combinations of input Stokes vector, one can get
+the Mueller matrix of the system.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/extractmuellermatrixelements,v
+Working file: extractmuellermatrixelements
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2002/12/02 22:36:17;  author: dccote;  state: Exp;
+Added three scripts to extract all the parameters from a single output file.
+From a simple output file, one can get all Stokes vector components as a function of space.
+From all the Stokes vectors from the various combinations of input Stokes vector, one can get
+the Mueller matrix of the system.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/extractmuellermatrixelements.pl,v
+Working file: extractmuellermatrixelements.pl
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2003/04/16 18:28:26;  author: dccote;  state: Exp;
+
+Scripts used for analysis have been added to project.
+They allow to extract all sub files, extract matrix elements when possible\
+(i.e. if all the required files have been calculated) and write a summary
+of all important values into a file for a series of runs (all done in DoAllThat.pl -analysis)
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/extractstatsfromarrays.pl,v
+Working file: extractstatsfromarrays.pl
+head: 1.2
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 2;	selected revisions: 2
+description:
+----------------------------
+revision 1.2
+date: 2003/11/12 14:44:45;  author: dccote;  state: Exp;  lines: +174 -11
+
+
+The extraction scripts have been modified a bit to reflect the changes of the XML output file. Not much, really.
+DoAllThat.pl has more options.
+----------------------------
+revision 1.1
+date: 2003/04/16 18:28:26;  author: dccote;  state: Exp;
+
+Scripts used for analysis have been added to project.
+They allow to extract all sub files, extract matrix elements when possible\
+(i.e. if all the required files have been calculated) and write a summary
+of all important values into a file for a series of runs (all done in DoAllThat.pl -analysis)
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/extractsubfile.pl,v
+Working file: extractsubfile.pl
+head: 1.2
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 2;	selected revisions: 2
+description:
+----------------------------
+revision 1.2
+date: 2003/04/07 17:31:17;  author: dccote;  state: Exp;  lines: +1 -1
+
+The program now uses /usr/local/perl.  Must make sure there is one on all
+machines. I added one to my own OS X box.
+----------------------------
+revision 1.1
+date: 2002/12/02 22:36:17;  author: dccote;  state: Exp;
+Added three scripts to extract all the parameters from a single output file.
+From a simple output file, one can get all Stokes vector components as a function of space.
+From all the Stokes vectors from the various combinations of input Stokes vector, one can get
+the Mueller matrix of the system.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/fastinterpolate.cpp,v
+Working file: fastinterpolate.cpp
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2003/11/19 20:47:59;  author: dccote;  state: Exp;
+
+New files added to CVS project.  They used to be independent, they are now part of the project.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/fastinterpolate.h,v
+Working file: fastinterpolate.h
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2003/11/19 20:47:59;  author: dccote;  state: Exp;
+
+New files added to CVS project.  They used to be independent, they are now part of the project.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/fastinterpolate.o,v
+Working file: fastinterpolate.o
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2003/11/19 20:47:59;  author: dccote;  state: Exp;
+
+New files added to CVS project.  They used to be independent, they are now part of the project.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/install-sh,v
+Working file: install-sh
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2003/10/09 20:50:54;  author: dccote;  state: Exp;
+
+Automake file added for compatibility.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/main.cpp,v
+Working file: main.cpp
+head: 1.19
+branch:
+locks: strict
+access list:
+symbolic names:
+	start: 1.1.1.1
+	mc: 1.1.1
+keyword substitution: kv
+total revisions: 20;	selected revisions: 20
+description:
+----------------------------
+revision 1.19
+date: 2004/01/09 21:59:25;  author: dccote;  state: Exp;  lines: +2 -4
+
+Added better error message when ObjectType is not defined.
+----------------------------
+revision 1.18
+date: 2003/11/18 15:10:36;  author: dccote;  state: Exp;  lines: +1 -1
+
+All the floats were changed to double's.
+----------------------------
+revision 1.17
+date: 2003/11/18 15:02:46;  author: dccote;  state: Exp;  lines: +15 -2
+
+Main has been rewritten to take advantage of the new 3D objects Box and InifniteLayers.
+----------------------------
+revision 1.16
+date: 2003/11/12 14:36:25;  author: dccote;  state: Exp;  lines: +19 -13
+
+
+First, I now redirect stdlog (or clog) to file to obtain a log file in real time.  Before, it would only get dumped to file at the end of the calculation (which served no purpose).
+
+I also use the fancy-shmancy auto_ptr<> to allocate pointers and have them deleted automatically.
+
+I have created a new timer UTimer (separate) to avoid the wrapping problem I had before on some machine.  For instance, when running on linux, if the program ran for more than 12 hours, the counter had time to wrap.  This UTimer now fixes that and provides a few other functions for nice output.
+----------------------------
+revision 1.15
+date: 2003/10/09 20:43:56;  author: dccote;  state: Exp;  lines: +86 -395
+
+Uber-major rewrite in terms of a new object called MCObject (as in Monte Carlo object).  The object MCObject
+is currently just a layer, but the structure is ready to accept any shape (cube, cuvette, layer, cylinder, etc...).
+main.cpp now only reads parameters and passes the control to MCObject.  The main function is PropagateInObject().  Eventually (I dont' know when , but at some point), MCObject will be able to contain other MCObjects that have different properties and the photons will propagate through all the objects using the simple functions declared by MCObject.
+
+The functions for dumping to file have been modified.  They are now real XML files, and can be analyzed with xmldump (which I have written).
+Also, it is now a piece of cake to collect the backscattered photons.  They are collected and stored in the same file, under "interface",id=backward.
+MCObject is much better (and stricter) when crossing interfaces, since the algorithm has been streamlined.  See the class for explanations (although there currently are no comments in the header file).  The place to start is in PropagateInObject().
+
+
+In main.cpp, I have also finally fixed the exception-catch problem. One must use:
+catch (exception& e)
+         clog << RightNow() << "Exception caught: " << string(e.what()) << endl;
+and not
+catch (exception e)
+         clog << RightNow() << "Exception caught: " << string(e.what()) << endl;
+----------------------------
+revision 1.14
+date: 2003/09/15 15:00:17;  author: dccote;  state: Exp;  lines: +143 -90
+
+Minor formatting changes (removed tabs).
+----------------------------
+revision 1.13
+date: 2003/04/16 14:35:40;  author: dccote;  state: Exp;  lines: +57 -13
+
+
+Important change that might have been responsible for inaccurate numbers.  When counting photons,
+it used to be:
+
+so *= S1.GetWeight() / so.mI;
+
+but this has been changed to
+
+so *= S1.GetWeight();
+
+The division by so.mI was for normalization, which is now done in the main loop.  Also the rejection method
+in randomscatter.cpp has been re-implemented using Kaplan et al.
+
+
+Added acceptance angle acceptanceCos.  If parameter is not given in parameter file, it is set to zero, that is
+we accept everything (costheta > 0 means anything going through the exit plane).
+
+A few DEBUG__VERBOSE sections were added to allow debugging without having to rewrite everything everytime.
+One should compile with make CXXFLAGS="-D__DEBUG_VERBOSE" in order to activate it.  ./configure is not affected by that.
+
+Added new parameters to parameter file (mandatory):
+
+index_med, index_scat, wavelength, radius
+
+so we know what we are dealing with.  Moreover, there is a chance it will be necessary to deal with the 1/k^2d^2
+factor that is dropped in most Monte Carlo calculations.  I suspect this is necessary, but I am unsure now.
+----------------------------
+revision 1.12
+date: 2003/04/07 17:30:10;  author: dccote;  state: Exp;  lines: +10 -10
+
+There was an error when wiritng files to disk: an extra white space was
+added to each line ( and was screwing up other programs later, especially
+Mathematica).  Also an "and" was actually replaced by "&&".  I am not too
+sure how the program compiled before.
+
+This compiles fine on SunOS, Linux and Mac OS X if ./configure is used.
+The best option, is to call it like this:
+
+./configure --prefix=$HOME --exec-prefix=$HOME/bin/sunos
+./configure --prefix=$HOME --exec-prefix=$HOME/bin/linux
+./configure --prefix=$HOME --exec-prefix=$HOME/bin/darwin
+
+so the same program gets compiled for all platforms and therefore can be
+run on anything.
+----------------------------
+revision 1.11
+date: 2003/03/18 00:23:53;  author: dccote;  state: Exp;  lines: +218 -168
+
+TESTS:
+
+
+There is a new test mode that can be defined with singleScattering=true
+where a single scattering event will take place half way through the thickness
+of the cuvette and then the photon will propagate to the interface of the cuvette.
+This allows one to test the validity of the Monte Carlo code with simple
+analytical expressions
+
+
+I added a new variable to the parameter file, to avoid having to duplicate
+S1000 S1100 S1010 and S1001 parameter files.  Now, if the variable
+allStokesVector is defined in the parameter file, then the program
+will automatically loop through the four important Stokes vectors. If not, the
+program does the same thing as before. This forced a reorganization of the file, with a new loop added.
+Some important initializations the need to be done only once have been moved
+out of that loop, whereas others that need to be done every time have been moved in.
+The StokesVector (and output filenames) are kept in "arrays" (C++ vector<>).
+
+
+Correction of output: there used to be an extra number being output
+at the end of each line.  Lines of the form:
+<       for (long i = 0; i < Nx; i++) {
+were changed to
+>       for (long i = 0; i < Nx-1; i++) {
+in the function Dump*ToStream()
+----------------------------
+revision 1.10
+date: 2003/03/13 23:13:26;  author: dccote;  state: Exp;  lines: +1 -94
+
+Removed testing functions from main.cpp and created new file randomscatterer.cpp (with header)
+Also moved the layout of the file a bit.
+----------------------------
+revision 1.9
+date: 2003/03/11 21:15:55;  author: dccote;  state: Exp;  lines: +11 -2
+
+Amazing: I got the ./configure set up going thanks to automake, autoscan, autoconf and autoheader.
+I made a few modifications to StokesV.h, main.cpp and rand.cpp to allow the customization
+of config.h.  Now, one should be able to get everything configured (as a developer) with:
+
+autoheader
+automake -ac
+autoconf
+
+./configure --prefix=$HOME --bindir=$HOME/bin/$OS
+make
+make install
+
+Important problem: gcc 3.1 on Darwin has a problem with isnan()
+(see http://mail.gnu.org/archive/html/lilypond-devel/2002-08/msg00175.html)
+I had to define it empty if undefined.  Bizarre and will probably break on other
+machines, but it compiles for now (does not run on OS X though).
+----------------------------
+revision 1.8
+date: 2002/12/02 22:28:13;  author: dccote;  state: Exp;  lines: +147 -72
+
+Changed cerr for clog to output to standard log (is usually the same as cerr, but who knows).
+Added tons of logging functions.  The output goes to clog and can be redirect from the shell into a logfile.
+
+Allow the input from a file or from stdin.  A file is preferred since it allows to keep track of the file name in the log file.
+
+
+
+Now everything gets dumped into one big file that looks like an XML file (but is not).  All the parameters
+are included.  From this big file, one can run other programs to extract individual files
+(extractsubfile extractallsubfiles, extractmuellermatrixelements).  Two functions that dump the content
+of the simulations have been created.  Straightforward dump.
+----------------------------
+revision 1.7
+date: 2002/11/22 21:45:34;  author: dccote;  state: Exp;  lines: +321 -840
+Separation of the various classes into separate files.
+
+Most important aspect: the weight is not the intensity of the Stokes vector.
+It is incorrect to take the unnormalized intensity of the scattered Stokes
+vector.  The angles phi and theta are already sampled proportionally to the
+probability of having a photon scattered at that phi and theta.  Therefore we always normalize
+the StokesVectors after a scattering event (what we care about is the polarization and
+the degree of polarization of a photon is unchanged upon scattering.  The nature
+of the polarization changes.
+
+Added a real weight() to a photon, which allows to deal with absoprtion (untested).
+
+
+Added a function to test if the photon is still in the medium.
+Finally, if the propagation distance before next scattering event is such that the photon leaves the medium, the distance is corrected.
+
+Files for beta linear, circular and average distance travalled by a photon are
+also produced.
+----------------------------
+revision 1.6
+date: 2002/11/19 23:41:11;  author: dccote;  state: Exp;  lines: +479 -108
+Most important change:  apparently, Bartel et al. have an error in the sign of some of the
+vectors in Eq. (10) and (11) (should be +,+,- and +,+,+).  One way to see that is to look at figure 2
+(drawn for a positive phi) and use geometric arguments.  After that, take -phi (which is the transformation
+that is being performed).  The function GetStokesVectorInLocalFrame() has been modified.
+
+Added the Mourant reference at the beginning of file.
+
+Added a "things to know" list, describing important
+technical aspect of the program.  Currently, has very little.
+
+Added various warning messages using constructs of the form:
+
+> 		static bool warning=true;
+>
+> 		if (warning) {
+> 			cerr << "We take the absoluate value of I-Q and I + Q to work around numerical round off errors\n";
+> 			warning = false;
+> 		}
+
+
+GetLocalComplexFields(), and StokesV() constructor added to deal with fields in addition to Intensities.
+
+Sometimes, theta is a wee bit larger than pi when converted from degrees.  We force it down to 180.
+
+Added a few functions to aid in debugging:
+	static float DotProduct(RealV& u, RealV& v)
+	static void CheckTriad(RealV& x, RealV& y, RealV& z)
+
+called everywhere to check the unit vectors.
+
+
+Added a compile time choice of formalism:  __MOURANT_FORMALISM or anything else.  By default, we use Bartel's.
+
+Added a compile time choice of Stokes vector detection __MOURANT_STOKES_DETECTION.  By default, we use my own. Mourant's way of
+obtaining the Stokes vector seems wrong
+
+
+A variable singleScattering has been added, but won't stay there:  this was to do the calculation for a single scattering
+event but is too cumbersome to keep for what is gained.  Instead, just use a very low mu_s.
+
+Now dumps everything (I,Q,U,V) to file.
+----------------------------
+revision 1.5
+date: 2002/11/07 21:56:00;  author: dccote;  state: Exp;  lines: +39 -26
+This version highly likely has a few sign mistakes since it did not pass simple tests.
+
+Added functions for degree of polarization. Due to round off errors, every now and then one might want to check its value (it sometimes goes a bit above 1).
+
+Started to add logging functions.
+
+I now output "beta" into another file.  Preliminary tests show that there might be an error in the code because linearly, vertically polarized light is almost all depolarized, but unpolarized light is not.
+
+Reverted __isnan to isnan, since g++ 3.2 supports it.  Will find a work around for g++ 3.1.
+
+The parameter file now requires a filename for the output files.
+----------------------------
+revision 1.4
+date: 2002/11/06 05:27:33;  author: dccote;  state: Exp;  lines: +258 -67
+
+Major changes, adding the reading of the Stokes vector element in the lab frame.
+Corrected multiplication of Stokes vector by mueller matrix: one cannot assign the value of say "I", since it is used for the calculation of the other values (Q,U,V).  One must use temporary variables.  This is true for any "matrix multiplciation" and I had a mistake in the original version.
+
+isnan(x) is a problem: I had to use math.h and __isnan(). I am not sure why, this looks like a namespace problem in GCC3. I could not ind anything on the web, although I have seen a few things regarding the use of _GLIBCPP_USE_C99 and how it could be defined on the command line, but it did not always work (in simple cases it did, not in complicated cases).
+
+Added tons of parameters in param.dat file so that the Monte Carlo program does not have to be recompiled every time parameters are changed:
+The parameters for the input photon are taken from the parameter file
+The filename for the various output files is in the parameter file
+We keep track of progress but spitting out where we are to standard output.
+----------------------------
+revision 1.3
+date: 2002/10/16 23:37:59;  author: dccote;  state: Exp;  lines: +3 -3
+
+Added parameter file.
+----------------------------
+revision 1.2
+date: 2002/10/16 17:51:04;  author: dccote;  state: Exp;  lines: +340 -1
+Completion of the transformations for er,el,e3 following better understanding
+Addition of configfiles and mydebug for parameters
+Completion of various functions for simulations of many photons.
+----------------------------
+revision 1.1
+date: 2002/10/16 01:21:02;  author: dccote;  state: Exp;
+branches:  1.1.1;
+Initial revision
+----------------------------
+revision 1.1.1.1
+date: 2002/10/16 01:21:02;  author: dccote;  state: Exp;  lines: +0 -0
+
+Initial import.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/missing,v
+Working file: missing
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2003/11/19 20:51:21;  author: dccote;  state: Exp;
+
+Files from autoconf (i.e the configure script) have been added.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/mkinstalldirs,v
+Working file: mkinstalldirs
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2003/11/19 20:51:21;  author: dccote;  state: Exp;
+
+Files from autoconf (i.e the configure script) have been added.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/mtRand.cpp,v
+Working file: mtRand.cpp
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2003/11/19 20:48:00;  author: dccote;  state: Exp;
+
+New files added to CVS project.  They used to be independent, they are now part of the project.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/mtRand.h,v
+Working file: mtRand.h
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2003/11/19 20:48:00;  author: dccote;  state: Exp;
+
+New files added to CVS project.  They used to be independent, they are now part of the project.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/mtRand.o,v
+Working file: mtRand.o
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2003/11/19 20:48:00;  author: dccote;  state: Exp;
+
+New files added to CVS project.  They used to be independent, they are now part of the project.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/muellermatrix.pl,v
+Working file: muellermatrix.pl
+head: 1.2
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 2;	selected revisions: 2
+description:
+----------------------------
+revision 1.2
+date: 2002/11/25 21:06:14;  author: dccote;  state: Exp;  lines: +42 -0
+First attempt at adding results to CVS.  Might not be done in the future, (could be too much data)
+----------------------------
+revision 1.1
+date: 2002/11/19 23:45:13;  author: dccote;  state: Exp;
+run.sh and run_all.sh: run batch files.
+
+Obtain Mueller matrix elements from output files I,Q,U,V for different states of polarization.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/mydebug.cpp,v
+Working file: mydebug.cpp
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2003/11/19 20:48:00;  author: dccote;  state: Exp;
+
+New files added to CVS project.  They used to be independent, they are now part of the project.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/mydebug.h,v
+Working file: mydebug.h
+head: 1.2
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 2;	selected revisions: 2
+description:
+----------------------------
+revision 1.2
+date: 2004/01/10 20:24:10;  author: dccote;  state: Exp;  lines: +43 -37
+
+Function areTheSame and isZero now accept a third parameter (mandatory) that gives the order to which the comparison is performed.
+----------------------------
+revision 1.1
+date: 2003/11/19 20:48:00;  author: dccote;  state: Exp;
+
+New files added to CVS project.  They used to be independent, they are now part of the project.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/mydebug.o,v
+Working file: mydebug.o
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2003/11/19 20:48:00;  author: dccote;  state: Exp;
+
+New files added to CVS project.  They used to be independent, they are now part of the project.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/param.dat,v
+Working file: param.dat
+head: 1.7
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 7;	selected revisions: 7
+description:
+----------------------------
+revision 1.7
+date: 2004/01/10 20:33:53;  author: dccote;  state: Exp;  lines: +17 -14
+
+Improved param.dat with most recent additions.
+----------------------------
+revision 1.6
+date: 2003/11/18 15:10:36;  author: dccote;  state: Exp;  lines: +20 -14
+
+All the floats were changed to double's.
+----------------------------
+revision 1.5
+date: 2003/11/12 14:46:49;  author: dccote;  state: Exp;  lines: +21 -8
+
+The parameter file has been extensively "rewritten" (i.e. commented) and now has several new parameters necessary due to the changes in MCObject for instance.  Everything is self-explanatory.
+----------------------------
+revision 1.4
+date: 2003/10/09 20:46:53;  author: dccote;  state: Exp;  lines: +67 -16
+
+The parameter file now has better comments and nnew parameters.  Everything is explained in the file itself.
+----------------------------
+revision 1.3
+date: 2003/04/16 14:59:43;  author: dccote;  state: Exp;  lines: +14 -13
+
+New parameters added (index_med, index_scat, radius_scat, wavelength).
+----------------------------
+revision 1.2
+date: 2003/03/10 22:28:27;  author: dccote;  state: Exp;  lines: +4 -4
+Started implementation of test section for testing Mueller matrices from interpolated data files.
+Sample the function at all angles and spits out the total Mueller matrix mij in 16 different files.  The files are NOT as a funciton of position xy buyt as a function of angles theta phi.  Currently, phi is not being used.
+----------------------------
+revision 1.1
+date: 2002/11/22 21:47:10;  author: dccote;  state: Exp;
+Added a parameter file to the project to allow testing.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/param.txt,v
+Working file: param.txt
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2002/10/16 23:37:59;  author: dccote;  state: Exp;
+
+Added parameter file.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/rand.cpp,v
+Working file: rand.cpp
+head: 1.4
+branch:
+locks: strict
+access list:
+symbolic names:
+	start: 1.1.1.1
+	mc: 1.1.1
+keyword substitution: kv
+total revisions: 5;	selected revisions: 5
+description:
+----------------------------
+revision 1.4
+date: 2003/09/15 15:00:53;  author: dccote;  state: Exp;  lines: +1 -2
+
+Minor formatting changes (removed tabs).
+----------------------------
+revision 1.3
+date: 2003/03/11 21:15:55;  author: dccote;  state: Exp;  lines: +5 -0
+
+Amazing: I got the ./configure set up going thanks to automake, autoscan, autoconf and autoheader.
+I made a few modifications to StokesV.h, main.cpp and rand.cpp to allow the customization
+of config.h.  Now, one should be able to get everything configured (as a developer) with:
+
+autoheader
+automake -ac
+autoconf
+
+./configure --prefix=$HOME --bindir=$HOME/bin/$OS
+make
+make install
+
+Important problem: gcc 3.1 on Darwin has a problem with isnan()
+(see http://mail.gnu.org/archive/html/lilypond-devel/2002-08/msg00175.html)
+I had to define it empty if undefined.  Bizarre and will probably break on other
+machines, but it compiles for now (does not run on OS X though).
+----------------------------
+revision 1.2
+date: 2002/10/17 03:50:15;  author: dccote;  state: Exp;  lines: +91 -1
+
+Changed line endings from Mac to Unix
+----------------------------
+revision 1.1
+date: 2002/10/16 01:21:02;  author: dccote;  state: Exp;
+branches:  1.1.1;
+Initial revision
+----------------------------
+revision 1.1.1.1
+date: 2002/10/16 01:21:02;  author: dccote;  state: Exp;  lines: +0 -0
+
+Initial import.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/rand.h,v
+Working file: rand.h
+head: 1.1
+branch: 1.1.1
+locks: strict
+access list:
+symbolic names:
+	start: 1.1.1.1
+	mc: 1.1.1
+keyword substitution: kv
+total revisions: 2;	selected revisions: 2
+description:
+----------------------------
+revision 1.1
+date: 2002/10/16 01:21:02;  author: dccote;  state: Exp;
+branches:  1.1.1;
+Initial revision
+----------------------------
+revision 1.1.1.1
+date: 2002/10/16 01:21:02;  author: dccote;  state: Exp;  lines: +0 -0
+
+Initial import.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/randomscatter.cpp,v
+Working file: randomscatter.cpp
+head: 1.8
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 8;	selected revisions: 8
+description:
+----------------------------
+revision 1.8
+date: 2003/11/18 15:10:36;  author: dccote;  state: Exp;  lines: +36 -36
+
+All the floats were changed to double's.
+----------------------------
+revision 1.7
+date: 2003/11/18 14:55:09;  author: dccote;  state: Exp;  lines: +25 -6
+
+I moved some of the functions from Mueller to randomscatter.cpp since that's where they belonged (the comaprison for the Jaillon method, for instance).  I also removed useless functions from Mueller.h
+
+randomscatter.cpp has better init functions for Jaillon. Alos, note the mAvgCosine was changed from float to double (in randomscatter.h).  This is critical since with 1e7 photons, the running sum will fail (and did fail).
+----------------------------
+revision 1.6
+date: 2003/11/12 14:21:03;  author: dccote;  state: Exp;  lines: +59 -34
+
+
+Added the possiblity to seed the random number generator with a user-supplied seed. Very useful for debugging purposes.
+
+Corrected an important but quite subtle bug: some random number generators (including the one I use) may generate "zero" as a number.  If that's the case, then the calculation of random distance (which is proportional to log(random)) will fail.  Hence, we have to reject zero explicitly.
+
+I also added a safety net for the random angle generators: if after a certain large number of iterations (often hardcoded as 1000) there is still no angles generated, it will throw an exception.  This could be due for instance to a bad Stokes input.
+
+To compute the stats, I use a new function WhichBin().  I still have a problem with the computed g which sometimes is completely out of whack although from the histogram, it can be calculated to be correct.
+----------------------------
+revision 1.5
+date: 2003/10/09 18:34:50;  author: dccote;  state: Exp;  lines: +377 -59
+
+Major rewrite of angle sampling functions, correcting an actual mistake in the literature
+AND making it much faster (using Kaplan's method).
+
+Bottom line: Wang, Bartel, Mourant have it wrong: the probability of scattering at theta, phi
+is not proportional to I(theta,phi).  It is proportional to I(theta,phi) sin(theta).
+That changes quite a bit.  Jaillon and Kaplan have it right (although they are not explicitly
+shoing their result, the math is correct).
+
+The way to check this, is to calculate <cos theta>.  The wrong distributions end up with a much larger g (which
+explains why previously, all my beta_lin calculations were too "generous" (i.e. the sample did not depolarize fast enough). This was so because mu_s prime was much smaller (due to the value of g near 1).  Now, everything makes more sense, and values are much closer to experimental values).
+
+I have a longer discussion (and proof) about this in a Mathematica file called RandomNumbers.nb.  The schemes studied are:
+Bartel et al. "Monte Carlo simulations of the diffuse backscattering Mueller matrix for highly scattering media", Applied Optics,  39, No 10, p. 1580, (2000)
+Jaillon et al. "Description and time reduction of a Monte Carlo code to simulate propagation of polarized light through scattering media", Applied Optics,  42, No 16, p. 3290, (2003)
+Kaplan et al. "Mueller matrix of dense polystyrene latex sphere suspensions: measurements and Monte Carlo simulation", Applied Optics,  40, No 16, p. 2769, (2001)
+L. Wang et al. "Monte Carlo Modeling of Light Transport in multi-layered Tissues in Standard C", http://ece.ogi.edu/mcml/ (1998)
+
+I have now created a new object MCRandomScatterer that takes charge of generating random angles.  By choosing the appropriate subclass MCRandomScattererKaplan, MCRandomScattererHenyeyGreenstein, MCRandomScattererJaillon, one can compare the various schemes.  Hence, in the main loop, one creates the object that corresponds to their need and calls the generating function GetRandomScatteringAngle(), which is specific to each object.
+----------------------------
+revision 1.4
+date: 2003/09/15 14:55:49;  author: dccote;  state: Exp;  lines: +9 -8
+
+
+The rejection method used is that of Kaplan,  Appl. Opt. 40, 16 p. 2773.
+----------------------------
+revision 1.3
+date: 2003/04/16 14:44:10;  author: dccote;  state: Exp;  lines: +10 -3
+
+Very important change:
+
+1) we normalize the Stokes vector before the calculation
+2) We normalize the sum with the integral of the Mueller matrix over d_Omega
+   with a new function that has been added to MuellerM
+
+This is following Kaplan et al., who are much more explicit about what they do
+for the rejection method.  However, I still have a slight bias in my implementation:
+the normalization is done for S11(theta) only.  This is actually wrong, but not too much.
+The integral should actually be performed every time with theta and phi since the sacattered
+intensity depends on phi a tiny bit.  However, for now I don't. I checked the difference
+with an without phi and the normalization is affected by ~ 1%.
+I output a warning, and I keep going.
+----------------------------
+revision 1.2
+date: 2003/03/18 00:33:20;  author: dccote;  state: Exp;  lines: +29 -16
+
+Rewritten to allow the use of different random number generators.
+Macro definitions were reintroduced so that one can swap the algorithm
+easily.
+----------------------------
+revision 1.1
+date: 2003/03/13 23:14:29;  author: dccote;  state: Exp;
+
+New file with random angle selection function.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/randomscatter.h,v
+Working file: randomscatter.h
+head: 1.5
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 5;	selected revisions: 5
+description:
+----------------------------
+revision 1.5
+date: 2003/11/18 15:10:36;  author: dccote;  state: Exp;  lines: +15 -15
+
+All the floats were changed to double's.
+----------------------------
+revision 1.4
+date: 2003/11/18 14:47:30;  author: dccote;  state: Exp;  lines: +9 -3
+
+Important change:  when calculating the runnning sum for AvgCosine, if the number of photon is more then 1e7, then
+the sum won't work anymore, since we are adding approximately 1 to a number close to 1e7 and we use floats.  I changed mAvgCosine
+to double, but I will later change everything to double.
+----------------------------
+revision 1.3
+date: 2003/11/12 14:21:03;  author: dccote;  state: Exp;  lines: +11 -5
+
+
+Added the possiblity to seed the random number generator with a user-supplied seed. Very useful for debugging purposes.
+
+Corrected an important but quite subtle bug: some random number generators (including the one I use) may generate "zero" as a number.  If that's the case, then the calculation of random distance (which is proportional to log(random)) will fail.  Hence, we have to reject zero explicitly.
+
+I also added a safety net for the random angle generators: if after a certain large number of iterations (often hardcoded as 1000) there is still no angles generated, it will throw an exception.  This could be due for instance to a bad Stokes input.
+
+To compute the stats, I use a new function WhichBin().  I still have a problem with the computed g which sometimes is completely out of whack although from the histogram, it can be calculated to be correct.
+----------------------------
+revision 1.2
+date: 2003/10/09 18:34:50;  author: dccote;  state: Exp;  lines: +116 -6
+
+Major rewrite of angle sampling functions, correcting an actual mistake in the literature
+AND making it much faster (using Kaplan's method).
+
+Bottom line: Wang, Bartel, Mourant have it wrong: the probability of scattering at theta, phi
+is not proportional to I(theta,phi).  It is proportional to I(theta,phi) sin(theta).
+That changes quite a bit.  Jaillon and Kaplan have it right (although they are not explicitly
+shoing their result, the math is correct).
+
+The way to check this, is to calculate <cos theta>.  The wrong distributions end up with a much larger g (which
+explains why previously, all my beta_lin calculations were too "generous" (i.e. the sample did not depolarize fast enough). This was so because mu_s prime was much smaller (due to the value of g near 1).  Now, everything makes more sense, and values are much closer to experimental values).
+
+I have a longer discussion (and proof) about this in a Mathematica file called RandomNumbers.nb.  The schemes studied are:
+Bartel et al. "Monte Carlo simulations of the diffuse backscattering Mueller matrix for highly scattering media", Applied Optics,  39, No 10, p. 1580, (2000)
+Jaillon et al. "Description and time reduction of a Monte Carlo code to simulate propagation of polarized light through scattering media", Applied Optics,  42, No 16, p. 3290, (2003)
+Kaplan et al. "Mueller matrix of dense polystyrene latex sphere suspensions: measurements and Monte Carlo simulation", Applied Optics,  40, No 16, p. 2769, (2001)
+L. Wang et al. "Monte Carlo Modeling of Light Transport in multi-layered Tissues in Standard C", http://ece.ogi.edu/mcml/ (1998)
+
+I have now created a new object MCRandomScatterer that takes charge of generating random angles.  By choosing the appropriate subclass MCRandomScattererKaplan, MCRandomScattererHenyeyGreenstein, MCRandomScattererJaillon, one can compare the various schemes.  Hence, in the main loop, one creates the object that corresponds to their need and calls the generating function GetRandomScatteringAngle(), which is specific to each object.
+----------------------------
+revision 1.1
+date: 2003/03/13 23:14:40;  author: dccote;  state: Exp;
+
+New file with random angle selection function.h
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/run.sh,v
+Working file: run.sh
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2002/11/19 23:45:13;  author: dccote;  state: Exp;
+run.sh and run_all.sh: run batch files.
+
+Obtain Mueller matrix elements from output files I,Q,U,V for different states of polarization.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/run_all.sh,v
+Working file: run_all.sh
+head: 1.4
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 4;	selected revisions: 4
+description:
+----------------------------
+revision 1.4
+date: 2003/04/07 17:19:06;  author: dccote;  state: Exp;  lines: +28 -4
+
+Added small correction to echo so everything looks and runs fine on
+Linux, Sunos and Mac OS X.
+----------------------------
+revision 1.3
+date: 2003/03/18 00:31:12;  author: dccote;  state: Exp;  lines: +7 -5
+
+Modified to reflect the new parameter file and program that will
+automatically go through all four relevant Stokes vectors (we now
+need to call mc only once).
+----------------------------
+revision 1.2
+date: 2002/12/02 22:31:26;  author: dccote;  state: Exp;  lines: +9 -4
+Send output to program mylogger, which stores everything in my log directory.
+(~/log/dcote.log.x)
+----------------------------
+revision 1.1
+date: 2002/11/19 23:45:13;  author: dccote;  state: Exp;
+run.sh and run_all.sh: run batch files.
+
+Obtain Mueller matrix elements from output files I,Q,U,V for different states of polarization.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/test.cpp,v
+Working file: test.cpp
+head: 1.6
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 6;	selected revisions: 6
+description:
+----------------------------
+revision 1.6
+date: 2003/11/18 15:10:36;  author: dccote;  state: Exp;  lines: +68 -24
+
+All the floats were changed to double's.
+----------------------------
+revision 1.5
+date: 2003/09/15 14:56:17;  author: dccote;  state: Exp;  lines: +85 -87
+
+Just minor formatting (removed tabs).
+----------------------------
+revision 1.4
+date: 2003/04/16 14:59:10;  author: dccote;  state: Exp;  lines: +24 -4
+
+Modified test.cpp so that it reflects some of the changes of main.cpp (parameters, normalization).
+It now checks the normalization of the Mueller matrix.  Let's note that there is a difference between normalizing
+to max value of S11 and normalizing to the integral of S11(theta) d_theta.  Moreover, as mentionned in another comment
+(see randomscatter.cpp) the normalization should include the dependence on theta and phi, since the actually scattering
+depends on the polarization a tiny bit.
+----------------------------
+revision 1.3
+date: 2003/03/18 00:27:54;  author: dccote;  state: Exp;  lines: +47 -54
+
+
+
+The cubicplsine files are tested by spitting them out after having read them.
+A plot of that file and the original file should be identical.
+
+The g parameter, which is sin(theta)*cos(theta) (because of the solid angle),
+is calculated and can be compared with the known g parameter of the
+MieScatteringMatrix element files that are provided in the parameter file.
+
+The code has been modified a tiny bit to allow the use of a new random number
+generator via randomscatter.cpp.  Everything is decided in randomscatter.cpp
+and the code itself does not have to do anything.  This means the
+random numbers can come from any algorithm.
+
+Modified the name of the output file from mij.dat to test_mij.dat.
+
+Correction of output: there used to be an extra tabulation character being output
+at the end of each line.  I now use an end of line character 'sep' which is
+'\n' or '\t' depending upon the situation.
+----------------------------
+revision 1.2
+date: 2003/03/13 23:15:40;  author: dccote;  state: Exp;  lines: +166 -61
+
+New functions to test for avg cosine, g, symmetry of scattering matrix and cubicspline function.
+----------------------------
+revision 1.1
+date: 2003/03/10 22:28:27;  author: dccote;  state: Exp;
+Started implementation of test section for testing Mueller matrices from interpolated data files.
+Sample the function at all angles and spits out the total Mueller matrix mij in 16 different files.  The files are NOT as a funciton of position xy buyt as a function of angles theta phi.  Currently, phi is not being used.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/test.dat,v
+Working file: test.dat
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2003/03/10 22:28:27;  author: dccote;  state: Exp;
+Started implementation of test section for testing Mueller matrices from interpolated data files.
+Sample the function at all angles and spits out the total Mueller matrix mij in 16 different files.  The files are NOT as a funciton of position xy buyt as a function of angles theta phi.  Currently, phi is not being used.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/testVectors.cpp,v
+Working file: testVectors.cpp
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2003/11/19 20:48:00;  author: dccote;  state: Exp;
+
+New files added to CVS project.  They used to be independent, they are now part of the project.
+=============================================================================
+
+RCS file: /Users/dccote/Documents/CVSPRIV/research/mc/xmldump,v
+Working file: xmldump
+head: 1.2
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 2;	selected revisions: 2
+description:
+----------------------------
+revision 1.2
+date: 2003/11/18 15:10:36;  author: dccote;  state: Exp;  lines: +1 -1
+
+All the floats were changed to double's.
+----------------------------
+revision 1.1
+date: 2003/10/09 20:54:25;  author: dccote;  state: Exp;
+
+Allows one to read the output files and dump them in other ascii files for further processing.
+=============================================================================

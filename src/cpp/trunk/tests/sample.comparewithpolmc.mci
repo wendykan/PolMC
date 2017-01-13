@@ -1,0 +1,82 @@
+##########################################
+# Sample.mci
+# 	A template for input files for MCML.
+#	Any characters following a # are ignored as comments
+#	Space lines are also ignored.
+#	Lengths are in cm, mua and mus are in 1/cm.
+#
+#	Multiple runs may be stipulated.
+##########################################
+
+1.0                      	# file version
+5                        	# number of runs
+
+#### SPECIFY DATA FOR RUN 1
+#InParm                    	# Input parameters. cm is used.
+sample.run1.mco 	A            	# output file name, ASCII.
+1000000                  	# No. of photons
+0.01	0.01               	# dz, dr [cm]
+40	50	1                	# No. of dz, dr, da.
+
+1                        	# Number of layers
+#n	mua	mus	g	d         	# One line for each layer
+1.33                         	# n for medium above
+1.33	0	50	0.9	0.1  	# layer 3
+1.33                        	# n for medium below
+
+
+#### SPECIFY DATA FOR RUN 2
+#InParm                    	# Input parameters. cm is used.
+sample.run2.mco 	A            	# output file name, ASCII.
+1000000                  	# No. of photons
+0.01	0.01               	# dz, dr [cm]
+40	50	1                	# No. of dz, dr, da.
+
+1                        	# Number of layers
+#n	mua	mus	g	d         	# One line for each layer
+1.54                         	# n for medium above
+1.33	0	50	0.9	0.1  	# layer 3
+1.54                        	# n for medium below
+
+#### SPECIFY DATA FOR RUN 3
+#InParm                    	# Input parameters. cm is used.
+sample.run3.mco 	A            	# output file name, ASCII.
+1000000                  	# No. of photons
+0.01	0.01               	# dz, dr [cm]
+40	50	1                	# No. of dz, dr, da.
+
+1                        	# Number of layers
+#n	mua	mus	g	d         	# One line for each layer
+1.33                         	# n for medium above
+1.33	1	50	0.9	0.1  	# layer 3
+1.33                        	# n for medium below
+
+#### SPECIFY DATA FOR RUN 4
+#InParm                    	# Input parameters. cm is used.
+sample.run4.mco 	A            	# output file name, ASCII.
+1000000                  	# No. of photons
+0.01	0.01               	# dz, dr [cm]
+40	50	1                	# No. of dz, dr, da.
+
+1                        	# Number of layers
+#n	mua	mus	g	d         	# One line for each layer
+1.54                         	# n for medium above
+1.33	1	50	0.9	0.1  	# layer 3
+1.54                        	# n for medium below
+
+#### SPECIFY DATA FOR RUN 5
+#InParm                    	# Input parameters. cm is used.
+sample.run5.mco 	A            	# output file name, ASCII.
+1000000                  	# No. of photons
+0.01	0.01               	# dz, dr [cm]
+40	50	1                	# No. of dz, dr, da.
+
+1                        	# Number of layers
+#n	mua	mus	g	d         	# One line for each layer
+1.54                         	# n for medium above
+1.33	0	0	0.9	0.1  	# layer 3
+1.54                        	# n for medium below
+
+
+
+
